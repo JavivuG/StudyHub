@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="shortcut icon" href="images/logo.svg" />
+        <title>StudyHub</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            media="screen"
+            href="styles/main.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+
+    <body>
+        <!-- Encabezado -->
+        <header>
+            <div class="container">
+                <nav class="nav-main">
+                    <a href="index.html"
+                        ><img src="images/logo2.svg" alt="StudyHub"
+                    /></a>
+
+                    <ul class="nav-menu">
+                        <li>
+                            <a href="profile.html" class="texto-perfil"
+                                >Mi perfil</a
+                            >
+                        </li>
+                        <li>
+                            <a href="profile.html">
+                                <img
+                                    src="images/profile.svg"
+                                    alt="Foto de perfil"
+                                    id="perfil-img"
+                                />
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Titulo de la pagina -->
+        <div class="container">
+            <ul class="page-title-container">
+                <li>
+                    <img src="images/forum.svg" alt="Forum" class="page-icon" />
+                </li>
+                <li>
+                    <span class="page-title">Foro</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Barra de navegacion -->
+        <div class="container">
+            <ul class="nav-bar">
+                <li>
+                    <a href="index.html"
+                        ><img src="images/home.svg" alt="Home" id="home-icon"
+                    /></a>
+                </li>
+                <li>
+                    <span class="items-nav"
+                        ><a href="index.html">Inicio</a></span
+                    >
+                </li>
+                <li>
+                    <img src="images/arrow.svg" alt="Arrow" id="arrow" />
+                </li>
+                <li>
+                    <span class="items-nav"><a href="subjects.html">Asignaturas</a></span>
+                </li>
+                <li>
+                    <img src="images/arrow.svg" alt="Arrow" id="arrow" />
+                </li>
+                <li>
+                    <span class="items-nav"
+                        ><a href="#">Fundamentos de Programación</a></span
+                    >
+                </li>
+            </ul>
+        </div>
+
+        <!-- Barra de busqueda -->
+        <div class="container">
+            <div class="search-bar">
+                <input
+                    type="text"
+                    id="search"
+                    name="search"
+                    placeholder="Buscar..."
+                />
+                <i class="fas fa-search boton"></i>
+                <button class="boton">
+                    <span class="texto-btn">Crear nuevo tema</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="for-fich-container">
+                <!-- Temas del foro -->
+                <div class="forum-container">
+                    <div class="cajas-container">
+                        <h2 class="titulo-contenido">Temas destacados</h2>
+                        <ul>
+                            <a href="#"><li>
+                                <div class="caja-tema">
+                                    <h3>Exámenes</h3>
+                                    <p>por <span>bookworm</span> • 23 comentarios • hace 1 minuto</p>
+                                </div>
+                            </li></a>
+                            <a href="#"><li>
+                                <div class="caja-tema">
+                                    <h3>Sitios web útiles para practicar programación</h3>
+                                    <p>por <span>johndoe</span> • 12 comentarios • hace 3 días</p>
+                                </div>
+                            </li></a>
+                            <a href="#"><li>
+                                <div class="caja-tema">
+                                    <h3>Aplazar entrega del proyecto</h3>
+                                    <p>por <span>janedoe</span> • 5 comentarios • hace 1 día</p>
+                                </div>
+                            </li></a>
+                    </div>
+                    <div class="cajas-container">
+                        <h2 class="titulo-contenido">Temas recientes</h2>
+                        <ul>
+                            <a href="#"><li>
+                                <div class="caja-tema">
+                                    <h3>¿Cómo se hace el triángulo de Pascal?</h3>
+                                    <p>por <span>Skywalker42</span> • 5 comentarios • hace 30 minutos</p>
+                                </div>
+                            </li></a>
+                            <a href="#"><li>
+                                <div class="caja-tema">
+                                    <h3>Explicación bucles: For vs while</h3>
+                                    <p>por <span>JazzCraze</span> • 5 comentarios • hace 1 hora</p>
+
+                                </div>
+                            </li></a>
+                            <a href="#"><li>
+                                <div class="caja-tema">
+                                    <h3>¿Alguien tiene apuntes del tema 5?</h3>
+                                    <p>por <span>PixelPioneer</span> • 5 comentarios • hace 1 día</p>
+                                </div>
+                            </li></a>
+                            <a href="#"><li>
+                                <div class="caja-tema">
+                                    <h3>No entiendo el ejericicio 4</h3>
+                                    <p>por <span>EchoVibes</span> • 5 comentarios • hace 1 semana</p>
+                                </div>
+                            </li></a>
+                    </div>
+                </div>
+
+                <!-- Ficheros -->
+                <div class="ficheros-container">
+                    <div class="cajas-container">
+                        <h2 class="titulo-contenido">Ficheros</h2>
+                        <ul>
+                            <li>
+                                <div class="caja-fich">
+                                    <div class="fich">
+                                        <img src="images/fichero.svg" alt="pdf" id="fich-icon"/>
+                                        <div class="fich2">
+                                            <h3>Tema1_Introd_prog</h3>
+                                            <p>subido por <span>JazzCraze</span></p>
+                                        </div>
+                                    </div>
+                                    <a href="#"><img src="images/download.svg" alt="download" id="download-icon"/></a>
+                                    
+                                </div>
+                            </li>
+                            <li>
+                                <div class="caja-fich">
+                                    <div class="fich">
+                                        <img src="images/fichero.svg" alt="pdf" id="fich-icon"/>
+                                        <div class="fich2">
+                                            <h3>Apuntes_tema_5</h3>
+                                            <p>subido por <span>janedoe</span></p>
+                                        </div>
+                                    </div>
+                                    <a href="#"><img src="images/download.svg" alt="download" id="download-icon" /></a>
+                                    
+                                </div>
+                            </li>
+                            <li>
+                                <div class="caja-fich">
+                                    <div class="fich">
+                                        <img src="images/fichero.svg" alt="pdf" id="fich-icon"/>
+                                        <div class="fich2">
+                                            <h3>Introd_java</h3>
+                                            <p>subido por <span>johndoe</span></p>
+                                        </div>
+                                    </div>
+                                    <a href="#"><img src="images/download.svg" alt="download" id="download-icon"/></a>
+                                    
+                                </div>
+                            </li>
+                    </div>
+                    <div class="contenedor-view-more">
+                        <a href="#" class="view-more">Ver más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pie de pagina -->
+        <div class="footer-container">
+            <div class="info">
+                <h1>StudyHub</h1>
+                <ul>
+                    <li><a href="#">Cookies</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                </ul>
+            </div>
+
+            <div class="otros">
+                <ul id="socials">
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                </ul>
+                <p id="copyright">© StudyHub | 2024</p>
+                <ul id="socials">
+                    <li>
+                        <a href="#"
+                            ><img src="images/tiktok.svg" alt="tiktok"
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><img src="images/facebook.svg" alt="facebook"
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><img src="images/instagram.svg" alt="instagram"
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><img src="images/twitter.svg" alt="twitter"
+                        /></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
