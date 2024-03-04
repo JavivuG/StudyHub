@@ -1,10 +1,224 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Start Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
+	<head>
+		<title>StudyHub</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="styles/landing.css" />
+		<link rel="stylesheet" href="styles/footer.css" />
+		<link rel="stylesheet" href="styles/common.css" />
+		<link rel="stylesheet" href="styles/header.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="icon" type="image/png" href="images/icono.png" />
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<nav class="nav-main">
+					<a href="index.html"
+						><img src="images/logo2.svg" alt="StudyHub"
+					/></a>
+
+					<ul class="nav-menu">
+						<li>
+							<a href="contacto.html" class="contacto"
+								>Contacto</a
+							>
+						</li>
+						<li>
+							<a href="login.html" class="boton-inicio"
+								>Iniciar Sesión</a
+							>
+						</li>
+						<li>
+							<a href="signup.html" class="boton-registro"
+								>Registrarse</a
+							>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<div class="buscador">
+			<div class="titulo-buscador">
+				<h1>StudyHub, tu plataforma de aprendizaje</h1>
+			</div>
+			<div class="flex-buscador">
+				<div class="texto-buscador">
+					<h3>
+						Con studyHub, conseguirás aprobar todas tus asignaturas
+						con buenas notas
+					</h3>
+				</div>
+				<div class="formulario-buscador">
+					<p>
+						Busca la asignatura que te está generando pesadillas...
+					</p>
+					<form>
+						<label>
+							<input
+								type="text"
+								placeholder="Introduce una asignatura"
+								class="input-buscador"
+							/>
+						</label>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div class="foro">
+			<div class="flex-foro">
+				<img src="images/foro.png" alt="foro" width="700" />
+				<div class="texto-foro">
+					<h3>
+						En nuestro foro podrás valorar apuntes, preguntar dudas,
+						y ayudar a tus compañeros con las suyas!
+					</h3>
+					<a href="signup.html" class="boton-registro">Regístrate</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="asignaturas">
+			<div class="flex-asignaturas">
+				<div class="texto-asignaturas">
+					<h3>
+						Estas son las asignaturas más utilizadas por los
+						usuarios de StudyHub.
+					</h3>
+					<h3>
+						Si tú también quieres aportar apuntes o utilizar los
+						existentes, haz click en el botón inferior!
+					</h3>
+					<a href="signup.html" class="boton-registro">Regístrate</a>
+				</div>
+				<div class="ag-format-container">
+					<div class="ag-courses_box">
+						<div class="ag-courses_item">
+							<a href="#" class="ag-courses-item_link">
+								<div class="ag-courses-item_bg"></div>
+
+								<div class="ag-courses-item_title">
+									Matemáticas
+								</div>
+
+								<div class="ag-courses-item_description-box">
+									<span class="ag-courses-item_description"
+										>1º Curso de Ing. Informática
+									</span>
+								</div>
+							</a>
+						</div>
+
+						<div class="ag-courses_item">
+							<a href="#" class="ag-courses-item_link">
+								<div class="ag-courses-item_bg"></div>
+
+								<div class="ag-courses-item_title">Física</div>
+
+								<div class="ag-courses-item_description-box">
+									<span class="ag-courses-item_description"
+										>1º Curso de Ing. Informática</span
+									>
+								</div>
+							</a>
+						</div>
+
+						<div class="ag-courses_item">
+							<a href="#" class="ag-courses-item_link">
+								<div class="ag-courses-item_bg"></div>
+
+								<div class="ag-courses-item_title">
+									Computación Paralela
+								</div>
+
+								<div class="ag-courses-item_description-box">
+									<span class="ag-courses-item_description">
+										3º Curso de Ing. Informática
+									</span>
+								</div>
+							</a>
+						</div>
+
+						<div class="ag-courses_item">
+							<a href="#" class="ag-courses-item_link">
+								<div class="ag-courses-item_bg"></div>
+
+								<div class="ag-courses-item_title">
+									Sistemas Distribuidos
+								</div>
+
+								<div class="ag-courses-item_description-box">
+									<span class="ag-courses-item_description">
+										2º Curso de Ing. Informática
+									</span>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="opiniones">
+			<div class="texto-opiniones">
+				<h3>Esto opinan de nosotros los estudiantes</h3>
+			</div>
+			<div class="flex-opiniones"></div>
+			<!-- <a href="signup.html" class="boton-registro">Regístrate</a> -->
+		</div>
+
+		<!-- Pie de pagina -->
+		<footer>
+			<div class="footer-container">
+				<div class="info">
+					<h1>StudyHub</h1>
+					<ul>
+						<li><a href="#">Cookies</a></li>
+						<li><a href="#">Términos y Condiciones</a></li>
+						<li><a href="#">Privacidad</a></li>
+					</ul>
+				</div>
+
+				<div class="otros">
+					<ul id="socials">
+						<li><a href="#">Contacto</a></li>
+						<li><a href="#">Preguntas frecuentes</a></li>
+					</ul>
+					<p id="copyright">© StudyHub | 2024</p>
+					<ul id="socials">
+						<li>
+							<a href="#"
+								><img src="images/tiktok.svg" alt="tiktok"
+							/></a>
+						</li>
+						<li>
+							<a href="#"
+								><img src="images/facebook.svg" alt="facebook"
+							/></a>
+						</li>
+						<li>
+							<a href="#"
+								><img
+									src="images/instagram.svg"
+									alt="instagram"
+							/></a>
+						</li>
+						<li>
+							<a href="#"
+								><img src="images/twitter.svg" alt="twitter"
+							/></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+	</body>
 </html>

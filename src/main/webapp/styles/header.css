@@ -1,0 +1,58 @@
+.nav-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 15px;
+}
+
+.nav-main ul {
+    display: flex;
+    align-items: center;
+}
+
+#perfil-img {
+    margin-top: 6px;
+    margin-left: 10px;
+    height: 40px;
+    width: auto;
+}
+
+/**/
+/* Nav-bar */
+/**/
+.nav-bar {
+    margin: 20px 0;
+    display: flex;
+}
+
+#arrow {
+    height: 45%;
+    width: auto;
+    margin-top: 5px;
+    margin-left: 4px;
+    margin-right: 2px;
+}
+
+#home-icon {
+    height: 43%;
+    width: auto;
+    margin-top: 4px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.items-nav a:hover {
+    border-bottom: 2px solid #fff;
+}
+
+.nav-menu li {
+    padding: 5px;
+}
+
+.nav-menu li:hover {
+    text-decoration: underline;
+}
+
+.texto-perfil:hover {
+    border-bottom: 2px solid #fff;
+}
