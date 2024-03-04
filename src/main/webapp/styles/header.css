@@ -17,6 +17,39 @@
     width: auto;
 }
 
+.boton-registro {
+    padding: 10px;
+    background-color: #00C041;
+    border-radius: 15px;
+    font-size: 20px;
+    border: 0;
+    color: white;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+nav .boton-registro {
+    padding: 7px;
+    font-size: 18px;
+}
+
+.boton-inicio {
+    padding: 7px;
+    background-color: #259AEF;
+    border-radius: 15px;
+    font-size: 18px;
+    border: 0;
+    color: white;
+}
+
+.boton-registro:hover {
+    background-color: #00A13D;
+}
+
+.boton-inicio:hover {
+    background-color: #1E7DBF;
+}
+
 /**/
 /* Nav-bar */
 /**/
