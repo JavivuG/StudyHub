@@ -97,7 +97,6 @@ label:before {
     align-items: center;
 }
 
-
 .ag-format-container {
     margin: 0 60px;
     width: 50%;
@@ -154,8 +153,10 @@ label:before {
 
 .flex-opiniones {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    width: 80%;
+    justify-content: center;
+    width: 100%;
 }
 
 .texto-opiniones {
@@ -165,4 +166,25 @@ label:before {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.opiniones-box {
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 40px;
+    background-color: #d9d9d9;
+    color: black;
+    width: 25%;
+}
+
+.opiniones-header {
+    padding: 20px;
+}
+
+.opiniones-box p {
+    padding: 0 20px 20px 20px;
+}
+
+.star {
+    margin-left: 15px;
 }
