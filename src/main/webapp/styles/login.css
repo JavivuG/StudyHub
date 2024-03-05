@@ -1,0 +1,164 @@
+.titulo-inicia-sesion{
+	margin: 4%;
+	font-size: 30px;
+	text-align: center;
+}
+
+
+
+.inicia-sesion-des{
+
+width: 200px;
+height: 39px;
+left: calc(50% - 200px/2 + 2px);
+top: 718.98px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 39px;
+
+/* identical to box height */
+text-align: center;
+
+color: #FFFFFF;
+}
+
+
+/* Información del usuario */
+
+.info-usuario{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+/* Contraseña */
+.password-usuario{
+	position: relative;
+}
+
+
+/* ¿Ha olvidado su contraseña */
+
+.olvido-password{
+width: 465.39px;
+height: 20.87px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+
+color: #259AEF;
+
+border: 1px solid #000000;
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Introducir contraseña */
+.input-password{
+box-sizing: border-box;
+
+width: 542px;
+height: 69.56px;
+
+background: #D9D9D9;
+mix-blend-mode: normal;
+border: 1px solid #000000;
+backdrop-filter: blur(2px);
+/* Note: backdrop-filter has minimal browser support */
+border-radius: 10px;
+font-size: 25px;
+
+}
+
+/* Introduzca su contraseña */
+.texto-introducir-password{
+width: 465.39px;
+height: 30px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+
+color: #FFFFFF;
+}
+
+
+/* Dirección de correo */
+.email-usuario{
+width: 542px;
+height: 96.42px;
+}
+
+
+/* Introducir email o nick */
+.input-email-usuario{
+box-sizing: border-box;
+
+width: 542px;
+height: 69.56px;
+
+background: #D9D9D9;
+mix-blend-mode: normal;
+border: 1px solid #000000;
+backdrop-filter: blur(2px);
+/* Note: backdrop-filter has minimal browser support */
+border-radius: 10px;
+
+font-size: 25px;
+}
+
+
+/* Introduzca su dirección de correo electrónico o nick */
+.texto-email{
+width: 465.39px;
+height: 30%;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 24px;
+
+color: #FFFFFF;
+}
+
+
+.boton-inicion{
+	display: flex;
+	align: center;
+/* Iniciar sesión */
+.texto-boton-iniciar{
+width: 260px;
+height: 48px;
+left: 590px;
+top: 169px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+line-height: 48px;
+
+color: #FFFFFF;
+}
+
+.boton-inicia-sesion{
+	box-sizing: border-box;
+
+width: 246px;
+height: 76px;
+left: 597px;
+top: 700.98px;
+
+background: #00C041;
+border: 1px solid #000000;
+border-radius: 15px;
+}
