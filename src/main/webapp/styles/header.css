@@ -2,13 +2,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 15px;
+    margin-top: 15px;
 }
 
 .nav-main ul {
     display: flex;
     align-items: center;
 }
+
 
 #perfil-img {
     margin-top: 6px;
@@ -19,7 +20,7 @@
 
 .boton-registro {
     padding: 10px;
-    background-color: #00C041;
+    background-color: #00c041;
     border-radius: 15px;
     font-size: 20px;
     border: 0;
@@ -35,7 +36,7 @@ nav .boton-registro {
 
 .boton-inicio {
     padding: 7px;
-    background-color: #259AEF;
+    background-color: #259aef;
     border-radius: 15px;
     font-size: 18px;
     border: 0;
@@ -43,11 +44,11 @@ nav .boton-registro {
 }
 
 .boton-registro:hover {
-    background-color: #00A13D;
+    background-color: #00a13d;
 }
 
 .boton-inicio:hover {
-    background-color: #1E7DBF;
+    background-color: #1e7dbf;
 }
 
 /**/
@@ -80,10 +81,6 @@ nav .boton-registro {
 
 .nav-menu li {
     padding: 5px;
-}
-
-.nav-menu li:hover {
-    text-decoration: underline;
 }
 
 .texto-perfil:hover {
