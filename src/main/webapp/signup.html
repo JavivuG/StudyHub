@@ -14,7 +14,7 @@
 		<link rel="icon" type="image/png" href="images/icono.png" />
 	</head>
 
-	<!--Cabecera-->
+    <!--Cabecera-->
 	<body>
 		<header>
 			<div class="container">
@@ -26,35 +26,63 @@
 						</li>
 
 						<li>
-							<a href="signup.html" class="boton-registro">Registrarse</a>
+							<a href="login.html" class="boton-inicio">Iniciar Sesión</a>
 						</li>
 					</ul>
 				</nav>
 			</div>
 		</header>
 
-		<!--Titulo-->
+        <!--Titulo-->
 		<div class="titulo-logsign">
-			<h2>Iniciar sesión</h2>
+			<h2>Registrarse</h2>
 		</div>
 
-		<!--Formulario-->
+        <!--Formulario-->
 		<form class="info-usuario">
-			<div class="cajon-info">
-				<label class="texto-info">Introduce tu email o nickname</label>
-				<input name="email" type="text" class="input-info"/>
-			</div>
+            <div class="cajon-info">
+                <label class="texto-info">Introduce tu nombre (No será visible por otros usuarios)</label>
+                <input name="nombre" type="text" class="input-info" />
+            </div>
 
-			<div class="cajon-info">
-				<label class="texto-info">Introduce tu contraseña</label>
-				<input name="password" type="password" class="input-info" />
-				<a href="resetpw.html" class="olvido-password">¿Has olvidado tu contraseña?</a>
-			</div>
-			
-			<button type="submit" class="boton-enviar">Iniciar sesión</button>
-		</form>
 
-		<!-- Pie de pagina -->
+            <div class="cajon-info">
+                <label class="texto-info">Introduce tu nickname (Será visible por otros usuarios)</label>
+                <input name="nickname" type="text" class="input-info" />
+            </div>
+
+            <div class="cajon-info">
+                <label class="texto-info">Introduce tu dirección de correo electrónico</label>
+                <input name="email" type="text" class="input-info" />
+            </div>
+
+            <div class="cajon-info">
+                <label class="texto-info">Introduce una constraseña</label>
+                <input name="password1" type="password" class="input-info" />
+            </div>
+
+            <div class="cajon-info">
+                <label class="texto-info">Confirme la contraseña</label>
+                <input name="password2" type="password" class="input-info" />
+            </div>
+
+            <div class="cajon-info">
+                <label class="texto-info">Introduce tu fecha de nacimiento</label>
+                <input name="fnacimiento" type="date" class="input-info" />
+            </div>
+
+            <div class="cajon-info">
+                <label class="texto-info">Selecciona tu rol</label>
+                <div class="cajon-rol">
+                    <input name="rol" type="radio" class="input-rol" value="Estudiante"> Estudiante
+                    <input name="rol" type="radio" class="input-rol" value="Profesor"> Profesor
+                </div>
+            </div>
+
+            <button type="submit" class="boton-enviar">Crear cuenta</button>
+        </form>
+
+        <!-- Pie de pagina -->
 		<footer>
 			<div class="footer-container">
 				<div class="info">
