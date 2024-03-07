@@ -35,3 +35,22 @@ ul {
     margin: auto;
 }
 
+.page-title-container {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.page-icon {
+    height: 28px;
+    width: auto;
+    margin-top: 7px;
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+

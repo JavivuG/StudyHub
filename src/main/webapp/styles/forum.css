@@ -1,0 +1,118 @@
+/**/
+/* Barra de búsqueda */
+/**/
+#search {
+    padding: 10px;
+    background-color: #d9d9d9;
+    border: #d9d9d9;
+    font-size: 14px;
+    border-radius: 10px;
+    margin-right: 5px;
+    width: 25%;
+}
+
+.boton {
+    padding: 10px;
+    background-color: #555454;
+    height: 40px;
+    border-radius: 12px;
+    border: 2px solid #000;
+}
+
+.texto-btn {
+    font-size: 14px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.for-fich-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.titulo-contenido {
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+.caja-tema {
+    border-radius: 10px;
+    background-color: #d9d9d9;
+    color: #000;
+    margin: 10px 0;
+    padding: 8px;
+    width: 600px;
+}
+
+.caja-tema h3 {
+    font-size: 18px;
+}
+
+.caja-tema p {
+    font-size: 12px;
+}
+
+.caja-tema p span {
+    font-weight: bold;
+    color: #555454;
+}
+
+.caja-fich {
+    border-radius: 10px;
+    background-color: #d9d9d9;
+    color: #000;
+    margin: 10px 0;
+    padding: 8px;
+    display: flex;
+    width: 600px;
+    justify-content: space-between;
+}
+
+.caja-fich h3 {
+    font-size: 18px;
+}
+
+.caja-fich p {
+    font-size: 12px;
+}
+
+.caja-fich p span {
+    font-weight: bold;
+    color: #555454;
+}
+
+.fich {
+    display: flex;
+    align-items: center;
+}
+
+#fich-icon {
+    height: 30px;
+    width: auto;
+    margin-right: 10px;
+}
+
+#download-icon {
+    height: 30px;
+    width: auto;
+    margin: 3px 10px 0 0;
+}
+
+.contenedor-view-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.view-more {
+    background-color: #d9d9d9;
+    border-radius: 20px;
+    padding: 8px 15px;
+    border: 0px;
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+}
