@@ -1,3 +1,4 @@
+
 .titulo-logsign {
 	margin: 4%;
 	font-size: 30px;
@@ -15,8 +16,7 @@
 /* ¿Ha olvidado su contraseña */
 
 .olvido-password {
-	width: 465.39px;
-	height: 20.87px;
+	width: 100%;
 
 	font-weight: 400;
 	font-size: 20px;
@@ -29,10 +29,15 @@
 	margin-top: 15px;
 }
 
+.olvido-password:hover {
+	color: #18669e;
+}
+
 .cajon-info {
 	margin: 15px 0;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 }
 
 /* Introducir contraseña */
@@ -60,6 +65,7 @@
 	background: #D9D9D9;
 	margin-left: 40px;
 }
+
 .cajon-rol {
 	margin: 15px 0;
 	display: flex;
@@ -69,8 +75,7 @@
 
 /* Introduzca su contraseña */
 .texto-info {
-	width: 600px;
-	height: 30px;
+	width: 100%;
 
 	font-weight: 400;
 	font-size: 20px;
@@ -81,7 +86,7 @@
 
 /* Iniciar sesión */
 .texto-boton-enviar {
-	width: 260px;
+	width: 50px;
 	height: 48px;
 	left: 590px;
 	top: 169px;
@@ -103,4 +108,56 @@
 	color: white;
 	margin-top: 15px;
 	margin-bottom: 200px;
+}
+
+.boton-enviar:hover {
+	background-color: #00a13d;
+}
+
+.birrete{
+	animation: fondo 3s linear infinite ;	
+	background: #FFFFFF;
+	opacity: .3;
+
+	position: absolute;
+	bottom: 0;
+	left: 5%;
+}
+
+.fondo {
+	/* insertar icno*/
+	border-radius: 50%;
+	background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTI4LjA1IDI2LjA2NjdDMjkuMTY2NiAyNS4zMzMzIDMwLjYzMzMgMjYuMTMzMyAzMC42MzMzIDI3LjQ2NjdWMjkuNjE2N0MzMC42MzMzIDMxLjczMzMgMjguOTgzMyAzNCAyNyAzNC42NjY3TDIxLjY4MzMgMzYuNDMzM0MyMC43NSAzNi43NSAxOS4yMzMzIDM2Ljc1IDE4LjMxNjYgMzYuNDMzM0wxMyAzNC42NjY3QzExIDM0IDkuMzY2NjQgMzEuNzMzMyA5LjM2NjY0IDI5LjYxNjdWMjcuNDVDOS4zNjY2NCAyNi4xMzMzIDEwLjgzMzMgMjUuMzMzMyAxMS45MzMzIDI2LjA1TDE1LjM2NjYgMjguMjgzM0MxNi42ODMzIDI5LjE2NjcgMTguMzUgMjkuNiAyMC4wMTY2IDI5LjZDMjEuNjgzMyAyOS42IDIzLjM1IDI5LjE2NjcgMjQuNjY2NiAyOC4yODMzTDI4LjA1IDI2LjA2NjdaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMzMuMyAxMC43NjY3TDIzLjMxNjYgNC4yMTY2N0MyMS41MTY2IDMuMDMzMzMgMTguNTUgMy4wMzMzMyAxNi43NSA0LjIxNjY3TDYuNzE2NjQgMTAuNzY2N0MzLjQ5OTk3IDEyLjg1IDMuNDk5OTcgMTcuNTY2NyA2LjcxNjY0IDE5LjY2NjdMOS4zODMzIDIxLjRMMTYuNzUgMjYuMkMxOC41NSAyNy4zODMzIDIxLjUxNjYgMjcuMzgzMyAyMy4zMTY2IDI2LjJMMzAuNjMzMyAyMS40TDMyLjkxNjYgMTkuOVYyNUMzMi45MTY2IDI1LjY4MzMgMzMuNDgzMyAyNi4yNSAzNC4xNjY2IDI2LjI1QzM0Ljg1IDI2LjI1IDM1LjQxNjYgMjUuNjgzMyAzNS40MTY2IDI1VjE2LjhDMzYuMDgzMyAxNC42NSAzNS40IDEyLjE1IDMzLjMgMTAuNzY2N1oiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=");
+	width: 400%;
+	height: 400%;
+	opacity: .3;
+
+	position: absolute;
+	bottom: 0;
+
+	animation: fondo linear infinite ;
+	animation-duration: 3s;
+	left: -150%;
+}
+
+
+@keyframes fondo {
+	0%{
+		bottom: -100%;
+		opacity: 0;
+	}
+	30%{
+		transform: translateX(30px);
+	}
+	50%{
+		opacity: .4;
+	}
+	70%{
+		transform: translateX(-40px);
+	}
+	100%{
+		bottom: 100vh;
+		opacity: 0;
+	}
+	
 }
