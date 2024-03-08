@@ -10,142 +10,175 @@
 		<link rel="stylesheet" href="styles/header.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap"
+			rel="stylesheet"
+		/>
 		<link rel="icon" type="image/png" href="images/icono.png" />
-		
+
 		<style>
-			:root{
-				--Birrete-color:#f6f6 ;
-				--Abajo-color:  #ffff;
+			:root {
+				--Birrete-color: #f6f6;
+				--Abajo-color: #ffff;
 			}
-			svg{
+			svg {
 				cursor: pointer;
 			}
 
 			#arriba {
 				fill: var(--Birrete-color);
 			}
-			#base{
+			#base {
 				fill: var(--Abajo-color);
 			}
 
-			#Birrete, #Abjajo{
+			#Birrete,
+			#Abjajo {
 				transition: all 1s ease;
 			}
-
 		</style>
 	</head>
 
 	<!--Cabecera-->
 	<body>
-		<a href="index.html">
-			<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" id="logo">
-				<g id="logo">
-					<g id="base">
-						<path id="Abajo" d="M28.05 26.0667C29.1666 25.3333 30.6333 26.1333 30.6333 27.4667V29.6167C30.6333 31.7333 28.9833 34 27 34.6667L21.6833 36.4333C20.75 36.75 19.2333 36.75 18.3166 36.4333L13 34.6667C11 34 9.36664 31.7333 9.36664 29.6167V27.45C9.36664 26.1333 10.8333 25.3333 11.9333 26.05L15.3666 28.2833C16.6833 29.1667 18.35 29.6 20.0166 29.6C21.6833 29.6 23.35 29.1667 24.6666 28.2833L28.05 26.0667Z" />
+		<div class="main-content">
+			<a href="index.html">
+				<svg
+					width="40"
+					height="40"
+					viewBox="0 0 40 40"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					id="logo"
+				>
+					<g id="logo">
+						<g id="base">
+							<path
+								id="Abajo"
+								d="M28.05 26.0667C29.1666 25.3333 30.6333 26.1333 30.6333 27.4667V29.6167C30.6333 31.7333 28.9833 34 27 34.6667L21.6833 36.4333C20.75 36.75 19.2333 36.75 18.3166 36.4333L13 34.6667C11 34 9.36664 31.7333 9.36664 29.6167V27.45C9.36664 26.1333 10.8333 25.3333 11.9333 26.05L15.3666 28.2833C16.6833 29.1667 18.35 29.6 20.0166 29.6C21.6833 29.6 23.35 29.1667 24.6666 28.2833L28.05 26.0667Z"
+							/>
+						</g>
+						<g id="arriba">
+							<path
+								id="Birrete"
+								d="M33.3 10.7667L23.3166 4.21672C21.5166 3.03339 18.55 3.03339 16.75 4.21672L6.71664 10.7667C3.49997 12.8501 3.49997 17.5667 6.71664 19.6667L9.3833 21.4001L16.75 26.2001C18.55 27.3834 21.5166 27.3834 23.3166 26.2001L30.6333 21.4001L32.9166 19.9001V25.0001C32.9166 25.6834 33.4833 26.2501 34.1666 26.2501C34.85 26.2501 35.4166 25.6834 35.4166 25.0001V16.8001C36.0833 14.6501 35.4 12.1501 33.3 10.7667Z"
+							/>
+						</g>
 					</g>
-					<g id="arriba">
-						<path id="Birrete" d="M33.3 10.7667L23.3166 4.21672C21.5166 3.03339 18.55 3.03339 16.75 4.21672L6.71664 10.7667C3.49997 12.8501 3.49997 17.5667 6.71664 19.6667L9.3833 21.4001L16.75 26.2001C18.55 27.3834 21.5166 27.3834 23.3166 26.2001L30.6333 21.4001L32.9166 19.9001V25.0001C32.9166 25.6834 33.4833 26.2501 34.1666 26.2501C34.85 26.2501 35.4166 25.6834 35.4166 25.0001V16.8001C36.0833 14.6501 35.4 12.1501 33.3 10.7667Z"/>
-					</g>
-				</g>
-			</svg>
-		</a>
+				</svg>
+			</a>
 
-		<script>
-			const svg = document.getElementById('logo');
-			setInterval(myFunction, 1500);	
-			function myFunction() {
-				const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink']
-				const rando = () => colors[Math.floor(Math.random()*colors.length)];
-				document.documentElement.style.cssText = `
+			<script>
+				const svg = document.getElementById('logo');
+				setInterval(myFunction, 1500);
+				function myFunction() {
+					const colors = [
+						'red',
+						'orange',
+						'yellow',
+						'green',
+						'blue',
+						'purple',
+						'pink',
+					];
+					const rando = () =>
+						colors[Math.floor(Math.random() * colors.length)];
+					document.documentElement.style.cssText = `
 				--Birrete-color: ${rando()};
-				`
-			}
+				`;
+				}
 			</script>
-		<header>
-			<div class="container">
-				<nav class="nav-main">
-					<a href="index.html"><img src="images/logo2.svg" alt="StudyHub"/></a>
-					<ul class="nav-menu">
-						<li>
-							<a href="contacto.html" class="contacto">Contacto</a>
-						</li>
+			<header>
+				<div class="container">
+					<nav class="nav-main">
+						<a href="index.html"
+							><img src="images/logo2.svg" alt="StudyHub"
+						/></a>
+						<ul class="nav-menu">
+							<li>
+								<a href="contacto.html" class="contacto"
+									>Contacto</a
+								>
+							</li>
 
-						<li>
-							<a href="signup.html" class="boton-registro">Registrarse</a>
-						</li>
-					</ul>
-				</nav>
+							<li>
+								<a href="signup.html" class="boton-registro"
+									>Registrarse</a
+								>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+
+			<!--Titulo-->
+			<div class="titulo-logsign">
+				<h2>Iniciar sesión</h2>
 			</div>
-		</header>
 
+			<!--Formulario-->
+			<form class="info-usuario">
+				<div class="cajon-info">
+					<label class="texto-info"
+						>Introduce tu email o nickname</label
+					>
+					<input name="email" type="text" class="input-info" />
+				</div>
 
-		<!--Titulo-->
-		<div class="titulo-logsign">
-			<h2>Iniciar sesión</h2>
+				<div class="cajon-info">
+					<label class="texto-info">Introduce tu contraseña</label>
+					<input name="password" type="password" class="input-info" />
+					<a href="resetpw.html" class="olvido-password"
+						>¿Has olvidado tu contraseña?</a
+					>
+				</div>
+
+				<button type="submit" class="boton-enviar">
+					Iniciar sesión
+				</button>
+			</form>
 		</div>
-		
-		<!--Formulario-->
-		<form class="info-usuario">
-			<div class="cajon-info">
-				<label class="texto-info">Introduce tu email o nickname</label>
-				<input name="email" type="text" class="input-info"/>
-			</div>
-
-			<div class="cajon-info">
-				<label class="texto-info">Introduce tu contraseña</label>
-				<input name="password" type="password" class="input-info" />
-				<a href="resetpw.html" class="olvido-password">¿Has olvidado tu contraseña?</a>
-			</div>
-			
-			<button type="submit" class="boton-enviar">Iniciar sesión</button>
-		</form>
 
 		<!-- Pie de pagina -->
 		<footer>
-			<div class="footer-container">
-				<div class="info">
-					<h1>StudyHub</h1>
-					<ul>
-						<li><a href="#">Cookies</a></li>
-						<li><a href="#">Términos y Condiciones</a></li>
-						<li><a href="#">Privacidad</a></li>
-					</ul>
-				</div>
+			<div class="info">
+				<h1>StudyHub</h1>
+				<ul>
+					<li><a href="#">Cookies</a></li>
+					<li><a href="#">Términos y Condiciones</a></li>
+					<li><a href="#">Privacidad</a></li>
+				</ul>
+			</div>
 
-				<div class="otros">
-					<ul id="socials">
-						<li><a href="#">Contacto</a></li>
-						<li><a href="#">Preguntas frecuentes</a></li>
-					</ul>
-					<p id="copyright">© StudyHub | 2024</p>
-					<ul id="socials">
-						<li>
-							<a href="#"
-								><img src="images/tiktok.svg" alt="tiktok"
-							/></a>
-						</li>
-						<li>
-							<a href="#"
-								><img src="images/facebook.svg" alt="facebook"
-							/></a>
-						</li>
-						<li>
-							<a href="#"
-								><img
-									src="images/instagram.svg"
-									alt="instagram"
-							/></a>
-						</li>
-						<li>
-							<a href="#"
-								><img src="images/twitter.svg" alt="twitter"
-							/></a>
-						</li>
-					</ul>
-				</div>
+			<div class="otros">
+				<ul id="socials">
+					<li><a href="#">Contacto</a></li>
+					<li><a href="#">Preguntas frecuentes</a></li>
+				</ul>
+				<p id="copyright">© StudyHub | 2024</p>
+				<ul id="socials">
+					<li>
+						<a href="#"
+							><img src="images/tiktok.svg" alt="tiktok"
+						/></a>
+					</li>
+					<li>
+						<a href="#"
+							><img src="images/facebook.svg" alt="facebook"
+						/></a>
+					</li>
+					<li>
+						<a href="#"
+							><img src="images/instagram.svg" alt="instagram"
+						/></a>
+					</li>
+					<li>
+						<a href="#"
+							><img src="images/twitter.svg" alt="twitter"
+						/></a>
+					</li>
+				</ul>
 			</div>
 		</footer>
-
-	</body.prueba>
+	</body>
 </html>

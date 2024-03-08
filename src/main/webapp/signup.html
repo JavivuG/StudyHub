@@ -10,123 +10,158 @@
 		<link rel="stylesheet" href="styles/header.css" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap"
+			rel="stylesheet"
+		/>
 		<link rel="icon" type="image/png" href="images/icono.png" />
 	</head>
 
-    <!--Cabecera-->
+	<!--Cabecera-->
 	<body>
-		<header>
-			<div class="container">
-				<nav class="nav-main">
-					<a href="index.html"><img src="images/logo2.svg" alt="StudyHub"/></a>
-					<ul class="nav-menu">
-						<li>
-							<a href="contacto.html" class="contacto">Contacto</a>
-						</li>
+		<div class="main-content">
+			<header>
+				<div class="container">
+					<nav class="nav-main">
+						<a href="index.html"
+							><img src="images/logo2.svg" alt="StudyHub"
+						/></a>
+						<ul class="nav-menu">
+							<li>
+								<a href="contacto.html" class="contacto"
+									>Contacto</a
+								>
+							</li>
 
-						<li>
-							<a href="login.html" class="boton-inicio">Iniciar Sesión</a>
-						</li>
-					</ul>
-				</nav>
+							<li>
+								<a href="login.html" class="boton-inicio"
+									>Iniciar Sesión</a
+								>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+
+			<!--Titulo-->
+			<div class="titulo-logsign">
+				<h2>Registrarse</h2>
 			</div>
-		</header>
 
-        <!--Titulo-->
-		<div class="titulo-logsign">
-			<h2>Registrarse</h2>
+			<!--Formulario-->
+			<form class="info-usuario">
+				<div class="cajon-info">
+					<label class="texto-info"
+						>Introduce tu nombre (No será visible por otros
+						usuarios)</label
+					>
+					<input name="nombre" type="text" class="input-info" />
+				</div>
+
+				<div class="cajon-info">
+					<label class="texto-info"
+						>Introduce tu nickname (Será visible por otros
+						usuarios)</label
+					>
+					<input name="nickname" type="text" class="input-info" />
+				</div>
+
+				<div class="cajon-info">
+					<label class="texto-info"
+						>Introduce tu dirección de correo electrónico</label
+					>
+					<input name="email" type="text" class="input-info" />
+				</div>
+
+				<div class="cajon-info">
+					<label class="texto-info">Introduce una constraseña</label>
+					<input
+						name="password1"
+						type="password"
+						class="input-info"
+					/>
+				</div>
+
+				<div class="cajon-info">
+					<label class="texto-info">Confirme la contraseña</label>
+					<input
+						name="password2"
+						type="password"
+						class="input-info"
+					/>
+				</div>
+
+				<div class="cajon-info">
+					<label class="texto-info"
+						>Introduce tu fecha de nacimiento</label
+					>
+					<input name="fnacimiento" type="date" class="input-info" />
+				</div>
+
+				<div class="cajon-info">
+					<label class="texto-info">Selecciona tu rol</label>
+					<div class="cajon-rol">
+						<input
+							name="rol"
+							type="radio"
+							class="input-rol"
+							value="Estudiante"
+						/>
+						Estudiante
+						<input
+							name="rol"
+							type="radio"
+							class="input-rol"
+							value="Profesor"
+						/>
+						Profesor
+					</div>
+				</div>
+
+				<button type="submit" class="boton-enviar">Crear cuenta</button>
+			</form>
 		</div>
 
-        <!--Formulario-->
-		<form class="info-usuario">
-            <div class="cajon-info">
-                <label class="texto-info">Introduce tu nombre (No será visible por otros usuarios)</label>
-                <input name="nombre" type="text" class="input-info" />
-            </div>
-
-
-            <div class="cajon-info">
-                <label class="texto-info">Introduce tu nickname (Será visible por otros usuarios)</label>
-                <input name="nickname" type="text" class="input-info" />
-            </div>
-
-            <div class="cajon-info">
-                <label class="texto-info">Introduce tu dirección de correo electrónico</label>
-                <input name="email" type="text" class="input-info" />
-            </div>
-
-            <div class="cajon-info">
-                <label class="texto-info">Introduce una constraseña</label>
-                <input name="password1" type="password" class="input-info" />
-            </div>
-
-            <div class="cajon-info">
-                <label class="texto-info">Confirme la contraseña</label>
-                <input name="password2" type="password" class="input-info" />
-            </div>
-
-            <div class="cajon-info">
-                <label class="texto-info">Introduce tu fecha de nacimiento</label>
-                <input name="fnacimiento" type="date" class="input-info" />
-            </div>
-
-            <div class="cajon-info">
-                <label class="texto-info">Selecciona tu rol</label>
-                <div class="cajon-rol">
-                    <input name="rol" type="radio" class="input-rol" value="Estudiante"> Estudiante
-                    <input name="rol" type="radio" class="input-rol" value="Profesor"> Profesor
-                </div>
-            </div>
-
-            <button type="submit" class="boton-enviar">Crear cuenta</button>
-        </form>
-
-        <!-- Pie de pagina -->
+		<!-- Pie de pagina -->
 		<footer>
-			<div class="footer-container">
-				<div class="info">
-					<h1>StudyHub</h1>
-					<ul>
-						<li><a href="#">Cookies</a></li>
-						<li><a href="#">Términos y Condiciones</a></li>
-						<li><a href="#">Privacidad</a></li>
-					</ul>
-				</div>
+			<div class="info">
+				<h1>StudyHub</h1>
+				<ul>
+					<li><a href="#">Cookies</a></li>
+					<li><a href="#">Términos y Condiciones</a></li>
+					<li><a href="#">Privacidad</a></li>
+				</ul>
+			</div>
 
-				<div class="otros">
-					<ul id="socials">
-						<li><a href="#">Contacto</a></li>
-						<li><a href="#">Preguntas frecuentes</a></li>
-					</ul>
-					<p id="copyright">© StudyHub | 2024</p>
-					<ul id="socials">
-						<li>
-							<a href="#"
-								><img src="images/tiktok.svg" alt="tiktok"
-							/></a>
-						</li>
-						<li>
-							<a href="#"
-								><img src="images/facebook.svg" alt="facebook"
-							/></a>
-						</li>
-						<li>
-							<a href="#"
-								><img
-									src="images/instagram.svg"
-									alt="instagram"
-							/></a>
-						</li>
-						<li>
-							<a href="#"
-								><img src="images/twitter.svg" alt="twitter"
-							/></a>
-						</li>
-					</ul>
-				</div>
+			<div class="otros">
+				<ul id="socials">
+					<li><a href="#">Contacto</a></li>
+					<li><a href="#">Preguntas frecuentes</a></li>
+				</ul>
+				<p id="copyright">© StudyHub | 2024</p>
+				<ul id="socials">
+					<li>
+						<a href="#"
+							><img src="images/tiktok.svg" alt="tiktok"
+						/></a>
+					</li>
+					<li>
+						<a href="#"
+							><img src="images/facebook.svg" alt="facebook"
+						/></a>
+					</li>
+					<li>
+						<a href="#"
+							><img src="images/instagram.svg" alt="instagram"
+						/></a>
+					</li>
+					<li>
+						<a href="#"
+							><img src="images/twitter.svg" alt="twitter"
+						/></a>
+					</li>
+				</ul>
 			</div>
 		</footer>
-
 	</body>
 </html>
