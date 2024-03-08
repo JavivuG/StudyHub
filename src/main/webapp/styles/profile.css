@@ -1,0 +1,176 @@
+.perfil {
+    width: 20%;
+    text-align: center;
+    font-size: 20px;
+}
+
+.nickname {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.name {
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+
+.estadisticas {
+    width: 80%;
+}
+
+.asignatura-box, .mensaje-box {
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 20px;
+    background-color: #d9d9d9;
+    color: black;
+    width: 85%;
+}
+
+.mensaje-box {
+    width: 93%;
+}
+
+.contribuidas-titulo {
+    font-size: 25px;
+    font-weight: 700;
+    margin: 10px;
+    text-align: center;
+}
+
+.progress {
+    margin: 10px;
+    padding: 6px;
+    border-radius: 30px;
+    background: rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25),
+        0 1px rgba(255, 255, 255, 0.08);
+}
+
+.progress-bar, .progress-bar2, .progress-bar3, .progress-bar4 {
+    height: 18px;
+    border-radius: 30px;
+    background-image: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.3),
+            rgba(255, 255, 255, 0.05));
+}
+
+.progress-moved .progress-bar {
+    width: 50%;
+    background-color: #2a0316;
+    animation: progressanimation50 6s;
+}
+
+.progress-moved .progress-bar2 {
+    width: 30%;
+    background-color: #2a0316;
+    animation: progressanimation30 6s;
+}
+
+.progress-moved .progress-bar3 {
+    width: 10%;
+    background-color: #2a0316;
+    animation: progressanimation10 6s;
+}
+
+@keyframes progressanimation30 {
+    0% {
+        width: 0%;
+        background-color: #323232;
+    }
+
+    30% {
+        width: 30%;
+        background-color: #2a0316;
+    }
+}
+
+@keyframes progressanimation50 {
+    0% {
+        width: 0%;
+        background-color: #323232;
+    }
+
+    50% {
+        width: 50%;
+        background-color: #2a0316;
+    }
+}
+
+@keyframes progressanimation10 {
+    0% {
+        width: 0%;
+        background-color: #323232;
+    }
+
+    10% {
+        width: 10%;
+        background-color: #2a0316;
+    }
+}
+
+.porcentaje {
+    text-align: center;
+    color: #d9d9d9;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.perfil {
+    width: 20%;
+    flex-grow: 0; /* Evita que la sección de perfil crezca */
+    flex-shrink: 0; /* Evita que la sección de perfil se reduzca */
+    text-align: center;
+    font-size: 20px;
+}
+
+.estadisticas {
+    margin-top: 50px;
+   display: grid; 
+   grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+   gap: 10px; /* Espacio entre las cajas */
+}
+
+.asignaturas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.asignaturas-contribuidas h2,
+.ultimos-mensajes h2,
+.ultimas-subidas h2,
+.podio h2 {
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+}
+.asignaturas-contribuidas,
+.ultimos-mensajes,
+.ultimas-subidas,
+.podio {
+    margin: 10px;
+}
+
+.descarga {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.mensaje {
+    margin: 10px;
+    padding: 5px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.top-personal {
+    background-color: gold;
+}

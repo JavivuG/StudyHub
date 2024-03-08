@@ -34,7 +34,7 @@ nav .boton-registro {
     font-size: 18px;
 }
 
-.boton-inicio {
+.boton-inicio, .boton-logout {
     padding: 7px;
     background-color: #259aef;
     border-radius: 15px;
@@ -43,12 +43,20 @@ nav .boton-registro {
     color: white;
 }
 
+.boton-logout {
+    background-color: #ff0000;
+}
+
 .boton-registro:hover {
     background-color: #00a13d;
 }
 
 .boton-inicio:hover {
     background-color: #1e7dbf;
+}
+
+.boton-logout:hover {
+    background-color: #ff4d4d;
 }
 
 /**/
