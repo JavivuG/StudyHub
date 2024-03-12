@@ -1,0 +1,80 @@
+.title-fich {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.subject {
+    background-color: #d9d9d9;
+    border-radius: 12px;
+    padding: 10px 10% 10px 10px;
+    color: #000;
+    margin-right: 10px;
+}
+
+.subject h2 {
+    margin: 10px 0 15px 10px;
+}
+
+.subject p {
+    color: #555454;
+    margin: 10px 0 15px 10px;
+}
+
+.title-fich img {
+    background-color: #d9d9d9;
+    border-radius: 12px;
+    padding: 18px;
+    height: 70px;
+    width: auto;
+}
+
+.ag-format-container {
+    margin: 0 8% 0 8%;
+}
+
+.ag-courses_box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 25px 0;
+}
+
+.ag-courses_item {
+    -ms-flex-preferred-size: calc(50% - 50px);
+    flex-basis: calc(50% - 50px);
+    margin: 0 15px 18px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.ag-courses-item_link {
+    display: flex;
+    padding: 3px 20px;
+    background-color: #d9d9d9;
+    overflow: hidden;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ag-courses-item_title {
+    min-height: 40px;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 18px;
+    color: #000;
+    z-index: 2;
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.nombre-fich {
+    display: flex;
+}
