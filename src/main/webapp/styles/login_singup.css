@@ -5,7 +5,6 @@
 	text-align: center;
 }
 
-/* Información del usuario */
 
 .info-usuario {
 	display: flex;
@@ -13,7 +12,6 @@
 	align-items: center;
 }
 
-/* ¿Ha olvidado su contraseña */
 
 .olvido-password {
 	width: 100%;
@@ -37,15 +35,13 @@
 	margin: 15px 0;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 }
 
-/* Introducir contraseña */
 .input-info {
 	box-sizing: border-box;
 
 	width: 542px;
-	height: 69.56px;
+	height: 70px;
 
 	background: #D9D9D9;
 	mix-blend-mode: normal;
@@ -58,22 +54,6 @@
 
 }
 
-
-.input-rol{
-	backdrop-filter: blur(2px);
-	width: 30px;
-	background: #D9D9D9;
-	margin-left: 40px;
-}
-
-.cajon-rol {
-	margin: 15px 0;
-	display: flex;
-	flex-direction: row;
-	
-}
-
-/* Introduzca su contraseña */
 .texto-info {
 	width: 100%;
 
@@ -84,7 +64,22 @@
 	color: #FFFFFF;
 }
 
-/* Iniciar sesión */
+
+.input-rol{
+	backdrop-filter: blur(2px);
+	width: 100%;
+	background: #D9D9D9;
+	margin-left: 40px;
+}
+
+.cajon-rol {
+	width: 100%;
+	margin: 15px 0;
+	display: flex;
+	flex-direction: row;
+	
+}
+
 .texto-boton-enviar {
 	width: 50px;
 	height: 48px;
@@ -106,7 +101,7 @@
 	font-size: 30px;
 	border: 0;
 	color: white;
-	margin-top: 15px;
+	margin: 15px 0 40px 0;
 }
 
 .boton-enviar:hover {
