@@ -10,7 +10,6 @@
     align-items: center;
 }
 
-
 #perfil-img {
     margin-top: 6px;
     margin-left: 10px;
@@ -29,16 +28,17 @@
     margin-top: 20px;
 }
 
-nav .boton-registro {
-    padding: 7px;
-    font-size: 18px;
+.boton-registro {
+    padding: 7px 10px;
+    font-size: 16px;
 }
 
-.boton-inicio, .boton-logout {
-    padding: 7px;
+.boton-inicio,
+.boton-logout {
+    padding: 7px 10px;
     background-color: #259aef;
     border-radius: 15px;
-    font-size: 18px;
+    font-size: 16px;
     border: 0;
     color: white;
 }
