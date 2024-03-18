@@ -4,6 +4,10 @@
 	margin-top: 15px;
 }
 
+.container-encabezado {
+	margin: 40px;
+}
+
 .texto-pagina-no-implementada{
 	padding:4px;
 	background-color:#D9D9D9;
