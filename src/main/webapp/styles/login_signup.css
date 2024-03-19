@@ -1,3 +1,11 @@
+.formulario {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
 .titulo-logsign {
     margin-top: 6%;
     margin-bottom: 3%;
@@ -6,9 +14,13 @@
 }
 
 .info-usuario {
+    width: 30%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    align-self: center;
+    justify-content: center;
+
 }
 
 .olvido-password {
@@ -30,6 +42,7 @@
 }
 
 .cajon-info {
+    width: 100%;
     margin: 15px 0;
     display: flex;
     flex-direction: column;
