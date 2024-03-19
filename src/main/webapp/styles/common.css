@@ -18,11 +18,14 @@ body {
     flex-direction: column; /* Apila los elementos verticalmente */
 }
 
+::placeholder {
+    font-family: "Open Sans", sans-serif;
+}
+
 .main-content {
     flex-grow: 1;
     margin-top: 20px;
 }
-
 
 /* html {
     position: relative;
@@ -63,4 +66,6 @@ ul {
     margin-left: 10px;
 }
 
-
+.page-description {
+    font-size: 18px;
+}

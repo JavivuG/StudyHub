@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="shortcut icon" href="images/logo.svg" />
+        <title>StudyHub</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            media="screen"
+            href="styles/contact.css"
+        />
+        <link rel="stylesheet" href="styles/common.css" />
+        <link rel="stylesheet" href="styles/header.css" />
+        <link rel="stylesheet" href="styles/footer.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+
+    <body>
+        <div class="main-content">
+            <!-- Encabezado -->
+            <header>
+                <div class="container">
+                    <nav class="nav-main">
+                        <a href="index.html"
+                            ><img src="images/logo2.svg" alt="StudyHub"
+                        /></a>
+                    </nav>
+                </div>
+            </header>
+
+            <!-- Titulo de la pagina -->
+            <div class="container">
+                <ul class="page-title-container">
+                    <li>
+                        <img
+                            src="images/forum.svg"
+                            alt="Forum"
+                            class="page-icon"
+                        />
+                    </li>
+                    <li>
+                        <span class="page-title">Contactanos</span>
+                    </li>
+                </ul>
+                <span class="page-description"
+                    >Estamos aquí para ayudarle. Rellene el siguiente formulario
+                    y nos pondremos en contacto con usted lo antes
+                    posible.</span
+                >
+            </div>
+
+            <!-- Formulario -->
+            <div class="container">
+                <form action="" method="post">
+                    <div class="form-group">
+                        <div class="nombre-apellidos">
+                            <div class="nombre">
+                                <label for="nombre">Nombre</label>
+                                <input
+                                    type="text"
+                                    id="nombre"
+                                    name="nombre"
+                                    placeholder="Introduce tu nombre"
+                                    required
+                                />
+                            </div>
+                            <div class="apellido">
+                                <label for="apellido">Apellidos</label>
+                                <input
+                                    type="text"
+                                    id="apellido"
+                                    name="apellido"
+                                    placeholder="Introduce tu apellido"
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        <label for="email">Correo electrónico</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Introduce tu correo electrónico"
+                            required
+                        />
+                        <label for="mensaje">Mensaje</label>
+                        <textarea
+                            id="mensaje"
+                            name="mensaje"
+                            placeholder="Escribe tu mensaje aquí..."
+                            required
+                        ></textarea>
+                        <button type="submit" class="btn">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Pie de pagina -->
+        <footer>
+            <div class="info">
+                <h1>StudyHub</h1>
+                <ul>
+                    <li><a href="#">Cookies</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                </ul>
+            </div>
+
+            <div class="otros">
+                <ul id="socials">
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                </ul>
+                <p id="copyright">© StudyHub | 2024</p>
+                <ul id="socials">
+                    <li>
+                        <a href="#"
+                            ><img src="images/tiktok.svg" alt="tiktok"
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><img src="images/facebook.svg" alt="facebook"
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><img src="images/instagram.svg" alt="instagram"
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><img src="images/twitter.svg" alt="twitter"
+                        /></a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </body>
+</html>

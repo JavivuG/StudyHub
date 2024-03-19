@@ -48,7 +48,7 @@
     /* Note: backdrop-filter has minimal browser support */
     border-radius: 10px;
     font-size: 18px;
-    padding: 15px;
+    padding: 30px;
 }
 
 .texto-info {
@@ -77,7 +77,9 @@
 }
 
 .cajon-rol label {
-    margin-left: 10px;
+    margin-left: 15px;
+    font-size: 18px;
+    margin-bottom: 5px;
 }
 
 .texto-boton-enviar {
@@ -150,4 +152,31 @@
         bottom: 100vh;
         opacity: 0;
     }
+}
+
+input[type="radio"]:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    left: -1px;
+    top: 2px;
+    position: relative;
+    background-color: #d1d3d1;
+    content: "";
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
+}
+
+input[type="radio"]:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    left: -1px;
+    position: relative;
+    background-color: #000;
+    content: "";
+    display: inline-block;
+    visibility: visible;
+    border: 2px solid white;
 }
