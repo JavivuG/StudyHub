@@ -1,135 +1,223 @@
-.container-eslogan{
-	text-align:center;
+.container-eslogan {
+    text-align: center;
 
-	/*left:80px; */
-	
-	font-size: 60px;
-	font-weight:bolder;
-	align-items:center;
+    /*left:80px; */
+
+    font-size: 60px;
+    font-weight: bolder;
+    align-items: center;
 }
-
 
 /** PERFIL **/
 
 .perfil-menu {
-    display:flex;
-    flex-direction:row;
-    background: #259AEF;
-    border-radius:16px;
-
-
+    display: flex;
+    flex-direction: row;
+    background: #259aef;
+    border-radius: 16px;
 
     border-radius: 16px;
-    margin-left:-80px;
+    margin-left: -80px;
 
-    margin-right:20px;
-    height:100px;
-    width:260px;    
-	text-align:bottom;
+    margin-right: 20px;
+    height: 100px;
+    width: 260px;
+    text-align: bottom;
 }
 
-
-.container-perfil{
-	display: flex;
-	flex-direction: column;
-	margin:auto;
+.container-perfil {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
 }
 
-.texto-perfilD{
-	width: 100%;
-	font-weight: 400;
-	font-size: 18px;
-	margin-bottom: 5px;
-	color: #ffffff;
+.texto-perfilD {
+    width: 100%;
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #ffffff;
 }
 
-.texto-perfil2{
-	width: 100%;
-	font-weight: 400;
-	font-size: 18px;
-	margin-bottom: 5px;
-	color: #ffffff;
-	position:relative;
-	top:6px;
-	left:5px;
+.texto-perfil2 {
+    width: 100%;
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #ffffff;
+    position: relative;
+    top: 6px;
+    left: 5px;
 }
 
-
-.container-ajustes{
-	margin-left:10px;
-	margin-right:10px;
-	align-items:center;
+.container-ajustes {
+    margin-left: 10px;
+    margin-right: 10px;
+    align-items: center;
 }
 
-.container-texto-ajustes{
-	border-radius: 16px;
-	width:65px;
-	
-	   display: table-cell;
-   vertical-align: middle;
+.container-texto-ajustes {
+    border-radius: 16px;
+    width: 65px;
+
+    display: table-cell;
+    vertical-align: middle;
 }
 
-.container-amigos{
-	margin-left:10px;
-	margin-right:10px;
-	align-items:center;
-	width:65px;
+.container-amigos {
+    margin-left: 10px;
+    margin-right: 10px;
+    align-items: center;
+    width: 65px;
 }
 
-.container-texto-amigos{
-	align-items:center;
-	width:65px;
-	   display: table-cell;
-   vertical-align: middle;
+.container-texto-amigos {
+    align-items: center;
+    width: 65px;
+    display: table-cell;
+    vertical-align: middle;
 }
-
 
 /** **/
 
-.container-principal{
-	display:flex;
+.container-principal {
+    display: flex;
 }
 
-.left-container{
-	width:50%;
-	margin:auto;
-	margin-left:120px;
-	
+.left-container {
+    width: 50%;
+    margin: auto;
+    margin-left: 120px;
 }
 
-
-.container-busqueda{
-	width:50%;
-	text-align:left;
+.container-busqueda {
+    width: 50%;
+    text-align: left;
 }
 
-.encabezado-taquilla{
-	display:flex;
+.encabezado-taquilla {
+    display: flex;
 }
 
-
-
-.encabezado-busqueda{
-	display: block;
-	margin-top: 20px;
+.encabezado-busqueda {
+    display: block;
+    margin-top: 20px;
 }
 
-.container-principal h3{
-	margin-top:10px;
-	margin-left:10px;
+.container-principal h3 {
+    margin-top: 10px;
+    margin-left: 10px;
 }
-
 
 /**/
 /* Lista de asignaturas */
 /**/
 
 .ag-courses_item {
-    -ms-flex-preferred-size: calc(33% - 66px);
-    flex-basis: calc(33% - 80px);
+    -ms-flex-preferred-size: calc(40% - 80px);
+    flex-basis: calc(40% - 80px);
     margin: 0 10px 18px;
     overflow: hidden;
     border-radius: 12px;
+}
+
+.ag-format-container {
+    margin: 0 60px 0 60px;
+}
+
+.ag-courses_box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 25px 0 0 0;
+}
+
+.ag-courses-item_link {
+    display: block;
+    padding: 30px 20px;
+    background-color: #d9d9d9;
+    overflow: hidden;
+    position: relative;
+}
+
+.ag-courses-item_link:hover,
+.ag-courses-item_link:hover .ag-courses-item_description {
+    text-decoration: none;
+    color: #000;
+}
+
+.ag-courses-item_link:hover .ag-courses-item_bg {
+    -webkit-transform: scale(10);
+    -ms-transform: scale(10);
+    transform: scale(10);
+}
+
+.ag-courses-item_title {
+    min-height: 60px;
+    overflow: hidden;
+    font-weight: bold;
+    font-size: 15px;
+    color: #000;
+    z-index: 2;
+    position: relative;
+}
+
+.ag-courses-item_description-box {
+    font-size: 12px;
+    color: #555454;
+    z-index: 2;
+    position: relative;
+}
+
+.ag-courses-item_description {
+    font-weight: bold;
+    -webkit-transition: color 0.5s ease;
+    -o-transition: color 0.5s ease;
+    transition: color 0.5s ease;
+}
+
+.ag-courses-item_bg {
+    height: 115px;
+    width: 115px;
+    background-color: #f9b234;
+    z-index: 1;
+    position: absolute;
+    top: -75px;
+    right: -75px;
+    border-radius: 50%;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.ag-courses_item:nth-child(2n) .ag-courses-item_bg {
+    background-color: #3ecd5e;
+}
+.ag-courses_item:nth-child(3n) .ag-courses-item_bg {
+    background-color: #ffa483;
+}
+.ag-courses_item:nth-child(4n) .ag-courses-item_bg {
+    background-color: #d5ffa2;
+}
+.ag-courses_item:nth-child(5n) .ag-courses-item_bg {
+    background-color: #ffa3da;
+}
+.ag-courses_item:nth-child(6n) .ag-courses-item_bg {
+    background-color: #9c9bff;
+}
+.ag-courses_item:nth-child(7n) .ag-courses-item_bg {
+    background-color: #95ecff;
+}
+.ag-courses_item:nth-child(8n) .ag-courses-item_bg {
+    background-color: #bf9aca;
+}
+.ag-courses_item:nth-child(9n) .ag-courses-item_bg {
+    background-color: #bafff4;
 }
 
 /** Busqueda **/
@@ -143,35 +231,34 @@
     width: 25%;
 }
 
-.search-bar{
-	padding:2%;
+.search-bar {
+    padding: 2%;
 }
 
-.boton_show_more_subjects{
-	position:relative;
-	left:35%;
-	border-radius:10px;
-	padding:1%;
-	border:0;
+.boton_show_more_subjects {
+    position: relative;
+    left: 35%;
+    border-radius: 10px;
+    padding: 1%;
+    border: 0;
 }
 
-
-.boton_search{
-	color:#000;
-	border-radius: 12px;
-	height: 40px;
-	padding: 10px;
+.boton_search {
+    color: #000;
+    border-radius: 12px;
+    height: 40px;
+    padding: 10px;
 }
 
-.encabezado-busqueda{
-	display:flex;
-	flex-direction:row;
+.encabezado-busqueda {
+    display: flex;
+    flex-direction: row;
 }
 
-.ultimas_busquedas{
-	font-size:12px;
-	padding:2%;
-	font-weight:bolder;
+.ultimas_busquedas {
+    font-size: 12px;
+    padding: 2%;
+    font-weight: bolder;
 }
 
 .box-busqueda {
@@ -181,44 +268,40 @@
     background-color: #d9d9d9;
     color: black;
     width: 20%;
-    display:flex;
-    flex-direction:row;
-    text-align:right;
+    display: flex;
+    flex-direction: row;
+    text-align: right;
 }
 
-.mensaje-busqueda{
-	text-align:center;
-	display:flex;
-	flex-direction:row;
-	margin-left:3%;
+.mensaje-busqueda {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    margin-left: 3%;
 }
 
-
-.star{
-	margin-top:2%;
-	margin-right:2%;
+.star {
+    margin-top: 2%;
+    margin-right: 2%;
 }
-
 
 /** Foro **/
 
-
-.container-foro{
-	width:50%;
-	text-align:left;
+.container-foro {
+    width: 50%;
+    text-align: left;
 }
 
-.encabezado-foro{
-	display:flex;
-	text-align:left;
+.encabezado-foro {
+    display: flex;
+    text-align: left;
 }
 
-.mensajes-foro{
-	display:block;
-	position:relative;
-	top:5px;
+.mensajes-foro {
+    display: block;
+    position: relative;
+    top: 5px;
 }
-
 
 .mensaje-box {
     border-radius: 16px;
@@ -236,37 +319,46 @@
     background-color: #d9d9d9;
     color: black;
     width: 85%;
-    display:flex;
-    flex-direction:row;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-.foto-perfil{
-	margin-left:2%;
-	margin-top:4px;
+.foto-perfil {
+    margin-left: 2%;
+    margin-top: 4px;
 }
 
-.persona-contribuidas-titulo{
+.persona-contribuidas-titulo {
     font-size: 16px;
-    font-weight: 700;
     margin-top: 10px;
-    margin-left:30px;
+    margin-left: 30px;
     text-align: left;
-
 }
 
-.mensaje-persona{
-    margin-bottom: 5px;
-    padding: 5px;
+.persona-contribuidas-titulo span {
+    font-weight: bold;
+}
+
+.mensaje-persona {
+    margin: 5px 0;
     font-size: 16px;
     text-align: center;
 }
 
-.boton_show_more_foro{
-	position:relative;
-	left:39%;
-	top:2%;
-	border-radius:10px;
-	padding:1%;
-	border:0;
+.contenedor-view-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
 }
 
+.view-more {
+    background-color: #d9d9d9;
+    border-radius: 20px;
+    padding: 8px 15px;
+    border: 0px;
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+}
