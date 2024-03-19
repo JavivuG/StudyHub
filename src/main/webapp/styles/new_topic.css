@@ -6,7 +6,8 @@
 
 .form-group label {
     color: #fff;
-    margin: 10px 0 5px 0;
+    margin: 20px 0 5px 0;
+    font-size: 20px;
 }
 
 .form-group input {
@@ -47,7 +48,6 @@
     background-color: #00c041;
     color: #fff;
 }
-
 
 .titulo {
     display: flex;
