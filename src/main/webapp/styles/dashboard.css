@@ -9,61 +9,49 @@
 }
 
 
-.container-encabezado {
-    margin: auto;
-    display:flex 1;
-    justify-content:space-between;
-    align-items:center;
-}
-
-
-.nav-main ul {
-    display: flex;
-    align-items: center;
-}
-
-.nav-main {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 15px;
-}
-
-
 /** PERFIL **/
 
 .perfil-menu {
-    display:table;
+    display:flex;
+    flex-direction:row;
     background: #259AEF;
     border-radius:16px;
-    padding:0px;
-    
-    text-align:center;
+
+
+
     border-radius: 16px;
     margin-left:-80px;
-    align-items:center;
+
     margin-right:20px;
     height:100px;
     width:260px;    
-}
-
-.perfil-menu p{
-	color:black;
-	font-weight:bolder;
+	text-align:bottom;
 }
 
 
 .container-perfil{
-	margin-left:10px;
-	margin-right:10px;
-	align-items:center;
+	display: flex;
+	flex-direction: column;
+	margin:auto;
 }
 
-.container-texto-perfil{
-	border-radius: 16px;
-	width:65px;
-   display: table-cell;
-   vertical-align: middle;
+.texto-perfilD{
+	width: 100%;
+	font-weight: 400;
+	font-size: 18px;
+	margin-bottom: 5px;
+	color: #ffffff;
+}
+
+.texto-perfil2{
+	width: 100%;
+	font-weight: 400;
+	font-size: 18px;
+	margin-bottom: 5px;
+	color: #ffffff;
+	position:relative;
+	top:6px;
+	left:5px;
 }
 
 
@@ -76,8 +64,9 @@
 .container-texto-ajustes{
 	border-radius: 16px;
 	width:65px;
-	display: table-cell;
-    vertical-align: middle;
+	
+	   display: table-cell;
+   vertical-align: middle;
 }
 
 .container-amigos{
@@ -90,17 +79,8 @@
 .container-texto-amigos{
 	align-items:center;
 	width:65px;
-	display: table-cell;
-    vertical-align: middle;
-}
-
-
-.texto-amigos:hover p{
-	border-bottom: 2px solid #fff;
-}
-
-.texto-ajustes:hover p{
-	border-bottom: 2px solid #fff;
+	   display: table-cell;
+   vertical-align: middle;
 }
 
 
@@ -123,21 +103,11 @@
 	text-align:left;
 }
 
-
-.container-foro{
-	width:50%;
-	text-align:left;
-}
-
-
 .encabezado-taquilla{
 	display:flex;
 }
 
-.encabezado-foro{
-	display:flex;
-	text-align:left;
-}
+
 
 .encabezado-busqueda{
 	display: block;
@@ -153,21 +123,6 @@
 /**/
 /* Lista de asignaturas */
 /**/
-.ag-format-container {
-    margin: 0 60px 0 60px;
-}
-
-.ag-courses_box {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    padding: 25px 0;
-}
 
 .ag-courses_item {
     -ms-flex-preferred-size: calc(33% - 66px);
@@ -175,89 +130,6 @@
     margin: 0 10px 18px;
     overflow: hidden;
     border-radius: 12px;
-}
-
-.ag-courses-item_link {
-    display: block;
-    padding: 20px 15px;
-    background-color: #d9d9d9;
-    overflow: hidden;
-    position: relative;
-}
-
-.ag-courses-item_link:hover,
-.ag-courses-item_link:hover .ag-courses-item_description {
-    text-decoration: none;
-    color: #000;
-}
-
-.ag-courses-item_link:hover .ag-courses-item_bg {
-    -webkit-transform: scale(10);
-    -ms-transform: scale(10);
-    transform: scale(10);
-}
-
-.ag-courses-item_title {
-    min-height: 60px;
-    overflow: hidden;
-    font-weight: bold;
-    font-size: 18px;
-    color: #000;
-    z-index: 2;
-    position: relative;
-}
-
-.ag-courses-item_description-box {
-    font-size: 12px;
-    color: #555454;
-    z-index: 2;
-    position: relative;
-}
-
-.ag-courses-item_description {
-    font-weight: bold;
-    -webkit-transition: color 0.5s ease;
-    -o-transition: color 0.5s ease;
-    transition: color 0.5s ease;
-}
-
-.ag-courses-item_bg {
-    height: 128px;
-    width: 128px;
-    background-color: #f9b234;
-    z-index: 1;
-    position: absolute;
-    top: -75px;
-    right: -75px;
-    border-radius: 50%;
-    -webkit-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-
-.ag-courses_item:nth-child(2n) .ag-courses-item_bg {
-    background-color: #3ecd5e;
-}
-.ag-courses_item:nth-child(3n) .ag-courses-item_bg {
-    background-color: #e44002;
-}
-.ag-courses_item:nth-child(4n) .ag-courses-item_bg {
-    background-color: #952aff;
-}
-.ag-courses_item:nth-child(5n) .ag-courses-item_bg {
-    background-color: #cd3e94;
-}
-.ag-courses_item:nth-child(6n) .ag-courses-item_bg {
-    background-color: #4c49ea;
-}
-.ag-courses_item:nth-child(7n) .ag-courses-item_bg {
-    background-color: #1ac8ed;
-}
-.ag-courses_item:nth-child(8n) .ag-courses-item_bg {
-    background-color: #bf9aca;
-}
-.ag-courses_item:nth-child(9n) .ag-courses-item_bg {
-    background-color: #00c9a7;
 }
 
 /** Busqueda **/
@@ -271,27 +143,130 @@
     width: 25%;
 }
 
+.search-bar{
+	padding:2%;
+}
+
+.boton_show_more_subjects{
+	position:relative;
+	left:35%;
+	border-radius:10px;
+	padding:1%;
+	border:0;
+}
+
+
+.boton_search{
+	color:#000;
+	border-radius: 12px;
+	height: 40px;
+	padding: 10px;
+}
+
+.encabezado-busqueda{
+	display:flex;
+	flex-direction:row;
+}
+
+.ultimas_busquedas{
+	font-size:12px;
+	padding:2%;
+	font-weight:bolder;
+}
+
+.box-busqueda {
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 10px;
+    background-color: #d9d9d9;
+    color: black;
+    width: 20%;
+    display:flex;
+    flex-direction:row;
+    text-align:right;
+}
+
+.mensaje-busqueda{
+	text-align:center;
+	display:flex;
+	flex-direction:row;
+	margin-left:3%;
+}
+
+
+.star{
+	margin-top:2%;
+	margin-right:2%;
+}
+
 
 /** Foro **/
-.container_mensajes{
+
+
+.container-foro{
+	width:50%;
+	text-align:left;
+}
+
+.encabezado-foro{
+	display:flex;
+	text-align:left;
+}
+
+.mensajes-foro{
 	display:block;
+	position:relative;
+	top:5px;
 }
 
 
 .mensaje-box {
-    width: 93%;
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 10px;
+    background-color: #d9d9d9;
+    color: black;
+    width: 85%;
 }
 
-.contribuidas-titulo {
+.mensaje-box-persona {
+    border-radius: 16px;
+    overflow: hidden;
+    margin: 10px;
+    background-color: #d9d9d9;
+    color: black;
+    width: 85%;
+    display:flex;
+    flex-direction:row;
+}
+
+.foto-perfil{
+	margin-left:2%;
+	margin-top:4px;
+}
+
+.persona-contribuidas-titulo{
     font-size: 16px;
     font-weight: 700;
     margin-top: 10px;
-    text-align: center;
+    margin-left:30px;
+    text-align: left;
+
 }
 
-.mensaje {
+.mensaje-persona{
     margin-bottom: 5px;
     padding: 5px;
     font-size: 16px;
     text-align: center;
 }
+
+.boton_show_more_foro{
+	position:relative;
+	left:39%;
+	top:2%;
+	border-radius:10px;
+	padding:1%;
+	border:0;
+}
+

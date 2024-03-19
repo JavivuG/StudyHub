@@ -1,389 +1,404 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Dashboard</title>
-        <link rel="stylesheet" href="./styles/common.css" type="text/css" />
-        <link rel="stylesheet" href="./styles/header.css" type="text/css" />
-        <link rel="stylesheet" href="./styles/footer.css" type="text/css" />
-        <link rel="stylesheet" href="./styles/dashboard.css" type="text/css" />
-        <link rel="icon" type="image/png" href="images/icono.png" />
-    </head>
+<html >
+	<head>
+		<title>Dashboard</title>
+		<link rel="stylesheet" href="./styles/common.css" type="text/css"/>
+		<link rel="stylesheet" href="./styles/header.css" type="text/css"/>
+		<link rel="stylesheet" href="./styles/footer.css" type="text/css"/>
+		<link rel="stylesheet" href="./styles/subjects.css" type="text/css"/>
+		<link rel="stylesheet" href="./styles/profile.css" type="text/css"/>
+		<link rel="stylesheet" href="./styles/dashboard.css" type="text/css"/>
+		<link rel="icon" type="image/png" href="images/icono.png" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+		/>
+	</head>
 
-    <body>
-        <div class="main-content">
-            <header>
-                <div class="container-encabezado">
-                    <nav class="nav-main">
-                        <a href="index.html">
-                            <img src="images/logo2.svg" alt="StudyHub" />
-                        </a>
+	<body>
+		<header>
+				<nav class="nav-main">
+					<a href="index.html">
+						<img src="images/logo2.svg" alt="StudyHub"/>
+					</a>
+						
+					<div class="container-eslogan">
+						<div class="eslogan">
+							<p>Tu sitio, tus apuntes</p>
+						</div>
+					</div>
 
-                        <div class="container-eslogan">
-                            <div class="eslogan">
-                                <p>Tu sitio, tus apuntes</p>
-                            </div>
-                        </div>
+					<ul class="perfil-menu">
+						<div class="container-perfil">
+							<img src="images/profile.svg" alt="Perfil" title="Perfil">
+								<a href="profile.html">
+									<label class="texto-perfil2">
+										Perfil
+									</label>	
+								</a>								
+							</img>
+						</div>
+								
+						<div class="container-perfil">
+							<img src="images/imagen_amigos.svg" alt="Amigos" title="Amigos"> 
+								<a href="amigos.html">
+									<label class="texto-perfilD">
+										Amigos
+									</label>
+								</a>
+							</img>
+						</div>						
+							
+						<div class="container-perfil">								
+							<img src="images/setting.svg" alt="Ajustes" title="Ajustes">
+								<a href="ajustes.html">
+									<label class="texto-perfilD">
+										Ajustes
+									</label>
+								</a>
+							</img>
+						</div>
+					</ul>
+				</nav>	
+		</header>
+		
+		<!-- Conetenedor de Taquilla, Busqueda y Foros --->
+		
+		<div class="container-principal">
+			<div class="left-container">
+				<div class="taquilla">
+					<div class="encabezado-taquilla">
+						<img src="images/briefcase.svg" alt="Taquilla" title="Taquilla"/>
+						<h3>Taquilla</h3>
+					</div>
+					
+				<div class="ag-courses_box">
+					<div class="ag-courses_item">
+						<a href="#" class="ag-courses-item_link">
+							<div class="ag-courses-item_bg"></div>
 
-                        <ul class="perfil-menu">
-                            <div class="container-perfil">
-                                <a href="profile.html">
-                                    <div class="container-texto-perfil">
-                                        <div class="imagen-perfil">
-                                            <img
-                                                src="images/profile.svg"
-                                                alt="Perfil"
-                                                title="Perfil"
-                                            />
-                                        </div>
-                                        <div class="texto-perfil">
-                                            <p>Perfil</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+							<div class="ag-courses-item_title">Matemáticas</div>
 
-                            <div class="container-amigos">
-                                <a href="amigos.html">
-                                    <div class="container-texto-amigos">
-                                        <div class="imagen-amigos">
-                                            <img
-                                                src="images/imagen_amigos.svg"
-                                                alt="Amigos"
-                                                title="Amigos"
-                                            />
-                                        </div>
+							<div class="ag-courses-item_description-box">
+								<span class="ag-courses-item_description"
+									>1º Curso de Ing. Informática
+								</span>
+							</div>
+						</a>
+					</div>
 
-                                        <div class="texto-amigos">
-                                            <p>Amigos</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
+					<div class="ag-courses_item">
+						<a href="#" class="ag-courses-item_link">
+							<div class="ag-courses-item_bg"></div>
 
-                            <div class="container-ajustes">
-                                <a href="ajustes.html">
-                                    <div class="container-texto-ajustes">
-                                        <div class="imagen-ajustes">
-                                            <img
-                                                src="images/imagen_ajustes.svg"
-                                                alt="Ajustes"
-                                                title="Ajustes"
-                                            />
-                                        </div>
-                                        <div class="texto-ajustes">
-                                            <p>Ajustes</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </ul>
-                    </nav>
-                </div>
-            </header>
+							<div class="ag-courses-item_title">Física</div>
 
-            <!-- Conetenedor de Taquilla, Busqueda y Foros --->
+							<div class="ag-courses-item_description-box">
+								<span class="ag-courses-item_description"
+									>1º Curso de Ing. Informática</span
+								>
+							</div>
+						</a>
+					</div>
 
-            <div class="container-principal">
-                <div class="left-container">
-                    <div class="taquilla">
-                        <div class="encabezado-taquilla">
-                            <img
-                                src="images/briefcase.svg"
-                                alt="Taquilla"
-                                title="Taquilla"
-                            />
-                            <h3>Taquilla</h3>
-                        </div>
+					<div class="ag-courses_item">
+						<a href="#" class="ag-courses-item_link">
+							<div class="ag-courses-item_bg"></div>
 
-                        <div class="ag-courses_box">
-                            <div class="ag-courses_item">
-                                <a
-                                    href="forum.html"
-                                    class="ag-courses-item_link"
-                                >
-                                    <div class="ag-courses-item_bg"></div>
+							<div class="ag-courses-item_title">
+								Computación Paralela
+							</div>
 
-                                    <div class="ag-courses-item_title">
-                                        Fundamentos de Programación
-                                    </div>
+							<div class="ag-courses-item_description-box">
+								<span class="ag-courses-item_description">
+									3º Curso de Ing. Informática
+								</span>
+							</div>
+						</a>
+					</div>
 
-                                    <div
-                                        class="ag-courses-item_description-box"
-                                    >
-                                        <span
-                                            class="ag-courses-item_description"
-                                        >
-                                            1º Curso de Ing. Informática
-                                        </span>
-                                    </div>
-                                </a>
-                            </div>
+					<div class="ag-courses_item">
+						<a href="#" class="ag-courses-item_link">
+							<div class="ag-courses-item_bg"></div>
 
-                            <div class="ag-courses_item">
-                                <a href="#" class="ag-courses-item_link">
-                                    <div class="ag-courses-item_bg"></div>
+							<div class="ag-courses-item_title">
+								Sistemas Distribuidos
+							</div>
 
-                                    <div class="ag-courses-item_title">
-                                        Matemáticas
-                                    </div>
+							<div class="ag-courses-item_description-box">
+								<span class="ag-courses-item_description">
+									2º Curso de Ing. Informática
+								</span>
+							</div>
+						</a>
+					</div>
 
-                                    <div
-                                        class="ag-courses-item_description-box"
-                                    >
-                                        <span
-                                            class="ag-courses-item_description"
-                                            >1º Curso de Ing. Informática
-                                        </span>
-                                    </div>
-                                </a>
-                            </div>
+					<div class="ag-courses_item">
+						<a href="#" class="ag-courses-item_link">
+							<div class="ag-courses-item_bg"></div>
 
-                            <div class="ag-courses_item">
-                                <a href="#" class="ag-courses-item_link">
-                                    <div class="ag-courses-item_bg"></div>
+							<div class="ag-courses-item_title">
+								Sistemas Digitales
+							</div>
 
-                                    <div class="ag-courses-item_title">
-                                        Física
-                                    </div>
+							<div class="ag-courses-item_description-box">
+								<span class="ag-courses-item_description">
+									1º Curso de Ing. Informática
+								</span>
+							</div>
+						</a>
+					</div>
 
-                                    <div
-                                        class="ag-courses-item_description-box"
-                                    >
-                                        <span
-                                            class="ag-courses-item_description"
-                                            >1º Curso de Ing. Informática</span
-                                        >
-                                    </div>
-                                </a>
-                            </div>
+					<div class="ag-courses_item">
+						<a href="forum.html" class="ag-courses-item_link">
+							<div class="ag-courses-item_bg"></div>
 
-                            <div class="ag-courses_item">
-                                <a href="#" class="ag-courses-item_link">
-                                    <div class="ag-courses-item_bg"></div>
+							<div class="ag-courses-item_title">
+								Fundamentos de Programación
+							</div>
 
-                                    <div class="ag-courses-item_title">
-                                        Computación Paralela
-                                    </div>
+							<div class="ag-courses-item_description-box">
+								<span class="ag-courses-item_description">
+									1º Curso de Ing. Informática
+								</span>
+							</div>
+						</a>
+					</div>
 
-                                    <div
-                                        class="ag-courses-item_description-box"
-                                    >
-                                        <span
-                                            class="ag-courses-item_description"
-                                        >
-                                            3º Curso de Ing. Informática
-                                        </span>
-                                    </div>
-                                </a>
-                            </div>
+					<div class="ag-courses_item">
+						<a href="#" class="ag-courses-item_link">
+							<div class="ag-courses-item_bg"></div>
 
-                            <div class="ag-courses_item">
-                                <a href="#" class="ag-courses-item_link">
-                                    <div class="ag-courses-item_bg"></div>
+							<div class="ag-courses-item_title">
+								Administración S.O.
+							</div>
 
-                                    <div class="ag-courses-item_title">
-                                        Sistemas Distribuidos
-                                    </div>
+							<div class="ag-courses-item_description-box">
+								<span class="ag-courses-item_description">
+									1º Curso de Ing. Informática
+								</span>
+							</div>
+						</a>
+					</div>
 
-                                    <div
-                                        class="ag-courses-item_description-box"
-                                    >
-                                        <span
-                                            class="ag-courses-item_description"
-                                        >
-                                            2º Curso de Ing. Informática
-                                        </span>
-                                    </div>
-                                </a>
-                            </div>
+					<div class="ag-courses_item">
+						<a href="#" class="ag-courses-item_link">
+							<div class="ag-courses-item_bg"></div>
 
-                            <div class="ag-courses_item">
-                                <a href="#" class="ag-courses-item_link">
-                                    <div class="ag-courses-item_bg"></div>
+							<div class="ag-courses-item_title">Estadística</div>
 
-                                    <div class="ag-courses-item_title">
-                                        Sistemas Digitales
-                                    </div>
+							<div class="ag-courses-item_description-box">
+								<span class="ag-courses-item_description"
+									>2º Curso de Ing. Informática
+								</span>
+							</div>
+						</a>
+					</div>
 
-                                    <div
-                                        class="ag-courses-item_description-box"
-                                    >
-                                        <span
-                                            class="ag-courses-item_description"
-                                        >
-                                            1º Curso de Ing. Informática
-                                        </span>
-                                    </div>
-                                </a>
-                            </div>
+					<div class="ag-courses_item">
+						<a href="#" class="ag-courses-item_link">
+							<div class="ag-courses-item_bg"></div>
 
-                            <div class="ag-courses_item">
-                                <a href="#" class="ag-courses-item_link">
-                                    <div class="ag-courses-item_bg"></div>
+							<div class="ag-courses-item_title">
+								Estructura de Datos y Algoritmos
+							</div>
 
-                                    <div class="ag-courses-item_title">
-                                        Administración de Sistemas Operativos
-                                    </div>
+							<div class="ag-courses-item_description-box">
+								<span class="ag-courses-item_description"
+									>2º Curso de Ing. Informática
+								</span>
+							</div>
+						</a>
+					</div>
+				</div>
+				
+				<a href="subjects.html">
+					<button class="boton_show_more_subjects">
+						Mostrar más
+					</button>
+				</a>
+			</div>
 
-                                    <div
-                                        class="ag-courses-item_description-box"
-                                    >
-                                        <span
-                                            class="ag-courses-item_description"
-                                        >
-                                            1º Curso de Ing. Informática
-                                        </span>
-                                    </div>
-                                </a>
-                            </div>
+				
+				<div class="container_busqueda">
+					<div class="encabezado-busqueda">
+						<img src="images/lupa.svg" alt=Busqueda" title="Busqueda"/>
+						<h3>Busqueda</h3>
+                			</div>		
+						
+                			<div class="search-bar">
+                    				<input type="text" id="search" name="search" placeholder="Buscar..."/>
+                    				<button class="boton_search">
+                        				Search
+                    				</button>
+					</div>
+					
+                			<div class="ultimas_busquedas">
+						Últimas búsquedas
+						
+						<div class="box-busqueda">
+						
+                            				<div class="mensaje-busqueda">
+								<i class="fas fa-star fa-lg star"></i>							
+                                				Algebra
+                            				</div>
+                        			</div>
+	
+						<div class="box-busqueda">
+                            				<div class="mensaje-busqueda">
+								<i class="far fa-star fa-lg star"></i>							
+								Biología
+                            				</div>
+                        			</div>
+					</div>
+				</div>
+		</div>
+			
+			<!-- FORO  -->
+			
+			<div class="container-foro">
+				<div class="encabezado-foro">
+					<img src="images/forum.svg" alt="Foro" title="Foro"/>
+					<h3>Foro</h3>
+				</div>
+					
+					
+				<div class="mensajes-foro">
+					<div class="mensaje-box">
+                            			<div class="contribuidas-titulo">
+                                			Foro Matemáticas
+                            			</div>
+                            			<div class="mensaje">
+                                			Has comentado: "No entiendo el ejercicio 3"
+                            			</div>
+                        		</div>
+                        
+                        		<div class="mensaje-box">
+                            			<div class="contribuidas-titulo">
+                            				Foro Física
+                            			</div>
+                            			<div class="mensaje">
+                                			Has comentado: "¿Alguien tiene los apuntes de la última clase?"
+                            			</div>
+                        		</div>
+                        
+                        		<div class="mensaje-box">
+                            			<div class="contribuidas-titulo">
+                                			Foro Sistemas Empotrados
+                            			</div>
+                         	   		<div class="mensaje">
+                                			Has respondido: "La respuesta correcta del ejercicio 2 es 3"
+                            			</div>
+                        		</div>
+                       
+                        		<div class="mensaje-box">
+                            			<div class="contribuidas-titulo">
+                                			Foro Servicios y Sistemas Web
+                            			</div>
+                            			<div class="mensaje">
+                                			Has comentado: "No entiendo los ficheros XML."
+                            			</div>
+                        		</div>
+                        	
+                        		<div class="mensaje-box-persona">
+                            			<div class="foto-perfil">
+                            				<img src="images/perfil_mensajes.svg" alt=Busqueda" title="Busqueda"/>
+                        			</div>
+                            			<div class="persona-contribuidas-titulo">
+                                			Robertito
+                                			
+                                			<div class="mensaje-persona">
+                                			"¿No tendrás más apuntes no?"
+                            				</div>
+                            			</div>
+                        		</div>
+                        		
+                        		<div class="mensaje-box-persona">
+                            			<div class="foto-perfil">
+                            				<img src="images/perfil_mensajes.svg" alt=Busqueda" title="Busqueda"/>
+                        			</div>
+                            			<div class="persona-contribuidas-titulo">
+                                			El bicho de los apuntes
+                                			
+                                			<div class="mensaje-persona">
+                                			"Esto te ayudará con tu examens de mañana ..."
+                            				</div>
+                            			</div>
+                        		</div>
+                        		
+                        		<div class="mensaje-box-persona">
+                            			<div class="foto-perfil">
+                            				<img src="images/perfil_mensajes.svg" alt=Busqueda" title="Busqueda"/>
+                        			</div>
+                            			<div class="persona-contribuidas-titulo">
+                                			Robo-cop
+                                			
+                                			<div class="mensaje-persona">
+                                			"Una pequeña guía para tu código ... [~] Imagen"
+                            				</div>
+                            			</div>
+                        		</div>
+                        		
+                        		<div class="mensaje-box-persona">
+                            			<div class="persona-contribuidas-titulo">
+                                			Mickey Ratones
+                                			
+                                			<div class="mensaje-persona">
+                                			"Toma presentaciones sobre firmware de mouses inalámbricos"
+                            				</div>
+                            			</div>
+                        		</div>
+				</div>	
+				
+				<a href="forum.html">
+					<button class="boton_show_more_foro">
+						Mostrar más
+					</button>
+				</a>	
+			</div>
+		</div>
+			
+		
+		<!-- ----------FOOTER------------ -->
+		<footer>
+			<div class="info">
+				<h1>StudyHub</h1>
+				<ul>
+					<li><a href="#">Cookies</a></li>
+					<li><a href="#">Términos y Condiciones</a></li>
+					<li><a href="#">Privacidad</a></li>
+				</ul>
+			</div>
 
-                            <div class="ag-courses_item">
-                                <a href="#" class="ag-courses-item_link">
-                                    <div class="ag-courses-item_bg"></div>
-
-                                    <div class="ag-courses-item_title">
-                                        Estadística
-                                    </div>
-
-                                    <div
-                                        class="ag-courses-item_description-box"
-                                    >
-                                        <span
-                                            class="ag-courses-item_description"
-                                            >2º Curso de Ing. Informática
-                                        </span>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="ag-courses_item">
-                                <a href="#" class="ag-courses-item_link">
-                                    <div class="ag-courses-item_bg"></div>
-
-                                    <div class="ag-courses-item_title">
-                                        Estructura de Datos y Algoritmos
-                                    </div>
-
-                                    <div
-                                        class="ag-courses-item_description-box"
-                                    >
-                                        <span
-                                            class="ag-courses-item_description"
-                                            >2º Curso de Ing. Informática
-                                        </span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="buttom_show_more">Boton</div>
-
-                    <div class="container_busqueda">
-                        <div class="encabezado-busqueda">
-                            <img src="images/lupa.svg" alt=Busqueda"
-                            title="Busqueda"/>
-                            <h3>Busqueda</h3>
-                        </div>
-                        <div class="search-bar">
-                            <input
-                                type="text"
-                                id="search"
-                                name="search"
-                                placeholder="Buscar..."
-                            />
-                            <i class="fas fa-search boton"></i>
-                            <button class="boton">
-                                <span class="texto-btn">Search</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="container-foro">
-                    <div class="encabezado-foro">
-                        <img src="images/forum.svg" alt="Foro" title="Foro" />
-                        <h3>Foro</h3>
-                    </div>
-
-                    <div class="container_mensajes">
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">
-                                Foro Matemáticas
-                            </div>
-                            <div class="mensaje">
-                                Has comentado: "No entiendo el ejercicio 3"
-                            </div>
-                        </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">Foro Física</div>
-                            <div class="mensaje">
-                                Has comentado: "¿Alguien tiene los apuntes de la
-                                última clase?"
-                            </div>
-                        </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">
-                                Foro Sistemas Empotrados
-                            </div>
-                            <div class="mensaje">
-                                Has respondido: "El ejercicio 2 es incorrecto,
-                                la respuesta correcta es 3"
-                            </div>
-                        </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">
-                                Foro Servicios y Sistemas Web
-                            </div>
-                            <div class="mensaje">
-                                Has comentado: "No entiendo los ficheros XML."
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- ----------FOOTER------------ -->
-        <footer>
-            <div class="info">
-                <h1>StudyHub</h1>
-                <ul>
-                    <li><a href="#">Cookies</a></li>
-                    <li><a href="#">Términos y Condiciones</a></li>
-                    <li><a href="#">Privacidad</a></li>
-                </ul>
-            </div>
-
-            <div class="otros">
-                <ul id="socials">
-                    <li><a href="contact.html">Contacto</a></li>
-                    <li><a href="#">Preguntas frecuentes</a></li>
-                </ul>
-                <p id="copyright">© StudyHub | 2024</p>
-                <ul id="socials">
-                    <li>
-                        <a href="#"
-                            ><img src="images/tiktok.svg" alt="tiktok"
-                        /></a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            ><img src="images/facebook.svg" alt="facebook"
-                        /></a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            ><img src="images/instagram.svg" alt="instagram"
-                        /></a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            ><img src="images/twitter.svg" alt="twitter"
-                        /></a>
-                    </li>
-                </ul>
-            </div>
-        </footer>
-    </body>
+			<div class="otros">
+				<ul id="socials">
+					<li><a href="#">Contacto</a></li>
+					<li><a href="#">Preguntas frecuentes</a></li>
+				</ul>
+				<p id="copyright">© StudyHub | 2024</p>
+				<ul id="socials">
+					<li>
+						<a href="#"
+							><img src="images/tiktok.svg" alt="tiktok"
+						/></a>
+					</li>
+					<li>
+						<a href="#"
+							><img src="images/facebook.svg" alt="facebook"
+						/></a>
+					</li>
+					<li>
+						<a href="#"
+							><img src="images/instagram.svg" alt="instagram"
+						/></a>
+					</li>
+					<li>
+						<a href="#"
+							><img src="images/twitter.svg" alt="twitter"
+						/></a>
+					</li>
+				</ul>
+			</div>
+		</footer>
+	</body>
 </html>
