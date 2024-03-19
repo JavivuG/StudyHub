@@ -3,7 +3,7 @@
 
     /*left:80px; */
 
-    font-size: 60px;
+    font-size: 34px;
     font-weight: bolder;
     align-items: center;
 }
@@ -82,12 +82,11 @@
 
 .container-principal {
     display: flex;
+    justify-content: space-between;
 }
 
 .left-container {
-    width: 50%;
-    margin: auto;
-    margin-left: 120px;
+    width: 60%;
 }
 
 .container-busqueda {
@@ -309,7 +308,7 @@
     margin: 10px;
     background-color: #d9d9d9;
     color: black;
-    width: 85%;
+    text-align: center;
 }
 
 .mensaje-box-persona {
@@ -318,9 +317,7 @@
     margin: 10px;
     background-color: #d9d9d9;
     color: black;
-    width: 85%;
     display: flex;
-    flex-direction: row;
     align-items: center;
 }
 
@@ -331,8 +328,7 @@
 
 .persona-contribuidas-titulo {
     font-size: 16px;
-    margin-top: 10px;
-    margin-left: 30px;
+    margin: 8px 0 8px 30px;
     text-align: left;
 }
 
@@ -340,7 +336,14 @@
     font-weight: bold;
 }
 
-.mensaje-persona {
+.contribuidas-titulo {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 8px;
+    text-align: center;
+}
+
+.mensaje {
     margin: 5px 0;
     font-size: 16px;
     text-align: center;
