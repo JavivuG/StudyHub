@@ -76,9 +76,8 @@
 .container-texto-ajustes{
 	border-radius: 16px;
 	width:65px;
-	
-	   display: table-cell;
-   vertical-align: middle;
+	display: table-cell;
+    vertical-align: middle;
 }
 
 .container-amigos{
@@ -91,8 +90,8 @@
 .container-texto-amigos{
 	align-items:center;
 	width:65px;
-	   display: table-cell;
-   vertical-align: middle;
+	display: table-cell;
+    vertical-align: middle;
 }
 
 
