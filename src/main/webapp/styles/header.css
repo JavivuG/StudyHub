@@ -31,6 +31,7 @@
 .boton-registro {
     padding: 7px 10px;
     font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 .boton-inicio,
@@ -41,6 +42,7 @@
     font-size: 16px;
     border: 0;
     color: white;
+    transition: background-color 0.3s ease;
 }
 
 .boton-logout {

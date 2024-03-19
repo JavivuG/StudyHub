@@ -48,20 +48,9 @@
     color: #fff;
 }
 
-.nombre-apellidos {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
 
-.nombre {
+.titulo {
     display: flex;
     flex-direction: column;
     width: 40%;
-}
-
-.apellido {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
 }
