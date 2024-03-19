@@ -13,9 +13,30 @@ body {
     margin: 0;
     min-height: 100vh;
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
 }
 
+:root {
+    --Birrete-color: #f6f6;
+    --Abajo-color: #ffff;
+}
+
+svg {
+    cursor: pointer;
+}
+
+#arriba {
+    fill: var(--Birrete-color);
+}
+
+#base {
+    fill: var(--Abajo-color);
+}
+
+#Birrete,
+#Abjajo {
+    transition: all 1s ease;
+}
 
 ::placeholder {
     font-family: "Open Sans", sans-serif;
