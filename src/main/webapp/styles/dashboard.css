@@ -87,7 +87,7 @@
 }
 
 .left-container {
-    width: 60%;
+    width: 45%;
 }
 
 .container-busqueda {
@@ -97,6 +97,7 @@
 
 .encabezado-taquilla {
     display: flex;
+    margin-bottom: 25px;
 }
 
 .encabezado-busqueda {
@@ -126,15 +127,9 @@
 }
 
 .ag-courses_box {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    padding: 25px 0 0 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
 }
 
 .ag-courses-item_link {
@@ -223,7 +218,7 @@
 /** Foro **/
 
 .container-foro {
-    width: 50%;
+    width: 45%;
     text-align: left;
 }
 
