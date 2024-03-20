@@ -159,14 +159,6 @@
 	padding:2%;
 }
 
-.boton_show_more_subjects{
-	position:relative;
-	left:35%;
-	border-radius:10px;
-	padding:1%;
-	border:0;
-}
-
 
 .boton_search{
 	color:#000;
@@ -278,7 +270,7 @@
 .boton_show_more_foro{
 	position:relative;
 	left:39%;
-	top:2%;
+	margin-top:3%;
 	border-radius:10px;
 	padding:1%;
 	border:0;
@@ -571,12 +563,12 @@
 .contenedor-view-more {
     display: flex;
     justify-content: center;
-    margin-top: 15px;
+    margin-top: 3%;
 }
 
 .view-more {
     background-color: #d9d9d9;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 8px 15px;
     border: 0px;
     text-align: center;
