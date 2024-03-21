@@ -184,3 +184,45 @@ label:before {
 .contacto:hover {
     border-bottom: 2px solid #fff;
 }
+
+@media only screen and (max-width: 768px) {
+    .flex-buscador,
+    .foro {
+        display: none;
+    }
+
+    .titulo-buscador {
+        font-size: 20px;
+        margin-top: 10%;
+    }
+
+    .flex-asignaturas {
+        flex-direction: column;
+    }
+
+    .texto-asignaturas {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .ag-format-container {
+        margin: 0 20px;
+        width: 100%;
+    }
+
+    .ag-courses_box {
+        grid-template-columns: 1fr;
+    }
+
+    .flex-opiniones {
+        flex-direction: column;
+    }
+
+    .opiniones-box {
+        width: 80%;
+    }
+
+    .opiniones-box p {
+        padding: 0 20px 20px 20px;
+    }
+}
