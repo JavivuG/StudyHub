@@ -121,3 +121,18 @@
     font-weight: bold;
     font-size: 14px;
 }
+
+@media only screen and (max-width: 768px) {
+    .caja-fich,
+    .caja-tema {
+        width: 98%;
+    }
+
+    .for-fich-container {
+        flex-direction: column;
+    }
+
+    #search {
+        width: 50%;
+    }
+}

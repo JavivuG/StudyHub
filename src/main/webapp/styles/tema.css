@@ -95,3 +95,39 @@
     width: auto;
     margin-top: 2px;
 }
+
+@media only screen and (max-width: 768px) {
+    .nav-bar {
+        font-size: 13px;
+    }
+
+    #home-icon {
+        height: 12px;
+        width: auto;
+        margin-right: 8px;
+    }
+
+    #arrow {
+        height: 12px;
+    }
+
+    .tema h2 {
+        font-size: 20px;
+    }
+
+    .tema p {
+        font-size: 14px;
+    }
+
+    .comentarios-container h2 {
+        font-size: 18px;
+    }
+
+    .comentario p {
+        font-size: 14px;
+    }
+
+    .autor-comentario {
+        margin-bottom: 10px;
+    }
+}

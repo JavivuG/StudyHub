@@ -100,8 +100,8 @@
     .texto-perfil {
         display: none;
     }
-    
-    .logo-header{
+
+    .logo-header {
         width: 180px;
         height: auto;
     }
@@ -111,10 +111,21 @@
     }
 
     #home-icon {
-        height: 38%;
+        height: 15px;
+        width: auto;
+        margin-right: 15px;
     }
 
     #arrow {
         height: 30%;
+    }
+
+    .contacto {
+        display: none;
+    }
+
+    .boton-registro,
+    .boton-inicio {
+        font-size: 12px;
     }
 }

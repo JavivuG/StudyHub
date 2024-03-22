@@ -54,3 +54,24 @@
     flex-direction: column;
     width: 40%;
 }
+
+.btn {
+    margin: auto;
+    border: 0;
+}
+
+@media only screen and (max-width: 768px) {
+    .nav-bar {
+        font-size: 13px;
+    }
+
+    #home-icon {
+        height: 12px;
+        width: auto;
+        margin-right: 8px;
+    }
+
+    #arrow {
+        height: 12px;
+    }
+}
