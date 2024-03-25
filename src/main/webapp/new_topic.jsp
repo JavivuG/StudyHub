@@ -1,3 +1,5 @@
+<%@ page language="java" %> <%@ page contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -6,15 +8,16 @@
         <link rel="shortcut icon" href="images/logo.svg" />
         <title>StudyHub</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="stylesheet" href="styles/common.css" />
+        <link rel="stylesheet" href="styles/header.css" />
+        <link rel="stylesheet" href="styles/footer.css" />
         <link
             rel="stylesheet"
             type="text/css"
             media="screen"
-            href="styles/forum.css"
+            href="styles/new_topic.css"
         />
-        <link rel="stylesheet" href="styles/common.css" />
-        <link rel="stylesheet" href="styles/header.css" />
-        <link rel="stylesheet" href="styles/footer.css" />
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
@@ -67,14 +70,15 @@
                                 </g>
                             </svg>
                         </a>
+
                         <ul class="nav-menu">
                             <li>
-                                <a href="profile.html" class="texto-perfil"
+                                <a href="profile.jsp" class="texto-perfil"
                                     >Mi perfil</a
                                 >
                             </li>
                             <li>
-                                <a href="profile.html">
+                                <a href="profile.jsp">
                                     <img
                                         src="images/profile.svg"
                                         alt="Foto de perfil"
@@ -98,7 +102,7 @@
                         />
                     </li>
                     <li>
-                        <span class="page-title">Foro</span>
+                        <span class="page-title">Crear nuevo tema</span>
                     </li>
                 </ul>
             </div>
@@ -107,7 +111,7 @@
             <div class="container">
                 <ul class="nav-bar">
                     <li>
-                        <a href="index.jsp"
+                        <a href="dashboard.jsp"
                             ><img
                                 src="images/home.svg"
                                 alt="Home"
@@ -116,7 +120,7 @@
                     </li>
                     <li>
                         <span class="items-nav"
-                            ><a href="dashboard.html">Inicio</a></span
+                            ><a href="dashboard.jsp">Inicio</a></span
                         >
                     </li>
                     <li>
@@ -124,7 +128,7 @@
                     </li>
                     <li>
                         <span class="items-nav"
-                            ><a href="subjects.html">Asignaturas</a></span
+                            ><a href="subjects.jsp">Asignaturas</a></span
                         >
                     </li>
                     <li>
@@ -132,220 +136,45 @@
                     </li>
                     <li>
                         <span class="items-nav"
-                            ><a href="#">Fundamentos de Programación</a></span
+                            ><a href="forum.jsp"
+                                >Fundamentos de Programación</a
+                            ></span
+                        >
+                    </li>
+                    <li>
+                        <img src="images/arrow.svg" alt="Arrow" id="arrow" />
+                    </li>
+                    <li>
+                        <span class="items-nav"
+                            ><a href="#">Crear nuevo tema</a></span
                         >
                     </li>
                 </ul>
             </div>
 
-            <!-- Barra de busqueda -->
+            <!-- Formulario -->
             <div class="container">
-                <div class="search-bar">
-                    <input
-                        type="text"
-                        id="search"
-                        name="search"
-                        placeholder="Buscar..."
-                    />
-                    <i class="fas fa-search boton"></i>
-                    <button class="boton">
-                        <a href="new_topic.html"
-                            ><span class="texto-btn">Crear nuevo tema</span></a
-                        >
-                    </button>
-                </div>
-            </div>
+                <form action="" method="post">
+                    <div class="form-group">
+                        <label for="titulo">Título</label>
+                        <input
+                            type="text"
+                            id="titulo"
+                            name="titulo"
+                            placeholder="Introduce el titulo del tema"
+                            required
+                        />
 
-            <div class="container">
-                <div class="for-fich-container">
-                    <!-- Temas del foro -->
-                    <div class="forum-container">
-                        <div class="cajas-container">
-                            <h2 class="titulo-contenido">Temas destacados</h2>
-                            <ul>
-                                <a href="#"
-                                    ><li>
-                                        <div class="caja-tema">
-                                            <h3>Exámenes</h3>
-                                            <p>
-                                                por <span>bookworm</span> • 23
-                                                comentarios • hace 1 minuto
-                                            </p>
-                                        </div>
-                                    </li></a
-                                >
-                                <a href="#"
-                                    ><li>
-                                        <div class="caja-tema">
-                                            <h3>
-                                                Sitios web útiles para practicar
-                                                programación
-                                            </h3>
-                                            <p>
-                                                por <span>johndoe</span> • 12
-                                                comentarios • hace 3 días
-                                            </p>
-                                        </div>
-                                    </li></a
-                                >
-                                <a href="topic.html"
-                                    ><li>
-                                        <div class="caja-tema">
-                                            <h3>
-                                                Aplazar entrega del proyecto
-                                            </h3>
-                                            <p>
-                                                por <span>janedoe</span> • 5
-                                                comentarios • hace 1 día
-                                            </p>
-                                        </div>
-                                    </li></a
-                                >
-                            </ul>
-                        </div>
-                        <div class="cajas-container">
-                            <h2 class="titulo-contenido">Temas recientes</h2>
-                            <ul>
-                                <a href="#"
-                                    ><li>
-                                        <div class="caja-tema">
-                                            <h3>
-                                                ¿Cómo se hace el triángulo de
-                                                Pascal?
-                                            </h3>
-                                            <p>
-                                                por <span>Skywalker42</span> • 5
-                                                comentarios • hace 30 minutos
-                                            </p>
-                                        </div>
-                                    </li></a
-                                >
-                                <a href="#"
-                                    ><li>
-                                        <div class="caja-tema">
-                                            <h3>
-                                                Explicación bucles: For vs while
-                                            </h3>
-                                            <p>
-                                                por <span>JazzCraze</span> • 5
-                                                comentarios • hace 1 hora
-                                            </p>
-                                        </div>
-                                    </li></a
-                                >
-                                <a href="#"
-                                    ><li>
-                                        <div class="caja-tema">
-                                            <h3>
-                                                ¿Alguien tiene apuntes del tema
-                                                5?
-                                            </h3>
-                                            <p>
-                                                por <span>PixelPioneer</span> •
-                                                5 comentarios • hace 1 día
-                                            </p>
-                                        </div>
-                                    </li></a
-                                >
-                                <a href="#"
-                                    ><li>
-                                        <div class="caja-tema">
-                                            <h3>No entiendo el ejericicio 4</h3>
-                                            <p>
-                                                por <span>EchoVibes</span> • 5
-                                                comentarios • hace 1 semana
-                                            </p>
-                                        </div>
-                                    </li></a
-                                >
-                            </ul>
-                        </div>
+                        <label for="mensaje">Mensaje</label>
+                        <textarea
+                            id="mensaje"
+                            name="mensaje"
+                            placeholder="Escribe tu mensaje aquí..."
+                            required
+                        ></textarea>
+                        <button type="submit" class="btn">Publicar</button>
                     </div>
-
-                    <!-- Ficheros -->
-                    <div class="ficheros-container">
-                        <div class="cajas-container">
-                            <h2 class="titulo-contenido">Ficheros</h2>
-                            <ul>
-                                <li>
-                                    <div class="caja-fich">
-                                        <div class="fich">
-                                            <img
-                                                src="images/fichero.svg"
-                                                alt="pdf"
-                                                id="fich-icon"
-                                            />
-                                            <div class="fich2">
-                                                <h3>Tema1_Introd_prog</h3>
-                                                <p>
-                                                    subido por
-                                                    <span>JazzCraze</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <a href="#"
-                                            ><img
-                                                src="images/download.svg"
-                                                alt="download"
-                                                id="download-icon"
-                                        /></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="caja-fich">
-                                        <div class="fich">
-                                            <img
-                                                src="images/fichero.svg"
-                                                alt="pdf"
-                                                id="fich-icon"
-                                            />
-                                            <div class="fich2">
-                                                <h3>Apuntes_tema_5</h3>
-                                                <p>
-                                                    subido por
-                                                    <span>janedoe</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <a href="#"
-                                            ><img
-                                                src="images/download.svg"
-                                                alt="download"
-                                                id="download-icon"
-                                        /></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="caja-fich">
-                                        <div class="fich">
-                                            <img
-                                                src="images/fichero.svg"
-                                                alt="pdf"
-                                                id="fich-icon"
-                                            />
-                                            <div class="fich2">
-                                                <h3>Introd_java</h3>
-                                                <p>
-                                                    subido por
-                                                    <span>johndoe</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <a href="#"
-                                            ><img
-                                                src="images/download.svg"
-                                                alt="download"
-                                                id="download-icon"
-                                        /></a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="contenedor-view-more">
-                            <a href="files.html" class="view-more">Ver más</a>
-                        </div>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
 
@@ -362,7 +191,7 @@
 
             <div class="otros">
                 <ul id="socials">
-                    <li><a href="contact.html">Contacto</a></li>
+                    <li><a href="contact.jsp">Contacto</a></li>
                     <li><a href="#">Preguntas frecuentes</a></li>
                 </ul>
                 <p id="copyright">© StudyHub | 2024</p>
