@@ -1,3 +1,5 @@
+<%@ page language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,7 +19,7 @@
 		<header>
 			<div class="container">
 				<nav class="nav-main">
-					<a href="index.html">
+					<a href="index.jsp">
 						<svg
 						class="logo-header"
 							width="262"
@@ -111,7 +113,7 @@
 									<div class="ag-courses-item_bg"></div>
 
 									<div class="ag-courses-item_title">
-										Fundamentos de Programación
+										Fundamentos de ProgramaciÃ³n
 									</div>
 
 									<div
@@ -120,7 +122,7 @@
 										<span
 											class="ag-courses-item_description"
 										>
-											1º Curso de Ing. Informática
+											1Âº Curso de Ing. InformÃ¡tica
 										</span>
 									</div>
 								</a>
@@ -130,7 +132,7 @@
 									<div class="ag-courses-item_bg"></div>
 
 									<div class="ag-courses-item_title">
-										Matemáticas
+										MatemÃ¡ticas
 									</div>
 
 									<div
@@ -138,7 +140,7 @@
 									>
 										<span
 											class="ag-courses-item_description"
-											>1º Curso de Ing. Informática
+											>1Âº Curso de Ing. InformÃ¡tica
 										</span>
 									</div>
 								</a>
@@ -149,7 +151,7 @@
 									<div class="ag-courses-item_bg"></div>
 
 									<div class="ag-courses-item_title">
-										Física
+										FÃ­sica
 									</div>
 
 									<div
@@ -157,7 +159,7 @@
 									>
 										<span
 											class="ag-courses-item_description"
-											>1º Curso de Ing. Informática</span
+											>1Âº Curso de Ing. InformÃ¡tica</span
 										>
 									</div>
 								</a>
@@ -168,7 +170,7 @@
 									<div class="ag-courses-item_bg"></div>
 
 									<div class="ag-courses-item_title">
-										Computación Paralela
+										ComputaciÃ³n Paralela
 									</div>
 
 									<div
@@ -177,7 +179,7 @@
 										<span
 											class="ag-courses-item_description"
 										>
-											3º Curso de Ing. Informática
+											3Âº Curso de Ing. InformÃ¡tica
 										</span>
 									</div>
 								</a>
@@ -197,7 +199,7 @@
 										<span
 											class="ag-courses-item_description"
 										>
-											2º Curso de Ing. Informática
+											2Âº Curso de Ing. InformÃ¡tica
 										</span>
 									</div>
 								</a>
@@ -217,7 +219,7 @@
 										<span
 											class="ag-courses-item_description"
 										>
-											1º Curso de Ing. Informática
+											1Âº Curso de Ing. InformÃ¡tica
 										</span>
 									</div>
 								</a>
@@ -228,7 +230,7 @@
 									<div class="ag-courses-item_bg"></div>
 
 									<div class="ag-courses-item_title">
-										Administración S.O.
+										AdministraciÃ³n S.O.
 									</div>
 
 									<div
@@ -237,7 +239,7 @@
 										<span
 											class="ag-courses-item_description"
 										>
-											1º Curso de Ing. Informática
+											1Âº Curso de Ing. InformÃ¡tica
 										</span>
 									</div>
 								</a>
@@ -248,7 +250,7 @@
 									<div class="ag-courses-item_bg"></div>
 
 									<div class="ag-courses-item_title">
-										Estadística
+										EstadÃ­stica
 									</div>
 
 									<div
@@ -256,7 +258,7 @@
 									>
 										<span
 											class="ag-courses-item_description"
-											>2º Curso de Ing. Informática
+											>2Âº Curso de Ing. InformÃ¡tica
 										</span>
 									</div>
 								</a>
@@ -275,7 +277,7 @@
 									>
 										<span
 											class="ag-courses-item_description"
-											>2º Curso de Ing. Informática
+											>2Âº Curso de Ing. InformÃ¡tica
 										</span>
 									</div>
 								</a>
@@ -284,7 +286,7 @@
 
 						<div class="contenedor-view-more">
 							<a href="subjects.html" class="view-more"
-								>Mostrar más</a
+								>Mostrar mÃ¡s</a
 							>
 						</div>
 
@@ -322,7 +324,7 @@
 					<div class="mensajes-foro">
 						<div class="mensaje-box">
 							<div class="contribuidas-titulo">
-								Foro Matemáticas
+								Foro MatemÃ¡ticas
 							</div>
 							<div class="mensaje">
 								Has comentado: "No entiendo el ejercicio 3"
@@ -330,10 +332,10 @@
 						</div>
 
 						<div class="mensaje-box">
-							<div class="contribuidas-titulo">Foro Física</div>
+							<div class="contribuidas-titulo">Foro FÃ­sica</div>
 							<div class="mensaje">
-								Has comentado: "¿Alguien tiene los apuntes de la
-								última clase?"
+								Has comentado: "Â¿Alguien tiene los apuntes de la
+								Ãºltima clase?"
 							</div>
 						</div>
 
@@ -368,7 +370,7 @@
 								<span>Roberro</span>
 
 								<div class="mensaje">
-									"¿No tendrás más apuntes no?"
+									"Â¿No tendrÃ¡s mÃ¡s apuntes no?"
 								</div>
 							</div>
 						</div>
@@ -385,7 +387,7 @@
 								<span>El bicho de los apuntes</span>
 
 								<div class="mensaje">
-									"Esto te ayudará con tu examens de mañana
+									"Esto te ayudarÃ¡ con tu examens de maÃ±ana
 									..."
 								</div>
 							</div>
@@ -403,7 +405,7 @@
 								<span>El bicho de los apuntes</span>
 
 								<div class="mensaje">
-									"Una pequeña guía para tu código ... [~]
+									"Una pequeÃ±a guÃ­a para tu cÃ³digo ... [~]
 									Imagen"
 								</div>
 							</div>
@@ -422,13 +424,13 @@
 
 								<div class="mensaje">
 									"Toma presentaciones sobre firmware de
-									mouses inalámbricos"
+									mouses inalÃ¡mbricos"
 								</div>
 							</div>
 						</div>
 						<a href="forum.html">
 							<button class="boton_show_more_foro">
-								Mostrar más
+								Mostrar mÃ¡s
 							</button>
 						</a>
 					</div>
@@ -442,7 +444,7 @@
 				<h1>StudyHub</h1>
 				<ul>
 					<li><a href="#">Cookies</a></li>
-					<li><a href="#">Términos y Condiciones</a></li>
+					<li><a href="#">TÃ©rminos y Condiciones</a></li>
 					<li><a href="#">Privacidad</a></li>
 				</ul>
 			</div>
@@ -452,7 +454,7 @@
 					<li><a href="contact.html">Contacto</a></li>
 					<li><a href="#">Preguntas frecuentes</a></li>
 				</ul>
-				<p id="copyright">© StudyHub | 2024</p>
+				<p id="copyright">Â© StudyHub | 2024</p>
 				<ul id="socials">
 					<li>
 						<a href="#"
