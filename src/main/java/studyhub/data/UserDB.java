@@ -7,9 +7,12 @@ public class UserDB {
     public static int register(User user) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
+        if (connection==null){
+            System.out.println("AAAAAAAAA");
+        }
         PreparedStatement ps = null;
         PreparedStatement ps1=null;
-        String query="INSERT INTO USUARIO VALUES (?, ?, ?, ?, ?, ?, ?);";
+        String query="INSERT INTO USUARIO VALUES (?, ?, ?, ?, ?, ?, ?)";
         String queryRol="INSERT INTO ROL VALUES (?, ?)";
 
         try {
@@ -23,7 +26,6 @@ public class UserDB {
             ps.setString(5, user.getEmail());
             ps.setString(6, user.getFecha_nacimiento().toString());
             ps.setString(7, user.getFecha_creacion().toString());
-            ps.setString(8, user.getRol());
             ps1.setString(2, user.getRol());
             int res = ps.executeUpdate();
             int res1 = ps1.executeUpdate();

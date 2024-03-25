@@ -1,11 +1,13 @@
 <%@ page language="java" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="shortcut icon" href="images/logo.svg" />
         <title>StudyHub</title>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="styles/login_signup.css" />
         <link rel="stylesheet" href="styles/footer.css" />
         <link rel="stylesheet" href="styles/common.css" />
@@ -18,7 +20,6 @@
         />
         <link rel="icon" type="image/png" href="images/icono.png" />
         <script src="scripts/logo.js"></script>
-        
     </head>
 
     <!--Cabecera-->
@@ -62,7 +63,7 @@
                         </a>
                         <ul class="nav-menu">
                             <li>
-                                <a href="contact.html" class="contacto"
+                                <a href="contact.jsp" class="contacto"
                                     >Contacto</a
                                 >
                             </li>
@@ -107,7 +108,7 @@
                             class="input-info"
                             required
                         />
-                        <a href="resetpw.html" class="olvido-password"
+                        <a href="resetpw.jsp" class="olvido-password"
                             >¿Has olvidado tu contraseña?</a
                         >
                     </div>

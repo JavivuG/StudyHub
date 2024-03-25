@@ -1,34 +1,60 @@
+<%@ page language="java" %> <%@ page contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="shortcut icon" href="images/logo.svg" />
         <title>StudyHub</title>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="styles/profile.css" />
-        <link rel="stylesheet" href="styles/footer.css" />
-        <link rel="stylesheet" href="styles/common.css" />
-        <link rel="stylesheet" href="styles/header.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
         <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap"
             rel="stylesheet"
+            type="text/css"
+            media="screen"
+            href="styles/header.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            media="screen"
+            href="styles/footer.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            media="screen"
+            href="styles/common.css"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            media="screen"
+            href="styles/tema.css"
         />
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
         />
-        <link rel="icon" type="image/png" href="images/icono.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+            rel="stylesheet"
+        />
         <script src="scripts/logo.js"></script>
     </head>
+
     <body>
         <div class="main-content">
+            <!-- Encabezado -->
             <header>
                 <div class="container">
                     <nav class="nav-main">
                         <a href="index.jsp">
                             <svg
-                            class="logo-header"
+                                class="logo-header"
                                 width="262"
                                 height="48"
                                 viewBox="0 0 262 48"
@@ -59,198 +85,188 @@
                                 </g>
                             </svg>
                         </a>
-
                         <ul class="nav-menu">
                             <li>
-                                <a href="index.jsp" class="boton-logout"
-                                    >Cerrar Sesión</a
+                                <a href="profile.jsp" class="texto-perfil"
+                                    >Mi perfil</a
                                 >
+                            </li>
+                            <li>
+                                <a href="profile.jsp">
+                                    <img
+                                        src="images/profile.svg"
+                                        alt="Foto de perfil"
+                                        id="perfil-img"
+                                    />
+                                </a>
                             </li>
                         </ul>
                     </nav>
                 </div>
             </header>
 
-            <div class="flex">
-                <div class="perfil">
-                    <img src="images/profile.svg" alt="user" id="profile" />
-                    <div class="datos-perfil">
-                        <p id="nickname">albepe</p>
-                        <p id="name">Alberto Pérez</p>
-                        <p id="email">albertoperez@gmail.com</p>
-                        <p id="birthday">15/06/2002</p>
-                        <p id="role">Estudiante</p>
-                    </div>
-                </div>
+            <!-- Titulo de la pagina -->
+            <div class="container">
+                <ul class="page-title-container">
+                    <li>
+                        <img
+                            src="images/forum.svg"
+                            alt="Forum"
+                            class="page-icon"
+                        />
+                    </li>
+                    <li>
+                        <span class="page-title">Foro</span>
+                    </li>
+                </ul>
+            </div>
 
-                <div class="estadisticas">
-                    <div class="asignaturas-contribuidas">
-                        <h2>Asignaturas más contribuidas</h2>
-                        <div class="asignaturas">
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Matemática Discreta
-                                </div>
-                                <div class="opiniones-bar">
-                                    <div class="progress progress-moved">
-                                        <div class="progress-bar">
-                                            <div class="porcentaje">50%</div>
-                                        </div>
-                                    </div>
+            <!-- Barra de navegacion -->
+            <div class="container">
+                <ul class="nav-bar">
+                    <li>
+                        <a href="dashboard.jsp"
+                            ><img
+                                src="images/home.svg"
+                                alt="Home"
+                                id="home-icon"
+                        /></a>
+                    </li>
+                    <li>
+                        <span class="items-nav"
+                            ><a href="dashboard.jsp">Inicio</a></span
+                        >
+                    </li>
+                    <li>
+                        <img src="images/arrow.svg" alt="Arrow" id="arrow" />
+                    </li>
+                    <li>
+                        <span class="items-nav"
+                            ><a href="subjects.jsp">Asignaturas</a></span
+                        >
+                    </li>
+                    <li>
+                        <img src="images/arrow.svg" alt="Arrow" id="arrow" />
+                    </li>
+                    <li>
+                        <span class="items-nav"
+                            ><a href="forum.jsp"
+                                >Fundamentos de Programación</a
+                            ></span
+                        >
+                    </li>
+                    <li>
+                        <img src="images/arrow.svg" alt="Arrow" id="arrow" />
+                    </li>
+                    <li>
+                        <span class="items-nav"><a href="#">Foro</a></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="container">
+                <div class="tema-container">
+                    <div class="tema">
+                        <h2>Aplazar entrega del proyecto</h2>
+                        <p>Tema empezado creado por: <span>EchoVibes</span></p>
+                        <p class="tema-descripcion">
+                            ¿Tienes alguna duda sobre el contenido del curso o
+                            la programación de las entregas? ¿Necesitas más
+                            tiempo para completar tu proyecto? ¡Deja tu
+                            comentario aquí!
+                        </p>
+                    </div>
+                    <div class="comentarios-container">
+                        <h2>Comentarios</h2>
+                        <div class="comentario">
+                            <div class="autor-comentario">
+                                <img
+                                    src="images/profile.svg"
+                                    alt="Foto de perfil"
+                                />
+                                <div class="user">
+                                    <p>MysticNomad</p>
+                                    <p class="fecha-comentario">Hace 2 horas</p>
                                 </div>
                             </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Sistemas Digitales
+                            <p>
+                                Me gustaría saber si hay alguna extensión de
+                                plazo para la entrega del proyecto. Estoy
+                                teniendo algunos problemas con mi código y me
+                                vendría bien un poco más de tiempo para pulirlo.
+                            </p>
+                            <div class="reacciones">
+                                <div class="likes">
+                                    <img
+                                        src="images/like.svg"
+                                        alt="Me gusta"
+                                        class="like"
+                                    />
+                                    <p>2 likes</p>
                                 </div>
-                                <div class="opiniones-bar">
-                                    <div class="progress progress-moved">
-                                        <div class="progress-bar2">
-                                            <div class="porcentaje">30%</div>
-                                        </div>
-                                    </div>
+                                <div class="dislikes">
+                                    <img
+                                        src="images/dislike.svg"
+                                        alt="No me gusta"
+                                        class="dislike"
+                                    />
+                                    <p>0 dislikes</p>
                                 </div>
                             </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Computación Paralela
-                                </div>
-                                <div class="opiniones-bar">
-                                    <div class="progress progress-moved">
-                                        <div class="progress-bar3">
-                                            <div class="porcentaje">10%</div>
-                                        </div>
-                                    </div>
+                        </div>
+                        <div class="comentario">
+                            <div class="autor-comentario">
+                                <img
+                                    src="images/profile.svg"
+                                    alt="Foto de perfil"
+                                />
+                                <div class="user">
+                                    <p>BlissfoulSoul</p>
+                                    <p class="fecha-comentario">Hace 2 horas</p>
                                 </div>
                             </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Sistemas Empotrados
+                            <p>
+                                También agradecería que se aplace. Estoy
+                                encontrando algunos errores inesperados en mi
+                                código, y el tiempo extra me ayudaría a
+                                resolverlos.
+                            </p>
+                            <div class="reacciones">
+                                <div class="likes">
+                                    <img
+                                        src="images/like.svg"
+                                        alt="Me gusta"
+                                        class="like"
+                                    />
+                                    <p>0 likes</p>
                                 </div>
-                                <div class="opiniones-bar">
-                                    <div class="progress progress-moved">
-                                        <div class="progress-bar3">
-                                            <div class="porcentaje">10%</div>
-                                        </div>
-                                    </div>
+                                <div class="dislikes">
+                                    <img
+                                        src="images/dislike.svg"
+                                        alt="No me gusta"
+                                        class="dislike"
+                                    />
+                                    <p>0 dislikes</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="ultimas-subidas">
-                        <h2>Últimas subidas</h2>
-                        <div class="asignaturas">
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Examen 2015 FPRO
-                                </div>
-                                <div class="descarga">
-                                    <a href="#"
-                                        ><img
-                                            src="images/download.svg"
-                                            alt="download"
-                                    /></a>
-                                </div>
-                            </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Examen ordinadio SDIS
-                                </div>
-                                <div class="descarga">
-                                    <a href="#"
-                                        ><img
-                                            src="images/download.svg"
-                                            alt="download"
-                                    /></a>
-                                </div>
-                            </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Apuntes completos ADA
-                                </div>
-                                <div class="descarga">
-                                    <a href="#"
-                                        ><img
-                                            src="images/download.svg"
-                                            alt="download"
-                                    /></a>
-                                </div>
-                            </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Ejercicios Física
-                                </div>
-                                <div class="descarga">
-                                    <a href="#"
-                                        ><img
-                                            src="images/download.svg"
-                                            alt="download"
-                                    /></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ultimos-mensajes">
-                        <h2>Últimos mensajes</h2>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">
-                                Foro Matemáticas
-                            </div>
-                            <div class="mensaje">
-                                Has comentado: "No entiendo el ejercicio 3"
-                            </div>
-                        </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">Foro Física</div>
-                            <div class="mensaje">
-                                Has comentado: "¿Alguien tiene los apuntes de la
-                                última clase?"
-                            </div>
-                        </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">
-                                Foro Sistemas Empotrados
-                            </div>
-                            <div class="mensaje">
-                                Has respondido: "El ejercicio 2 es incorrecto,
-                                la respuesta correcta es 3"
-                            </div>
-                        </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">
-                                Foro Servicios y Sistemas Web
-                            </div>
-                            <div class="mensaje">
-                                Has comentado: "No entiendo los ficheros XML."
-                            </div>
-                        </div>
-                    </div>
-                    <div class="podio">
-                        <h2>Posición en el podio</h2>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">1 - user123</div>
-                            <div class="mensaje">
-                                Ha subido 10 archivos y ha comentado 5 veces
-                            </div>
-                        </div>
-                        <div class="mensaje-box top-personal">
-                            <div class="contribuidas-titulo">2 - albepe</div>
-                            <div class="mensaje">
-                                Has subido 8 archivos y has comentado 3 veces
-                            </div>
-                        </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">3 - user456</div>
-                            <div class="mensaje">
-                                Ha subido 5 archivos y ha comentado 2 veces
-                            </div>
-                        </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">4 - user789</div>
-                            <div class="mensaje">
-                                Ha subido 3 archivos y ha comentado 1 vez
-                            </div>
-                        </div>
+                    <div class="chat-input">
+                        <input
+                            type="text"
+                            id="chat-input"
+                            placeholder="Envia un mensaje..."
+                        />
+                        <button type="submit" class="chat-upload">
+                            <img src="images/upload.svg" alt="Subir archivo" />
+                        </button>
+                        <button type="submit" class="chat-submit">
+                            <img
+                                src="images/send.svg"
+                                alt="Enviar mensaje"
+                                class=""
+                            />
+                        </button>
                     </div>
                 </div>
             </div>
@@ -269,7 +285,7 @@
 
             <div class="otros">
                 <ul id="socials">
-                    <li><a href="contact.html">Contacto</a></li>
+                    <li><a href="contact.jsp">Contacto</a></li>
                     <li><a href="#">Preguntas frecuentes</a></li>
                 </ul>
                 <p id="copyright">© StudyHub | 2024</p>

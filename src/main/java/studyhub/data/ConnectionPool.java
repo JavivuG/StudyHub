@@ -9,10 +9,9 @@ public class ConnectionPool {
     private static DataSource dataSource = null;
     private ConnectionPool() {
         try {
-            InitialContext initialContext = new InitialContext();
-            Context context = (Context) initialContext.lookup("java:comp/env");
-            //The JDBC Data source that we just created
-            this.dataSource = (DataSource) context.lookup("studyhub");
+            Class.forName("com.mysql.jdbc.Driver");
+            InitialContext ic = new InitialContext();
+dataSource = (DataSource) ic.lookup("java:/comp/env/jdbc/studyhub");
         } catch(Exception e) {
             System.err.println("Error al buscar el DataSource: " + e.getMessage());
         }

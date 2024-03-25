@@ -2,6 +2,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="studyhub.business.Asignatura" %>
 <%@page import="java.util.ArrayList"%>
+<jsp:include page="/LoadSubjects" />
 
 <!DOCTYPE html>
 <html lang="es">
@@ -76,10 +77,10 @@
 
             <ul class="nav-menu">
               <li>
-                <a href="profile.html" class="texto-perfil">Mi perfil</a>
+                <a href="profile.jsp" class="texto-perfil">Mi perfil</a>
               </li>
               <li>
-                <a href="profile.html">
+                <a href="profile.jsp">
                   <img
                     src="images/profile.svg"
                     alt="Foto de perfil"
@@ -96,12 +97,12 @@
       <div class="container">
         <ul class="nav-bar">
           <li>
-            <a href="dashboard.html"
+            <a href="dashboard.jsp"
               ><img src="images/home.svg" alt="Home" id="home-icon"
             /></a>
           </li>
           <li>
-            <span class="items-nav"><a href="dashboard.html">Inicio</a></span>
+            <span class="items-nav"><a href="dashboard.jsp">Inicio</a></span>
           </li>
           <li>
             <img src="images/arrow.svg" alt="Arrow" id="arrow" />
@@ -134,7 +135,7 @@
            <% ArrayList<Asignatura> asignaturas = (ArrayList<Asignatura>) request.getAttribute("asignaturas"); %>
            <% for(int i=0; i<asignaturas.size(); i++){%>
                 <div class="ag-courses_item">
-                 <a href="forum.html" class="ag-courses-item_link">
+                 <a href="forum.jsp" class="ag-courses-item_link">
                    <div class="ag-courses-item_bg"></div>
 
                    <div class="ag-courses-item_title">
@@ -169,7 +170,7 @@
 
       <div class="otros">
         <ul id="socials">
-          <li><a href="contact.html">Contacto</a></li>
+          <li><a href="contact.jsp">Contacto</a></li>
           <li><a href="#">Preguntas frecuentes</a></li>
         </ul>
         <p id="copyright">Â© StudyHub | 2024</p>
