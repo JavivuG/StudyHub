@@ -1,0 +1,101 @@
+package studyhub.data;
+
+import studyhub.controlador.EmailValidator;
+import studyhub.business.User;
+import java.sql.*;
+public class UserDB {
+    public static int register(User user) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        PreparedStatement ps1=null;
+        String query="INSERT INTO USUARIO VALUES (?, ?, ?, ?, ?, ?, ?);";
+        String queryRol="INSERT INTO ROL VALUES (?, ?)";
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps1=connection.prepareStatement(queryRol);
+            ps.setString(1, user.getNickname());
+            ps1.setString(1, user.getNickname());
+            ps.setString(2, user.getPassword());
+            ps.setString(3, user.getNombre());
+            ps.setString(4, user.getApellidos());
+            ps.setString(5, user.getEmail());
+            ps.setString(6, user.getFecha_nacimiento().toString());
+            ps.setString(7, user.getFecha_creacion().toString());
+            ps.setString(8, user.getRol());
+            ps1.setString(2, user.getRol());
+            int res = ps.executeUpdate();
+            int res1 = ps1.executeUpdate();
+            ps1.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return res;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public static boolean emailExists(String emailAddress) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT email FROM USUARIO "
+                + "WHERE email = ?";
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, emailAddress);
+            rs = ps.executeQuery();
+            boolean res = rs.next();
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return res;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public static User selectUser(String userOrEmail) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query;
+        if (EmailValidator.validate(userOrEmail)){
+            query = "SELECT * FROM USUARIO WHERE email = ?";
+        }
+        else {
+            query = "SELECT * FROM USUARIO WHERE nickname = ?";
+        }
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, userOrEmail);
+            rs = ps.executeQuery();
+            User user = null;
+            if (rs.next()) {
+                user = new User();
+                user.setNickname("nickname");
+                user.setPassword("password");
+                user.setNombre(rs.getString("nombre"));
+                user.setApellidos(rs.getString("apellidos"));
+                user.setEmail(rs.getString("email"));
+                user.setFecha_nacimiento("fecha_nacimiento");
+                user.setFecha_creacion("fecha_creacion");
+                user.setRol("rol");
+            }
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return user;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+}

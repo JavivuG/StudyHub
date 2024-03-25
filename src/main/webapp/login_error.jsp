@@ -1,3 +1,5 @@
+<%@ page language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,6 +18,7 @@
         />
         <link rel="icon" type="image/png" href="images/icono.png" />
         <script src="scripts/logo.js"></script>
+        
     </head>
 
     <!--Cabecera-->
@@ -24,7 +27,7 @@
             <header>
                 <div class="container">
                     <nav class="nav-main">
-                        <a href="index.html">
+                        <a href="index.jsp">
                             <svg
                                 class="logo-header"
                                 width="262"
@@ -65,7 +68,7 @@
                             </li>
 
                             <li>
-                                <a href="signup.html" class="boton-registro"
+                                <a href="signup.jsp" class="boton-registro"
                                     >Registrarse</a
                                 >
                             </li>
@@ -81,13 +84,13 @@
 
             <!--Formulario-->
             <div class="formulario">
-                <form class="info-usuario" action="dashboard.html">
+                <form class="info-usuario" action="j_security_check" method="post">
                     <div class="cajon-info">
                         <label class="texto-info"
                             >Introduce tu email o nickname</label
                         >
                         <input
-                            name="email"
+                            name="j_username"
                             type="text"
                             class="input-info"
                             required
@@ -99,7 +102,7 @@
                             >Introduce tu contraseña</label
                         >
                         <input
-                            name="password"
+                            name="j_password"
                             type="password"
                             class="input-info"
                             required
@@ -108,6 +111,7 @@
                             >¿Has olvidado tu contraseña?</a
                         >
                     </div>
+                    <p>El usuario o contraseña introducido son incorrectos</p>
 
                     <button type="submit" class="boton-enviar">
                         Iniciar sesión
@@ -115,6 +119,10 @@
                 </form>
             </div>
         </div>
+
+        <!-- Pie de pagina -->
+    </body>
+</html>
 
         <!-- Pie de pagina -->
     </body>

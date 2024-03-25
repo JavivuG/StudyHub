@@ -1,10 +1,12 @@
+<%@ page language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
     <head>
         <title>StudyHub</title>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="styles/profile.css" />
+        <link rel="stylesheet" href="styles/landing.css" />
         <link rel="stylesheet" href="styles/footer.css" />
         <link rel="stylesheet" href="styles/common.css" />
         <link rel="stylesheet" href="styles/header.css" />
@@ -20,15 +22,16 @@
         />
         <link rel="icon" type="image/png" href="images/icono.png" />
         <script src="scripts/logo.js"></script>
+
     </head>
     <body>
         <div class="main-content">
             <header>
                 <div class="container">
                     <nav class="nav-main">
-                        <a href="index.jsp">
+                        <a href="index.html">
                             <svg
-                            class="logo-header"
+                                class="logo-header"
                                 width="262"
                                 height="48"
                                 viewBox="0 0 262 48"
@@ -59,11 +62,20 @@
                                 </g>
                             </svg>
                         </a>
-
                         <ul class="nav-menu">
                             <li>
-                                <a href="index.jsp" class="boton-logout"
-                                    >Cerrar Sesión</a
+                                <a href="contact.html" class="contacto"
+                                    >Contacto</a
+                                >
+                            </li>
+                            <li>
+                                <a href="dashboard.jsp" class="boton-inicio"
+                                    >Iniciar Sesión</a
+                                >
+                            </li>
+                            <li>
+                                <a href="signup.jsp" class="boton-registro"
+                                    >Registrarse</a
                                 >
                             </li>
                         </ul>
@@ -71,186 +83,180 @@
                 </div>
             </header>
 
-            <div class="flex">
-                <div class="perfil">
-                    <img src="images/profile.svg" alt="user" id="profile" />
-                    <div class="datos-perfil">
-                        <p id="nickname">albepe</p>
-                        <p id="name">Alberto Pérez</p>
-                        <p id="email">albertoperez@gmail.com</p>
-                        <p id="birthday">15/06/2002</p>
-                        <p id="role">Estudiante</p>
+            <div class="buscador">
+                <div class="titulo-buscador">
+                    <h1>StudyHub, tu plataforma de aprendizaje</h1>
+                </div>
+                <div class="flex-buscador">
+                    <div class="texto-buscador">
+                        <h3>
+                            Con studyHub, conseguirás aprobar todas tus
+                            asignaturas con buenas notas
+                        </h3>
+                    </div>
+                    <div class="formulario-buscador">
+                        <p>
+                            Busca la asignatura que te está generando
+                            pesadillas...
+                        </p>
+                        <form>
+                            <label>
+                                <input
+                                    type="text"
+                                    placeholder="Introduce una asignatura"
+                                    class="input-buscador"
+                                />
+                            </label>
+                        </form>
                     </div>
                 </div>
+            </div>
 
-                <div class="estadisticas">
-                    <div class="asignaturas-contribuidas">
-                        <h2>Asignaturas más contribuidas</h2>
-                        <div class="asignaturas">
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Matemática Discreta
+            <div class="foro">
+                <div class="flex-foro">
+                    <img src="images/foro.png" alt="foro" class="foro-img" />
+                    <div class="texto-foro">
+                        <h3>
+                            En nuestro foro podrás valorar apuntes, preguntar
+                            dudas, y ayudar a tus compañeros con las suyas!
+                        </h3>
+                        <a href="signup.jsp" class="boton-registro"
+                            >Regístrate</a
+                        >
+                    </div>
+                </div>
+            </div>
+
+            <div class="asignaturas">
+                <div class="flex-asignaturas">
+                    <div class="texto-asignaturas">
+                        <h3>
+                            Estas son las asignaturas más utilizadas por los
+                            usuarios de StudyHub.
+                        </h3>
+                        <h3>
+                            Si tú también quieres aportar apuntes o utilizar los
+                            existentes, haz click en el botón inferior!
+                        </h3>
+                        <a href="signup.jsp" class="boton-registro"
+                            >Regístrate</a
+                        >
+                    </div>
+                    <div class="ag-format-container">
+                        <div class="ag-courses_box">
+                            <div class="ag-courses_item">
+                                <div class="ag-courses-item_title">
+                                    Matemáticas
                                 </div>
-                                <div class="opiniones-bar">
-                                    <div class="progress progress-moved">
-                                        <div class="progress-bar">
-                                            <div class="porcentaje">50%</div>
-                                        </div>
-                                    </div>
+
+                                <div class="ag-courses-item_description-box">
+                                    <span class="ag-courses-item_description"
+                                        >1º Curso de Ing. Informática
+                                    </span>
                                 </div>
                             </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Sistemas Digitales
-                                </div>
-                                <div class="opiniones-bar">
-                                    <div class="progress progress-moved">
-                                        <div class="progress-bar2">
-                                            <div class="porcentaje">30%</div>
-                                        </div>
-                                    </div>
+
+                            <div class="ag-courses_item">
+                                <div class="ag-courses-item_title">Física</div>
+
+                                <div class="ag-courses-item_description-box">
+                                    <span class="ag-courses-item_description"
+                                        >1º Curso de Ing. Informática</span
+                                    >
                                 </div>
                             </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
+
+                            <div class="ag-courses_item">
+                                <div class="ag-courses-item_title">
                                     Computación Paralela
                                 </div>
-                                <div class="opiniones-bar">
-                                    <div class="progress progress-moved">
-                                        <div class="progress-bar3">
-                                            <div class="porcentaje">10%</div>
-                                        </div>
-                                    </div>
+
+                                <div class="ag-courses-item_description-box">
+                                    <span class="ag-courses-item_description">
+                                        3º Curso de Ing. Informática
+                                    </span>
                                 </div>
                             </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Sistemas Empotrados
+
+                            <div class="ag-courses_item">
+                                <div class="ag-courses-item_title">
+                                    Sistemas Distribuidos
                                 </div>
-                                <div class="opiniones-bar">
-                                    <div class="progress progress-moved">
-                                        <div class="progress-bar3">
-                                            <div class="porcentaje">10%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ultimas-subidas">
-                        <h2>Últimas subidas</h2>
-                        <div class="asignaturas">
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Examen 2015 FPRO
-                                </div>
-                                <div class="descarga">
-                                    <a href="#"
-                                        ><img
-                                            src="images/download.svg"
-                                            alt="download"
-                                    /></a>
-                                </div>
-                            </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Examen ordinadio SDIS
-                                </div>
-                                <div class="descarga">
-                                    <a href="#"
-                                        ><img
-                                            src="images/download.svg"
-                                            alt="download"
-                                    /></a>
-                                </div>
-                            </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Apuntes completos ADA
-                                </div>
-                                <div class="descarga">
-                                    <a href="#"
-                                        ><img
-                                            src="images/download.svg"
-                                            alt="download"
-                                    /></a>
-                                </div>
-                            </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Ejercicios Física
-                                </div>
-                                <div class="descarga">
-                                    <a href="#"
-                                        ><img
-                                            src="images/download.svg"
-                                            alt="download"
-                                    /></a>
+
+                                <div class="ag-courses-item_description-box">
+                                    <span class="ag-courses-item_description">
+                                        2º Curso de Ing. Informática
+                                    </span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="ultimos-mensajes">
-                        <h2>Últimos mensajes</h2>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">
-                                Foro Matemáticas
-                            </div>
-                            <div class="mensaje">
-                                Has comentado: "No entiendo el ejercicio 3"
-                            </div>
+                </div>
+            </div>
+
+            <div class="opiniones">
+                <div class="texto-opiniones">
+                    <h3>Esto opinan de nosotros los estudiantes</h3>
+                </div>
+                <div class="flex-opiniones">
+                    <div class="opiniones-box">
+                        <div class="opiniones-header">
+                            <i class="fas fa-user fa-2x"></i>
+                            <i class="fas fa-star fa-lg star"></i>
+                            <i class="fas fa-star fa-lg"></i>
+                            <i class="fas fa-star fa-lg"></i>
+                            <i class="fas fa-star fa-lg"></i>
+                            <i class="fas fa-star fa-lg"></i>
                         </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">Foro Física</div>
-                            <div class="mensaje">
-                                Has comentado: "¿Alguien tiene los apuntes de la
-                                última clase?"
-                            </div>
-                        </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">
-                                Foro Sistemas Empotrados
-                            </div>
-                            <div class="mensaje">
-                                Has respondido: "El ejercicio 2 es incorrecto,
-                                la respuesta correcta es 3"
-                            </div>
-                        </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">
-                                Foro Servicios y Sistemas Web
-                            </div>
-                            <div class="mensaje">
-                                Has comentado: "No entiendo los ficheros XML."
-                            </div>
-                        </div>
+                        <p>
+                            ¡Gracias StudyHub! He aprobado todas mis
+                            asignaturas.
+                        </p>
                     </div>
-                    <div class="podio">
-                        <h2>Posición en el podio</h2>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">1 - user123</div>
-                            <div class="mensaje">
-                                Ha subido 10 archivos y ha comentado 5 veces
-                            </div>
+
+                    <div class="opiniones-box">
+                        <div class="opiniones-header">
+                            <i class="fas fa-user fa-2x"></i>
+                            <i class="fas fa-star fa-lg star"></i>
+                            <i class="fas fa-star fa-lg"></i>
+                            <i class="fas fa-star fa-lg"></i>
+                            <i class="fas fa-star fa-lg"></i>
+                            <i class="far fa-star fa-lg"></i>
                         </div>
-                        <div class="mensaje-box top-personal">
-                            <div class="contribuidas-titulo">2 - albepe</div>
-                            <div class="mensaje">
-                                Has subido 8 archivos y has comentado 3 veces
-                            </div>
+                        <p>
+                            Da gusto tener plataformas como StudyHub de forma
+                            gratuita.
+                        </p>
+                    </div>
+
+                    <div class="opiniones-box">
+                        <div class="opiniones-header">
+                            <i class="fas fa-user fa-2x"></i>
+                            <i class="fas fa-star fa-lg star"></i>
+                            <i class="fas fa-star fa-lg"></i>
+                            <i class="fas fa-star fa-lg"></i>
+                            <i class="fas fa-star fa-lg"></i>
+                            <i class="fas fa-star fa-lg"></i>
                         </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">3 - user456</div>
-                            <div class="mensaje">
-                                Ha subido 5 archivos y ha comentado 2 veces
-                            </div>
+                        <p>
+                            Gracias a los usuarios de StudyHub he entendido lo
+                            que no entendía en clase
+                        </p>
+                    </div>
+
+                    <div class="opiniones-box">
+                        <div class="opiniones-header">
+                            <i class="fas fa-user fa-2x"></i>
+                            <i class="fas fa-star fa-lg star"></i>
+                            <i class="fas fa-star fa-lg"></i>
+                            <i class="fas fa-star fa-lg"></i>
+                            <i class="far fa-star fa-lg"></i>
+                            <i class="far fa-star fa-lg"></i>
                         </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">4 - user789</div>
-                            <div class="mensaje">
-                                Ha subido 3 archivos y ha comentado 1 vez
-                            </div>
-                        </div>
+                        <p>
+                            No hay nada que no encuentres en StudyHub. ¡Es
+                            maravilloso!
+                        </p>
                     </div>
                 </div>
             </div>

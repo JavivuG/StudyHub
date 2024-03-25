@@ -1,3 +1,8 @@
+<%@ page language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="studyhub.business.Asignatura" %>
+<%@page import="java.util.ArrayList"%>
+
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -34,7 +39,7 @@
       <header>
         <div class="container">
           <nav class="nav-main">
-            <a href="index.html">
+            <a href="index.jsp">
               <svg
               class="logo-header"
 
@@ -121,185 +126,32 @@
       </div>
 
       <!-- Lista de asignaturas -->
+      
       <div class="ag-format-container">
         <div class="ag-courses_box">
-          <div class="ag-courses_item">
-            <a href="forum.html" class="ag-courses-item_link">
-              <div class="ag-courses-item_bg"></div>
+            
+          
+           <% ArrayList<Asignatura> asignaturas = (ArrayList<Asignatura>) request.getAttribute("asignaturas"); %>
+           <% for(int i=0; i<asignaturas.size(); i++){%>
+                <div class="ag-courses_item">
+                 <a href="forum.html" class="ag-courses-item_link">
+                   <div class="ag-courses-item_bg"></div>
 
-              <div class="ag-courses-item_title">
-                Fundamentos de Programación
-              </div>
+                   <div class="ag-courses-item_title">
+                       <%= asignaturas.get(i).getNombre() %>
+                   </div>
 
-              <div class="ag-courses-item_description-box">
-                <span class="ag-courses-item_description">
-                  1º Curso de Ing. Informática
-                </span>
-              </div>
-            </a>
-          </div>
-
-          <div class="ag-courses_item">
-            <a href="#" class="ag-courses-item_link">
-              <div class="ag-courses-item_bg"></div>
-
-              <div class="ag-courses-item_title">Matemáticas</div>
-
-              <div class="ag-courses-item_description-box">
-                <span class="ag-courses-item_description"
-                  >1º Curso de Ing. Informática
-                </span>
-              </div>
-            </a>
-          </div>
-
-          <div class="ag-courses_item">
-            <a href="#" class="ag-courses-item_link">
-              <div class="ag-courses-item_bg"></div>
-
-              <div class="ag-courses-item_title">Física</div>
-
-              <div class="ag-courses-item_description-box">
-                <span class="ag-courses-item_description"
-                  >1º Curso de Ing. Informática</span
-                >
-              </div>
-            </a>
-          </div>
-
-          <div class="ag-courses_item">
-            <a href="#" class="ag-courses-item_link">
-              <div class="ag-courses-item_bg"></div>
-
-              <div class="ag-courses-item_title">Computación Paralela</div>
-
-              <div class="ag-courses-item_description-box">
-                <span class="ag-courses-item_description">
-                  3º Curso de Ing. Informática
-                </span>
-              </div>
-            </a>
-          </div>
-
-          <div class="ag-courses_item">
-            <a href="#" class="ag-courses-item_link">
-              <div class="ag-courses-item_bg"></div>
-
-              <div class="ag-courses-item_title">Sistemas Distribuidos</div>
-
-              <div class="ag-courses-item_description-box">
-                <span class="ag-courses-item_description">
-                  2º Curso de Ing. Informática
-                </span>
-              </div>
-            </a>
-          </div>
-
-          <div class="ag-courses_item">
-            <a href="#" class="ag-courses-item_link">
-              <div class="ag-courses-item_bg"></div>
-
-              <div class="ag-courses-item_title">Sistemas Digitales</div>
-
-              <div class="ag-courses-item_description-box">
-                <span class="ag-courses-item_description">
-                  1º Curso de Ing. Informática
-                </span>
-              </div>
-            </a>
-          </div>
-
-          <div class="ag-courses_item">
-            <a href="#" class="ag-courses-item_link">
-              <div class="ag-courses-item_bg"></div>
-
-              <div class="ag-courses-item_title">
-                Administración de Sistemas Operativos
-              </div>
-
-              <div class="ag-courses-item_description-box">
-                <span class="ag-courses-item_description">
-                  1º Curso de Ing. Informática
-                </span>
-              </div>
-            </a>
-          </div>
-
-          <div class="ag-courses_item">
-            <a href="#" class="ag-courses-item_link">
-              <div class="ag-courses-item_bg"></div>
-
-              <div class="ag-courses-item_title">Estadística</div>
-
-              <div class="ag-courses-item_description-box">
-                <span class="ag-courses-item_description"
-                  >2º Curso de Ing. Informática
-                </span>
-              </div>
-            </a>
-          </div>
-
-          <div class="ag-courses_item">
-            <a href="#" class="ag-courses-item_link">
-              <div class="ag-courses-item_bg"></div>
-
-              <div class="ag-courses-item_title">
-                Estructura de Datos y Algoritmos
-              </div>
-
-              <div class="ag-courses-item_description-box">
-                <span class="ag-courses-item_description"
-                  >2º Curso de Ing. Informática
-                </span>
-              </div>
-            </a>
-          </div>
-
-          <div class="ag-courses_item">
-            <a href="#" class="ag-courses-item_link">
-              <div class="ag-courses-item_bg"></div>
-
-              <div class="ag-courses-item_title">
-                Arquitectura de Computadores
-              </div>
-
-              <div class="ag-courses-item_description-box">
-                <span class="ag-courses-item_description"
-                  >2º Curso de Ing. Informática
-                </span>
-              </div>
-            </a>
-          </div>
-
-          <div class="ag-courses_item">
-            <a href="#" class="ag-courses-item_link">
-              <div class="ag-courses-item_bg"></div>
-
-              <div class="ag-courses-item_title">
-                Fundamentos de Redes de Computadores
-              </div>
-
-              <div class="ag-courses-item_description-box">
-                <span class="ag-courses-item_description"
-                  >1º Curso de Ing. Informática
-                </span>
-              </div>
-            </a>
-          </div>
-
-          <div class="ag-courses_item">
-            <a href="#" class="ag-courses-item_link">
-              <div class="ag-courses-item_bg"></div>
-
-              <div class="ag-courses-item_title">Ampliación de Matemáticas</div>
-
-              <div class="ag-courses-item_description-box">
-                <span class="ag-courses-item_description"
-                  >1º Curso de Ing. Informática
-                </span>
-              </div>
-            </a>
-          </div>
+                   <div class="ag-courses-item_description-box">
+                     <span class="ag-courses-item_description">
+                       <%= asignaturas.get(i).getCurso() %>
+                     </span>
+                   </div>
+                 </a>
+               </div>
+            <%
+                }
+            %>
+          
         </div>
       </div>
     </div>
@@ -310,7 +162,7 @@
         <h1>StudyHub</h1>
         <ul>
           <li><a href="#">Cookies</a></li>
-          <li><a href="#">Términos y Condiciones</a></li>
+          <li><a href="#">TÃ©rminos y Condiciones</a></li>
           <li><a href="#">Privacidad</a></li>
         </ul>
       </div>
@@ -320,7 +172,7 @@
           <li><a href="contact.html">Contacto</a></li>
           <li><a href="#">Preguntas frecuentes</a></li>
         </ul>
-        <p id="copyright">© StudyHub | 2024</p>
+        <p id="copyright">Â© StudyHub | 2024</p>
         <ul id="socials">
           <li>
             <a href="#"><img src="images/tiktok.svg" alt="tiktok" /></a>

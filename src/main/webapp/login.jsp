@@ -1,37 +1,29 @@
+<%@ page language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html lang="es">
+<html>
     <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <link rel="shortcut icon" href="images/logo.svg" />
         <title>StudyHub</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles/login_signup.css" />
+        <link rel="stylesheet" href="styles/footer.css" />
         <link rel="stylesheet" href="styles/common.css" />
         <link rel="stylesheet" href="styles/header.css" />
-        <link rel="stylesheet" href="styles/footer.css" />
-        <link
-            rel="stylesheet"
-            type="text/css"
-            media="screen"
-            href="styles/new_topic.css"
-        />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
-        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap"
             rel="stylesheet"
         />
+        <link rel="icon" type="image/png" href="images/icono.png" />
         <script src="scripts/logo.js"></script>
+        
     </head>
 
+    <!--Cabecera-->
     <body>
         <div class="main-content">
-            <!-- Encabezado -->
             <header>
                 <div class="container">
                     <nav class="nav-main">
@@ -68,154 +60,65 @@
                                 </g>
                             </svg>
                         </a>
-
                         <ul class="nav-menu">
                             <li>
-                                <a href="profile.html" class="texto-perfil"
-                                    >Mi perfil</a
+                                <a href="contact.html" class="contacto"
+                                    >Contacto</a
                                 >
                             </li>
+
                             <li>
-                                <a href="profile.html">
-                                    <img
-                                        src="images/profile.svg"
-                                        alt="Foto de perfil"
-                                        id="perfil-img"
-                                    />
-                                </a>
+                                <a href="signup.jsp" class="boton-registro"
+                                    >Registrarse</a
+                                >
                             </li>
                         </ul>
                     </nav>
                 </div>
             </header>
 
-            <!-- Titulo de la pagina -->
-            <div class="container">
-                <ul class="page-title-container">
-                    <li>
-                        <img
-                            src="images/forum.svg"
-                            alt="Forum"
-                            class="page-icon"
-                        />
-                    </li>
-                    <li>
-                        <span class="page-title">Crear nuevo tema</span>
-                    </li>
-                </ul>
+            <!--Titulo-->
+            <div class="titulo-logsign">
+                <h2>Iniciar sesión</h2>
             </div>
 
-            <!-- Barra de navegacion -->
-            <div class="container">
-                <ul class="nav-bar">
-                    <li>
-                        <a href="dashboard.html"
-                            ><img
-                                src="images/home.svg"
-                                alt="Home"
-                                id="home-icon"
-                        /></a>
-                    </li>
-                    <li>
-                        <span class="items-nav"
-                            ><a href="dashboard.html">Inicio</a></span
+            <!--Formulario-->
+            <div class="formulario">
+                <form class="info-usuario" action="j_security_check" method="post">
+                    <div class="cajon-info">
+                        <label class="texto-info"
+                            >Introduce tu email o nickname</label
                         >
-                    </li>
-                    <li>
-                        <img src="images/arrow.svg" alt="Arrow" id="arrow" />
-                    </li>
-                    <li>
-                        <span class="items-nav"
-                            ><a href="subjects.html">Asignaturas</a></span
-                        >
-                    </li>
-                    <li>
-                        <img src="images/arrow.svg" alt="Arrow" id="arrow" />
-                    </li>
-                    <li>
-                        <span class="items-nav"
-                            ><a href="forum.html"
-                                >Fundamentos de Programación</a
-                            ></span
-                        >
-                    </li>
-                    <li>
-                        <img src="images/arrow.svg" alt="Arrow" id="arrow" />
-                    </li>
-                    <li>
-                        <span class="items-nav"
-                            ><a href="#">Crear nuevo tema</a></span
-                        >
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Formulario -->
-            <div class="container">
-                <form action="" method="post">
-                    <div class="form-group">
-                        <label for="titulo">Título</label>
                         <input
+                            name="j_username"
                             type="text"
-                            id="titulo"
-                            name="titulo"
-                            placeholder="Introduce el titulo del tema"
+                            class="input-info"
                             required
                         />
-
-                        <label for="mensaje">Mensaje</label>
-                        <textarea
-                            id="mensaje"
-                            name="mensaje"
-                            placeholder="Escribe tu mensaje aquí..."
-                            required
-                        ></textarea>
-                        <button type="submit" class="btn">Publicar</button>
                     </div>
+
+                    <div class="cajon-info">
+                        <label class="texto-info"
+                            >Introduce tu contraseña</label
+                        >
+                        <input
+                            name="j_password"
+                            type="password"
+                            class="input-info"
+                            required
+                        />
+                        <a href="resetpw.html" class="olvido-password"
+                            >¿Has olvidado tu contraseña?</a
+                        >
+                    </div>
+
+                    <button type="submit" class="boton-enviar">
+                        Iniciar sesión
+                    </button>
                 </form>
             </div>
         </div>
 
         <!-- Pie de pagina -->
-        <footer>
-            <div class="info">
-                <h1>StudyHub</h1>
-                <ul>
-                    <li><a href="#">Cookies</a></li>
-                    <li><a href="#">Términos y Condiciones</a></li>
-                    <li><a href="#">Privacidad</a></li>
-                </ul>
-            </div>
-
-            <div class="otros">
-                <ul id="socials">
-                    <li><a href="contact.html">Contacto</a></li>
-                    <li><a href="#">Preguntas frecuentes</a></li>
-                </ul>
-                <p id="copyright">© StudyHub | 2024</p>
-                <ul id="socials">
-                    <li>
-                        <a href="#"
-                            ><img src="images/tiktok.svg" alt="tiktok"
-                        /></a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            ><img src="images/facebook.svg" alt="facebook"
-                        /></a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            ><img src="images/instagram.svg" alt="instagram"
-                        /></a>
-                    </li>
-                    <li>
-                        <a href="#"
-                            ><img src="images/twitter.svg" alt="twitter"
-                        /></a>
-                    </li>
-                </ul>
-            </div>
-        </footer>
     </body>
 </html>

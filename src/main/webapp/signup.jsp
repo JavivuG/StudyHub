@@ -1,3 +1,5 @@
+<%@ page language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,6 +18,7 @@
         />
         <link rel="icon" type="image/png" href="images/icono.png" />
         <script src="scripts/logo.js"></script>
+        
     </head>
 
     <!--Cabecera-->
@@ -24,7 +27,7 @@
             <header>
                 <div class="container">
                     <nav class="nav-main">
-                        <a href="index.html">
+                        <a href="index.jsp">
                             <svg
                                 class="logo-header"
                                 width="262"
@@ -66,7 +69,7 @@
                             </li>
 
                             <li>
-                                <a href="login.html" class="boton-inicio"
+                                <a href="login.jsp" class="boton-inicio"
                                     >Iniciar Sesión</a
                                 >
                             </li>
@@ -82,7 +85,7 @@
 
             <div class="formulario">
                 <!--Formulario-->
-                <form class="info-usuario">
+                <form class="info-usuario" action="./Register" method="post">
                     <div class="cajon-info">
                         <label class="texto-info"
                             >Introduce tu nombre (No será visible por otros
@@ -93,6 +96,18 @@
                             type="text"
                             class="input-info"
                             required
+                        />
+                    </div>
+
+                    <div class="cajon-info">
+                        <label class="texto-info"
+                        >Introduce tus apellidos</label
+                        >
+                        <input
+                                name="apellidos"
+                                type="text"
+                                class="input-info"
+                                required
                         />
                     </div>
 
@@ -126,7 +141,7 @@
                             >Introduce una constraseña</label
                         >
                         <input
-                            name="password1"
+                            name="password"
                             type="password"
                             class="input-info"
                             required
@@ -136,7 +151,7 @@
                     <div class="cajon-info">
                         <label class="texto-info">Confirme la contraseña</label>
                         <input
-                            name="password2"
+                            name="password1"
                             type="password"
                             class="input-info"
                             required
@@ -163,7 +178,7 @@
                                 id="rol1"
                                 type="radio"
                                 class="input-rol"
-                                value="Estudiante"
+                                value="estudiante"
                                 required
                             />
                             <label for="rol1">Estudiante</label>
@@ -172,7 +187,7 @@
                                 id="rol2"
                                 type="radio"
                                 class="input-rol"
-                                value="Profesor"
+                                value="profesor"
                                 required
                             />
                             <label for="rol2">Profesor</label>

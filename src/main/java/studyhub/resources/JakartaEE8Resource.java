@@ -1,4 +1,4 @@
-package com.mycompany.pssw.resources;
+package studyhub.resources;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
