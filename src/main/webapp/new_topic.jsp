@@ -1,7 +1,6 @@
 <%@ page language="java" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="studyhub.business.Asignatura" %>
-<%@page import="java.util.ArrayList"%>
 
 <!DOCTYPE html>
 <html lang="es">
