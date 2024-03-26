@@ -132,7 +132,7 @@
         <div class="ag-courses_box">
             
           
-           <% ArrayList<Asignatura> asignaturas = (ArrayList<Asignatura>) request.getAttribute("asignaturas"); %>
+           <% ArrayList<Asignatura> asignaturas = (ArrayList<Asignatura>) session.getAttribute("asignaturas"); %>
            <% for(int i=0; i<asignaturas.size(); i++){%>
                 <div class="ag-courses_item">
                  <a href="forum.jsp" class="ag-courses-item_link">
