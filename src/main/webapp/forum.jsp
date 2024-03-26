@@ -172,62 +172,39 @@
                         <div class="cajas-container">
                             <h2 class="titulo-contenido">Temas destacados</h2>
                             <ul>
-                                <a href="#"
+                                <% ArrayList<Tema> listaTemasDestacados=(ArrayList<Tema>) session.getAttribute("temas_destacados");
+                                for (int i=0; i<listaTemasDestacados.size(); i++){
+                                Tema temaActualDestacado=listaTemasDestacados.get(i);
+                                %> 
+                                <a href="topic.jsp?idForo=<%=temaActualDestacado.getId_foro()%>&idTema=<%=temaActualDestacado.getId_tema()%>"
                                     ><li>
                                         <div class="caja-tema">
-                                            <h3>Exámenes</h3>
+                                            <h3><%= temaActualDestacado.getTitulo() %></h3>
                                             <p>
-                                                por <span>bookworm</span> • 23
-                                                comentarios • hace 1 minuto
+                                                por <span><%= temaActualDestacado.getNickname() %></span> • <%= temaActualDestacado.getTiempoPublicado() %>
                                             </p>
                                         </div>
                                     </li></a
                                 >
-                                <a href="#"
-                                    ><li>
-                                        <div class="caja-tema">
-                                            <h3>
-                                                Sitios web útiles para practicar
-                                                programación
-                                            </h3>
-                                            <p>
-                                                por <span>johndoe</span> • 12
-                                                comentarios • hace 3 días
-                                            </p>
-                                        </div>
-                                    </li></a
-                                >
-                                <a href="topic.jsp"
-                                    ><li>
-                                        <div class="caja-tema">
-                                            <h3>
-                                                Aplazar entrega del proyecto
-                                            </h3>
-                                            <p>
-                                                por <span>janedoe</span> • 5
-                                                comentarios • hace 1 día
-                                            </p>
-                                        </div>
-                                    </li></a
-                                >
+                                <% } %>
+                                
                             </ul>
                         </div>
                         <div class="cajas-container">
                             <h2 class="titulo-contenido">Temas recientes</h2>
                             <ul>
-                                <% ArrayList<Tema> listaTemas=(ArrayList<Tema>) session.getAttribute("temas");
-                                for (int i=0; i<listaTemas.size(); i++){
-                                Tema tema=listaTemas.get(i);
+                                <% ArrayList<Tema> listaTemasRecientes=(ArrayList<Tema>) session.getAttribute("temas_recientes");
+                                for (int i=0; i<listaTemasRecientes.size(); i++){
+                                Tema temaActualReciente=listaTemasRecientes.get(i);
                                 %>
-                                <a href="topic.jsp?idForo=<%=tema.getId_foro()%>&idTema=<%=tema.getId_tema()%>"
+                                <a href="topic.jsp?idForo=<%=temaActualReciente.getId_foro()%>&idTema=<%=temaActualReciente.getId_tema()%>"
                                     ><li>
                                         <div class="caja-tema">
                                             <h3>
-                                                <%= tema.getTitulo() %>
+                                                <%= temaActualReciente.getTitulo() %>
                                             </h3>
                                             <p>
-                                                por <span><%= tema.getNickname() %></span> • 5
-                                                comentarios • <%= tema.getTiempoPublicado() %>
+                                                por <span><%= temaActualReciente.getNickname() %></span> • <%= temaActualReciente.getTiempoPublicado() %>
                                             </p>
                                         </div>
                                     </li></a

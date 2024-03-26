@@ -110,10 +110,10 @@ INSERT INTO ROL (nickname, rol) VALUES ('xXmanoloXx', 'estudiante');
 INSERT INTO ROL (nickname, rol) VALUES ('TheMarias', 'estudiante');
 
 
-INSERT INTO TEMA (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es un algoritmo?', 'Explicación de lo que es un algoritmo y su importancia en la programación.', '2022-01-01 12:13:21', 0, 0, 'javivu', 1);
-INSERT INTO TEMA (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es un bucle?', 'Explicación de lo que es un bucle y su importancia en la programación.', '2022-01-01 23:40:21', 0, 0, 'joselito12', 1);
-INSERT INTO TEMA (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es una variable?', 'Explicación de lo que es una variable y su importancia en la programación.', '2022-01-01 10:30:00', 0, 0, 'therealpepe', 1);
-INSERT INTO TEMA (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es una función?', 'Explicación de lo que es una función y su importancia en la programación.', '2022-01-01 14:34:01', 0, 0, 'TheMarias', 1);
+INSERT INTO TEMA (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es un algoritmo?', 'Explicación de lo que es un algoritmo y su importancia en la programación.', '2024-03-12 12:13:21', 0, 0, 'javivu', 1);
+INSERT INTO TEMA (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es un bucle?', 'Explicación de lo que es un bucle y su importancia en la programación.', '2024-02-14 23:40:21', 0, 0, 'joselito12', 1);
+INSERT INTO TEMA (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es una variable?', 'Explicación de lo que es una variable y su importancia en la programación.', '2024-03-26 10:30:00', 0, 0, 'therealpepe', 1);
+INSERT INTO TEMA (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es una función?', 'Explicación de lo que es una función y su importancia en la programación.', '2024-03-26 19:30:01', 0, 0, 'TheMarias', 1);
 
 
 INSERT INTO COMENTARIO (texto, fecha_creacion, likes, dislikes, id_tema, nickname) VALUES ('Muy buena explicación, gracias!', '2022-01-01 21:37:09', 0, 0, 1, 'javivu');
@@ -121,7 +121,7 @@ INSERT INTO COMENTARIO (texto, fecha_creacion, likes, dislikes, id_tema, nicknam
 INSERT INTO COMENTARIO (texto, fecha_creacion, likes, dislikes, id_tema, nickname) VALUES ('¿Podrías poner un ejemplo de una variable?', '2022-01-01 17:49:00', 0, 0, 1, 'therealpepe');
 INSERT INTO COMENTARIO (texto, fecha_creacion, likes, dislikes, id_tema, nickname) VALUES ('¿Podrías poner un ejemplo de una función?', '2022-01-01 11:01:12', 0, 0, 1, 'TheMarias');
 
-INSERT INTO FICHERO (nombre, tipo, fecha_publicacion, nickname, id_foro) VALUES ('Algoritmo1', 'pdf', '2022-01-01 19:01:12', 'javivu', 1);
-INSERT INTO FICHERO (nombre, tipo, fecha_publicacion, nickname, id_foro) VALUES ('Algoritmo2', 'pdf', '2022-01-01 15:34:23', 'javivu', 1);
-INSERT INTO FICHERO (nombre, tipo, fecha_publicacion, nickname, id_foro) VALUES ('Algoritmo3', 'pdf', '2022-01-01 14:24:12', 'javivu', 1);
-INSERT INTO FICHERO (nombre, tipo, fecha_publicacion, nickname, id_foro) VALUES ('Algoritmo4', 'pdf', '2022-01-01 06:10:09', 'javivu', 1);
+INSERT INTO FICHERO (nombre, tipo, fecha_publicacion, nickname, id_foro) VALUES ('Introd_Prog', 'pdf', '2024-03-25 19:01:12', 'javivu', 1);
+INSERT INTO FICHERO (nombre, tipo, fecha_publicacion, nickname, id_foro) VALUES ('Bucles_for', 'pdf', '2024-03-26 19:36:00', 'javivu', 1);
+INSERT INTO FICHERO (nombre, tipo, fecha_publicacion, nickname, id_foro) VALUES ('Explicacion_librerias', 'pdf', '2024-03-26 14:24:12', 'javivu', 1);
+INSERT INTO FICHERO (nombre, tipo, fecha_publicacion, nickname, id_foro) VALUES ('Apuntes_tema4', 'pdf', '2024-03-26 06:10:09', 'javivu', 1);

@@ -140,10 +140,7 @@ public class Comentario implements Serializable{
         }
         else if (minutos > 0){
             diferencia="Hace "+ minutos + " minutos";
-            
-            if (minutos > 0){
-                diferencia=diferencia+" y "+ segundos +" segundos";
-            }
+
         }
         else if (segundos > 0) {
             diferencia="Hace "+ segundos +" segundos";
