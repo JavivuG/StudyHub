@@ -4,6 +4,7 @@
  */
 package studyhub.business;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
  *
  * @author javier
  */
-public class Fichero {
+public class Fichero implements Serializable{
     private int id_fichero;
     private String nombre;
     private String tipo;

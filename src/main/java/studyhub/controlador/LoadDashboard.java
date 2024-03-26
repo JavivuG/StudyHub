@@ -22,19 +22,22 @@ import studyhub.data.ForoDB;
  *
  * @author javi
  */
-@WebServlet(name = "LoadSubjects", urlPatterns = {"/LoadSubjects"})
-public class LoadSubjects extends HttpServlet {
+@WebServlet(name = "LoadDashboard", urlPatterns = {"/LoadDashboard"})
+public class LoadDashboard extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Obtener los parametros de la peticion
         HttpSession session = request.getSession();
+        int MAX_ASIGNATURAS=9;
+        
         ArrayList<Asignatura> asignaturas=null;
-        asignaturas=ForoDB.getAsignaturas();
+        asignaturas=ForoDB.getAsignaturas(MAX_ASIGNATURAS);
+        
         // Almacena los datos en el alcance de la solicitud
         session.setAttribute("asignaturas", asignaturas);
-        response.sendRedirect("subjects.jsp");
+        response.sendRedirect("dashboard.jsp");
     }
 
    

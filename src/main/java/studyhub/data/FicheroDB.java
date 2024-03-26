@@ -58,4 +58,46 @@ public class FicheroDB {
             return null;
         }
     } 
+    
+    public static ArrayList<Fichero> getFicherosMax(String id_foro, int max_ficheros) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query;
+        
+        query = "SELECT * FROM FICHERO WHERE id_foro=? LIMIT ?";
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, id_foro);
+            ps.setInt(2, max_ficheros);
+            rs = ps.executeQuery();
+            Fichero fichero = null;
+            ArrayList<Fichero> listaFicheros=new ArrayList<>();
+            Timestamp timestamp;
+            
+            while (rs.next()) {
+                fichero = new Fichero();
+                fichero.setId_fichero(rs.getInt("id_fichero"));
+                fichero.setNombre(rs.getString("nombre"));
+                fichero.setTipo(rs.getString("tipo"));
+                timestamp=rs.getTimestamp("fecha_publicacion");
+                fichero.setFecha_publicacion(timestamp.toLocalDateTime());
+                fichero.setNickname(rs.getString("nickname"));
+                fichero.setId_foro(rs.getInt("id_foro"));
+                
+                listaFicheros.add(fichero);
+            }
+            
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return listaFicheros;
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    } 
 }

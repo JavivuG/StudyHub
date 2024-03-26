@@ -1,5 +1,10 @@
-<%@ page language="java" %> <%@ page contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8" %>
+<%@ page language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="studyhub.business.Fichero" %>
+<%@ page import="studyhub.business.Asignatura" %>
+<%@page import="java.util.ArrayList"%>
+<jsp:include page="/LoadFiles" />
+
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -108,8 +113,9 @@ pageEncoding="UTF-8" %>
           <img src="images/arrow.svg" alt="Arrow" id="arrow" />
         </li>
         <li>
+          <% Asignatura asignatura=(Asignatura) session.getAttribute("asignatura"); %>
           <span class="items-nav"
-            ><a href="forum.jsp">Fundamentos de Programación</a></span
+            ><a href="forum.jsp?idForo=<%=asignatura.getID_asignatura()%>"><%= asignatura.getNombre() %></a></span
           >
         </li>
         <li>
@@ -124,8 +130,9 @@ pageEncoding="UTF-8" %>
     <div class="container">
       <div class="title-fich">
         <div class="subject">
-          <h2>Fundamentos de Programación</h2>
-          <p>1º Curso de Ing. Informática</p>
+            
+          <h2><%= asignatura.getNombre() %></h2>
+          <p><%= asignatura.getCurso() %></p>
         </div>
         <img src="images/upload.svg" alt="Subir" id="upload" />
       </div>
@@ -133,145 +140,23 @@ pageEncoding="UTF-8" %>
 
     <div class="ag-format-container">
       <div class="ag-courses_box">
+        <% ArrayList<Fichero> listaFicheros=(ArrayList<Fichero>) session.getAttribute("ficheros");
+        for (int i=0; i<listaFicheros.size(); i++){
+        Fichero ficheroActual = listaFicheros.get(i); %>
+              
         <div class="ag-courses_item">
           <div class="ag-courses_content">
             <a href="#" class="ag-courses-item_link">
               <div class="nombre-fich">
                 <img src="images/fichero.svg" alt="pdf" id="fich-icon" />
-                <div class="ag-courses-item_title">Tema1_Introd_prog</div>
+                <div class="ag-courses-item_title"><%= ficheroActual.getNombre() %></div>
               </div>
               <img src="images/download.svg" alt="Descargar" />
             </a>
           </div>
         </div>
-
-        <div class="ag-courses_item">
-          <div class="ag-courses_content">
-            <a href="#" class="ag-courses-item_link">
-              <div class="nombre-fich">
-                <img src="images/fichero.svg" alt="pdf" id="fich-icon" />
-                <div class="ag-courses-item_title">Apuntes_tema_5</div>
-              </div>
-              <img src="images/download.svg" alt="Descargar" />
-            </a>
-          </div>
-        </div>
-
-        <div class="ag-courses_item">
-          <div class="ag-courses_content">
-            <a href="#" class="ag-courses-item_link">
-              <div class="nombre-fich">
-                <img src="images/fichero.svg" alt="pdf" id="fich-icon" />
-                <div class="ag-courses-item_title">Introd_java</div>
-              </div>
-              <img src="images/download.svg" alt="Descargar" />
-            </a>
-          </div>
-        </div>
-
-        <div class="ag-courses_item">
-          <div class="ag-courses_content">
-            <a href="#" class="ag-courses-item_link">
-              <div class="nombre-fich">
-                <img src="images/fichero.svg" alt="pdf" id="fich-icon" />
-                <div class="ag-courses-item_title">Mastering_c</div>
-              </div>
-              <img src="images/download.svg" alt="Descargar" />
-            </a>
-          </div>
-        </div>
-        <div class="ag-courses_item">
-          <div class="ag-courses_content">
-            <a href="#" class="ag-courses-item_link">
-              <div class="nombre-fich">
-                <img src="images/fichero.svg" alt="pdf" id="fich-icon" />
-                <div class="ag-courses-item_title">Introduction_to_gcc</div>
-              </div>
-              <img src="images/download.svg" alt="Descargar" />
-            </a>
-          </div>
-        </div>
-        <div class="ag-courses_item">
-          <div class="ag-courses_content">
-            <a href="#" class="ag-courses-item_link">
-              <div class="nombre-fich">
-                <img src="images/fichero.svg" alt="pdf" id="fich-icon" />
-                <div class="ag-courses-item_title">Bucles_en_java</div>
-              </div>
-              <img src="images/download.svg" alt="Descargar" />
-            </a>
-          </div>
-        </div>
-        <div class="ag-courses_item">
-          <div class="ag-courses_content">
-            <a href="#" class="ag-courses-item_link">
-              <div class="nombre-fich">
-                <img src="images/fichero.svg" alt="pdf" id="fich-icon" />
-                <div class="ag-courses-item_title">
-                  Introducción_a_la_programación
-                </div>
-              </div>
-              <img src="images/download.svg" alt="Descargar" />
-            </a>
-          </div>
-        </div>
-        <div class="ag-courses_item">
-          <div class="ag-courses_content">
-            <a href="#" class="ag-courses-item_link">
-              <div class="nombre-fich">
-                <img src="images/fichero.svg" alt="pdf" id="fich-icon" />
-                <div class="ag-courses-item_title">estructuras_control</div>
-              </div>
-              <img src="images/download.svg" alt="Descargar" />
-            </a>
-          </div>
-        </div>
-        <div class="ag-courses_item">
-          <div class="ag-courses_content">
-            <a href="#" class="ag-courses-item_link">
-              <div class="nombre-fich">
-                <img src="images/fichero.svg" alt="pdf" id="fich-icon" />
-                <div class="ag-courses-item_title">java_for_beginners</div>
-              </div>
-              <img src="images/download.svg" alt="Descargar" />
-            </a>
-          </div>
-        </div>
-        <div class="ag-courses_item">
-          <div class="ag-courses_content">
-            <a href="#" class="ag-courses-item_link">
-              <div class="nombre-fich">
-                <img src="images/fichero.svg" alt="pdf" id="fich-icon" />
-                <div class="ag-courses-item_title">
-                  Compiladores_y_lenguajes
-                </div>
-              </div>
-              <img src="images/download.svg" alt="Descargar" />
-            </a>
-          </div>
-        </div>
-        <div class="ag-courses_item">
-          <div class="ag-courses_content">
-            <a href="#" class="ag-courses-item_link">
-              <div class="nombre-fich">
-                <img src="images/fichero.svg" alt="pdf" id="fich-icon" />
-                <div class="ag-courses-item_title">Programación_en_C</div>
-              </div>
-              <img src="images/download.svg" alt="Descargar" />
-            </a>
-          </div>
-        </div>
-        <div class="ag-courses_item">
-          <div class="ag-courses_content">
-            <a href="#" class="ag-courses-item_link">
-              <div class="nombre-fich">
-                <img src="images/fichero.svg" alt="pdf" id="fich-icon" />
-                <div class="ag-courses-item_title">Scripting_en_python</div>
-              </div>
-              <img src="images/download.svg" alt="Descargar" />
-            </a>
-          </div>
-        </div>
+        <% } %>
+              
       </div>
     </div>
 

@@ -12,6 +12,8 @@ import studyhub.data.ForoDB;
 
 @WebServlet("/Register")
 public class RegisterUserServlet extends HttpServlet {
+    
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
@@ -52,6 +54,7 @@ public class RegisterUserServlet extends HttpServlet {
         dispatcher.forward(request, response);
     }
     
+    @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response)
             throws ServletException, IOException {

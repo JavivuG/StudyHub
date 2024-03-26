@@ -4,6 +4,7 @@
  */
 package studyhub.business;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
  *
  * @author javier
  */
-public class Tema {
+public class Tema implements Serializable {
     private int id_tema;
     private String titulo;
     private String descripcion;
