@@ -33,6 +33,7 @@ public class LoadSubjects extends HttpServlet {
         asignaturas=ForoDB.getAsignaturas();
         // Almacena los datos en el alcance de la solicitud
         session.setAttribute("asignaturas", asignaturas);
+        response.sendRedirect("subjects.jsp");
     }
 
    

@@ -3,9 +3,12 @@ package studyhub.controlador;
 import studyhub.business.User;
 import studyhub.data.UserDB;
 import java.io.*;
+import java.util.ArrayList;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+import studyhub.business.Asignatura;
+import studyhub.data.ForoDB;
 
 @WebServlet("/Register")
 public class RegisterUserServlet extends HttpServlet {
@@ -34,6 +37,7 @@ public class RegisterUserServlet extends HttpServlet {
         // Guardar objeto user en la sesion
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
+
         int res=UserDB.register(user);
         if (res > 0){
             System.out.println("Usuario registrado satisfactoriamente");
