@@ -1,5 +1,8 @@
-<%@ page language="java" %> <%@ page contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8" %>
+<%@ page language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="studyhub.business.Asignatura" %>
+<%@page import="java.util.ArrayList"%>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -136,8 +139,9 @@ pageEncoding="UTF-8" %>
                     </li>
                     <li>
                         <span class="items-nav"
-                            ><a href="forum.jsp"
-                                >Fundamentos de Programación</a
+                              <% Asignatura asignatura=(Asignatura) session.getAttribute("asignatura"); %>
+                            ><a href="forum.jsp?idForo=<%=asignatura.getID_asignatura()%>"
+                                ><%= asignatura.getNombre() %></a
                             ></span
                         >
                     </li>
