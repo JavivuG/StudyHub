@@ -2,6 +2,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="studyhub.business.Tema" %>
 <%@ page import="studyhub.business.Comentario" %>
+<%@ page import="studyhub.business.Asignatura" %>
 <%@page import="java.util.ArrayList"%>
 <jsp:include page="/LoadTopic" />
 
@@ -155,8 +156,9 @@
                     </li>
                     <li>
                         <span class="items-nav"
+                              <% Asignatura asignatura=(Asignatura) session.getAttribute("asignatura"); %>
                               ><a href="forum.jsp?idForo=<%= request.getParameter("idForo")%>"
-                                >Fundamentos de Programación</a
+                                ><%= asignatura.getNombre() %></a
                             ></span
                         >
                     </li>
