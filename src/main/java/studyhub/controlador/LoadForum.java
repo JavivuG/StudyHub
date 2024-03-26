@@ -34,18 +34,21 @@ public class LoadForum extends HttpServlet {
         // Obtener los parametros de la peticion
         HttpSession session = request.getSession();
         int MAX_FICHEROS=6;
+        int MAX_TEMAS=3;
         
-        ArrayList<Tema> listaTemas;
+        ArrayList<Tema> listaTemasRecientes, listaTemasDestacados;
         ArrayList<Fichero> listaFicheros;
         String id_foro=request.getParameter("idForo");
         String url="forum.jsp?idForo="+id_foro;
         
-        listaTemas=TemaDB.getTemas(id_foro);
-        listaFicheros=FicheroDB.getFicherosMax(id_foro,MAX_FICHEROS);
+        listaTemasRecientes=TemaDB.getTemasRecientes(id_foro,MAX_TEMAS);
+        listaTemasDestacados=TemaDB.getTemasDestacados(id_foro,MAX_TEMAS);
+        listaFicheros=FicheroDB.getFicherosRecientes(id_foro,MAX_FICHEROS);
         Asignatura asignatura=ForoDB.getAsignatura(id_foro);
         
         session.setAttribute("asignatura", asignatura);
-        session.setAttribute("temas", listaTemas);
+        session.setAttribute("temas_recientes", listaTemasRecientes);
+        session.setAttribute("temas_destacados", listaTemasDestacados);
         session.setAttribute("ficheros", listaFicheros);
        
         response.sendRedirect(url);

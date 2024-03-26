@@ -59,14 +59,14 @@ public class FicheroDB {
         }
     } 
     
-    public static ArrayList<Fichero> getFicherosMax(String id_foro, int max_ficheros) {
+    public static ArrayList<Fichero> getFicherosRecientes(String id_foro, int max_ficheros) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         String query;
         
-        query = "SELECT * FROM FICHERO WHERE id_foro=? LIMIT ?";
+        query = "SELECT * FROM FICHERO WHERE id_foro=? ORDER BY fecha_publicacion DESC LIMIT ?";
 
         try {
             ps = connection.prepareStatement(query);

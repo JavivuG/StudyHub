@@ -165,7 +165,7 @@
         <h1>StudyHub</h1>
         <ul>
           <li><a href="#">Cookies</a></li>
-          <li><a href="#">TÃ©rminos y Condiciones</a></li>
+          <li><a href="#">Términos y Condiciones</a></li>
           <li><a href="#">Privacidad</a></li>
         </ul>
       </div>
@@ -175,7 +175,7 @@
           <li><a href="contact.jsp">Contacto</a></li>
           <li><a href="#">Preguntas frecuentes</a></li>
         </ul>
-        <p id="copyright">Â© StudyHub | 2024</p>
+        <p id="copyright">© StudyHub | 2024</p>
         <ul id="socials">
           <li>
             <a href="#"><img src="images/tiktok.svg" alt="tiktok" /></a>
