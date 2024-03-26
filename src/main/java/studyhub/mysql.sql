@@ -41,7 +41,7 @@ CREATE TABLE TEMA (
     id_tema INT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(50),
     descripcion VARCHAR(1000),
-    fecha_publicacion DATE,
+    fecha_publicacion TIMESTAMP,
     likes INT,
     dislikes INT,
     nickname VARCHAR(50),
@@ -56,7 +56,7 @@ CREATE TABLE TEMA (
 CREATE TABLE COMENTARIO (
     id_comentario INT AUTO_INCREMENT PRIMARY KEY,
     texto VARCHAR(1000),
-    fecha_creacion DATE,
+    fecha_creacion TIMESTAMP,
     likes INT,
     dislikes INT,
     id_tema INT,
@@ -74,6 +74,7 @@ CREATE TABLE FICHERO (
     id_fichero INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50),
     tipo VARCHAR(50),
+    fecha_publicacion TIMESTAMP,
     nickname VARCHAR(50),
     id_foro INT,
     FOREIGN KEY (nickname) REFERENCES USUARIO(nickname),
@@ -109,18 +110,18 @@ INSERT INTO ROL (nickname, rol) VALUES ('xXmanoloXx', 'estudiante');
 INSERT INTO ROL (nickname, rol) VALUES ('TheMarias', 'estudiante');
 
 
-INSERT INTO TEMA (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es un algoritmo?', 'Explicación de lo que es un algoritmo y su importancia en la programación.', '2022-01-01', 0, 0, 'javivu', 1);
-INSERT INTO TEMA (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es un bucle?', 'Explicación de lo que es un bucle y su importancia en la programación.', '2022-01-01', 0, 0, 'joselito12', 1);
-INSERT INTO TEMA (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es una variable?', 'Explicación de lo que es una variable y su importancia en la programación.', '2022-01-01', 0, 0, 'therealpepe', 1);
-INSERT INTO TEMA (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es una función?', 'Explicación de lo que es una función y su importancia en la programación.', '2022-01-01', 0, 0, 'TheMarias', 1);
+INSERT INTO TEMA (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es un algoritmo?', 'Explicación de lo que es un algoritmo y su importancia en la programación.', '2022-01-01 12:13:21', 0, 0, 'javivu', 1);
+INSERT INTO TEMA (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es un bucle?', 'Explicación de lo que es un bucle y su importancia en la programación.', '2022-01-01 23:40:21', 0, 0, 'joselito12', 1);
+INSERT INTO TEMA (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es una variable?', 'Explicación de lo que es una variable y su importancia en la programación.', '2022-01-01 10:30:00', 0, 0, 'therealpepe', 1);
+INSERT INTO TEMA (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es una función?', 'Explicación de lo que es una función y su importancia en la programación.', '2022-01-01 14:34:01', 0, 0, 'TheMarias', 1);
 
 
-INSERT INTO COMENTARIO (texto, fecha_creacion, likes, dislikes, id_tema, nickname) VALUES ('Muy buena explicación, gracias!', '2022-01-01', 0, 0, 1, 'javivu');
-INSERT INTO COMENTARIO (texto, fecha_creacion, likes, dislikes, id_tema, nickname) VALUES ('No entiendo muy bien el concepto, ¿podrías explicarlo de otra forma?', '2022-01-01', 0, 0, 1, 'joselito12');
-INSERT INTO COMENTARIO (texto, fecha_creacion, likes, dislikes, id_tema, nickname) VALUES ('¿Podrías poner un ejemplo de una variable?', '2022-01-01', 0, 0, 1, 'therealpepe');
-INSERT INTO COMENTARIO (texto, fecha_creacion, likes, dislikes, id_tema, nickname) VALUES ('¿Podrías poner un ejemplo de una función?', '2022-01-01', 0, 0, 1, 'TheMarias');
+INSERT INTO COMENTARIO (texto, fecha_creacion, likes, dislikes, id_tema, nickname) VALUES ('Muy buena explicación, gracias!', '2022-01-01 21:37:09', 0, 0, 1, 'javivu');
+INSERT INTO COMENTARIO (texto, fecha_creacion, likes, dislikes, id_tema, nickname) VALUES ('No entiendo muy bien el concepto, ¿podrías explicarlo de otra forma?', '2022-01-01 00:01:46', 0, 0, 1, 'joselito12');
+INSERT INTO COMENTARIO (texto, fecha_creacion, likes, dislikes, id_tema, nickname) VALUES ('¿Podrías poner un ejemplo de una variable?', '2022-01-01 17:49:00', 0, 0, 1, 'therealpepe');
+INSERT INTO COMENTARIO (texto, fecha_creacion, likes, dislikes, id_tema, nickname) VALUES ('¿Podrías poner un ejemplo de una función?', '2022-01-01 11:01:12', 0, 0, 1, 'TheMarias');
 
-INSERT INTO FICHERO (nombre, tipo, nickname, id_foro) VALUES ('Algoritmo1', 'pdf', 'javivu', 1);
-INSERT INTO FICHERO (nombre, tipo, nickname, id_foro) VALUES ('Algoritmo2', 'pdf', 'javivu', 1);
-INSERT INTO FICHERO (nombre, tipo, nickname, id_foro) VALUES ('Algoritmo3', 'pdf', 'javivu', 1);
-INSERT INTO FICHERO (nombre, tipo, nickname, id_foro) VALUES ('Algoritmo4', 'pdf', 'javivu', 1);
+INSERT INTO FICHERO (nombre, tipo, fecha_publicacion, nickname, id_foro) VALUES ('Algoritmo1', 'pdf', '2022-01-01 19:01:12', 'javivu', 1);
+INSERT INTO FICHERO (nombre, tipo, fecha_publicacion, nickname, id_foro) VALUES ('Algoritmo2', 'pdf', '2022-01-01 15:34:23', 'javivu', 1);
+INSERT INTO FICHERO (nombre, tipo, fecha_publicacion, nickname, id_foro) VALUES ('Algoritmo3', 'pdf', '2022-01-01 14:24:12', 'javivu', 1);
+INSERT INTO FICHERO (nombre, tipo, fecha_publicacion, nickname, id_foro) VALUES ('Algoritmo4', 'pdf', '2022-01-01 06:10:09', 'javivu', 1);

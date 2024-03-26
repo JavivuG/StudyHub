@@ -19,11 +19,11 @@ public class Asignatura {
         this.curso="";
     }
 
-    public int getID() {
+    public int getID_asignatura() {
         return id_asignatura;
     }
 
-    public void setID(int id_asignatura) {
+    public void setID_asignatura(int id_asignatura) {
         this.id_asignatura = id_asignatura;
     }
 
