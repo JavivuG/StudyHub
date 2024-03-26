@@ -132,19 +132,21 @@
         <div class="ag-courses_box">
             
           
-           <% ArrayList<Asignatura> asignaturas = (ArrayList<Asignatura>) session.getAttribute("asignaturas"); %>
-           <% for(int i=0; i<asignaturas.size(); i++){%>
+           <% ArrayList<Asignatura> listaAsignaturas = (ArrayList<Asignatura>) session.getAttribute("asignaturas");
+           for(int i=0; i<listaAsignaturas.size(); i++){
+           Asignatura asignatura=listaAsignaturas.get(i);
+           %>
                 <div class="ag-courses_item">
-                 <a href="forum.jsp" class="ag-courses-item_link">
+                 <a href="forum.jsp?idForo=<%= asignatura.getID_asignatura()%>" class="ag-courses-item_link">
                    <div class="ag-courses-item_bg"></div>
 
                    <div class="ag-courses-item_title">
-                       <%= asignaturas.get(i).getNombre() %>
+                       <%= asignatura.getNombre() %>
                    </div>
 
                    <div class="ag-courses-item_description-box">
                      <span class="ag-courses-item_description">
-                       <%= asignaturas.get(i).getCurso() %>
+                       <%= asignatura.getCurso() %>
                      </span>
                    </div>
                  </a>

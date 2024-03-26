@@ -23,6 +23,7 @@ public class ForoDB {
             
             while (rs.next()) {
                 asignatura = new Asignatura();
+                asignatura.setID_asignatura(rs.getInt("id_foro"));
                 asignatura.setNombre(rs.getString("nombre"));
                 asignatura.setCurso(rs.getString("curso"));
                 listaAsignaturas.add(asignatura);

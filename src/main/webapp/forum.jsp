@@ -1,5 +1,10 @@
-<%@ page language="java" %> <%@ page contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8" %>
+<%@ page language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="studyhub.business.Tema" %>
+<%@ page import="studyhub.business.Fichero" %>
+<%@page import="java.util.ArrayList"%>
+<jsp:include page="/LoadForum" />
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -208,58 +213,25 @@ pageEncoding="UTF-8" %>
                         <div class="cajas-container">
                             <h2 class="titulo-contenido">Temas recientes</h2>
                             <ul>
-                                <a href="#"
+                                <% ArrayList<Tema> listaTemas=(ArrayList<Tema>) session.getAttribute("temas");
+                                for (int i=0; i<listaTemas.size(); i++){
+                                Tema tema=listaTemas.get(i);
+                                %>
+                                <a href="forum.jsp?idForo=<%=tema.getId_foro()%>&idTema=<%=tema.getId_tema()%>"
                                     ><li>
                                         <div class="caja-tema">
                                             <h3>
-                                                ¿Cómo se hace el triángulo de
-                                                Pascal?
+                                                <%= tema.getTitulo() %>
                                             </h3>
                                             <p>
-                                                por <span>Skywalker42</span> • 5
-                                                comentarios • hace 30 minutos
+                                                por <span><%= tema.getNickname() %></span> • 5
+                                                comentarios • <%= tema.getTiempoPublicado() %>
                                             </p>
                                         </div>
                                     </li></a
                                 >
-                                <a href="#"
-                                    ><li>
-                                        <div class="caja-tema">
-                                            <h3>
-                                                Explicación bucles: For vs while
-                                            </h3>
-                                            <p>
-                                                por <span>JazzCraze</span> • 5
-                                                comentarios • hace 1 hora
-                                            </p>
-                                        </div>
-                                    </li></a
-                                >
-                                <a href="#"
-                                    ><li>
-                                        <div class="caja-tema">
-                                            <h3>
-                                                ¿Alguien tiene apuntes del tema
-                                                5?
-                                            </h3>
-                                            <p>
-                                                por <span>PixelPioneer</span> •
-                                                5 comentarios • hace 1 día
-                                            </p>
-                                        </div>
-                                    </li></a
-                                >
-                                <a href="#"
-                                    ><li>
-                                        <div class="caja-tema">
-                                            <h3>No entiendo el ejericicio 4</h3>
-                                            <p>
-                                                por <span>EchoVibes</span> • 5
-                                                comentarios • hace 1 semana
-                                            </p>
-                                        </div>
-                                    </li></a
-                                >
+                                <%}%>
+                                
                             </ul>
                         </div>
                     </div>
@@ -269,6 +241,10 @@ pageEncoding="UTF-8" %>
                         <div class="cajas-container">
                             <h2 class="titulo-contenido">Ficheros</h2>
                             <ul>
+                                <% ArrayList<Fichero> listaFicheros=(ArrayList<Fichero>) session.getAttribute("ficheros");
+                                for (int i=0; i<listaFicheros.size(); i++){ 
+                                Fichero fichero=listaFicheros.get(i);
+                                %>
                                 <li>
                                     <div class="caja-fich">
                                         <div class="fich">
@@ -278,10 +254,10 @@ pageEncoding="UTF-8" %>
                                                 id="fich-icon"
                                             />
                                             <div class="fich2">
-                                                <h3>Tema1_Introd_prog</h3>
+                                                <h3><%= fichero.getNombre() %></h3>
                                                 <p>
                                                     subido por
-                                                    <span>JazzCraze</span>
+                                                    <span><%= fichero.getNickname() %></span> • <%= fichero.getTiempoPublicado() %>
                                                 </p>
                                             </div>
                                         </div>
@@ -293,54 +269,7 @@ pageEncoding="UTF-8" %>
                                         /></a>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="caja-fich">
-                                        <div class="fich">
-                                            <img
-                                                src="images/fichero.svg"
-                                                alt="pdf"
-                                                id="fich-icon"
-                                            />
-                                            <div class="fich2">
-                                                <h3>Apuntes_tema_5</h3>
-                                                <p>
-                                                    subido por
-                                                    <span>janedoe</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <a href="#"
-                                            ><img
-                                                src="images/download.svg"
-                                                alt="download"
-                                                id="download-icon"
-                                        /></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="caja-fich">
-                                        <div class="fich">
-                                            <img
-                                                src="images/fichero.svg"
-                                                alt="pdf"
-                                                id="fich-icon"
-                                            />
-                                            <div class="fich2">
-                                                <h3>Introd_java</h3>
-                                                <p>
-                                                    subido por
-                                                    <span>johndoe</span>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <a href="#"
-                                            ><img
-                                                src="images/download.svg"
-                                                alt="download"
-                                                id="download-icon"
-                                        /></a>
-                                    </div>
-                                </li>
+                                <%}%>
                             </ul>
                         </div>
                         <div class="contenedor-view-more">
