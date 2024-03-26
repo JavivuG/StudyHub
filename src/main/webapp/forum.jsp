@@ -2,6 +2,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="studyhub.business.Tema" %>
 <%@ page import="studyhub.business.Fichero" %>
+<%@ page import="studyhub.business.Asignatura" %>
 <%@page import="java.util.ArrayList"%>
 <jsp:include page="/LoadForum" />
 
@@ -138,8 +139,9 @@
                         <img src="images/arrow.svg" alt="Arrow" id="arrow" />
                     </li>
                     <li>
+                        <% Asignatura asignatura = (Asignatura) session.getAttribute("asignatura"); %>
                         <span class="items-nav"
-                            ><a href="#">Fundamentos de Programación</a></span
+                            ><a href="#"><%= asignatura.getNombre() %></a></span
                         >
                     </li>
                 </ul>
@@ -156,7 +158,7 @@
                     />
                     <i class="fas fa-search boton"></i>
                     <button class="boton">
-                        <a href="new_topic.jsp"
+                        <a href="new_topic.jsp?idForo=<%= asignatura.getID_asignatura() %>"
                             ><span class="texto-btn">Crear nuevo tema</span></a
                         >
                     </button>
@@ -217,7 +219,7 @@
                                 for (int i=0; i<listaTemas.size(); i++){
                                 Tema tema=listaTemas.get(i);
                                 %>
-                                <a href="forum.jsp?idForo=<%=tema.getId_foro()%>&idTema=<%=tema.getId_tema()%>"
+                                <a href="topic.jsp?idForo=<%=tema.getId_foro()%>&idTema=<%=tema.getId_tema()%>"
                                     ><li>
                                         <div class="caja-tema">
                                             <h3>
@@ -273,7 +275,7 @@
                             </ul>
                         </div>
                         <div class="contenedor-view-more">
-                            <a href="files.jsp" class="view-more">Ver más</a>
+                            <a href="files.jsp?idForo=<%= asignatura.getID_asignatura()%>" class="view-more">Ver más</a>
                         </div>
                     </div>
                 </div>

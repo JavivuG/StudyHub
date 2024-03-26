@@ -1,5 +1,9 @@
-<%@ page language="java" %> <%@ page contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8" %>
+<%@ page language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="studyhub.business.Asignatura" %>
+<%@page import="java.util.ArrayList"%>
+<jsp:include page="/LoadDashboard" />
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -109,15 +113,19 @@ pageEncoding="UTF-8" %>
                         </div>
 
                         <div class="ag-courses_box">
+                            <% ArrayList<Asignatura> listaAsignaturas = (ArrayList<Asignatura>) session.getAttribute("asignaturas");
+                            for(int i=0; i<listaAsignaturas.size(); i++){
+                            Asignatura asignatura=listaAsignaturas.get(i);
+                            %>                            
                             <div class="ag-courses_item">
                                 <a
-                                    href="forum.jsp"
+                                    href="forum.jsp?idForo=<%=asignatura.getID_asignatura()%>"
                                     class="ag-courses-item_link"
                                 >
                                     <div class="ag-courses-item_bg"></div>
 
                                     <div class="ag-courses-item_title">
-                                        Fundamentos de Programación
+                                        <%= asignatura.getNombre() %>
                                     </div>
 
                                     <div
@@ -126,167 +134,13 @@ pageEncoding="UTF-8" %>
                                         <span
                                             class="ag-courses-item_description"
                                         >
-                                            1º Curso de Ing. Informática
+                                            <%= asignatura.getCurso() %>
                                         </span>
                                     </div>
                                 </a>
                             </div>
-                            <div class="ag-courses_item">
-                                <a href="#" class="ag-courses-item_link">
-                                    <div class="ag-courses-item_bg"></div>
-
-                                    <div class="ag-courses-item_title">
-                                        Matemáticas
-                                    </div>
-
-                                    <div
-                                        class="ag-courses-item_description-box"
-                                    >
-                                        <span
-                                            class="ag-courses-item_description"
-                                            >1º Curso de Ing. Informática
-                                        </span>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="ag-courses_item">
-                                <a href="#" class="ag-courses-item_link">
-                                    <div class="ag-courses-item_bg"></div>
-
-                                    <div class="ag-courses-item_title">
-                                        Física
-                                    </div>
-
-                                    <div
-                                        class="ag-courses-item_description-box"
-                                    >
-                                        <span
-                                            class="ag-courses-item_description"
-                                            >1º Curso de Ing.
-                                            Informática</span
-                                        >
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="ag-courses_item">
-                                <a href="#" class="ag-courses-item_link">
-                                    <div class="ag-courses-item_bg"></div>
-
-                                    <div class="ag-courses-item_title">
-                                        Computación Paralela
-                                    </div>
-
-                                    <div
-                                        class="ag-courses-item_description-box"
-                                    >
-                                        <span
-                                            class="ag-courses-item_description"
-                                        >
-                                            3º Curso de Ing. Informática
-                                        </span>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="ag-courses_item">
-                                <a href="#" class="ag-courses-item_link">
-                                    <div class="ag-courses-item_bg"></div>
-
-                                    <div class="ag-courses-item_title">
-                                        Sistemas Distribuidos
-                                    </div>
-
-                                    <div
-                                        class="ag-courses-item_description-box"
-                                    >
-                                        <span
-                                            class="ag-courses-item_description"
-                                        >
-                                            2º Curso de Ing. Informática
-                                        </span>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="ag-courses_item">
-                                <a href="#" class="ag-courses-item_link">
-                                    <div class="ag-courses-item_bg"></div>
-
-                                    <div class="ag-courses-item_title">
-                                        Sistemas Digitales
-                                    </div>
-
-                                    <div
-                                        class="ag-courses-item_description-box"
-                                    >
-                                        <span
-                                            class="ag-courses-item_description"
-                                        >
-                                            1º Curso de Ing. Informática
-                                        </span>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="ag-courses_item">
-                                <a href="#" class="ag-courses-item_link">
-                                    <div class="ag-courses-item_bg"></div>
-
-                                    <div class="ag-courses-item_title">
-                                        Administración S.O.
-                                    </div>
-
-                                    <div
-                                        class="ag-courses-item_description-box"
-                                    >
-                                        <span
-                                            class="ag-courses-item_description"
-                                        >
-                                            1º Curso de Ing. Informática
-                                        </span>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="ag-courses_item">
-                                <a href="#" class="ag-courses-item_link">
-                                    <div class="ag-courses-item_bg"></div>
-
-                                    <div class="ag-courses-item_title">
-                                        Estadística
-                                    </div>
-
-                                    <div
-                                        class="ag-courses-item_description-box"
-                                    >
-                                        <span
-                                            class="ag-courses-item_description"
-                                            >2º Curso de Ing. Informática
-                                        </span>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="ag-courses_item">
-                                <a href="#" class="ag-courses-item_link">
-                                    <div class="ag-courses-item_bg"></div>
-
-                                    <div class="ag-courses-item_title">
-                                        Estructura de Datos y Algoritmos
-                                    </div>
-
-                                    <div
-                                        class="ag-courses-item_description-box"
-                                    >
-                                        <span
-                                            class="ag-courses-item_description"
-                                            >2º Curso de Ing. Informática
-                                        </span>
-                                    </div>
-                                </a>
-                            </div>
+                            <% } %>
+                            
                         </div>
 
                         <div class="contenedor-view-more">

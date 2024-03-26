@@ -4,11 +4,13 @@
  */
 package studyhub.business;
 
+import java.io.Serializable;
+
 /**
  *
- * @author subse
+ * @author javier
  */
-public class Asignatura {
+public class Asignatura implements Serializable {
 
     private int id_asignatura;
     private String nombre;

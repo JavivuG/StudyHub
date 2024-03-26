@@ -1,5 +1,10 @@
-<%@ page language="java" %> <%@ page contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8" %>
+<%@ page language="java" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="studyhub.business.Tema" %>
+<%@ page import="studyhub.business.Comentario" %>
+<%@page import="java.util.ArrayList"%>
+<jsp:include page="/LoadTopic" />
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -150,7 +155,7 @@ pageEncoding="UTF-8" %>
                     </li>
                     <li>
                         <span class="items-nav"
-                            ><a href="forum.jsp"
+                              ><a href="forum.jsp?idForo=<%= request.getParameter("idForo")%>"
                                 >Fundamentos de Programación</a
                             ></span
                         >
@@ -167,17 +172,20 @@ pageEncoding="UTF-8" %>
             <div class="container">
                 <div class="tema-container">
                     <div class="tema">
-                        <h2>Aplazar entrega del proyecto</h2>
-                        <p>Tema empezado creado por: <span>EchoVibes</span></p>
+                        <% Tema tema=(Tema) session.getAttribute("tema"); %>
+                        <h2><%= tema.getTitulo() %></h2>
+                        <p>Tema empezado creado por: <span><%= tema.getNickname() %></span></p>
                         <p class="tema-descripcion">
-                            ¿Tienes alguna duda sobre el contenido del curso o
-                            la programación de las entregas? ¿Necesitas más
-                            tiempo para completar tu proyecto? ¡Deja tu
-                            comentario aquí!
+                            <%= tema.getDescripcion() %>
                         </p>
                     </div>
                     <div class="comentarios-container">
                         <h2>Comentarios</h2>
+                        
+                        <% ArrayList<Comentario> listaComentarios=(ArrayList<Comentario>) session.getAttribute("comentarios");
+                        for (int i=0; i<listaComentarios.size(); i++){
+                        Comentario comentarioActual=listaComentarios.get(i); %>
+                            
                         <div class="comentario">
                             <div class="autor-comentario">
                                 <img
@@ -185,15 +193,12 @@ pageEncoding="UTF-8" %>
                                     alt="Foto de perfil"
                                 />
                                 <div class="user">
-                                    <p>MysticNomad</p>
-                                    <p class="fecha-comentario">Hace 2 horas</p>
+                                    <p><%= comentarioActual.getNickname() %></p>
+                                    <p class="fecha-comentario"><%= comentarioActual.getTiempoPublicado() %></p>
                                 </div>
                             </div>
                             <p>
-                                Me gustaría saber si hay alguna extensión de
-                                plazo para la entrega del proyecto. Estoy
-                                teniendo algunos problemas con mi código y me
-                                vendría bien un poco más de tiempo para pulirlo.
+                                <%= comentarioActual.getTexto() %>
                             </p>
                             <div class="reacciones">
                                 <div class="likes">
@@ -202,7 +207,7 @@ pageEncoding="UTF-8" %>
                                         alt="Me gusta"
                                         class="like"
                                     />
-                                    <p>2 likes</p>
+                                    <p><%= comentarioActual.getLikes() %> likes</p>
                                 </div>
                                 <div class="dislikes">
                                     <img
@@ -210,46 +215,12 @@ pageEncoding="UTF-8" %>
                                         alt="No me gusta"
                                         class="dislike"
                                     />
-                                    <p>0 dislikes</p>
+                                    <p><%= comentarioActual.getLikes() %> dislikes</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="comentario">
-                            <div class="autor-comentario">
-                                <img
-                                    src="images/profile.svg"
-                                    alt="Foto de perfil"
-                                />
-                                <div class="user">
-                                    <p>BlissfoulSoul</p>
-                                    <p class="fecha-comentario">Hace 2 horas</p>
-                                </div>
-                            </div>
-                            <p>
-                                También agradecería que se aplace. Estoy
-                                encontrando algunos errores inesperados en mi
-                                código, y el tiempo extra me ayudaría a
-                                resolverlos.
-                            </p>
-                            <div class="reacciones">
-                                <div class="likes">
-                                    <img
-                                        src="images/like.svg"
-                                        alt="Me gusta"
-                                        class="like"
-                                    />
-                                    <p>0 likes</p>
-                                </div>
-                                <div class="dislikes">
-                                    <img
-                                        src="images/dislike.svg"
-                                        alt="No me gusta"
-                                        class="dislike"
-                                    />
-                                    <p>0 dislikes</p>
-                                </div>
-                            </div>
-                        </div>
+                        <% } %>
+                        
                     </div>
                     <div class="chat-input">
                         <input

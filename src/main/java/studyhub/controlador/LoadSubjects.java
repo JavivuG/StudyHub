@@ -25,6 +25,7 @@ import studyhub.data.ForoDB;
 @WebServlet(name = "LoadSubjects", urlPatterns = {"/LoadSubjects"})
 public class LoadSubjects extends HttpServlet {
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Obtener los parametros de la peticion
