@@ -185,42 +185,47 @@
                         <h2>Comentarios</h2>
                         
                         <% ArrayList<Comentario> listaComentarios=(ArrayList<Comentario>) session.getAttribute("comentarios");
-                        for (int i=0; i<listaComentarios.size(); i++){
-                        Comentario comentarioActual=listaComentarios.get(i); %>
-                            
-                        <div class="comentario">
-                            <div class="autor-comentario">
-                                <img
-                                    src="images/profile.svg"
-                                    alt="Foto de perfil"
-                                />
-                                <div class="user">
-                                    <p><%= comentarioActual.getNickname() %></p>
-                                    <p class="fecha-comentario"><%= comentarioActual.getTiempoPublicado() %></p>
+                        if (listaComentarios.size()>0){
+                            for (int i=0; i<listaComentarios.size(); i++){
+                                Comentario comentarioActual=listaComentarios.get(i); %>
+                                    
+                                <div class="comentario">
+                                    <div class="autor-comentario">
+                                        <img
+                                            src="images/profile.svg"
+                                            alt="Foto de perfil"
+                                        />
+                                        <div class="user">
+                                            <p><%= comentarioActual.getNickname() %></p>
+                                            <p class="fecha-comentario"><%= comentarioActual.getTiempoPublicado() %></p>
+                                        </div>
+                                    </div>
+                                    <p>
+                                        <%= comentarioActual.getTexto() %>
+                                    </p>
+                                    <div class="reacciones">
+                                        <div class="likes">
+                                            <img
+                                                src="images/like.svg"
+                                                alt="Me gusta"
+                                                class="like"
+                                            />
+                                            <p><%= comentarioActual.getLikes() %> likes</p>
+                                        </div>
+                                        <div class="dislikes">
+                                            <img
+                                                src="images/dislike.svg"
+                                                alt="No me gusta"
+                                                class="dislike"
+                                            />
+                                            <p><%= comentarioActual.getLikes() %> dislikes</p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <p>
-                                <%= comentarioActual.getTexto() %>
-                            </p>
-                            <div class="reacciones">
-                                <div class="likes">
-                                    <img
-                                        src="images/like.svg"
-                                        alt="Me gusta"
-                                        class="like"
-                                    />
-                                    <p><%= comentarioActual.getLikes() %> likes</p>
-                                </div>
-                                <div class="dislikes">
-                                    <img
-                                        src="images/dislike.svg"
-                                        alt="No me gusta"
-                                        class="dislike"
-                                    />
-                                    <p><%= comentarioActual.getLikes() %> dislikes</p>
-                                </div>
-                            </div>
-                        </div>
+                            <% } 
+                        }
+                        else {%>
+                            <p class="mensaje-vacio">No hay comentarios en este tema</p>
                         <% } %>
                         
                     </div>

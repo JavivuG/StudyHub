@@ -12,10 +12,10 @@
         <link rel="shortcut icon" href="images/logo.svg" />
         <title>StudyHub</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="./styles/common.css" type="text/css" />
-        <link rel="stylesheet" href="./styles/header.css" type="text/css" />
-        <link rel="stylesheet" href="./styles/footer.css" type="text/css" />
-        <link rel="stylesheet" href="./styles/dashboard.css" type="text/css" />
+        <link rel="stylesheet" href="styles/common.css" type="text/css" />
+        <link rel="stylesheet" href="styles/header.css" type="text/css" />
+        <link rel="stylesheet" href="styles/footer.css" type="text/css" />
+        <link rel="stylesheet" href="styles/dashboard.css" type="text/css" />
         <link rel="icon" type="image/png" href="images/icono.png" />
         <link
             rel="stylesheet"
@@ -29,7 +29,6 @@
                 <nav class="nav-main">
                     <a href="index.jsp">
                         <svg
-                            class="logo-header"
                             width="262"
                             height="48"
                             viewBox="0 0 262 48"
@@ -60,46 +59,53 @@
                             </g>
                         </svg>
                     </a>
-                    <ul class="perfil-menu">
-                        <div class="container-perfil">
-                            <img
-                                src="images/profile.svg"
-                                alt="Perfil"
-                                title="Perfil"
-                            />
-                            <a href="profile.jsp">
-                                <label class="texto-perfil2"> Perfil </label>
-                            </a>
-                        </div>
 
-                        <div class="container-perfil">
-                            <img
-                                src="images/imagen_amigos.svg"
-                                alt="Amigos"
-                                title="Amigos"
-                            />
-                            <a href="amigos.jsp">
-                                <label class="texto-perfilD"> Amigos </label>
-                            </a>
+                    <div class="container-eslogan">
+                        <div class="eslogan">
+                            <p>Tu sitio, tus apuntes</p>
                         </div>
+                    </div>
 
-                        <div class="container-perfil">
-                            <img
-                                src="images/setting.svg"
-                                alt="Ajustes"
-                                title="Ajustes"
-                            />
-                            <a href="ajustes.jsp">
-                                <label class="texto-perfilD"> Ajustes </label>
-                            </a>
-                        </div>
-                    </ul>
+                    <div class="perfil-menu">
+                        <a href="profile.jsp">
+                            <div class="container-perfil">
+                                <img
+                                    src="images/profile.svg"
+                                    alt="Perfil"
+                                    title="Perfil"
+                                />
+                                <label class="texto-perfilD"> Perfil </label>
+                            </div>
+                        </a>
+                    </div>
                 </nav>
             </div>
         </header>
 
         <!-- Conetenedor de Taquilla, Busqueda y Foros --->
         <div class="container">
+            <div class="container_busqueda">
+                <div class="encabezado-busqueda">
+                    <img
+                        src="images/lupa.svg"
+                        alt="Busqueda"
+                        title="Busqueda"
+                    />
+                    <h3>Búsqueda</h3>
+                </div>
+
+                <div class="search-bar">
+                    <input
+                        type="text"
+                        id="search"
+                        name="search"
+                        placeholder="Buscar..."
+                    />
+                    <button class="boton">
+                        <p class="texto-btn">Buscar</p>
+                    </button>
+                </div>
+            </div>
             <div class="container-principal">
                 <div class="left-container">
                     <div class="taquilla">
@@ -143,31 +149,12 @@
                             
                         </div>
 
+                           
+
                         <div class="contenedor-view-more">
                             <a href="subjects.jsp" class="view-more"
-                                >Mostrar más</a
+                                >Ver más</a
                             >
-                        </div>
-
-                        <div class="container_busqueda">
-                            <div class="encabezado-busqueda">
-                                <img
-                                    src="images/lupa.svg"
-                                    alt="Busqueda"
-                                    title="Busqueda"
-                                />
-                                <h3>Búsqueda</h3>
-                            </div>
-
-                            <div class="search-bar">
-                                <input
-                                    type="text"
-                                    id="search"
-                                    name="search"
-                                    placeholder="Buscar..."
-                                />
-                                <button class="boton_search">Buscar</button>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -193,8 +180,8 @@
                         <div class="mensaje-box">
                             <div class="contribuidas-titulo">Foro Física</div>
                             <div class="mensaje">
-                                Has comentado: "¿Alguien tiene los apuntes de
-                                la última clase?"
+                                Has comentado: "¿Alguien tiene los apuntes de la
+                                última clase?"
                             </div>
                         </div>
 
@@ -219,11 +206,8 @@
 
                         <div class="mensaje-box-persona">
                             <div class="foto-perfil">
-                                <img
-                                    src="images/perfil_mensajes.svg"
-                                    alt="Busqueda"
-                                    title="Busqueda"
-                                />
+                                <img src="images/perfil_mensajes.svg"
+                                alt=Busqueda" title="Busqueda"/>
                             </div>
                             <div class="persona-contribuidas-titulo">
                                 <span>Roberro</span>
@@ -236,17 +220,14 @@
 
                         <div class="mensaje-box-persona">
                             <div class="foto-perfil">
-                                <img
-                                    src="images/perfil_mensajes.svg"
-                                    alt="Busqueda"
-                                    title="Busqueda"
-                                />
+                                <img src="images/perfil_mensajes.svg"
+                                alt=Busqueda" title="Busqueda"/>
                             </div>
                             <div class="persona-contribuidas-titulo">
                                 <span>El bicho de los apuntes</span>
 
                                 <div class="mensaje">
-                                    "Esto te ayudará con tu examenes de mañana
+                                    "Esto te ayudará con tu examens de mañana
                                     ..."
                                 </div>
                             </div>
@@ -254,17 +235,14 @@
 
                         <div class="mensaje-box-persona">
                             <div class="foto-perfil">
-                                <img
-                                    src="images/perfil_mensajes.svg"
-                                    alt="Busqueda"
-                                    title="Busqueda"
-                                />
+                                <img src="images/perfil_mensajes.svg"
+                                alt=Busqueda" title="Busqueda"/>
                             </div>
                             <div class="persona-contribuidas-titulo">
                                 <span>El bicho de los apuntes</span>
 
                                 <div class="mensaje">
-                                    "Una pequeñaa guía para tu código ... [~]
+                                    "Una pequeña guía para tu código ... [~]
                                     Imagen"
                                 </div>
                             </div>
@@ -272,11 +250,8 @@
 
                         <div class="mensaje-box-persona">
                             <div class="foto-perfil">
-                                <img
-                                    src="images/perfil_mensajes.svg"
-                                    alt="Busqueda"
-                                    title="Busqueda"
-                                />
+                                <img src="images/perfil_mensajes.svg"
+                                alt=Busqueda" title="Busqueda"/>
                             </div>
                             <div class="persona-contribuidas-titulo">
                                 <span>Ratones</span>
@@ -287,11 +262,6 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="forum.jsp">
-                            <button class="boton_show_more_foro">
-                                Mostrar más
-                            </button>
-                        </a>
                     </div>
                 </div>
             </div>

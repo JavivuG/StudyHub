@@ -91,6 +91,22 @@
         </nav>
       </div>
     </header>
+    
+    <!-- Titulo de la pagina -->
+            <div class="container">
+                <ul class="page-title-container">
+                    <li>
+                        <img
+                            src="images/forum.svg"
+                            alt="Forum"
+                            class="page-icon"
+                        />
+                    </li>
+                    <li>
+                        <span class="page-title">Ficheros</span>
+                    </li>
+                </ul>
+            </div>
 
     <!-- Barra de navegacion -->
     <div class="container">
@@ -127,7 +143,7 @@
       </ul>
     </div>
 
-    <div class="container">
+    <div class="container-principal">
       <div class="title-fich">
         <div class="subject">
             
@@ -136,9 +152,8 @@
         </div>
         <img src="images/upload.svg" alt="Subir" id="upload" />
       </div>
-    </div>
-
-    <div class="ag-format-container">
+        
+        <div class="ag-format-container">
       <div class="ag-courses_box">
         <% ArrayList<Fichero> listaFicheros=(ArrayList<Fichero>) session.getAttribute("ficheros");
         for (int i=0; i<listaFicheros.size(); i++){
@@ -159,6 +174,9 @@
               
       </div>
     </div>
+    </div>
+
+    
 
     <!-- Pie de pagina -->
     <footer>

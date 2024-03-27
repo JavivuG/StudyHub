@@ -1,289 +1,7 @@
-.container-eslogan{
-	text-align:center;
-	font-size: 60px;
-	font-weight:bolder;
-	align-items:center;
-}
-
-
-/** PERFIL **/
-
-.perfil-menu {
-    display:flex;
-    flex-direction:row;
-    background: #259AEF;
-    border-radius:16px;
-
-
-
-    border-radius: 16px;
-    margin-left:-80px;
-
-    margin-right:20px;
-    height:100px;
-    width:260px;    
-	text-align:bottom;
-}
-
-
-.container-perfil{
-	display: flex;
-	flex-direction: column;
-	margin:auto;
-}
-
-.texto-perfilD{
-	width: 100%;
-	font-weight: 400;
-	font-size: 18px;
-	margin-bottom: 5px;
-	color: #ffffff;
-}
-
-.texto-perfil2{
-	width: 100%;
-	font-weight: 400;
-	font-size: 18px;
-	margin-bottom: 5px;
-	color: #ffffff;
-	position:relative;
-	top:6px;
-	left:5px;
-}
-
-
-.container-ajustes{
-	margin-left:10px;
-	margin-right:10px;
-	align-items:center;
-}
-
-.container-texto-ajustes{
-	border-radius: 16px;
-	width:65px;
-	
-	   display: table-cell;
-   vertical-align: middle;
-}
-
-.container-amigos{
-	margin-left:10px;
-	margin-right:10px;
-	align-items:center;
-	width:65px;
-}
-
-.container-texto-amigos{
-	align-items:center;
-	width:65px;
-	   display: table-cell;
-   vertical-align: middle;
-}
-
-
-/** **/
-
-.container-principal{
-	display:flex;
-    align-self: center;
-    width: 100%;
-}
-
-.left-container {
-    width: 45%;
-}
-
-
-.container-busqueda{
-	width:50%;
-	text-align:left;
-}
-
-.encabezado-taquilla {
-    display: flex;
-    margin-bottom: 25px;
-}
-
-
-
-.encabezado-busqueda{
-	display: block;
-	margin-top: 20px;
-}
-
-.container-principal h3{
-	margin-top:10px;
-	margin-left:10px;
-}
-
-
-/**/
-/* Lista de asignaturas */
-/**/
-
-.ag-courses_item {
-    -ms-flex-preferred-size: calc(33% - 66px);
-    flex-basis: calc(33% - 80px);
-    margin: 0 10px 18px;
-    overflow: hidden;
-    border-radius: 12px;
-}
-
-.ag-format-container {
-    margin: 0 60px 0 60px;
-}
-
-.ag-courses_box {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
-}
-
-.ag-courses-item_link {
-    display: block;
-    padding: 30px 20px;
-}
-
-/** Busqueda **/
-#search {
-    padding: 10px;
-    background-color: #d9d9d9;
-    border: #d9d9d9;
-    font-size: 14px;
-    border-radius: 10px;
-    margin-right: 5px;
-    width: 25%;
-}
-
-.search-bar{
-	padding:2%;
-}
-
-
-.boton_search{
-	color:#000;
-	border-radius: 12px;
-	height: 40px;
-	padding: 10px;
-    border:0;
-    cursor: pointer;
-    font-weight: 700;
-}
-
-.encabezado-busqueda{
-	display:flex;
-	flex-direction:row;
-}
-
-.ultimas_busquedas{
-	font-size:12px;
-	padding:2%;
-	font-weight:bolder;
-}
-
-.box-busqueda {
-    border-radius: 16px;
-    overflow: hidden;
-    margin: 10px;
-    background-color: #d9d9d9;
-    color: black;
-    width: 20%;
-    display:flex;
-    flex-direction:row;
-    text-align:right;
-}
-
-.mensaje-busqueda{
-	text-align:center;
-	display:flex;
-	flex-direction:row;
-	margin-left:3%;
-}
-
-
-.star{
-	margin-top:2%;
-	margin-right:2%;
-}
-
-
-/** Foro **/
-
-.container-foro{
-	width:50%;
-	text-align:left;
-}
-
-.encabezado-foro{
-	display:flex;
-	text-align:left;
-}
-
-.mensajes-foro{
-	display:block;
-	position:relative;
-	top:5px;
-}
-
-
-.mensaje-box {
-    border-radius: 16px;
-    overflow: hidden;
-    margin: 10px;
-    background-color: #d9d9d9;
-    color: black;
-    width: 85%;
-}
-
-.mensaje-box-persona {
-    border-radius: 16px;
-    overflow: hidden;
-    margin: 10px;
-    background-color: #d9d9d9;
-    color: black;
-    width: 85%;
-    display:flex;
-    flex-direction:row;
-}
-
-.foto-perfil{
-	margin-left:2%;
-	margin-top:4px;
-}
-
-.persona-contribuidas-titulo{
-    font-size: 16px;
-    font-weight: 700;
-    margin-top: 10px;
-    margin-left:30px;
-    text-align: left;
-
-}
-
-.mensaje-persona{
-    margin-bottom: 5px;
-    padding: 5px;
-    font-size: 16px;
-    text-align: center;
-}
-
-.boton_show_more_foro{
-	position:relative;
-	left:39%;
-	margin-top:3%;
-	border-radius:10px;
-	padding:1%;
-	border:0;
-    cursor: pointer;
-    font-weight: 700;
-}
-
 .container-eslogan {
     text-align: center;
 
-    /*left:80px; */
-
-    font-size: 34px;
+    font-size: 32px;
     font-weight: bolder;
     align-items: center;
 }
@@ -293,69 +11,41 @@
 .perfil-menu {
     display: flex;
     flex-direction: row;
-    background: #259aef;
-    border-radius: 16px;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 10px;
+    margin-top: 20px;
+}
 
+.perfil-menu a {
+    flex: 1; /* Para que cada enlace ocupe la misma cantidad de espacio */
+    text-align: center; /* Para centrar el texto horizontalmente */
+    align-items: center;
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #259aef;
+    border-color: #259aef;
     border-radius: 16px;
-    margin-left: -80px;
-
-    margin-right: 20px;
-    height: 100px;
-    width: 260px;
-    text-align: bottom;
 }
 
 .container-perfil {
     display: flex;
     flex-direction: column;
+    align-items: center; /* Para centrar los elementos verticalmente */
     margin: auto;
+}
+
+.container-perfil img {
+    height: 50px;
+    width: auto;
 }
 
 .texto-perfilD {
     width: 100%;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 5px;
     color: #ffffff;
-}
-
-.texto-perfil2 {
-    width: 100%;
-    font-weight: 400;
-    font-size: 18px;
-    margin-bottom: 5px;
-    color: #ffffff;
-    position: relative;
-    top: 6px;
-    left: 5px;
-}
-
-.container-ajustes {
-    margin-left: 10px;
-    margin-right: 10px;
-    align-items: center;
-}
-
-.container-texto-ajustes {
-    border-radius: 16px;
-    width: 65px;
-
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.container-amigos {
-    margin-left: 10px;
-    margin-right: 10px;
-    align-items: center;
-    width: 65px;
-}
-
-.container-texto-amigos {
-    align-items: center;
-    width: 65px;
-    display: table-cell;
-    vertical-align: middle;
 }
 
 /** **/
@@ -367,22 +57,66 @@
 }
 
 .left-container {
-    width: 45%;
+    width: 60%;
 }
 
 .container-busqueda {
     width: 50%;
     text-align: left;
+    margin: 20px;
 }
 
 .encabezado-taquilla {
     display: flex;
-    margin-bottom: 25px;
 }
 
 .encabezado-busqueda {
-    display: block;
-    margin-top: 20px;
+    display: flex;
+    flex: row;
+    align-items: center;
+}
+
+.encabezado-busqueda h3 {
+    margin-left: 10px;
+}
+
+.encabezado-busqueda img {
+    height: 30px;
+    width: auto;
+}
+
+.search-bar {
+    margin: 10px 0 30px 0;
+}
+
+#search {
+    padding: 10px;
+    background-color: #d9d9d9;
+    border: #d9d9d9;
+    font-size: 14px;
+    border-radius: 10px;
+    margin-right: 5px;
+    width: 25%;
+}
+
+.boton {
+    padding: 10px;
+    background-color: #555454;
+    height: 40px;
+    border-radius: 12px;
+    border: 2px solid #000;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.boton:hover {
+    background-color: #00c041;
+}
+
+.texto-btn {
+    font-size: 14px;
+    color: #fff;
+    font-weight: bold;
 }
 
 .container-principal h3 {
@@ -407,9 +141,15 @@
 }
 
 .ag-courses_box {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 25px 0 0 0;
 }
 
 .ag-courses-item_link {
@@ -498,7 +238,7 @@
 /** Foro **/
 
 .container-foro {
-    width: 45%;
+    width: 50%;
     text-align: left;
 }
 
@@ -563,16 +303,22 @@
 .contenedor-view-more {
     display: flex;
     justify-content: center;
-    margin-top: 3%;
+    margin-top: 15px;
 }
 
 .view-more {
     background-color: #d9d9d9;
-    border-radius: 10px;
+    border-radius: 20px;
     padding: 8px 15px;
     border: 0px;
     text-align: center;
     color: #000;
     font-weight: bold;
     font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.view-more:hover {
+    background-color: #00c041;
+    color: #fff;
 }
