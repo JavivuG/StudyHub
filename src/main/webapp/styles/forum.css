@@ -17,6 +17,7 @@
     height: 40px;
     border-radius: 12px;
     border: 2px solid #000;
+    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
@@ -40,6 +41,21 @@
     font-size: 20px;
     margin-bottom: 10px;
     margin-top: 30px;
+    text-align: left;
+}
+
+.forum-container {
+    min-width: 600px;
+}
+
+.ficheros-container {
+    min-width: 600px;
+}
+
+.cajas-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 277px;
 }
 
 .caja-tema {
@@ -49,6 +65,11 @@
     margin: 10px 0;
     padding: 8px;
     width: 600px;
+    transition: background-color 0.3s ease;
+}
+
+.caja-tema:hover {
+    background-color: #b5b5b5;
 }
 
 .caja-tema h3 {
@@ -73,6 +94,7 @@
     display: flex;
     width: 600px;
     justify-content: space-between;
+    transition: background-color 0.3s ease;
 }
 
 .caja-fich h3 {
@@ -100,10 +122,18 @@
 }
 
 #download-icon {
-    height: 30px;
+    height: 45px;
     width: auto;
-    margin: 3px 10px 0 0;
+    padding: 8px;
+    border-radius: 20px;
+    margin: 5px 10px 0 10px;
+    transition: background-color 0.3s ease;
 }
+
+#download-icon:hover {
+    background-color: #b5b5b5;
+}
+
 
 .contenedor-view-more {
     display: flex;
@@ -120,6 +150,12 @@
     color: #000;
     font-weight: bold;
     font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.view-more:hover {
+    background-color: #00c041;
+    color: #fff;
 }
 
 @media only screen and (max-width: 768px) {

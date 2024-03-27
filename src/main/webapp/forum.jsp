@@ -173,44 +173,52 @@
                             <h2 class="titulo-contenido">Temas destacados</h2>
                             <ul>
                                 <% ArrayList<Tema> listaTemasDestacados=(ArrayList<Tema>) session.getAttribute("temas_destacados");
-                                for (int i=0; i<listaTemasDestacados.size(); i++){
-                                Tema temaActualDestacado=listaTemasDestacados.get(i);
-                                %> 
-                                <a href="topic.jsp?idForo=<%=temaActualDestacado.getId_foro()%>&idTema=<%=temaActualDestacado.getId_tema()%>"
-                                    ><li>
-                                        <div class="caja-tema">
-                                            <h3><%= temaActualDestacado.getTitulo() %></h3>
-                                            <p>
-                                                por <span><%= temaActualDestacado.getNickname() %></span> • <%= temaActualDestacado.getTiempoPublicado() %>
-                                            </p>
-                                        </div>
-                                    </li></a
-                                >
-                                <% } %>
-                                
+                                if (listaTemasDestacados.size()>0){
+                                    for (int i=0; i<listaTemasDestacados.size(); i++){
+                                        Tema temaActualDestacado=listaTemasDestacados.get(i);
+                                        %> 
+                                        <a href="topic.jsp?idForo=<%=temaActualDestacado.getId_foro()%>&idTema=<%=temaActualDestacado.getId_tema()%>"
+                                            ><li>
+                                                <div class="caja-tema">
+                                                    <h3><%= temaActualDestacado.getTitulo() %></h3>
+                                                    <p>
+                                                        por <span><%= temaActualDestacado.getNickname() %></span> • <%= temaActualDestacado.getTiempoPublicado() %>
+                                                    </p>
+                                                </div>
+                                            </li></a
+                                        >
+                                    <%}
+                                }
+                                else {%>
+                                    <li><p class="mensaje-vacio">No hay temas recientes</p></li>
+                                <%}%>
                             </ul>
                         </div>
                         <div class="cajas-container">
                             <h2 class="titulo-contenido">Temas recientes</h2>
                             <ul>
                                 <% ArrayList<Tema> listaTemasRecientes=(ArrayList<Tema>) session.getAttribute("temas_recientes");
-                                for (int i=0; i<listaTemasRecientes.size(); i++){
-                                Tema temaActualReciente=listaTemasRecientes.get(i);
-                                %>
-                                <a href="topic.jsp?idForo=<%=temaActualReciente.getId_foro()%>&idTema=<%=temaActualReciente.getId_tema()%>"
-                                    ><li>
-                                        <div class="caja-tema">
-                                            <h3>
-                                                <%= temaActualReciente.getTitulo() %>
-                                            </h3>
-                                            <p>
-                                                por <span><%= temaActualReciente.getNickname() %></span> • <%= temaActualReciente.getTiempoPublicado() %>
-                                            </p>
-                                        </div>
-                                    </li></a
-                                >
+                                if (listaTemasRecientes.size()>0){
+                                    for (int i=0; i<listaTemasRecientes.size(); i++){
+                                        Tema temaActualReciente=listaTemasRecientes.get(i);
+                                        %>
+                                        <a href="topic.jsp?idForo=<%=temaActualReciente.getId_foro()%>&idTema=<%=temaActualReciente.getId_tema()%>"
+                                            ><li>
+                                                <div class="caja-tema">
+                                                    <h3>
+                                                        <%= temaActualReciente.getTitulo() %>
+                                                    </h3>
+                                                    <p>
+                                                        por <span><%= temaActualReciente.getNickname() %></span> • <%= temaActualReciente.getTiempoPublicado() %>
+                                                    </p>
+                                                </div>
+                                            </li></a
+                                        >
+                                    <%}
+                                }
+                                else {%>
+                                    <li><p class="mensaje-vacio">No hay temas recientes</p></li>
                                 <%}%>
-                                
                             </ul>
                         </div>
                     </div>
@@ -221,39 +229,46 @@
                             <h2 class="titulo-contenido">Ficheros</h2>
                             <ul>
                                 <% ArrayList<Fichero> listaFicheros=(ArrayList<Fichero>) session.getAttribute("ficheros");
-                                for (int i=0; i<listaFicheros.size(); i++){ 
-                                Fichero fichero=listaFicheros.get(i);
-                                %>
-                                <li>
-                                    <div class="caja-fich">
-                                        <div class="fich">
-                                            <img
-                                                src="images/fichero.svg"
-                                                alt="pdf"
-                                                id="fich-icon"
-                                            />
-                                            <div class="fich2">
-                                                <h3><%= fichero.getNombre() %></h3>
-                                                <p>
-                                                    subido por
-                                                    <span><%= fichero.getNickname() %></span> • <%= fichero.getTiempoPublicado() %>
-                                                </p>
+                                if (listaFicheros.size()>0){
+                                    for (int i=0; i<listaFicheros.size(); i++){ 
+                                        Fichero fichero=listaFicheros.get(i);
+                                        %>
+                                        <li>
+                                            <div class="caja-fich">
+                                                <div class="fich">
+                                                    <img
+                                                        src="images/fichero.svg"
+                                                        alt="pdf"
+                                                        id="fich-icon"
+                                                    />
+                                                    <div class="fich2">
+                                                        <h3><%= fichero.getNombre() %></h3>
+                                                        <p>
+                                                            subido por
+                                                            <span><%= fichero.getNickname() %></span> • <%= fichero.getTiempoPublicado() %>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <a href="#"
+                                                    ><img
+                                                        src="images/download.svg"
+                                                        alt="download"
+                                                        id="download-icon"
+                                                /></a>
                                             </div>
-                                        </div>
-                                        <a href="#"
-                                            ><img
-                                                src="images/download.svg"
-                                                alt="download"
-                                                id="download-icon"
-                                        /></a>
-                                    </div>
-                                </li>
+                                        </li>
+                                    <%}
+                                }
+                                else {%>
+                                    <li><p class="mensaje-vacio">No hay fichero subidos en esta asignatura</p></li>
                                 <%}%>
                             </ul>
                         </div>
-                        <div class="contenedor-view-more">
-                            <a href="files.jsp?idForo=<%= asignatura.getID_asignatura()%>" class="view-more">Ver más</a>
-                        </div>
+                        <% if (listaFicheros.size()>0){ %>
+                            <div class="contenedor-view-more">
+                                <a href="files.jsp?idForo=<%= asignatura.getID_asignatura()%>" class="view-more">Ver más</a>
+                            </div>
+                        <% } %>
                     </div>
                 </div>
             </div>

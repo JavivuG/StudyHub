@@ -28,6 +28,12 @@
     width: auto;
 }
 
+.container-principal {
+    width: 90%;
+    margin: auto;
+    min-height: 600px;
+}
+
 .ag-format-container {
     margin: 0 8% 0 8%;
 }
