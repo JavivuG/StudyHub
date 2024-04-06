@@ -4,46 +4,40 @@
  */
 package studyhub.controlador;
 
-import studyhub.data.ForoDB;
-import studyhub.business.Asignatura;
-import java.util.ArrayList;
+import studyhub.data.UserDB;
+import studyhub.business.User;
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import studyhub.business.User;
-import studyhub.data.ForoDB;
-import studyhub.data.UserDB;
+
+
 
 /**
  *
  * @author javi
  */
-@WebServlet(name = "LoadDashboard", urlPatterns = {"/LoadDashboard"})
-public class LoadDashboard extends HttpServlet {
+@WebServlet(name = "LoadUser", urlPatterns = {"/LoadUser"})
+public class LoadUser extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Obtener los parametros de la peticion
+// Obtener los parametros de la peticion
         HttpSession session = request.getSession();
-        int MAX_ASIGNATURAS=9;
         
-        ArrayList<Asignatura> asignaturas=null;
-        asignaturas=ForoDB.getAsignaturas(MAX_ASIGNATURAS);
-        
-        
-        // Almacena los datos en el alcance de la solicitud
-        session.setAttribute("asignaturas", asignaturas);
-        response.sendRedirect("dashboard.jsp");
+        UserDB.inicioSesion(request.getRemoteUser());
+        User usuario=UserDB.selectUser(request.getRemoteUser());
+        session.setAttribute("user", usuario);
+        response.sendRedirect("profile.jsp");
     }
 
    
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         this.doGet(request, response);

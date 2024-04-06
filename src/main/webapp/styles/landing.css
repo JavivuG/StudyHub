@@ -186,14 +186,8 @@ label:before {
 }
 
 .foro-img {
-    width: 55%;
-    mask-image: linear-gradient(
-        to bottom,
-        transparent,
-        black 5%,
-        black 80%,
-        transparent 100%
-    );
+    width: 40%;
+    height: auto;
 }
 
 @media only screen and (max-width: 768px) {

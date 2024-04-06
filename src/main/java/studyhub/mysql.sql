@@ -16,7 +16,8 @@ CREATE TABLE USUARIO (
     apellidos VARCHAR(100),
     email VARCHAR(50),
     fecha_nacimiento DATE,
-    fecha_creacion DATE
+    fecha_creacion DATE,
+    ultimo_inicio TIMESTAMP NULL
 );
 
 
@@ -81,11 +82,11 @@ CREATE TABLE FICHERO (
     FOREIGN KEY (id_foro) REFERENCES FORO(id_foro)
 );
 
-INSERT INTO USUARIO VALUES ('javivu', '12345', 'Javier', 'Garcia Gonzalez', 'javiergarciaglz16@gmail.com', '1998-12-16', '2020-12-16');
-INSERT INTO USUARIO VALUES ('joselito12', 'pedro12', 'Jose', 'Calderón Esparza', 'jose123@gmail.com', '2000-03-01', '2022-12-16');
-INSERT INTO USUARIO VALUES ('therealpepe', '12345', 'Pepe', 'Vergara Narváez', 'randomuser123@outlook.com' , '2001-12-16', '2020-12-16');
-INSERT INTO USUARIO VALUES ('xXmanoloXx', 'pedro12', 'Manolo', 'Gamboa Verduzco', 'myemail@example.com', '2002-05-18', '2022-12-16');
-INSERT INTO USUARIO VALUES ('TheMarias', '12345', 'Maria', 'Olivares Otero', 'macielolivaresotero@hotmail.com', '2000-12-16', '2020-12-16');
+INSERT INTO USUARIO (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('javivu', '12345', 'Javier', 'Garcia Gonzalez', 'javiergarciaglz16@gmail.com', '1998-12-16', '2020-12-16');
+INSERT INTO USUARIO (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('joselito12', 'pedro12', 'Jose', 'Calderón Esparza', 'jose123@gmail.com', '2000-03-01', '2022-12-16');
+INSERT INTO USUARIO (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('therealpepe', '12345', 'Pepe', 'Vergara Narváez', 'randomuser123@outlook.com' , '2001-12-16', '2020-12-16');
+INSERT INTO USUARIO (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('xXmanoloXx', 'pedro12', 'Manolo', 'Gamboa Verduzco', 'myemail@example.com', '2002-05-18', '2022-12-16');
+INSERT INTO USUARIO (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('TheMarias', '12345', 'Maria', 'Olivares Otero', 'macielolivaresotero@hotmail.com', '2000-12-16', '2020-12-16');
 
 
 

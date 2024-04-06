@@ -1,0 +1,36 @@
+.registered_container {
+    text-align: center;
+    margin: 6% 0;
+}
+
+.img-registered {
+    width: 15%;
+    height: auto;
+}
+
+.texto-registered {
+    margin: 20px 0;
+}
+
+.contenedor-login {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.login {
+    background-color: #d9d9d9;
+    border-radius: 20px;
+    padding: 8px 15px;
+    border: 0px;
+    text-align: center;
+    color: #000;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.login:hover {
+    background-color: #259aef;
+    color: #fff;
+}

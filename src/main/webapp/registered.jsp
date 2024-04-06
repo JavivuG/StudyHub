@@ -8,10 +8,10 @@
         <link rel="shortcut icon" href="images/logo.svg" />
         <title>StudyHub</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="styles/login_signup.css" />
         <link rel="stylesheet" href="styles/footer.css" />
         <link rel="stylesheet" href="styles/common.css" />
         <link rel="stylesheet" href="styles/header.css" />
+        <link rel="stylesheet" href="styles/registered.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -81,126 +81,17 @@
                 </div>
             </header>
 
-            <!--Titulo-->
-            <div class="titulo-logsign">
-                <h2>Registrarse</h2>
+            <% if ((boolean) session.getAttribute("estado_registro")) { %>
+            <div class="registered_container">
+                <img src="images/book-lover-81.svg" alt="Registrado correctamente" class="img-registered">
+                <div class="texto-registered"><h2>Usuario registrado satisfactoriamente</h2></div>
+                
+                <div class="contenedor-login">
+                    <a href="dashboard.jsp" class="login">Iniciar sesión</a>
+                </div>
             </div>
-
-            <div class="formulario">
-                <!--Formulario-->
-                <form class="info-usuario" action="./Register" method="post">
-                    <div class="cajon-info">
-                        <label class="texto-info"
-                            >Introduce tu nombre (No será visible por otros
-                            usuarios)</label
-                        >
-                        <input
-                            name="nombre"
-                            type="text"
-                            class="input-info"
-                            required
-                        />
-                    </div>
-
-                    <div class="cajon-info">
-                        <label class="texto-info"
-                        >Introduce tus apellidos</label
-                        >
-                        <input
-                                name="apellidos"
-                                type="text"
-                                class="input-info"
-                                required
-                        />
-                    </div>
-
-                    <div class="cajon-info">
-                        <label class="texto-info"
-                            >Introduce tu nickname (Será visible por otros
-                            usuarios)</label
-                        >
-                        <input
-                            name="nickname"
-                            type="text"
-                            class="input-info"
-                            required
-                        />
-                    </div>
-
-                    <div class="cajon-info">
-                        <label class="texto-info"
-                            >Introduce tu dirección de correo electrónico</label
-                        >
-                        <input
-                            name="email"
-                            type="email"
-                            class="input-info"
-                            required
-                        />
-                    </div>
-
-                    <div class="cajon-info">
-                        <label class="texto-info"
-                            >Introduce una constraseña</label
-                        >
-                        <input
-                            name="password"
-                            type="password"
-                            class="input-info"
-                            required
-                        />
-                    </div>
-
-                    <div class="cajon-info">
-                        <label class="texto-info">Confirme la contraseña</label>
-                        <input
-                            name="password1"
-                            type="password"
-                            class="input-info"
-                            required
-                        />
-                    </div>
-
-                    <div class="cajon-info">
-                        <label class="texto-info"
-                            >Introduce tu fecha de nacimiento</label
-                        >
-                        <input
-                            name="fnacimiento"
-                            type="date"
-                            class="input-info"
-                            required
-                        />
-                    </div>
-
-                    <div class="cajon-info">
-                        <label class="texto-info">Selecciona tu rol</label>
-                        <div class="cajon-rol">
-                            <input
-                                name="rol"
-                                id="rol1"
-                                type="radio"
-                                class="input-rol"
-                                value="estudiante"
-                                required
-                            />
-                            <label for="rol1">Estudiante</label>
-                            <input
-                                name="rol"
-                                id="rol2"
-                                type="radio"
-                                class="input-rol"
-                                value="profesor"
-                                required
-                            />
-                            <label for="rol2">Profesor</label>
-                        </div>
-                    </div>
-
-                    <button type="submit" class="boton-enviar">
-                        Crear cuenta
-                    </button>
-                </form>
+            <% } %>
+            
                 
             </div>
         </div>

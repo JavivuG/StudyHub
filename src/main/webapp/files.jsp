@@ -161,13 +161,19 @@
               
         <div class="ag-courses_item">
           <div class="ag-courses_content">
-            <a href="#" class="ag-courses-item_link">
+            <div class="ag-courses-item_flex">
               <div class="nombre-fich">
                 <img src="images/fichero.svg" alt="pdf" id="fich-icon" />
-                <div class="ag-courses-item_title"><%= ficheroActual.getNombre() %></div>
+                <div class="fich2">
+                    <h3><%= ficheroActual.getNombre() %></h3>
+                    <p>
+                        subido por
+                        <span><%= ficheroActual.getNickname() %></span> • <%= ficheroActual.getTiempoPublicado() %>
+                    </p>
+                </div>
               </div>
-              <img src="images/download.svg" alt="Descargar" />
-            </a>
+              <a href="#"><img src="images/download.svg" alt="Descargar" class="img-download"/></a>
+            </div>
           </div>
         </div>
         <% } %>

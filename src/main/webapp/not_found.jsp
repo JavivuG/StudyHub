@@ -1,8 +1,5 @@
-<%@ page language="java" %> 
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page import="studyhub.business.User" %>
-<jsp:include page="/LoadUser" />
-
+<%@ page language="java" %> <%@ page contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -11,10 +8,10 @@
         <link rel="shortcut icon" href="images/logo.svg" />
         <title>StudyHub</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="styles/profile.css" />
         <link rel="stylesheet" href="styles/footer.css" />
         <link rel="stylesheet" href="styles/common.css" />
         <link rel="stylesheet" href="styles/header.css" />
+        <link rel="stylesheet" href="styles/not_found.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -67,201 +64,22 @@
                             </svg>
                         </a>
 
-                        <ul class="nav-menu">
-                            <li>
-                                <a href="/LogOut" class="boton-logout"
-                                    >Cerrar Sesión</a
-                                >
-                            </li>
-                        </ul>
+                        
                     </nav>
                 </div>
             </header>
 
-            <div class="flex">
-                <div class="perfil">
-                    <img src="images/profile.svg" alt="user" id="profile" />
-                    <div class="datos-perfil">
-                        <% User usuario=(User) session.getAttribute("user"); %>
-                        <p id="nickname"><%= usuario.getNombre() %></p>
-                        <p id="name"><%= usuario.getNombre() %> <%= usuario.getApellidos() %></p>
-                        <p id="email"><%= usuario.getEmail()%></p>
-                        <p id="birthday"><%= usuario.getFecha_nacimiento().toString() %></p>
-                        <p id="role"><%= usuario.getRol().substring(0,1).toUpperCase()+usuario.getRol().substring(1) %></p>
-                    </div>
-                </div>
-
-                <div class="estadisticas">
-                    <div class="asignaturas-contribuidas">
-                        <h2>Asignaturas más contribuidas</h2>
-                        <div class="asignaturas">
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Matemática Discreta
-                                </div>
-                                <div class="opiniones-bar">
-                                    <div class="progress progress-moved">
-                                        <div class="progress-bar">
-                                            <div class="porcentaje">50%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Sistemas Digitales
-                                </div>
-                                <div class="opiniones-bar">
-                                    <div class="progress progress-moved">
-                                        <div class="progress-bar2">
-                                            <div class="porcentaje">30%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Computación Paralela
-                                </div>
-                                <div class="opiniones-bar">
-                                    <div class="progress progress-moved">
-                                        <div class="progress-bar3">
-                                            <div class="porcentaje">10%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Sistemas Empotrados
-                                </div>
-                                <div class="opiniones-bar">
-                                    <div class="progress progress-moved">
-                                        <div class="progress-bar3">
-                                            <div class="porcentaje">10%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ultimas-subidas">
-                        <h2>Últimas subidas</h2>
-                        <div class="asignaturas">
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Examen 2015 FPRO
-                                </div>
-                                <div class="descarga">
-                                    <a href="#"
-                                        ><img
-                                            src="images/download.svg"
-                                            alt="download"
-                                    /></a>
-                                </div>
-                            </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Examen ordinadio SDIS
-                                </div>
-                                <div class="descarga">
-                                    <a href="#"
-                                        ><img
-                                            src="images/download.svg"
-                                            alt="download"
-                                    /></a>
-                                </div>
-                            </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Apuntes completos ADA
-                                </div>
-                                <div class="descarga">
-                                    <a href="#"
-                                        ><img
-                                            src="images/download.svg"
-                                            alt="download"
-                                    /></a>
-                                </div>
-                            </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Ejercicios Física
-                                </div>
-                                <div class="descarga">
-                                    <a href="#"
-                                        ><img
-                                            src="images/download.svg"
-                                            alt="download"
-                                    /></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="ultimos-mensajes">
-                        <h2>Últimos mensajes</h2>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">
-                                Foro Matemáticas
-                            </div>
-                            <div class="mensaje">
-                                Has comentado: "No entiendo el ejercicio 3"
-                            </div>
-                        </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">Foro Física</div>
-                            <div class="mensaje">
-                                Has comentado: "¿Alguien tiene los apuntes de la
-                                última clase?"
-                            </div>
-                        </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">
-                                Foro Sistemas Empotrados
-                            </div>
-                            <div class="mensaje">
-                                Has respondido: "El ejercicio 2 es incorrecto,
-                                la respuesta correcta es 3"
-                            </div>
-                        </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">
-                                Foro Servicios y Sistemas Web
-                            </div>
-                            <div class="mensaje">
-                                Has comentado: "No entiendo los ficheros XML."
-                            </div>
-                        </div>
-                    </div>
-                    <div class="podio">
-                        <h2>Posición en el podio</h2>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">1 - user123</div>
-                            <div class="mensaje">
-                                Ha subido 10 archivos y ha comentado 5 veces
-                            </div>
-                        </div>
-                        <div class="mensaje-box top-personal">
-                            <div class="contribuidas-titulo">2 - albepe</div>
-                            <div class="mensaje">
-                                Has subido 8 archivos y has comentado 3 veces
-                            </div>
-                        </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">3 - user456</div>
-                            <div class="mensaje">
-                                Ha subido 5 archivos y ha comentado 2 veces
-                            </div>
-                        </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">4 - user789</div>
-                            <div class="mensaje">
-                                Ha subido 3 archivos y ha comentado 1 vez
-                            </div>
-                        </div>
-                    </div>
+            <div class="not_found_container">
+                <img src="images/not_found.svg" alt="Pagina no encontrada" class="img-not_found">
+                <div class="texto-error"><h2>Página no encotrada</h2></div>
+                
+                <div class="contenedor-volver">
+                    <a href="dashboard.jsp" class="volver">Volver al inicio</a>
                 </div>
             </div>
+            
+            
+            
         </div>
 
         <!-- Pie de pagina -->

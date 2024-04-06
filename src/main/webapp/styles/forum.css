@@ -55,7 +55,7 @@
 .cajas-container {
     display: flex;
     flex-direction: column;
-    min-height: 277px;
+    min-height: 235px;
 }
 
 .caja-tema {
@@ -125,7 +125,7 @@
     height: 45px;
     width: auto;
     padding: 8px;
-    border-radius: 20px;
+    border-radius: 40px;
     margin: 5px 10px 0 10px;
     transition: background-color 0.3s ease;
 }
