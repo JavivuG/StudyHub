@@ -2,19 +2,53 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <!-- the definitions for the servlets -->
     <!-- other configuration settings for the application -->
-
-    
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-    
     <resource-ref>
         <res-ref-name>studyhub</res-ref-name>
         <res-type>javax.sql.DataSource</res-type>
         <res-auth>Container</res-auth>
         <res-sharing-scope>Shareable</res-sharing-scope>
     </resource-ref>
-    
+    <error-page>
+        <error-code>404</error-code>
+        <location>/not_found.jsp</location>
+    </error-page>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Public</web-resource-name>
+            <description>Matches a few special pages.</description>
+            <url-pattern>/index.jsp</url-pattern>
+            <url-pattern>/login.jsp</url-pattern>
+            <url-pattern>/signup.jsp</url-pattern>
+            <url-pattern>/contact.jsp</url-pattern>
+            <url-pattern>/not_found.jsp</url-pattern>
+            <url-pattern>/Register</url-pattern>
+            <url-pattern>/registered.jsp</url-pattern>
+            <url-pattern>/styles/*</url-pattern>
+            <url-pattern>/images/*</url-pattern>
+        </web-resource-collection>
+        <!-- No auth-constraint means everybody has access! -->
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Private</web-resource-name>
+            <description>Matches all pages.</description>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>estudiante</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-role>
+        <description>
+            A role for all authenticated ("logged in") users. This
+            role must be present in the servlet container's user
+            management database.
+        </description>
+        <role-name>estudiante</role-name>
+    </security-role>
     <login-config>
         <auth-method>FORM</auth-method>
         <form-login-config>
@@ -22,8 +56,4 @@
             <form-error-page>/login_error.jsp</form-error-page>
         </form-login-config>
     </login-config>
-    
-
-    
 </web-app>
-

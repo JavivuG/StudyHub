@@ -58,9 +58,9 @@
     border-radius: 12px;
 }
 
-.ag-courses-item_link {
+.ag-courses-item_flex {
     display: flex;
-    padding: 3px 20px;
+    padding: 5px 20px;
     background-color: #d9d9d9;
     overflow: hidden;
     position: relative;
@@ -68,19 +68,41 @@
     align-items: center;
 }
 
-.ag-courses-item_title {
+.nombre-fich {
+    display: flex;
+}
+
+.fich2 {
     min-height: 40px;
     overflow: hidden;
-    font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
     color: #000;
     z-index: 2;
     position: relative;
-    display: flex;
-    align-items: center;
     margin-left: 10px;
 }
 
-.nombre-fich {
-    display: flex;
+fich2 h3 {
+    font-weight: bold;
+}
+
+.fich2 p {
+    font-size: 12px;
+}
+
+.fich2 p span {
+    font-weight: bold;
+    color: #555454;
+}
+
+.img-download {
+    height: 45px;
+    width: auto;
+    padding: 8px;
+    border-radius: 40px;
+    transition: background-color 0.3s ease;
+}
+
+.img-download:hover {
+    background-color: #b5b5b5;
 }

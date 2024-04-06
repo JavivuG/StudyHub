@@ -1,5 +1,8 @@
-<%@ page language="java" %> <%@ page contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8" %>
+<%@ page language="java" %> 
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="studyhub.business.User" %>
+<jsp:include page="/LoadUser" />
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -66,7 +69,7 @@ pageEncoding="UTF-8" %>
 
                         <ul class="nav-menu">
                             <li>
-                                <a href="index.jsp" class="boton-logout"
+                                <a href="/LogOut" class="boton-logout"
                                     >Cerrar Sesión</a
                                 >
                             </li>
@@ -79,11 +82,12 @@ pageEncoding="UTF-8" %>
                 <div class="perfil">
                     <img src="images/profile.svg" alt="user" id="profile" />
                     <div class="datos-perfil">
-                        <p id="nickname">albepe</p>
-                        <p id="name">Alberto Pérez</p>
-                        <p id="email">usuario@example.com</p>
-                        <p id="birthday">15/06/2002</p>
-                        <p id="role">Estudiante</p>
+                        <% User usuario=(User) session.getAttribute("user"); %>
+                        <p id="nickname"><%= usuario.getNombre() %></p>
+                        <p id="name"><%= usuario.getNombre() %> <%= usuario.getApellidos() %></p>
+                        <p id="email"><%= usuario.getEmail()%></p>
+                        <p id="birthday"><%= usuario.getFecha_nacimiento().toString() %></p>
+                        <p id="role"><%= usuario.getRol().substring(0,1).toUpperCase()+usuario.getRol().substring(1) %></p>
                     </div>
                 </div>
 

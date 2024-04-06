@@ -1,5 +1,7 @@
 <%@ page language="java" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@page import="studyhub.business.User"%>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -8,10 +10,11 @@
         <link rel="shortcut icon" href="images/logo.svg" />
         <title>StudyHub</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="styles/landing.css" />
         <link rel="stylesheet" href="styles/footer.css" />
         <link rel="stylesheet" href="styles/common.css" />
         <link rel="stylesheet" href="styles/header.css" />
+        <link rel="stylesheet" href="styles/landing.css" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -69,6 +72,8 @@
                                     >Contacto</a
                                 >
                             </li>
+                            <% String usuario= request.getRemoteUser();
+                            if (usuario==null) { %>
                             <li>
                                 <a href="dashboard.jsp" class="boton-inicio"
                                     >Iniciar Sesión</a
@@ -79,6 +84,19 @@
                                     >Registrarse</a
                                 >
                             </li>
+                            <% }
+                            else { %>
+                            <li>
+                                <a href="dashboard.jsp" class="boton-inicio"
+                                    >Acceder</a
+                                >
+                            </li>
+                            <li>
+                                <a href="/LogOut" class="boton-logout"
+                                    >Cerrar Sesión</a
+                                >
+                            </li>
+                            <% } %>
                         </ul>
                     </nav>
                 </div>
@@ -115,7 +133,7 @@
 
             <div class="foro">
                 <div class="flex-foro">
-                    <img src="images/foro.png" alt="foro" class="foro-img" />
+                    <img src="images/book-lover-33.svg" alt="foro" class="foro-img" />
                     <div class="texto-foro">
                         <h3>
                             En nuestro foro podrás valorar apuntes, preguntar

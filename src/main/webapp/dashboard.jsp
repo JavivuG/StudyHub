@@ -4,6 +4,7 @@
 <%@page import="java.util.ArrayList"%>
 <jsp:include page="/LoadDashboard" />
 
+
 <!DOCTYPE html>
 <html lang="es">
     <head>

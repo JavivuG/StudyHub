@@ -3,12 +3,10 @@ package studyhub.controlador;
 import studyhub.business.User;
 import studyhub.data.UserDB;
 import java.io.*;
-import java.util.ArrayList;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-import studyhub.business.Asignatura;
-import studyhub.data.ForoDB;
+
 
 @WebServlet("/Register")
 public class RegisterUserServlet extends HttpServlet {
@@ -16,7 +14,8 @@ public class RegisterUserServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+                HttpSession session = request.getSession();
+
         // Obtener los parametros de la peticion
         String nombre = request.getParameter("nombre");
         String apellidos = request.getParameter("apellidos");
@@ -36,22 +35,22 @@ public class RegisterUserServlet extends HttpServlet {
         user.setFecha_nacimiento(fecha_nacimiento);
         user.setRol(rol);
 
-        // Guardar objeto user en la sesion
-        HttpSession session = request.getSession();
-        session.setAttribute("user", user);
+
 
         int res=UserDB.register(user);
-        if (res > 0){
-            System.out.println("Usuario registrado satisfactoriamente");
-        }
-        else {
-            System.out.println("Error al registrar usuario");
+        String url;
+
+        if (res > 0) {
+            // Usuario registrado satisfactoriamente
+            session.setAttribute("estado_registro", true);
+            url="registered.jsp";
+        } else {
+            // Error al registrar usuario
+            session.setAttribute("estado_registro", false);
+            url = "signup.jsp";
         }
         // forward request and response to JSP page
-        String url = "/dashboard.jsp";
-        RequestDispatcher dispatcher =
-                getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request, response);
+        response.sendRedirect(url);
     }
     
     @Override

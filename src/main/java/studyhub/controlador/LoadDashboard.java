@@ -16,7 +16,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import studyhub.business.User;
 import studyhub.data.ForoDB;
+import studyhub.data.UserDB;
 
 /**
  *
@@ -34,6 +36,7 @@ public class LoadDashboard extends HttpServlet {
         
         ArrayList<Asignatura> asignaturas=null;
         asignaturas=ForoDB.getAsignaturas(MAX_ASIGNATURAS);
+        
         
         // Almacena los datos en el alcance de la solicitud
         session.setAttribute("asignaturas", asignaturas);
