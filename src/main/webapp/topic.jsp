@@ -204,22 +204,22 @@
                                         <%= comentarioActual.getTexto() %>
                                     </p>
                                     <div class="reacciones">
-                                        <div class="likes">
+                                        <form action="./Like" method="post" class="likes">
                                             <img
                                                 src="images/like.svg"
                                                 alt="Me gusta"
                                                 class="like"
                                             />
                                             <p><%= comentarioActual.getLikes() %> likes</p>
-                                        </div>
-                                        <div class="dislikes">
+                                        </form>
+                                        <form action="./Dislike" method="post" class="dislikes">
                                             <img
                                                 src="images/dislike.svg"
                                                 alt="No me gusta"
                                                 class="dislike"
                                             />
-                                            <p><%= comentarioActual.getLikes() %> dislikes</p>
-                                        </div>
+                                            <p><%= comentarioActual.getDislikes() %> dislikes</p>
+                                        </form>
                                     </div>
                                 </div>
                             <% } 
@@ -228,11 +228,12 @@
                             <p class="mensaje-vacio">No hay comentarios en este tema</p>
                         <% } %>
                         
-                    </div>
-                    <div class="chat-input">
+                    </div>    
+                    <form action="./InsertarComentario" method="post" class="chat-input">
                         <input
                             type="text"
                             id="chat-input"
+                            name='chat'
                             placeholder="Envia un mensaje..."
                         />
                         <button type="submit" class="chat-upload">
@@ -245,7 +246,7 @@
                                 class=""
                             />
                         </button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
