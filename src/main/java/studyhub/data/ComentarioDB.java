@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
+import jdk.internal.org.jline.terminal.TerminalBuilder;
 import studyhub.business.Comentario;
 
 /**
@@ -55,6 +57,44 @@ public class ComentarioDB {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
+        }
+}
+    public static void setComentario(String chat, int idTema, String nickname) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        String query = "INSERT INTO comentario (texto, fecha_creacion, likes, dislikes, id_tema, nickname)  VALUES (?,?,?,?,?,?)";
+        
+           System.out.println("\n\n\nentra\n\n\n");
+
+        try { 
+            Timestamp timestamp = new Timestamp(new Date().getTime());
+            int valor = 0;
+            ps = connection.prepareStatement(query);
+            ps.setString(1, chat);
+            ps.setTimestamp(2, timestamp);
+            ps.setInt(3, valor);
+            ps.setInt(4, valor);
+            ps.setInt(5, idTema);
+            ps.setString(6, nickname);
+            
+            System.out.println("chat = "+ chat + "\n");            
+            System.out.println("timestamp = "+ timestamp.toString() + "\n");            
+            System.out.println("nickname = "+ nickname + "\n");         
+            System.out.println("idTema = "+ idTema + "\n");
+                    
+            int rs = ps.executeUpdate();
+
+           System.out.println("\n\n\nhola\n\n\n");
+ 
+
+            ps.close();
+            pool.freeConnection(connection);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            
+           System.out.println("\n\n\nerror\n\n\n");
         }
 }
 }
