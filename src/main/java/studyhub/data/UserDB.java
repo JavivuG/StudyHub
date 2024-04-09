@@ -11,8 +11,8 @@ public class UserDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         PreparedStatement ps1=null;
-        String query="INSERT INTO USUARIO (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion)      VALUES (?, ?, ?, ?, ?, ?, ?)";
-        String queryRol="INSERT INTO ROL VALUES (?, ?)";
+        String query="INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion)      VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String queryRol="INSERT INTO rol VALUES (?, ?)";
 
         try {
             ps = connection.prepareStatement(query);
@@ -43,7 +43,7 @@ public class UserDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "SELECT email FROM USUARIO "
+        String query = "SELECT email FROM usuario "
                 + "WHERE email = ?";
 
         try {
@@ -68,13 +68,13 @@ public class UserDB {
         ResultSet rs = null;
         String query, query_rol;
         if (EmailValidator.validate(userOrEmail)){
-            query = "SELECT * FROM USUARIO WHERE email = ?";
+            query = "SELECT * FROM usuario WHERE email = ?";
         }
         else {
-            query = "SELECT * FROM USUARIO WHERE nickname = ?";
+            query = "SELECT * FROM usuario WHERE nickname = ?";
         }
 
-        query_rol="SELECT * FROM ROL WHERE nickname= ?";
+        query_rol="SELECT * FROM rol WHERE nickname= ?";
         
         try {
             ps = connection.prepareStatement(query);

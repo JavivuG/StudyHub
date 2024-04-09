@@ -33,7 +33,7 @@ public class LoadForum extends HttpServlet {
             throws ServletException, IOException {
         // Obtener los parametros de la peticion
         HttpSession session = request.getSession();
-        int MAX_FICHEROS=4;
+        int MAX_ficheroS=4;
         int MAX_TEMAS=3;
         
         ArrayList<Tema> listaTemasRecientes, listaTemasDestacados;
@@ -43,7 +43,7 @@ public class LoadForum extends HttpServlet {
         
         listaTemasRecientes=TemaDB.getTemasRecientes(id_foro,MAX_TEMAS);
         listaTemasDestacados=TemaDB.getTemasDestacados(id_foro,MAX_TEMAS);
-        listaFicheros=FicheroDB.getFicherosRecientes(id_foro,MAX_FICHEROS);
+        listaFicheros=FicheroDB.getFicherosRecientes(id_foro,MAX_ficheroS);
         Asignatura asignatura=ForoDB.getAsignatura(id_foro);
         
         session.setAttribute("asignatura", asignatura);

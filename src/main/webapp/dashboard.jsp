@@ -160,7 +160,7 @@
                     </div>
                 </div>
 
-                <!-- FORO  -->
+                <!-- foro  -->
 
                 <div class="container-foro">
                     <div class="encabezado-foro">

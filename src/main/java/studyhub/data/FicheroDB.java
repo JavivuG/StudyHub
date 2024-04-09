@@ -25,7 +25,7 @@ public class FicheroDB {
         ResultSet rs = null;
         String query;
         
-        query = "SELECT * FROM FICHERO WHERE id_foro=?";
+        query = "SELECT * FROM fichero WHERE id_foro=?";
 
         try {
             ps = connection.prepareStatement(query);
@@ -66,7 +66,7 @@ public class FicheroDB {
         ResultSet rs = null;
         String query;
         
-        query = "SELECT * FROM FICHERO WHERE id_foro=? ORDER BY fecha_publicacion DESC LIMIT ?";
+        query = "SELECT * FROM fichero WHERE id_foro=? ORDER BY fecha_publicacion DESC LIMIT ?";
 
         try {
             ps = connection.prepareStatement(query);

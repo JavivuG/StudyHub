@@ -9,7 +9,7 @@
           minEvictableIdleTimeMillis="30000" jmxEnabled="true"
           jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;
 org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"
-          username="root" password="studyjshd12." driverClassName="com.mysql.jdbc.Driver"
+          username="studyhub" password="studyjshd12." driverClassName="com.mysql.jdbc.Driver"
           url="jdbc:mysql://localhost:3306/studyhub?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=Europe/Madrid"/>
           
           <ResourceLink name="jdbc/studyhub" global="jdbc/studyhub" type="javax.sql.DataSource"/>

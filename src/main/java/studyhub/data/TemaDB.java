@@ -24,7 +24,7 @@ public class TemaDB {
         ResultSet rs = null;
         String query;
 
-        query = "SELECT * FROM TEMA WHERE id_foro=?";
+        query = "SELECT * FROM tema WHERE id_foro=?";
 
         try {
             ps = connection.prepareStatement(query);
@@ -66,7 +66,7 @@ public class TemaDB {
         ResultSet rs = null;
         String query;
 
-        query = "SELECT * FROM TEMA WHERE id_tema=?";
+        query = "SELECT * FROM tema WHERE id_tema=?";
 
         try {
             ps = connection.prepareStatement(query);
@@ -106,7 +106,7 @@ public class TemaDB {
         ResultSet rs = null;
         String query;
 
-        query = "SELECT * FROM TEMA WHERE id_foro=? ORDER BY fecha_publicacion DESC LIMIT ?";
+        query = "SELECT * FROM tema WHERE id_foro=? ORDER BY fecha_publicacion DESC LIMIT ?";
 
         try {
             ps = connection.prepareStatement(query);
@@ -149,7 +149,7 @@ public class TemaDB {
         ResultSet rs = null;
         String query;
 
-        query = "SELECT t.*, COUNT(c.id_tema) as num_referencias FROM TEMA t LEFT JOIN COMENTARIO c ON c.id_tema=t.id_tema WHERE id_foro= ? GROUP BY t.id_tema ORDER BY num_referencias DESC LIMIT ?";
+        query = "SELECT t.*, COUNT(c.id_tema) as num_referencias FROM tema t LEFT JOIN comentario c ON c.id_tema=t.id_tema WHERE id_foro= ? GROUP BY t.id_tema ORDER BY num_referencias DESC LIMIT ?";
 
         try {
             ps = connection.prepareStatement(query);

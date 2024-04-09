@@ -24,7 +24,7 @@ public class ComentarioDB {
         ResultSet rs = null;
         String query;
 
-        query = "SELECT * FROM COMENTARIO WHERE id_tema=?";
+        query = "SELECT * FROM comentario WHERE id_tema=?";
 
         try {
             ps = connection.prepareStatement(query);
