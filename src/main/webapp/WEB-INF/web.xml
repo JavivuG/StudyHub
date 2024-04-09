@@ -39,6 +39,7 @@
         </web-resource-collection>
         <auth-constraint>
             <role-name>estudiante</role-name>
+            <role-name>profesor</role-name>
         </auth-constraint>
     </security-constraint>
     <security-role>
