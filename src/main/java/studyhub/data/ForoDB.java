@@ -13,7 +13,7 @@ public class ForoDB {
         ResultSet rs = null;
         String query;
         
-        query = "SELECT * FROM FORO";
+        query = "SELECT * FROM foro";
 
         try {
             ps = connection.prepareStatement(query);
@@ -47,7 +47,7 @@ public class ForoDB {
         ResultSet rs = null;
         String query;
         
-        query = "SELECT * FROM FORO LIMIT ?";
+        query = "SELECT * FROM foro LIMIT ?";
 
         try {
             ps = connection.prepareStatement(query);
@@ -83,7 +83,7 @@ public class ForoDB {
         ResultSet rs = null;
         String query;
         
-        query = "SELECT * FROM FORO WHERE id_foro= ?";
+        query = "SELECT * FROM foro WHERE id_foro= ?";
 
         try {
             ps = connection.prepareStatement(query);
