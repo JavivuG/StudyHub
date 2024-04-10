@@ -150,7 +150,7 @@
           <h2><%= asignatura.getNombre() %></h2>
           <p><%= asignatura.getCurso() %></p>
         </div>
-        <img src="images/upload.svg" alt="Subir" id="upload" />
+        <a href="upload.jsp?idForo=<%=asignatura.getID_asignatura()%>"><img src="images/upload.svg" alt="Subir" id="upload" /></a>
       </div>
         
         <div class="ag-format-container">
@@ -172,7 +172,7 @@
                     </p>
                 </div>
               </div>
-              <a href="#"><img src="images/download.svg" alt="Descargar" class="img-download"/></a>
+              <a href="/downloadServlet?file=<%= ficheroActual.getId_fichero() %>"><img src="images/download.svg" alt="Descargar" class="img-download"/></a>
             </div>
           </div>
         </div>

@@ -106,3 +106,51 @@ fich2 h3 {
 .img-download:hover {
     background-color: #b5b5b5;
 }
+
+.doc-preview {
+    width: 80%;
+    margin: 30px auto;
+    height: 800px;
+}
+
+.doc-preview-container {
+    display: none;
+    align-items: center;
+
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  margin-top: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.sendBtnDisabled, .sendBtn {
+    border-radius: 10px;
+    padding: 7px;
+    border:0;
+    font-weight: bold;
+    margin-left: 50px;
+}
+
+.sendBtnDisabled {
+    cursor: not-allowed;
+    background-color: #cccccc;
+    color: #666666;
+}
+.sendBtn {
+    cursor: pointer;
+    background-color: #44ad2f;
+    color: white;
+}
+
+.sendBtn:hover {
+    background-color: #66cf51;
+}

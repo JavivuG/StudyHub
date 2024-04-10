@@ -75,6 +75,7 @@ CREATE TABLE fichero (
     id_fichero INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50),
     tipo VARCHAR(50),
+    file mediumblob,
     fecha_publicacion TIMESTAMP,
     nickname VARCHAR(50),
     id_foro INT,

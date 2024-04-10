@@ -6,7 +6,6 @@ package studyhub.business;
 
 import java.io.Serializable;
 import java.time.Duration;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
