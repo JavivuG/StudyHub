@@ -62,33 +62,33 @@ public class ComentarioDB {
     public static void setComentario(String chat, int idTema, String nickname) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
-        PreparedStatement ps = null;
+        PreparedStatement ps;
         String query = "INSERT INTO comentario (texto, fecha_creacion, likes, dislikes, id_tema, nickname)  VALUES (?,?,?,?,?,?)";
         
            System.out.println("\n\n\nentra\n\n\n");
 
         try { 
-            Timestamp timestamp = new Timestamp(new Date().getTime());
-            int valor = 0;
-            ps = connection.prepareStatement(query);
-            ps.setString(1, chat);
-            ps.setTimestamp(2, timestamp);
-            ps.setInt(3, valor);
-            ps.setInt(4, valor);
-            ps.setInt(5, idTema);
-            ps.setString(6, nickname);
+            if(chat != null && chat != ""){
+                Timestamp timestamp = new Timestamp(new Date().getTime());
+                int valor = 0;
+                ps = connection.prepareStatement(query);
+                ps.setString(1, chat);
+                ps.setTimestamp(2, timestamp);
+                ps.setInt(3, valor);
+                ps.setInt(4, valor);
+                ps.setInt(5, idTema);
+                ps.setString(6, nickname);
+
+                System.out.println("chat = "+ chat + "\n");            
+                System.out.println("timestamp = "+ timestamp.toString() + "\n");            
+                System.out.println("nickname = "+ nickname + "\n");         
+                System.out.println("idTema = "+ idTema + "\n");
+
+                ps.executeUpdate();
+                ps.close();
+             }
+
             
-            System.out.println("chat = "+ chat + "\n");            
-            System.out.println("timestamp = "+ timestamp.toString() + "\n");            
-            System.out.println("nickname = "+ nickname + "\n");         
-            System.out.println("idTema = "+ idTema + "\n");
-                    
-            int rs = ps.executeUpdate();
-
-           System.out.println("\n\n\nhola\n\n\n");
- 
-
-            ps.close();
             pool.freeConnection(connection);
 
         } catch (SQLException e) {
