@@ -231,16 +231,14 @@ public class FicheroDB {
             }
 
             // sends the statement to the database server
-            int row = ps.executeUpdate();
+            int res = ps.executeUpdate();
 
             ps.close();
             pool.freeConnection(connection);
 
-            if (row > 0) {
-                return 1;
-            }
+            
 
-            return 0;
+            return res;
         } catch (SQLException e) {
             e.printStackTrace();
             return 0;

@@ -28,14 +28,14 @@ public class FileUploadServlet extends HttpServlet {
         HttpSession session = request.getSession();
         
         String id_foro = request.getParameter("idForo");
-        String nombre = request.getParameter("nombre");
         Part filePart = request.getPart("file");
+        String filename = filePart.getSubmittedFileName();
         InputStream inputStream = null; 
 
         if (filePart != null) inputStream = filePart.getInputStream();
         
         Fichero fichero = new Fichero();
-        fichero.setNombre(nombre);
+        fichero.setNombre(filename);
         fichero.setTipo(filePart.getContentType());
         fichero.setNickname(request.getRemoteUser());
         fichero.setId_foro(Integer.parseInt(id_foro));
@@ -51,11 +51,10 @@ public class FileUploadServlet extends HttpServlet {
         
             session.setAttribute("asignatura", asignatura);
             session.setAttribute("ficheros", listaFicheros);
-            session.setAttribute("upload", true);
             url="files.jsp?idForo="+id_foro;
         } else {
             session.setAttribute("upload", false);
-            url = "upload.jsp";
+            url = "upload.jsp?idForo="+id_foro;
         }
         response.sendRedirect(url);
 

@@ -20,7 +20,7 @@
         />
         <link rel="icon" type="image/png" href="images/icono.png" />
         <script src="scripts/logo.js"></script>
-        <script src="scripts/logo.js"></script>
+
       </head>
     
 
@@ -138,10 +138,12 @@
                             required
                         />
                     </div>
+                    
+                    
 
                     <div class="cajon-info">
                         <label class="texto-info"
-                            >Introduce una constraseña</label
+                            >Introduce una contraseña</label
                         >
                         <input
                             name="password"
@@ -154,12 +156,14 @@
                     <div class="cajon-info">
                         <label class="texto-info">Confirme la contraseña</label>
                         <input
-                            name="password1"
+                            name="check_password"
                             type="password"
                             class="input-info"
                             required
                         />
                     </div>
+                    
+                    
 
                     <div class="cajon-info">
                         <label class="texto-info"
@@ -172,7 +176,8 @@
                             required
                         />
                     </div>
-
+                    
+                   
                     <div class="cajon-info">
                         <label class="texto-info">Selecciona tu rol</label>
                         <div class="cajon-rol">
@@ -201,8 +206,112 @@
                         Crear cuenta
                     </button>
                 </form>
+
                 
             </div>
         </div>
     </body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        var form = document.querySelector(".info-usuario");
+        var passwordInput = form.querySelector("input[name='password']");
+        var confirmPasswordInput = form.querySelector("input[name='check_password']");
+        var emailInput = form.querySelector("input[name='email']");
+        var dateOfBirthInput = form.querySelector("input[name='fnacimiento']");
+        var nicknameInput = form.querySelector("input[name='nickname']");
+        var errorContainerPassword = document.createElement("div");
+        errorContainerPassword.classList.add("error-message");
+        confirmPasswordInput.parentNode.appendChild(errorContainerPassword);
+        var errorContainerPasswordSecure = document.createElement("div");
+        errorContainerPasswordSecure.classList.add("error-message");
+        passwordInput.parentNode.appendChild(errorContainerPasswordSecure);
+        var errorContainerEmail = document.createElement("div");
+        errorContainerEmail.classList.add("error-message");
+        emailInput.parentNode.appendChild(errorContainerEmail);
+        var errorContainerDate = document.createElement("div");
+        errorContainerDate.classList.add("error-message");
+        dateOfBirthInput.parentNode.appendChild(errorContainerDate);
+        var errorContainerNickname = document.createElement("div");
+        errorContainerNickname.classList.add("error-message");
+        nicknameInput.parentNode.appendChild(errorContainerNickname);
+
+        function validatePasswords() {
+            var password = passwordInput.value;
+            var confirmPassword = confirmPasswordInput.value;
+            var passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
+            var isValid = true;
+            errorContainerPassword.textContent = "";
+            errorContainerPasswordSecure.textContent = "";
+
+            if (password !== confirmPassword) {
+                errorContainerPassword.textContent = "Las contraseñas no coinciden";
+                isValid = false;
+            }
+
+            if (!passwordRegex.test(password)) {
+                errorContainerPasswordSecure.textContent = "La contraseña debe tener al menos 8 carácteres, 1 mayúscula y 1 dígito";
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function validateEmail() {
+            var email = emailInput.value;
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(email)) {
+                errorContainerEmail.textContent = "El correo electrónico no es válido";
+                return false;
+            } else {
+                errorContainerEmail.textContent = "";
+                return true;
+            }
+        }
+
+        function validateDateOfBirth() {
+            var dob = new Date(dateOfBirthInput.value);
+            var today = new Date();
+
+            if (dob >= today) {
+                errorContainerDate.textContent = "La fecha de nacimiento no es válida";
+                return false;
+            } else {
+                errorContainerDate.textContent = "";
+                return true;
+            }
+        }
+
+        function validateNickname() {
+            var nickname = nicknameInput.value.trim();
+            var isValid = true;
+
+            if (nickname.length < 5 || nickname.length > 15) {
+                errorContainerNickname.textContent = "El nickname debe tener entre 5 y 15 carácteres";
+                isValid = false;
+            } else {
+                errorContainerNickname.textContent = "";
+            }
+
+            return isValid;
+        }
+
+        form.addEventListener("submit", function(event) {
+            if (!validatePasswords() || !validateEmail() || !validateDateOfBirth() || !validateNickname()) {
+                event.preventDefault();
+            }
+        });
+
+        passwordInput.addEventListener("input", validatePasswords);
+        confirmPasswordInput.addEventListener("input", validatePasswords);
+        emailInput.addEventListener("input", validateEmail);
+        dateOfBirthInput.addEventListener("input", validateDateOfBirth);
+        nicknameInput.addEventListener("input", validateNickname);
+    });
+
+    </script>
+
+
+    
 </html>
+

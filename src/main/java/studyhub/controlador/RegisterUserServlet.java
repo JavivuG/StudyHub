@@ -46,7 +46,6 @@ public class RegisterUserServlet extends HttpServlet {
             url="registered.jsp";
         } else {
             // Error al registrar usuario
-            session.setAttribute("estado_registro", false);
             url = "signup.jsp";
         }
         // forward request and response to JSP page

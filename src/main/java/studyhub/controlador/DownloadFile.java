@@ -27,9 +27,8 @@ public class DownloadFile extends HttpServlet {
             // Set response headers
             response.setContentType("application/octet-stream");
             String fileName = FicheroDB.getNombreFichero(id_file);
-            String extension = FicheroDB.getExtension(id_file);
             
-            response.setHeader("Content-Disposition", "attachment; filename="+ fileName + "." + extension);
+            response.setHeader("Content-Disposition", "attachment; filename="+ fileName);
 
             // Write BLOB data to output stream
             response.getOutputStream().write(fileData);

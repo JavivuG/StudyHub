@@ -249,7 +249,7 @@
                                                         </p>
                                                     </div>
                                                 </div>
-                                                <a href="#"
+                                                <a href="/downloadServlet?file=<%= fichero.getId_fichero() %>"
                                                     ><img
                                                         src="images/download.svg"
                                                         alt="download"
@@ -267,6 +267,11 @@
                         <% if (listaFicheros.size()>0){ %>
                             <div class="contenedor-view-more">
                                 <a href="files.jsp?idForo=<%= asignatura.getID_asignatura()%>" class="view-more">Ver más</a>
+                            </div>
+                        <% } 
+                        else {%>
+                        <div class="contenedor-view-more">
+                                <a href="files.jsp?idForo=<%= asignatura.getID_asignatura()%>" class="view-more">Subir          ficheros</a>
                             </div>
                         <% } %>
                     </div>
