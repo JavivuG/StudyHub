@@ -95,6 +95,8 @@ ul {
     color: #000;
 }
 
+
+
 @media only screen and (max-width: 768px) {
     .page-title {
         margin-top: 10%;
