@@ -56,7 +56,7 @@ public class FileUploadServlet extends HttpServlet {
             session.setAttribute("upload", false);
             url = "upload.jsp?idForo="+id_foro;
         }
+        
         response.sendRedirect(url);
-
     }
 }
