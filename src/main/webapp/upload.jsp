@@ -29,6 +29,10 @@
             rel="stylesheet"
             />
         <script src="scripts/logo.js"></script>
+        <script src="https://kit.fontawesome.com/1cf483120b.js" crossorigin="anonymous"></script>	
+        <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi0RCj8aLdKFX-cvYkW6kDveuaUlMnpes&libraries=places&callback=initMap"></script> 
+        <link rel="stylesheet" href="styles/drag.css"> 
+
     </head>
 
     <body>
@@ -105,7 +109,7 @@
         </div>
 
         <!-- Barra de navegacion -->
-<% String idForo = request.getParameter("idForo"); %>
+        <% String idForo = request.getParameter("idForo"); %>
         <div class="container">
             <ul class="nav-bar">
                 <li>
@@ -125,10 +129,10 @@
                 <li>
                     <img src="images/arrow.svg" alt="Arrow" id="arrow" />
                 </li>
-                <% Asignatura asignatura=(Asignatura) session.getAttribute("asignatura"); %>
+                <% Asignatura asignatura = (Asignatura) session.getAttribute("asignatura");%>
                 <li>
                     <span class="items-nav"
-                          ><a href="forum.jsp?idForo=<%=asignatura.getID_asignatura()%>"><%= asignatura.getNombre() %></a></span
+                          ><a href="forum.jsp?idForo=<%=asignatura.getID_asignatura()%>"><%= asignatura.getNombre()%></a></span
                     >
                 </li>
                 <li>
@@ -150,26 +154,26 @@
             <% if (session.getAttribute("upload") != null) { %>
             <p>Hubo un error al subir el fichero</p>
             <%
-                session.removeAttribute("upload");
-            }%>
-            
+                    session.removeAttribute("upload");
+                }%>
+
 
             <h2>Sube un fichero</h2>
-            <form method="post" action="uploadServlet" enctype="multipart/form-data"  class="formulario">
-                <label for="docInput" class="custom-file-upload">
-                    Selecciona un fichero
-                </label>
-
-                <input accept=".pdf, .txt, .doc, .docx, image/*" type='file' name="file" id="docInput" class="button" />
-                <input type="submit" name="submit" value="Subir" class="sendBtnDisabled" id="send" disabled>
-                <input type="hidden" name="idForo" value="<%= idForo %>">
-            </form>
-
-            <div class="doc-preview-container" id="preview-container">
-                <embed id="preview" class="doc-preview" src="#"/>
+            <div class="drag-area">
+                <div class="icon">
+                    <i class="fas fa-images"></i>
+                </div>
+                <span class="header">Arrastra un fichero hasta aquí</span>
+                <span class="header">o <span class="button">selecciónalo</span></span>
+                <input type="file" hidden />
+                <span class="support">Soporta: JPEG, JPG, PNG, PDF</span>
             </div>
+
+            <button type="submit" name="submit" class="sendBtn" id="send">Subir</button>
+
+
         </div>
-            
+
         <!-- Pie de pagina -->
         <footer>
             <div class="info">
@@ -203,6 +207,7 @@
                 </ul>
             </div>
         </footer>
+        <script src="index.js"></script>
     </body>
     <script>
         docInput.onchange = evt => {
