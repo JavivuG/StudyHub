@@ -33,6 +33,9 @@
             <url-pattern>/contact.jsp</url-pattern>
             <url-pattern>/not_found.jsp</url-pattern>
             <url-pattern>/Register</url-pattern>
+            <url-pattern>/CheckDuplicateServlet</url-pattern>
+                        <url-pattern>/CheckDuplicateEmail</url-pattern>
+
             <url-pattern>/registered.jsp</url-pattern>
             <url-pattern>/styles/*</url-pattern>
             <url-pattern>/images/*</url-pattern>
