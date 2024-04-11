@@ -377,7 +377,7 @@
             var today = new Date();
             var isValid=true;
 
-            if (dobValue === '') {
+            if (dob === '') {
                 errorContainerDate.textContent = "Por favor, introduce tu fecha de nacimiento";
                 isValid = false;
             }
