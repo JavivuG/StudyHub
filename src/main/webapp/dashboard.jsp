@@ -22,7 +22,6 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
         />
-        <script src="scripts/logo.js"></script>
     </head>
     <body>
         <header>
@@ -310,4 +309,6 @@
             </div>
         </footer>
     </body>
+            <script src="scripts/logo.js"></script>
+
 </html>

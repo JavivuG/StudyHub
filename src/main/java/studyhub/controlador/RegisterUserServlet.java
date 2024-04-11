@@ -24,32 +24,37 @@ public class RegisterUserServlet extends HttpServlet {
         String password= request.getParameter("password");
         String fecha_nacimiento = request.getParameter("fnacimiento");
         String rol = request.getParameter("rol");
-
-        // Crear objeto usuario
-        User user = new User();
-        user.setNombre(nombre);
-        user.setApellidos(apellidos);
-        user.setNickname(nickname);
-        user.setEmail(email);
-        user.setPassword(password);
-        user.setFecha_nacimiento(fecha_nacimiento);
-        user.setRol(rol);
-
-
-
-        int res=UserDB.register(user);
         String url;
 
-        if (res > 0) {
-            // Usuario registrado satisfactoriamente
-            session.setAttribute("estado_registro", true);
-            url="registered.jsp";
-        } else {
-            // Error al registrar usuario
+        
+        if(comprobarDatos(nombre,apellidos,email,nickname,password,fecha_nacimiento)){
+            // Crear objeto usuario
+            User user = new User();
+            user.setNombre(nombre);
+            user.setApellidos(apellidos);
+            user.setNickname(nickname);
+            user.setEmail(email);
+            user.setPassword(password);
+            user.setFecha_nacimiento(fecha_nacimiento);
+            user.setRol(rol);
+
+            int res=UserDB.register(user);
+
+            if (res > 0) {
+                // Usuario registrado satisfactoriamente
+                session.setAttribute("estado_registro", true);
+                url="registered.jsp";
+            } else {
+                // Error al registrar usuario
+                url = "signup.jsp";
+            }
+        }
+        else {
             url = "signup.jsp";
         }
-        // forward request and response to JSP page
+        
         response.sendRedirect(url);
+
     }
     
     @Override
@@ -57,5 +62,11 @@ public class RegisterUserServlet extends HttpServlet {
                          HttpServletResponse response)
             throws ServletException, IOException {
         this.doPost(request, response);
+    }
+    
+    private boolean comprobarDatos(String nombre, String apellidos, String email, String nickname, String password, String fecha_nacimiento){
+        boolean isValid=true;
+        
+        return isValid;
     }
 }

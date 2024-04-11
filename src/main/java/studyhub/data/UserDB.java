@@ -38,13 +38,34 @@ public class UserDB {
         }
     }
 
+    public static boolean userExists(String nickname) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT * FROM usuario WHERE nickname = ?";
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, nickname);
+            rs = ps.executeQuery();
+            boolean res = rs.next();
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return res;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
     public static boolean emailExists(String emailAddress) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String query = "SELECT email FROM usuario "
-                + "WHERE email = ?";
+        String query = "SELECT * FROM usuario WHERE email = ?";
 
         try {
             ps = connection.prepareStatement(query);
