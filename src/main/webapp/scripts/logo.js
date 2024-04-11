@@ -10,7 +10,7 @@ function myFunction() {
         "#9c9bff",
         "#95ecff",
         "#bf9aca",
-        "#bafff4",
+        "#bafff4"
     ];
     const rando = () => colors[Math.floor(Math.random() * colors.length)];
     document.documentElement.style.cssText = `

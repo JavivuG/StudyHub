@@ -149,17 +149,17 @@
         <div class="container-principal">
             <% if (session.getAttribute("upload") != null) { %>
             <p>Hubo un error al subir el fichero</p>
-            <% }%>
+            <%
+                session.removeAttribute("upload");
+            }%>
+            
 
             <h2>Sube un fichero</h2>
-            <form method="post" action="uploadServlet" enctype="multipart/form-data"   >
+            <form method="post" action="uploadServlet" enctype="multipart/form-data"  class="formulario">
                 <label for="docInput" class="custom-file-upload">
                     Selecciona un fichero
                 </label>
-                <label for="nombre" class="">
-                    Nombre del fichero
-                </label>
-                <input type="text" name="nombre">
+
                 <input accept=".pdf, .txt, .doc, .docx, image/*" type='file' name="file" id="docInput" class="button" />
                 <input type="submit" name="submit" value="Subir" class="sendBtnDisabled" id="send" disabled>
                 <input type="hidden" name="idForo" value="<%= idForo %>">

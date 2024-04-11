@@ -122,8 +122,3 @@ INSERT INTO comentario (texto, fecha_creacion, likes, dislikes, id_tema, nicknam
 INSERT INTO comentario (texto, fecha_creacion, likes, dislikes, id_tema, nickname) VALUES ('No entiendo muy bien el concepto, ¿podrías explicarlo de otra forma?', '2022-01-01 00:01:46', 0, 0, 1, 'joselito12');
 INSERT INTO comentario (texto, fecha_creacion, likes, dislikes, id_tema, nickname) VALUES ('¿Podrías poner un ejemplo de una variable?', '2022-01-01 17:49:00', 0, 0, 1, 'therealpepe');
 INSERT INTO comentario (texto, fecha_creacion, likes, dislikes, id_tema, nickname) VALUES ('¿Podrías poner un ejemplo de una función?', '2022-01-01 11:01:12', 0, 0, 1, 'TheMarias');
-
-INSERT INTO fichero (nombre, tipo, fecha_publicacion, nickname, id_foro) VALUES ('Introd_Prog', 'pdf', '2024-03-25 19:01:12', 'javivu', 1);
-INSERT INTO fichero (nombre, tipo, fecha_publicacion, nickname, id_foro) VALUES ('Bucles_for', 'pdf', '2024-03-26 19:36:00', 'javivu', 1);
-INSERT INTO fichero (nombre, tipo, fecha_publicacion, nickname, id_foro) VALUES ('Explicacion_librerias', 'pdf', '2024-03-26 14:24:12', 'javivu', 1);
-INSERT INTO fichero (nombre, tipo, fecha_publicacion, nickname, id_foro) VALUES ('Apuntes_tema4', 'pdf', '2024-03-26 06:10:09', 'javivu', 1);

@@ -20,7 +20,6 @@
         />
         <link rel="icon" type="image/png" href="images/icono.png" />
         <script src="scripts/logo.js"></script>
-        <script src="scripts/logo.js"></script>
       </head>
     
 
@@ -90,7 +89,10 @@
                     <a href="dashboard.jsp" class="login">Iniciar sesión</a>
                 </div>
             </div>
-            <% } %>
+            
+            <%
+                session.removeAttribute("estado_registro");
+            } %>
             
                 
             </div>

@@ -147,6 +147,7 @@
       <div class="title-fich">
         <div class="subject">
             
+            
           <h2><%= asignatura.getNombre() %></h2>
           <p><%= asignatura.getCurso() %></p>
         </div>

@@ -124,7 +124,6 @@ input[type="file"] {
 }
 
 .custom-file-upload {
-  margin-top: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
   display: inline-block;
@@ -134,10 +133,10 @@ input[type="file"] {
 
 .sendBtnDisabled, .sendBtn {
     border-radius: 10px;
-    padding: 7px;
+    padding: 10px;
     border:0;
     font-weight: bold;
-    margin-left: 50px;
+    margin-left: 10px;
 }
 
 .sendBtnDisabled {
@@ -153,4 +152,10 @@ input[type="file"] {
 
 .sendBtn:hover {
     background-color: #66cf51;
+}
+
+.formulario {
+    align-items: center;
+    display:flex;
+    margin-top: 20px;
 }
