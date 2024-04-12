@@ -22,6 +22,7 @@
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
             />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -29,10 +30,7 @@
             rel="stylesheet"
             />
         <script src="scripts/logo.js"></script>
-        <script src="https://kit.fontawesome.com/1cf483120b.js" crossorigin="anonymous"></script>	
-        <script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi0RCj8aLdKFX-cvYkW6kDveuaUlMnpes&libraries=places&callback=initMap"></script> 
         <link rel="stylesheet" href="styles/drag.css"> 
-
     </head>
 
     <body>
@@ -151,10 +149,22 @@
             </ul>
         </div>
         <div class="container-principal">
-            <% if (session.getAttribute("upload") != null) { %>
-            <p>Hubo un error al subir el fichero</p>
+            <% if (session.getAttribute("subida") != null) { %>
+                <script>
+                        Swal.fire({
+                            title: '¡Vaya!',
+                            text: 'Parece que hubo un error al subir el fichero.',
+                            footer: 'Por favor, inténtalo de nuevo más tarde.',
+                            icon: 'error',
+                            timer: 4000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
+                    </script>
             <%
-                    session.removeAttribute("upload");
+                    session.removeAttribute("subida");
                 }%>
 
 
@@ -163,14 +173,13 @@
                 <div class="icon">
                     <i class="fas fa-images"></i>
                 </div>
-                <span class="header">Arrastra un fichero hasta aquí</span>
-                <span class="header">o <span class="button">selecciónalo</span></span>
+                <span class="header">Arrastra un fichero hasta aquí</span> <span class="header">o <span class="button">selecciónalo</span></span>
                 <input type="file" hidden />
+                <button type="submit" name="submit" class="sendBtnDisabled" id="send" disabled>Subir</button>
                 <span class="support">Soporta: JPEG, JPG, PNG, PDF</span>
             </div>
 
-            <button type="submit" name="submit" class="sendBtn" id="send">Subir</button>
-
+            <div class="preview" id="preview" hidden></div>
 
         </div>
 
@@ -207,18 +216,5 @@
                 </ul>
             </div>
         </footer>
-        <script src="index.js"></script>
+        <script src="scripts/draganddrop.js"></script>
     </body>
-    <script>
-        docInput.onchange = evt => {
-            const [file] = docInput.files;
-            if (file) {
-                document.getElementById("preview-container").style.display = 'flex';
-                document.getElementById("send").disabled = false;
-                document.getElementById("send").classList.add("sendBtn");
-                document.getElementById("send").classList.remove("sendBtnDisabled");
-                preview.src = URL.createObjectURL(file);
-            }
-        };
-    </script>
-</html>
