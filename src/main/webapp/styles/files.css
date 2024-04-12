@@ -107,36 +107,12 @@ fich2 h3 {
     background-color: #b5b5b5;
 }
 
-.doc-preview {
-    width: 80%;
-    margin: 30px auto;
-    height: 800px;
-}
-
-.doc-preview-container {
-    display: none;
-    align-items: center;
-
-}
-
-input[type="file"] {
-  display: none;
-}
-
-.custom-file-upload {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  display: inline-block;
-  padding: 6px 12px;
-  cursor: pointer;
-}
-
 .sendBtnDisabled, .sendBtn {
     border-radius: 10px;
     padding: 10px;
-    border:0;
+    border: 0;
     font-weight: bold;
-    margin-left: 10px;
+    margin: 10px;
 }
 
 .sendBtnDisabled {
@@ -152,10 +128,4 @@ input[type="file"] {
 
 .sendBtn:hover {
     background-color: #66cf51;
-}
-
-.formulario {
-    align-items: center;
-    display:flex;
-    margin-top: 20px;
 }

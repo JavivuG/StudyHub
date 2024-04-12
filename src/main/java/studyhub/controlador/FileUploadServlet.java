@@ -51,9 +51,10 @@ public class FileUploadServlet extends HttpServlet {
         
             session.setAttribute("asignatura", asignatura);
             session.setAttribute("ficheros", listaFicheros);
+            session.setAttribute("subida", true);
             url="files.jsp?idForo="+id_foro;
         } else {
-            session.setAttribute("upload", false);
+            session.setAttribute("subida", false);
             url = "upload.jsp?idForo="+id_foro;
         }
         
