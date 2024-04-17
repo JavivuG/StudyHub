@@ -1,4 +1,4 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
@@ -27,6 +27,10 @@ public class LogOut extends HttpServlet {
         // Obtener los parametros de la peticion
         HttpSession session = request.getSession();
         
+        // Borra informacion de identidad
+        request.logout();
+        
+        // Invalida la sesión
         session.invalidate();
         
         response.sendRedirect("index.jsp");

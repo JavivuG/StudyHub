@@ -4,35 +4,36 @@
  */
 package studyhub.controlador;
 
-import studyhub.data.UserDB;
-import studyhub.business.User;
+
+import studyhub.data.FicheroDB;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 
 
 /**
  *
  * @author javi
  */
-@WebServlet(name = "LoadUser", urlPatterns = {"/LoadUser"})
-public class LoadUser extends HttpServlet {
+@WebServlet(name = "DeleteFile", urlPatterns = {"/DeleteFile"})
+public class DeleteFile extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Obtener los parametros de la peticion
-// Obtener los parametros de la peticion
-        HttpSession session = request.getSession();
         
-        User usuario=UserDB.selectUser(request.getRemoteUser());
-        session.setAttribute("user", usuario);
-        response.sendRedirect("profile.jsp");
+        String id_foro=request.getParameter("idForo");
+        int id_fichero=Integer.parseInt(request.getParameter("idFichero"));
+        String pagina=request.getParameter("page");
+        FicheroDB.deleteFichero(id_fichero);
+        
+        String url=request.getContextPath();
+        
+        response.sendRedirect(url);
     }
 
    

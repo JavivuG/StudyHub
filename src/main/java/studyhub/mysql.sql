@@ -33,8 +33,8 @@ CREATE TABLE foro (
 CREATE TABLE rol (
     nickname VARCHAR(50) PRIMARY KEY,
     rol VARCHAR(20),
-    CONSTRAINT check_rol CHECK (rol IN ('estudiante', 'profesor')),
-    FOREIGN KEY (nickname) REFERENCES usuario(nickname)
+    CONSTRAINT check_rol CHECK (rol IN ('estudiante', 'profesor','moderador','administrador')),
+    FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE
 );
 
 
@@ -49,8 +49,8 @@ CREATE TABLE tema (
     id_foro INT,
     CHECK (likes >= 0),
     CHECK (dislikes >= 0),
-    FOREIGN KEY (nickname) REFERENCES usuario(nickname),
-    FOREIGN KEY (id_foro) REFERENCES foro(id_foro)
+    FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE,
+    FOREIGN KEY (id_foro) REFERENCES foro(id_foro) ON DELETE CASCADE
 );
 
 
@@ -64,8 +64,8 @@ CREATE TABLE comentario (
     nickname VARCHAR(50),
     CHECK (likes >= 0),
     CHECK (dislikes >= 0),
-    FOREIGN KEY (id_tema) REFERENCES tema(id_tema),
-    FOREIGN KEY (nickname) REFERENCES usuario(nickname)
+    FOREIGN KEY (id_tema) REFERENCES tema(id_tema) ON DELETE CASCADE,
+    FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE
 );
 
 
@@ -79,8 +79,8 @@ CREATE TABLE fichero (
     fecha_publicacion TIMESTAMP,
     nickname VARCHAR(50),
     id_foro INT,
-    FOREIGN KEY (nickname) REFERENCES usuario(nickname),
-    FOREIGN KEY (id_foro) REFERENCES foro(id_foro)
+    FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE,
+    FOREIGN KEY (id_foro) REFERENCES foro(id_foro) ON DELETE CASCADE
 );
 
 INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('javivu', '12345', 'Javier', 'Garcia Gonzalez', 'javiergarciaglz16@gmail.com', '1998-12-16', '2020-12-16');
@@ -88,6 +88,8 @@ INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimie
 INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('therealpepe', '12345', 'Pepe', 'Vergara Narváez', 'randomuser123@outlook.com' , '2001-12-16', '2020-12-16');
 INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('xXmanoloXx', 'pedro12', 'Manolo', 'Gamboa Verduzco', 'myemail@example.com', '2002-05-18', '2022-12-16');
 INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('TheMarias', '12345', 'Maria', 'Olivares Otero', 'macielolivaresotero@hotmail.com', '2000-12-16', '2020-12-16');
+INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('admin', 'admin', 'Administrador', 'Administrador', 'admin@gmail.com', '1998-12-16', '2020-12-16');
+INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('mod', 'mod', 'Moderador', 'Moderador', 'mod@gmail.com', '1998-12-16', '2020-12-16');
 
 
 
@@ -110,6 +112,9 @@ INSERT INTO rol (nickname, rol) VALUES ('joselito12' ,'profesor');
 INSERT INTO rol (nickname, rol) VALUES ('therealpepe', 'estudiante');
 INSERT INTO rol (nickname, rol) VALUES ('xXmanoloXx', 'estudiante');
 INSERT INTO rol (nickname, rol) VALUES ('TheMarias', 'estudiante');
+INSERT INTO rol (nickname, rol) VALUES ('admin', 'administrador');
+INSERT INTO rol (nickname, rol) VALUES ('mod', 'moderador');
+
 
 
 INSERT INTO tema (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es un algoritmo?', 'Explicación de lo que es un algoritmo y su importancia en la programación.', '2024-03-12 12:13:21', 0, 0, 'javivu', 1);

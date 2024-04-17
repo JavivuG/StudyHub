@@ -4,7 +4,6 @@
  */
 package studyhub.controlador;
 
-import studyhub.business.Fichero;
 import studyhub.business.Asignatura;
 import studyhub.data.FicheroDB;
 import studyhub.data.ForoDB;

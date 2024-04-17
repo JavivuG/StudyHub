@@ -110,14 +110,17 @@ public class UserDB {
                 user.setNombre(rs.getString("nombre"));
                 user.setApellidos(rs.getString("apellidos"));
                 user.setEmail(rs.getString("email"));
+
                 user.setFecha_nacimiento(rs.getString("fecha_nacimiento"));
                 user.setFecha_creacion(rs.getString("fecha_creacion"));
                 ps=connection.prepareStatement(query_rol);
                 ps.setString(1, userOrEmail);
                 rs=ps.executeQuery();
+
                 if (rs.next()){
                     user.setRol(rs.getString("rol"));
                 }
+
             }
 
             rs.close();

@@ -83,7 +83,7 @@
                     <img src="images/profile.svg" alt="user" id="profile" />
                     <div class="datos-perfil">
                         <% User usuario=(User) session.getAttribute("user"); %>
-                        <p id="nickname"><%= usuario.getNombre() %></p>
+                        <p id="nickname"><%= usuario.getNickname()%></p>
                         <p id="name"><%= usuario.getNombre() %> <%= usuario.getApellidos() %></p>
                         <p id="email"><%= usuario.getEmail()%></p>
                         <p id="birthday"><%= usuario.getFecha_nacimiento().toString() %></p>

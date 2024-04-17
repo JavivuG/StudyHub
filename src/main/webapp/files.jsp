@@ -176,9 +176,11 @@
                                 </div>
                                 <a href="/downloadServlet?file=<%= ficheroActual.getId_fichero()%>"><img src="images/download.svg" alt="Descargar" class="img-download"/></a>
                             </div>
+                            
                         </div>
                     </div>
                     <% } %>
+                    
 
                 </div>
             </div>

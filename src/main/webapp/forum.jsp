@@ -177,16 +177,23 @@
                                     for (int i=0; i<listaTemasDestacados.size(); i++){
                                         Tema temaActualDestacado=listaTemasDestacados.get(i);
                                         %> 
-                                        <a href="topic.jsp?idForo=<%=temaActualDestacado.getId_foro()%>&idTema=<%=temaActualDestacado.getId_tema()%>"
-                                            ><li>
+                                        <li class="lista-temas">
+                                            <a href="topic.jsp?idForo=<%=temaActualDestacado.getId_foro()%>&idTema=<%=temaActualDestacado.getId_tema()%>"
+                                           class="enlace-tema" >
                                                 <div class="caja-tema">
                                                     <h3><%= temaActualDestacado.getTitulo() %></h3>
                                                     <p>
                                                         por <span><%= temaActualDestacado.getNickname() %></span> • <%= temaActualDestacado.getTiempoPublicado() %>
                                                     </p>
                                                 </div>
-                                            </li></a
+                                                    </a
                                         >
+                                                <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){ %>
+                                                <div class="borrar-tema">
+                                                    <a href="/DeleteTopic?idForo=<%=temaActualDestacado.getId_foro()%>&idTema=<%= temaActualDestacado.getId_tema() %>"><img src="images/delete.svg" alt="borrar" class="borrar-icon"></a>
+                                                </div>
+                                                <% } %>
+                                            </li>
                                     <%}
                                 }
                                 else {%>
@@ -202,8 +209,9 @@
                                     for (int i=0; i<listaTemasRecientes.size(); i++){
                                         Tema temaActualReciente=listaTemasRecientes.get(i);
                                         %>
-                                        <a href="topic.jsp?idForo=<%=temaActualReciente.getId_foro()%>&idTema=<%=temaActualReciente.getId_tema()%>"
-                                            ><li>
+                                        <li class="lista-temas">
+                                            <a href="topic.jsp?idForo=<%=temaActualReciente.getId_foro()%>&idTema=<%=temaActualReciente.getId_tema()%>"
+                                            class="enlace-tema">
                                                 <div class="caja-tema">
                                                     <h3>
                                                         <%= temaActualReciente.getTitulo() %>
@@ -212,8 +220,13 @@
                                                         por <span><%= temaActualReciente.getNickname() %></span> • <%= temaActualReciente.getTiempoPublicado() %>
                                                     </p>
                                                 </div>
-                                            </li></a
-                                        >
+                                            </a>
+                                                  <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){ %>
+                                                <div class="borrar-tema">
+                                                    <a href="/DeleteTopic?idForo=<%=temaActualReciente.getId_foro()%>&idTema=<%= temaActualReciente.getId_tema() %>"><img src="images/delete.svg" alt="borrar" class="borrar-icon"></a>
+                                                </div>
+                                                <% } %>
+                                            </li>
                                     <%}
                                 }
                                 else {%>
@@ -233,29 +246,37 @@
                                     for (int i=0; i<listaFicheros.size(); i++){ 
                                         Fichero fichero=listaFicheros.get(i);
                                         %>
-                                        <li>
-                                            <div class="caja-fich">
-                                                <div class="fich">
-                                                    <img
-                                                        src="images/fichero.svg"
-                                                        alt="pdf"
-                                                        id="fich-icon"
-                                                    />
-                                                    <div class="fich2">
-                                                        <h3><%= fichero.getNombre() %></h3>
-                                                        <p>
-                                                            subido por
-                                                            <span><%= fichero.getNickname() %></span> • <%= fichero.getTiempoPublicado() %>
-                                                        </p>
+                                        <li class="lista-ficheros">
+                                            <div class="fichero">
+                                                <div class="caja-fich">
+                                                    <div class="fich">
+                                                        <img
+                                                            src="images/fichero.svg"
+                                                            alt="pdf"
+                                                            id="fich-icon"
+                                                        />
+                                                        <div class="fich2">
+                                                            <h3><%= fichero.getNombre() %></h3>
+                                                            <p>
+                                                                subido por
+                                                                <span><%= fichero.getNickname() %></span> • <%= fichero.getTiempoPublicado() %>
+                                                            </p>
+                                                        </div>
                                                     </div>
+                                                    <a href="/downloadServlet?file=<%= fichero.getId_fichero() %>"
+                                                        ><img
+                                                            src="images/download.svg"
+                                                            alt="download"
+                                                            id="download-icon"
+                                                    /></a>
                                                 </div>
-                                                <a href="/downloadServlet?file=<%= fichero.getId_fichero() %>"
-                                                    ><img
-                                                        src="images/download.svg"
-                                                        alt="download"
-                                                        id="download-icon"
-                                                /></a>
                                             </div>
+                                            <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){ %>         
+                                            <div class="borrar-tema">
+                                                    <a href="/DeleteFile?idForo=<%=fichero.getId_foro()%>&idFichero=<%= fichero.getId_fichero()%>&page=forum"><img src="images/delete.svg" alt="borrar" class="borrar-icon"></a>
+                                            </div>
+                                            <% } %>
+                                            
                                         </li>
                                     <%}
                                 }
