@@ -244,4 +244,25 @@ public class FicheroDB {
             return 0;
         }
     }
+    
+    public static void deleteFichero(int id_fichero) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        String query;
+
+        query = "DELETE FROM fichero f WHERE t.id_fichero= ?";
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, id_fichero);
+            ps.executeUpdate();
+
+            ps.close();
+            pool.freeConnection(connection);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

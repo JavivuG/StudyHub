@@ -51,6 +51,8 @@
         <auth-constraint>
             <role-name>estudiante</role-name>
             <role-name>profesor</role-name>
+            <role-name>moderador</role-name>
+            <role-name>administrador</role-name>
         </auth-constraint>
     </security-constraint>
     <security-role>
@@ -60,6 +62,10 @@
             management database.
         </description>
         <role-name>estudiante</role-name>
+        <role-name>profesor</role-name>
+        <role-name>moderador</role-name>
+        <role-name>administrador</role-name>
+
     </security-role>
     <login-config>
         <auth-method>FORM</auth-method>

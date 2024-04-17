@@ -1,12 +1,10 @@
 package studyhub.controlador;
 
-import studyhub.business.User;
-import studyhub.data.UserDB;
+
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-import studyhub.business.Asignatura;
 import studyhub.business.Tema;
 import studyhub.data.ComentarioDB;
 

@@ -30,7 +30,6 @@ public class LoadUser extends HttpServlet {
 // Obtener los parametros de la peticion
         HttpSession session = request.getSession();
         
-        UserDB.inicioSesion(request.getRemoteUser());
         User usuario=UserDB.selectUser(request.getRemoteUser());
         session.setAttribute("user", usuario);
         response.sendRedirect("profile.jsp");

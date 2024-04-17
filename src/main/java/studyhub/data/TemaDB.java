@@ -184,5 +184,27 @@ public class TemaDB {
             return null;
         }
     }
+     
+    public static void deleteTema(int id_tema) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        String query;
+
+        query = "DELETE FROM tema t WHERE t.id_tema= ?";
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, id_tema);
+            ps.executeUpdate();
+
+            ps.close();
+            pool.freeConnection(connection);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+     
     
 }

@@ -87,7 +87,7 @@ public class User implements Serializable {
     }
 
     public void setRol(String rol) {
-        if (rol.equals("estudiante") || rol.equals("profesor"))
+        if (rol.equals("estudiante") || rol.equals("profesor") || rol.equals("moderador") || rol.equals("administrador"))
             this.rol = rol;
     }
 

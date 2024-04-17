@@ -16,7 +16,7 @@ import studyhub.business.Comentario;
 
 /**
  *
- * @author subse
+ * @author javi
  */
 public class ComentarioDB {
     public static ArrayList<Comentario> getComentarios(String id_tema) {
@@ -65,7 +65,6 @@ public class ComentarioDB {
         PreparedStatement ps;
         String query = "INSERT INTO comentario (texto, fecha_creacion, likes, dislikes, id_tema, nickname)  VALUES (?,?,?,?,?,?)";
         
-           System.out.println("\n\n\nentra\n\n\n");
 
         try { 
             if(chat != null && chat != ""){
@@ -79,11 +78,6 @@ public class ComentarioDB {
                 ps.setInt(5, idTema);
                 ps.setString(6, nickname);
 
-                System.out.println("chat = "+ chat + "\n");            
-                System.out.println("timestamp = "+ timestamp.toString() + "\n");            
-                System.out.println("nickname = "+ nickname + "\n");         
-                System.out.println("idTema = "+ idTema + "\n");
-
                 ps.executeUpdate();
                 ps.close();
              }
@@ -94,7 +88,27 @@ public class ComentarioDB {
         } catch (SQLException e) {
             e.printStackTrace();
             
-           System.out.println("\n\n\nerror\n\n\n");
         }
-}
+    }
+    
+    public static void deleteComentario(int id_comentario) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        String query;
+
+        query = "DELETE FROM comentario c WHERE c.id_comentario= ?";
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, id_comentario);
+            ps.executeUpdate();
+
+            ps.close();
+            pool.freeConnection(connection);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }
