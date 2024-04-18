@@ -152,6 +152,47 @@ public class FicheroDB {
             return null;
         }
     }
+    
+    public static ArrayList<Fichero> getFicherosUser(String nickname) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String query;
+
+        query = "SELECT * FROM fichero WHERE nickname=? ORDER BY fecha_publicacion DESC LIMIT 4";
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, nickname);
+            rs = ps.executeQuery();
+            Fichero fichero;
+            ArrayList<Fichero> listaFicheros = new ArrayList<>();
+            Timestamp timestamp;
+
+            while (rs.next()) {
+                fichero = new Fichero();
+                fichero.setId_fichero(rs.getInt("id_fichero"));
+                fichero.setNombre(rs.getString("nombre"));
+                fichero.setTipo(rs.getString("tipo"));
+                timestamp = rs.getTimestamp("fecha_publicacion");
+                fichero.setFecha_publicacion(timestamp.toLocalDateTime());
+                fichero.setNickname(rs.getString("nickname"));
+                fichero.setId_foro(rs.getInt("id_foro"));
+
+                listaFicheros.add(fichero);
+            }
+
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return listaFicheros;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     public static String getNombreFichero(String id) {
         ConnectionPool pool = ConnectionPool.getInstance();

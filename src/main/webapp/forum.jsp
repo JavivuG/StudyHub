@@ -197,7 +197,7 @@
                                     <%}
                                 }
                                 else {%>
-                                    <li><p class="mensaje-vacio">No hay temas recientes</p></li>
+                                    <li><p class="mensaje-vacio">No hay temas destacados</p></li>
                                 <%}%>
                             </ul>
                         </div>
