@@ -19,6 +19,8 @@
             rel="stylesheet"
         />
         <link rel="icon" type="image/png" href="images/icono.png" />
+        <script src="scripts/logo.js"></script>
+
     </head>
 
     <!--Cabecera-->

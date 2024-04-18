@@ -34,7 +34,7 @@
 .for-fich-container {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .titulo-contenido {
@@ -51,8 +51,7 @@
 
 .ficheros-container {
     min-width: 200px;
-        width: 45%;
-
+    width: 45%;
 }
 
 .cajas-container {
@@ -64,6 +63,7 @@
 .lista-temas {
     display: flex;
     flex-direction: row;
+    align-content: center;
 }
 
 .enlace-tema {
@@ -74,8 +74,8 @@
     border-radius: 10px;
     background-color: #d9d9d9;
     color: #000;
-    margin: 10px 0;
-    padding: 8px;
+    margin: 10px 0 5px 0;
+    padding: 6px;
     transition: background-color 0.3s ease;
 }
 
@@ -96,32 +96,33 @@
     color: #555454;
 }
 
-.borrar-tema {
-    border-radius: 10px;
-    background-color: #d9d9d9;
-    color: #000;
-    margin: 10px 0 10px 10px;
-    padding: 8px;
+.borrar-wrapper {
+    margin-left: 10px;
     align-content: center;
     flex: 7%;
+}
+
+
+.borrar-button {
+    cursor: pointer;
+    border: 0px;
+    margin-top: 5px;
+    padding: 12px 8px;
+    background-color: #d9d9d9;
+    border-radius: 10px;
     transition: background-color 0.3s ease;
 }
 
-.borrar-tema:hover {
+.borrar-button:hover {
     background-color: #b5b5b5;
-}
-
-.borrar-icon {
-    margin-left: 2px;
-    margin-top: 2px;
 }
 
 .caja-fich {
     border-radius: 10px;
     background-color: #d9d9d9;
     color: #000;
-    margin: 10px 0;
-    padding: 8px;
+    margin: 10px 0 5px 0;
+    padding: 0 8px;
     display: flex;
     justify-content: space-between;
     transition: background-color 0.3s ease;
