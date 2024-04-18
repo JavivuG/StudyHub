@@ -87,22 +87,30 @@
 }
 
 .borrar-tema {
-    border-radius: 12px;
-    background-color: #d9d9d9;
-    color: #000;
     margin: 10px 0 10px 10px;
-    padding: 14px;
     align-content: center;
-    transition: background-color 0.3s ease;
-}
-
-.borrar-tema:hover {
-    background-color: #b5b5b5;
 }
 
 .borrar-icon {
     margin-left: 2px;
     margin-top: 2px;
+}
+
+.borrar-button {
+    cursor: pointer;
+    border: 0px;
+    padding: 14px 8px;
+    background-color: #d9d9d9;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.borrar-button:hover {
+    background-color: #b5b5b5;
+}
+
+.borrar-icon {
+    margin-right: 2px;
 }
 
 .nombre-fich {
