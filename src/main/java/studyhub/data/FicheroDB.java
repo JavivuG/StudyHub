@@ -251,7 +251,7 @@ public class FicheroDB {
         PreparedStatement ps = null;
         String query;
 
-        query = "DELETE FROM fichero f WHERE t.id_fichero= ?";
+        query = "DELETE FROM fichero f WHERE f.id_fichero= ?";
 
         try {
             ps = connection.prepareStatement(query);
