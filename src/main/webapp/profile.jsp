@@ -1,7 +1,9 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="studyhub.business.Fichero"%>
 <%@ page language="java" %> 
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="studyhub.business.User" %>
-<jsp:include page="/LoadUser" />
+<jsp:include page="/LoadProfile" />
 
 <!DOCTYPE html>
 <html lang="es">
@@ -148,54 +150,25 @@
                     <div class="ultimas-subidas">
                         <h2>Últimas subidas</h2>
                         <div class="asignaturas">
+                            <%
+                                Fichero ficheroActual;
+                                ArrayList<Fichero> ficherosUsuario=(ArrayList<Fichero>) session.getAttribute("ficheros_usuario");
+                            for (int i=0; i<ficherosUsuario.size(); i++){ 
+                            ficheroActual=ficherosUsuario.get(i); %>
                             <div class="asignatura-box">
                                 <div class="contribuidas-titulo">
-                                    Examen 2015 FPRO
+                                    <%= ficheroActual.getNombre() %>
                                 </div>
                                 <div class="descarga">
-                                    <a href="#"
+                                    <a href="downloadServlet?file=<%= ficheroActual.getId_fichero()%>"
                                         ><img
                                             src="images/download.svg"
                                             alt="download"
                                     /></a>
                                 </div>
                             </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Examen ordinadio SDIS
-                                </div>
-                                <div class="descarga">
-                                    <a href="#"
-                                        ><img
-                                            src="images/download.svg"
-                                            alt="download"
-                                    /></a>
-                                </div>
-                            </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Apuntes completos ADA
-                                </div>
-                                <div class="descarga">
-                                    <a href="#"
-                                        ><img
-                                            src="images/download.svg"
-                                            alt="download"
-                                    /></a>
-                                </div>
-                            </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Ejercicios Física
-                                </div>
-                                <div class="descarga">
-                                    <a href="#"
-                                        ><img
-                                            src="images/download.svg"
-                                            alt="download"
-                                    /></a>
-                                </div>
-                            </div>
+                            <% } 
+                            session.removeAttribute("ficheros_usuario"); %>
                         </div>
                     </div>
                     <div class="ultimos-mensajes">
