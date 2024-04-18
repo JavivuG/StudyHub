@@ -31,7 +31,7 @@ public class DeleteFile extends HttpServlet {
         String pagina=request.getParameter("page");
         FicheroDB.deleteFichero(id_fichero);
         
-        String url=request.getContextPath();
+        String url=pagina+".jsp?idForo="+id_foro;
         
         response.sendRedirect(url);
     }

@@ -162,22 +162,30 @@
                             Fichero ficheroActual = listaFicheros.get(i);%>
 
                     <div class="ag-courses_item">
-                        <div class="ag-courses_content">
-                            <div class="ag-courses-item_flex">
-                                <div class="nombre-fich">
-                                    <img src="images/fichero.svg" alt="pdf" id="fich-icon" />
-                                    <div class="fich2">
-                                        <h3><%= ficheroActual.getNombre()%></h3>
-                                        <p>
-                                            subido por
-                                            <span><%= ficheroActual.getNickname()%></span> • <%= ficheroActual.getTiempoPublicado()%>
-                                        </p>
+                        <div class="fichero">
+                            <div class="ag-courses_content">
+                                <div class="ag-courses-item_flex">
+                                    <div class="nombre-fich">
+                                        <img src="images/fichero.svg" alt="pdf" id="fich-icon" />
+                                        <div class="fich2">
+                                            <h3><%= ficheroActual.getNombre()%></h3>
+                                            <p>
+                                                subido por
+                                                <span><%= ficheroActual.getNickname()%></span> • <%= ficheroActual.getTiempoPublicado()%>
+                                            </p>
+                                        </div>
                                     </div>
+                                    <a href="/downloadServlet?file=<%= ficheroActual.getId_fichero()%>"><img src="images/download.svg" alt="Descargar" class="img-download"/></a>
                                 </div>
-                                <a href="/downloadServlet?file=<%= ficheroActual.getId_fichero()%>"><img src="images/download.svg" alt="Descargar" class="img-download"/></a>
                             </div>
-                            
+                                <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){ %>         
+                        <div class="borrar-tema">
+                                <a href="/DeleteFile?idForo=<%=ficheroActual.getId_foro()%>&idFichero=<%= ficheroActual.getId_fichero()%>&page=files"><img src="images/delete.svg" alt="borrar" class="borrar-icon"></a>
                         </div>
+                        <% } %>
+                        </div>
+                        
+                        
                     </div>
                     <% } %>
                     
