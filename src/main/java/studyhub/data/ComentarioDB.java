@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
-import jdk.internal.org.jline.terminal.TerminalBuilder;
 import studyhub.business.Comentario;
 
 /**
@@ -22,11 +21,13 @@ public class ComentarioDB {
     public static ArrayList<Comentario> getComentarios(String id_tema) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        String query;
+        PreparedStatement ps = null, ps2 = null;
+        ResultSet rs = null, rs2 = null;
+        String query, query2;
+        int idComentario = 0;
 
         query = "SELECT * FROM comentario WHERE id_tema=?";
+        query2 = "SELECT * FROM votos_comentario WHERE id_comentario=?";
 
         try {
             ps = connection.prepareStatement(query);
@@ -38,14 +39,30 @@ public class ComentarioDB {
 
             while (rs.next()) {
                 comentario = new Comentario();
-                comentario.setId_tema(rs.getInt("id_comentario"));
+
+                idComentario = rs.getInt("id_comentario");
+                comentario.setId_comentario(idComentario);
                 comentario.setTexto(rs.getString("texto"));
                 timestamp=rs.getTimestamp("fecha_creacion");
                 comentario.setFecha_creacion(timestamp.toLocalDateTime());
-                comentario.setLikes(rs.getInt("likes"));
-                comentario.setDislikes(rs.getInt("dislikes"));
                 comentario.setNickname(rs.getString("nickname"));
                 comentario.setId_tema(rs.getInt("id_tema"));
+
+                ps2 = connection.prepareStatement(query2);
+                ps2.setInt(1, idComentario);
+                rs2 = ps2.executeQuery();
+
+                comentario.setLikes(0);
+                comentario.setDislikes(0);
+
+                while (rs2.next()) {
+                    if (rs2.getInt("vote") == 1) {
+                        comentario.setLikes(comentario.getLikes() + 1);
+                    } else {
+                        comentario.setDislikes(comentario.getDislikes() + 1);
+                    }
+                }
+
                 listaComentarios.add(comentario);
             }
 
@@ -63,20 +80,17 @@ public class ComentarioDB {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps;
-        String query = "INSERT INTO comentario (texto, fecha_creacion, likes, dislikes, id_tema, nickname)  VALUES (?,?,?,?,?,?)";
+        String query = "INSERT INTO comentario (texto, fecha_creacion, id_tema, nickname)  VALUES (?,?,?,?)";
         
 
         try { 
             if(chat != null && chat != ""){
                 Timestamp timestamp = new Timestamp(new Date().getTime());
-                int valor = 0;
                 ps = connection.prepareStatement(query);
                 ps.setString(1, chat);
                 ps.setTimestamp(2, timestamp);
-                ps.setInt(3, valor);
-                ps.setInt(4, valor);
-                ps.setInt(5, idTema);
-                ps.setString(6, nickname);
+                ps.setInt(3, idTema);
+                ps.setString(4, nickname);
 
                 ps.executeUpdate();
                 ps.close();

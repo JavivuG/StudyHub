@@ -188,7 +188,7 @@
                         if (listaComentarios.size()>0){
                             for (int i=0; i<listaComentarios.size(); i++){
                                 Comentario comentarioActual=listaComentarios.get(i); %>
-                                    
+
                                 <div class="comentario">
                                     <div class="autor-comentario">
                                         <img
@@ -204,20 +204,27 @@
                                         <%= comentarioActual.getTexto() %>
                                     </p>
                                     <div class="reacciones">
-                                        <form action="./Like" method="post" class="likes">
-                                            <img
+                                        <form action="./VoteComment" method="post" class="likes" name="addLike" id="addLike">
+                                            <input
+                                                type="image"
                                                 src="images/like.svg"
                                                 alt="Me gusta"
                                                 class="like"
                                             />
+                                            <input type="hidden" name="like" value="1">
+                                            <input type="hidden" name="idComentario" value="<%= comentarioActual.getId_comentario() %>">
                                             <p><%= comentarioActual.getLikes() %> likes</p>
                                         </form>
-                                        <form action="./Dislike" method="post" class="dislikes">
-                                            <img
+                                        <form action="./VoteComment" method="post" class="dislikes">
+                                            <input
+                                                type="image"
                                                 src="images/dislike.svg"
                                                 alt="No me gusta"
                                                 class="dislike"
+                                                id="dislike"
                                             />
+                                            <input type="hidden" name="like" value="0">
+                                            <input type="hidden" name="idComentario" value="<%= comentarioActual.getId_comentario() %>">
                                             <p><%= comentarioActual.getDislikes() %> dislikes</p>
                                         </form>
                                     </div>
