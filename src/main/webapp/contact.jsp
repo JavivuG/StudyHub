@@ -77,7 +77,7 @@
       <div class="container">
         <ul class="page-title-container">
           <li>
-            <img src="images/forum.svg" alt="Forum" class="page-icon" />
+            <i class="fas fa-phone fa-lg"></i>
           </li>
           <li>
             <span class="page-title">Contáctanos</span>
