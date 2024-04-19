@@ -1,6 +1,7 @@
 CREATE DATABASE IF NOT EXISTS studyhub;
 USE studyhub;
 
+DROP TABLE IF EXISTS votos_comentario;
 DROP TABLE IF EXISTS comentario;
 DROP TABLE IF EXISTS fichero;
 DROP TABLE IF EXISTS rol;
@@ -19,8 +20,6 @@ CREATE TABLE usuario (
     fecha_creacion DATE,
     ultimo_inicio TIMESTAMP NULL
 );
-
-
 
 
 CREATE TABLE foro (
@@ -58,17 +57,11 @@ CREATE TABLE comentario (
     id_comentario INT AUTO_INCREMENT PRIMARY KEY,
     texto VARCHAR(1000),
     fecha_creacion TIMESTAMP,
-    likes INT,
-    dislikes INT,
     id_tema INT,
     nickname VARCHAR(50),
-    CHECK (likes >= 0),
-    CHECK (dislikes >= 0),
     FOREIGN KEY (id_tema) REFERENCES tema(id_tema) ON DELETE CASCADE,
     FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE
 );
-
-
 
 
 CREATE TABLE fichero (
@@ -81,6 +74,16 @@ CREATE TABLE fichero (
     id_foro INT,
     FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE,
     FOREIGN KEY (id_foro) REFERENCES foro(id_foro) ON DELETE CASCADE
+);
+
+CREATE TABLE votos_comentario (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nickname VARCHAR(50),
+    id_comentario INT,
+    vote INT,
+    created_at TIMESTAMP,
+    FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE,
+    FOREIGN KEY (id_comentario) REFERENCES comentario(id_comentario) ON DELETE CASCADE
 );
 
 INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('javivu', '12345', 'Javier', 'Garcia Gonzalez', 'javiergarciaglz16@gmail.com', '1998-12-16', '2020-12-16');
@@ -122,8 +125,12 @@ INSERT INTO tema (titulo, descripcion, fecha_publicacion, likes, dislikes, nickn
 INSERT INTO tema (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es una variable?', 'Explicación de lo que es una variable y su importancia en la programación.', '2024-03-26 10:30:00', 0, 0, 'therealpepe', 1);
 INSERT INTO tema (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es una función?', 'Explicación de lo que es una función y su importancia en la programación.', '2024-03-26 19:30:01', 0, 0, 'TheMarias', 1);
 
+INSERT INTO comentario (texto, fecha_creacion, id_tema, nickname) VALUES ('Muy buena explicación, gracias!', '2022-01-01 21:37:09', 1, 'javivu');
+INSERT INTO comentario (texto, fecha_creacion, id_tema, nickname) VALUES ('No entiendo muy bien el concepto, ¿podrías explicarlo de otra forma?', '2022-01-01 00:01:46', 1, 'joselito12');
+INSERT INTO comentario (texto, fecha_creacion, id_tema, nickname) VALUES ('¿Podrías poner un ejemplo de una variable?', '2022-01-01 17:49:00', 1, 'therealpepe');
+INSERT INTO comentario (texto, fecha_creacion, id_tema, nickname) VALUES ('¿Podrías poner un ejemplo de una función?', '2022-01-01 11:01:12', 1, 'TheMarias');
 
-INSERT INTO comentario (texto, fecha_creacion, likes, dislikes, id_tema, nickname) VALUES ('Muy buena explicación, gracias!', '2022-01-01 21:37:09', 0, 0, 1, 'javivu');
-INSERT INTO comentario (texto, fecha_creacion, likes, dislikes, id_tema, nickname) VALUES ('No entiendo muy bien el concepto, ¿podrías explicarlo de otra forma?', '2022-01-01 00:01:46', 0, 0, 1, 'joselito12');
-INSERT INTO comentario (texto, fecha_creacion, likes, dislikes, id_tema, nickname) VALUES ('¿Podrías poner un ejemplo de una variable?', '2022-01-01 17:49:00', 0, 0, 1, 'therealpepe');
-INSERT INTO comentario (texto, fecha_creacion, likes, dislikes, id_tema, nickname) VALUES ('¿Podrías poner un ejemplo de una función?', '2022-01-01 11:01:12', 0, 0, 1, 'TheMarias');
+INSERT INTO votos_comentario (nickname, id_comentario, vote, created_at) VALUES ('javivu', 1, 1, '2022-01-01 21:37:09');
+INSERT INTO votos_comentario (nickname, id_comentario, vote, created_at) VALUES ('joselito12', 1, 1, '2022-01-01 00:01:46');
+INSERT INTO votos_comentario (nickname, id_comentario, vote, created_at) VALUES ('therealpepe', 1, 1, '2022-01-01 17:49:00');
+INSERT INTO votos_comentario (nickname, id_comentario, vote, created_at) VALUES ('TheMarias', 1, 1, '2022-01-01 11:01:12');
