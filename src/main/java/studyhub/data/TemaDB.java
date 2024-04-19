@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -205,6 +206,67 @@ public class TemaDB {
             e.printStackTrace();
         }
     }
-     
+    
+    
+    /**
+     * Metodo que introduce un nuevo tema en la base de datos si este no ha sido creado previamente
+     * 
+     * 
+     * @param idTema identificador del tema a introducir
+     * @param titulo titulo del tema
+     * @param descripcion descripcion del tema
+     * @param nickname_usuario nombre del usuario que ha creado el tema
+     * @param idForo identificador del foro donde se ha creado el tema
+     */
+    public static void crearTema(int idTema, String titulo, String descripcion, String nicknameUsuario, int idForo){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        String query = "INSERT INTO tema (id_tema, titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro)  VALUES (?,?,?,?,?,?,?,?)";
+        
+        try { 
+            if(!estaTemaNoCreado(idTema, idForo) && !titulo.equals("") && nicknameUsuario != null 
+                    && !nicknameUsuario.equals("") && descripcion != null && !descripcion.equals("")){
+              
+                Timestamp timestamp = new Timestamp(new Date().getTime());
+                int numLikes = 0; // numLikes = numDislikes = 0 en cuanto se crea el tema
+                ps = connection.prepareStatement(query);
+                ps.setInt(1, idTema);
+                ps.setString(2, titulo);
+                ps.setString(3, descripcion);
+                ps.setTimestamp(4, timestamp);
+                ps.setInt(5, numLikes); //likes
+                ps.setInt(6, numLikes); //dislikes
+                ps.setString(7, nicknameUsuario);
+                ps.setInt(8, idForo);
+                
+                ps.executeUpdate();
+                ps.close();
+             }
+
+            
+            pool.freeConnection(connection);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            
+        }
+    }
+        
+        /**
+         * Metodo que busca en todos los temas de la base de datos a ver si un tema esta creado previamente
+         * 
+         * @param idTema identificador del tema
+         * @param idForo identificador del foro
+         * @return true si el tema ya estaba creado. False en caso contrario
+         */
+    public static boolean estaTemaNoCreado(int idTema, int idForo) {
+            ArrayList<Tema> temas = getTemas(Integer.toString(idForo));
+            for(Tema tema : temas){
+                if(idTema == tema.getId_tema())
+                    return true;
+            }
+            return false;
+    }
     
 }
