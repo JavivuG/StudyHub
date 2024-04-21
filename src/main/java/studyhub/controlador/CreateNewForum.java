@@ -29,7 +29,7 @@ public class CreateNewForum extends HttpServlet {
             }
         }
         else {
-            response.sendRedirect("error.jsp");
+            response.sendRedirect("not_found.jsp");
         }
         
         response.sendRedirect("subjects.jsp");
