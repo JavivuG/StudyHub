@@ -108,4 +108,47 @@ public class ForoDB {
             return null;
         }
     }
+    
+        public static boolean asignaturaExists(String nombre) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query = "SELECT * FROM foro WHERE nombre = ?";
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, nombre);
+            rs = ps.executeQuery();
+            boolean res = rs.next();
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return res;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+        
+    public static int crearAsignatura(String nombreAsignatura, String curso) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        String query="INSERT INTO foro (nombre,curso) VALUES (?, ?)";
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, nombreAsignatura);
+            ps.setString(2, curso);
+
+            int res = ps.executeUpdate();
+            ps.close();
+            pool.freeConnection(connection);
+            return res;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }

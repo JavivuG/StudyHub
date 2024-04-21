@@ -34,10 +34,12 @@ public class DeleteTopic extends HttpServlet {
         // Obtener los parametros de la peticion
         String id_foro=request.getParameter("idForo");
         int id_tema=Integer.parseInt(request.getParameter("idTema"));
-        TemaDB.deleteTema(id_tema);
+        
+        if (request.isUserInRole("administrador") || request.isUserInRole("moderador")){
+            TemaDB.deleteTema(id_tema);
+        }
         
         String url="forum.jsp?idForo="+id_foro;
-        
         response.sendRedirect(url);
     }
 

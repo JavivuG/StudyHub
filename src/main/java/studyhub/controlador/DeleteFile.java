@@ -29,7 +29,11 @@ public class DeleteFile extends HttpServlet {
         String id_foro=request.getParameter("idForo");
         int id_fichero=Integer.parseInt(request.getParameter("idFichero"));
         String pagina=request.getParameter("page");
-        FicheroDB.deleteFichero(id_fichero);
+
+        
+        if (request.isUserInRole("administrador") || request.isUserInRole("moderador")){
+            FicheroDB.deleteFichero(id_fichero);
+        }
         
         String url=pagina+".jsp?idForo="+id_foro;
         
