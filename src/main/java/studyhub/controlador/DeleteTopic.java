@@ -4,20 +4,14 @@
  */
 package studyhub.controlador;
 
-import studyhub.business.Tema;
-import studyhub.business.Fichero;
+
 import studyhub.data.TemaDB;
-import studyhub.data.FicheroDB;
-import java.util.ArrayList;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import studyhub.business.Asignatura;
-import studyhub.data.ForoDB;
 
 
 
@@ -37,6 +31,9 @@ public class DeleteTopic extends HttpServlet {
         
         if (request.isUserInRole("administrador") || request.isUserInRole("moderador")){
             TemaDB.deleteTema(id_tema);
+        }
+        else {
+            response.sendRedirect("not_found.jsp");
         }
         
         String url="forum.jsp?idForo="+id_foro;

@@ -34,6 +34,9 @@ public class DeleteFile extends HttpServlet {
         if (request.isUserInRole("administrador") || request.isUserInRole("moderador")){
             FicheroDB.deleteFichero(id_fichero);
         }
+        else {
+            response.sendRedirect("not_found.jsp");
+        }
         
         String url=pagina+".jsp?idForo="+id_foro;
         

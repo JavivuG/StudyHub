@@ -36,6 +36,9 @@ public class DeleteComentario extends HttpServlet {
             ComentarioDB.deleteComentario(id_comentario);
 
         }
+        else {
+            response.sendRedirect("not_found.jsp");
+        }
         
         response.sendRedirect(url);
     }
