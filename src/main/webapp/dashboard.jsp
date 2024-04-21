@@ -263,6 +263,12 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="contenedor-view-more">
+                            <a href="forum.jsp" class="view-more"
+                                >Ver más</a
+                            >
+                        </div>
                 </div>
             </div>
         </div>

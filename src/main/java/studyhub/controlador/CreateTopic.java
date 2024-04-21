@@ -20,27 +20,23 @@ import studyhub.data.TemaDB;
  *
  * @author daniel
  */
-@WebServlet(name = "CreateTopic", urlPatterns = {"/CreateTopic"})
+@WebServlet(name = "CreateTopic")
 public class CreateTopic extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         
-        int idTema = ((Tema) session.getAttribute("tema")).getId_tema();
+        //int idTema = ((Tema) session.getAttribute("tema")).getId_tema();
+        
+        int idTema = TemaDB.getSiguienteId();
         String titulo = request.getParameter("titulo");
         String mensaje_descripcion = request.getParameter("mensaje");
         String nickname = request.getRemoteUser();
-        int id_foro = ((Asignatura) session.getAttribute("tema")).getID_asignatura();
-        TemaDB.createTema(idTema, titulo, mensaje_descripcion, nickname, id_foro);
-        
         int idForo = ((Tema) session.getAttribute("tema")).getId_foro();
+        TemaDB.crearTema(idTema, titulo, mensaje_descripcion, nickname, idForo);
+       
         String url = "topic.jsp?idForo=" +idForo+ "&idTema="+idTema;
         response.sendRedirect(url);
-    }
-    
-    @Override 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doPost(request, response);
     }
 }
