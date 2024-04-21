@@ -18,10 +18,7 @@
         <link rel="stylesheet" href="styles/footer.css" type="text/css" />
         <link rel="stylesheet" href="styles/dashboard.css" type="text/css" />
         <link rel="icon" type="image/png" href="images/icono.png" />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
-        />
+        <script src="https://kit.fontawesome.com/38c8e2034a.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <header>
@@ -110,11 +107,7 @@
                 <div class="left-container">
                     <div class="taquilla">
                         <div class="encabezado-taquilla">
-                            <img
-                                src="images/briefcase.svg"
-                                alt="Taquilla"
-                                title="Taquilla"
-                            />
+                            <i class="fa-solid fa-school"></i>
                             <h3>Taquilla</h3>
                         </div>
 
@@ -163,7 +156,7 @@
 
                 <div class="container-foro">
                     <div class="encabezado-foro">
-                        <img src="images/forum.svg" alt="Foro" title="Foro" />
+                        <i class="fa-solid fa-comments"></i>
                         <h3>Foro</h3>
                     </div>
 
