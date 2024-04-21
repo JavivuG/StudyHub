@@ -215,7 +215,7 @@ public class TemaDB {
      * @param idTema identificador del tema a introducir
      * @param titulo titulo del tema
      * @param descripcion descripcion del tema
-     * @param nickname_usuario nombre del usuario que ha creado el tema
+     * @param nicknameUsuario nombre del usuario que ha creado el tema
      * @param idForo identificador del foro donde se ha creado el tema
      */
     public static void crearTema(int idTema, String titulo, String descripcion, String nicknameUsuario, int idForo){
@@ -249,6 +249,7 @@ public class TemaDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("\n\nErrorrrrrrrrrrr\n\n");
             
         }
     }
@@ -267,6 +268,36 @@ public class TemaDB {
                     return true;
             }
             return false;
+    }
+    
+    
+    public static int getSiguienteId() {
+            ConnectionPool pool = ConnectionPool.getInstance();
+            Connection connection = pool.getConnection();
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            String query;
+
+            query = "SELECT T.idTema from tema T where T.idTema = MAX(SELECT T.idTema from tema T)";
+
+            try {
+                ps = connection.prepareStatement(query);
+                rs = ps.executeQuery();
+                
+                int id = ((Number) rs.getObject(1)).intValue();
+                id = id+1;
+                
+                rs.close();
+                ps.close();
+                pool.freeConnection(connection);
+                
+                return id;
+                
+            }
+            catch(SQLException e){
+                e.printStackTrace();
+                return -1;
+            }
     }
     
 }

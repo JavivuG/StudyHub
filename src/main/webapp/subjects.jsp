@@ -125,12 +125,11 @@
           <i class="fas fa-search boton"></i>
         </div>
       </div>
-
+      
       <!-- Lista de asignaturas -->
       
       <div class="ag-format-container">
         <div class="ag-courses_box">
-            
           
            <% ArrayList<Asignatura> listaAsignaturas = (ArrayList<Asignatura>) session.getAttribute("asignaturas");
            for(int i=0; i<listaAsignaturas.size(); i++){
