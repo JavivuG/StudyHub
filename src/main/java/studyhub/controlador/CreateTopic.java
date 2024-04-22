@@ -20,7 +20,7 @@ import studyhub.data.TemaDB;
  *
  * @author daniel
  */
-@WebServlet(name = "/CreateTopic")
+@WebServlet(name = "CreateTopic", urlPatterns = "/CreateTopic")
 public class CreateTopic extends HttpServlet {
     
     @Override
@@ -29,23 +29,15 @@ public class CreateTopic extends HttpServlet {
         
         //int idTema = ((Tema) session.getAttribute("tema")).getId_tema();
         
-        int idTema = TemaDB.getSiguienteId();
         String titulo = request.getParameter("titulo");
         String mensaje_descripcion = request.getParameter("mensaje");
         
-        
-        
-        
         String nickname = request.getRemoteUser();
         
-        
-        
-        
-   
         int idForo;
         idForo = Integer.parseInt(request.getParameter("idForo"));
 
-        TemaDB.crearTema(idTema, titulo, mensaje_descripcion, nickname, idForo);
+        int idTema=TemaDB.crearTema(titulo, mensaje_descripcion, nickname, idForo);
        
         String url = "topic.jsp?idForo=" +idForo+ "&idTema="+idTema;
         response.sendRedirect(url);

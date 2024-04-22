@@ -157,7 +157,7 @@
 
             <!-- Formulario -->
             <div class="container">
-                <form action="./CreateTopic" method="post">
+                <form action="./CreateTopic?idForo=<%= asignatura.getID_asignatura() %>" method="post">
                     <div class="form-group">
                         <label for="titulo">Título</label>
                         <input
