@@ -12,6 +12,7 @@ public class CreateNewForum extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/plain; charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
+        String url;
 
 
         if (request.isUserInRole("administrador") || request.isUserInRole("moderador")){
@@ -22,17 +23,23 @@ public class CreateNewForum extends HttpServlet {
             boolean asignaturaExists = ForoDB.asignaturaExists(asignatura);
             String cursoGrado=curso+"º Curso de "+grado;
             if (!asignaturaExists){
-                ForoDB.crearAsignatura(asignatura, cursoGrado);
+                if (asignatura.length()<=100 && cursoGrado.length()<=100){
+                    ForoDB.crearAsignatura(asignatura, cursoGrado);
+                    url="subjects.jsp";
+                }
+                else {
+                    url="error.jsp";
+                }
             }
             else {
-                response.sendRedirect("error.jsp");
+                url="error.jsp";
             }
         }
         else {
-            response.sendRedirect("not_found.jsp");
+            url="not_found.jsp";
         }
         
-        response.sendRedirect("subjects.jsp");
+        response.sendRedirect(url);
 
         
     }
