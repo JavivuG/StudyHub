@@ -12,15 +12,15 @@
     <link rel="shortcut icon" href="images/logo.svg" />
     <title>StudyHub</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles/common.css" />
+    <link rel="stylesheet" href="styles/header.css" />
+    <link rel="stylesheet" href="styles/footer.css" />
     <link
       rel="stylesheet"
       type="text/css"
       media="screen"
       href="styles/subjects.css"
     />
-    <link rel="stylesheet" href="styles/common.css" />
-    <link rel="stylesheet" href="styles/header.css" />
-    <link rel="stylesheet" href="styles/footer.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
@@ -123,6 +123,9 @@
             placeholder="Buscar..."
           />
           <i class="fas fa-search boton"></i>
+          <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){ %>
+              <span class="new-forum">Añadir asignatura</span>
+          <% } %>
         </div>
       </div>
       
@@ -191,5 +194,6 @@
         </ul>
       </div>
     </footer>
+    <script src="scripts/create_new_forum.js"></script>
   </body>
 </html>
