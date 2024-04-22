@@ -185,7 +185,8 @@
                         <h2>Comentarios</h2>
                         
                         <% ArrayList<Comentario> listaComentarios=(ArrayList<Comentario>) session.getAttribute("comentarios");
-                        if (listaComentarios.size()>0){
+                        System.out.println(listaComentarios);
+                        if (listaComentarios != null && listaComentarios.size()>0){
                             for (int i=0; i<listaComentarios.size(); i++){
                                 Comentario comentarioActual=listaComentarios.get(i); %>
 

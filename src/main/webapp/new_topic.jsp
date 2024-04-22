@@ -157,7 +157,7 @@
 
             <!-- Formulario -->
             <div class="container">
-                <form action="" method="post">
+                <form action="./CreateTopic" method="post">
                     <div class="form-group">
                         <label for="titulo">Título</label>
                         <input
