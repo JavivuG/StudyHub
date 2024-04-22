@@ -28,10 +28,17 @@ public class DeleteComentario extends HttpServlet {
         // Obtener los parametros de la peticion
         String id_foro=request.getParameter("idForo");
         int id_tema=Integer.parseInt(request.getParameter("idTema"));
-        int id_comentario=Integer.parseInt(request.getParameter("idComentario"));
-        ComentarioDB.deleteComentario(id_comentario);
-        
         String url="topic.jsp?idForo="+id_foro+"&idTema="+id_tema;
+
+        if (request.isUserInRole("administrador") || request.isUserInRole("moderador")){
+            
+            int id_comentario=Integer.parseInt(request.getParameter("idComentario"));
+            ComentarioDB.deleteComentario(id_comentario);
+
+        }
+        else {
+            response.sendRedirect("not_found.jsp");
+        }
         
         response.sendRedirect(url);
     }
