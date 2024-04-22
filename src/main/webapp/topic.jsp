@@ -190,44 +190,52 @@
                                 Comentario comentarioActual=listaComentarios.get(i); %>
 
                                 <div class="comentario">
-                                    <div class="autor-comentario">
-                                        <img
-                                            src="images/profile.svg"
-                                            alt="Foto de perfil"
-                                        />
-                                        <div class="user">
-                                            <p><%= comentarioActual.getNickname() %></p>
-                                            <p class="fecha-comentario"><%= comentarioActual.getTiempoPublicado() %></p>
+                                    <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){ %>
+                                        <div class="borrar-wrapper">
+                                            <button class="borrar-button" data-info="comentario" data-url="/DeleteComentario?idTema=<%= comentarioActual.getId_tema() %>&idComentario=<%= comentarioActual.getId_comentario() %>"><img src="images/delete.svg" alt="borrar" class="borrar-icon"></button>
+                                        </div>
+                                    <% } %>
+                                    <div class="datos-comentario">
+                                        <div class="autor-comentario">
+                                            <img
+                                                src="images/profile.svg"
+                                                alt="Foto de perfil"
+                                            />
+                                            <div class="user">
+                                                <p><%= comentarioActual.getNickname() %></p>
+                                                <p class="fecha-comentario"><%= comentarioActual.getTiempoPublicado() %></p>
+                                            </div>
+                                        </div>
+                                        <p>
+                                            <%= comentarioActual.getTexto() %>
+                                        </p>
+                                        <div class="reacciones">
+                                            <form action="./VoteComment" method="post" class="likes" name="addLike" id="addLike">
+                                                <input
+                                                    type="image"
+                                                    src="images/like.svg"
+                                                    alt="Me gusta"
+                                                    class="like"
+                                                />
+                                                <input type="hidden" name="like" value="1">
+                                                <input type="hidden" name="idComentario" value="<%= comentarioActual.getId_comentario() %>">
+                                                <p><%= comentarioActual.getLikes() %> likes</p>
+                                            </form>
+                                            <form action="./VoteComment" method="post" class="dislikes">
+                                                <input
+                                                    type="image"
+                                                    src="images/dislike.svg"
+                                                    alt="No me gusta"
+                                                    class="dislike"
+                                                    id="dislike"
+                                                />
+                                                <input type="hidden" name="like" value="0">
+                                                <input type="hidden" name="idComentario" value="<%= comentarioActual.getId_comentario() %>">
+                                                <p><%= comentarioActual.getDislikes() %> dislikes</p>
+                                            </form>
                                         </div>
                                     </div>
-                                    <p>
-                                        <%= comentarioActual.getTexto() %>
-                                    </p>
-                                    <div class="reacciones">
-                                        <form action="./VoteComment" method="post" class="likes" name="addLike" id="addLike">
-                                            <input
-                                                type="image"
-                                                src="images/like.svg"
-                                                alt="Me gusta"
-                                                class="like"
-                                            />
-                                            <input type="hidden" name="like" value="1">
-                                            <input type="hidden" name="idComentario" value="<%= comentarioActual.getId_comentario() %>">
-                                            <p><%= comentarioActual.getLikes() %> likes</p>
-                                        </form>
-                                        <form action="./VoteComment" method="post" class="dislikes">
-                                            <input
-                                                type="image"
-                                                src="images/dislike.svg"
-                                                alt="No me gusta"
-                                                class="dislike"
-                                                id="dislike"
-                                            />
-                                            <input type="hidden" name="like" value="0">
-                                            <input type="hidden" name="idComentario" value="<%= comentarioActual.getId_comentario() %>">
-                                            <p><%= comentarioActual.getDislikes() %> dislikes</p>
-                                        </form>
-                                    </div>
+                                    
                                 </div>
                             <% } 
                         }
@@ -299,5 +307,6 @@
                 </ul>
             </div>
         </footer>
+        <script src="scripts/confirm_borrar.js"></script>
     </body>
 </html>

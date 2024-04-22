@@ -27,7 +27,7 @@ public class RegisterUserServlet extends HttpServlet {
         String url;
 
         
-        if(comprobarDatos(nombre,apellidos,email,nickname,password,fecha_nacimiento)){
+        if(nombre.length()<=50 && apellidos.length()<=100 && password.length()<=50 && email.length()<=50){
             // Crear objeto usuario
             User user = new User();
             user.setNombre(nombre);
@@ -62,11 +62,5 @@ public class RegisterUserServlet extends HttpServlet {
                          HttpServletResponse response)
             throws ServletException, IOException {
         this.doPost(request, response);
-    }
-    
-    private boolean comprobarDatos(String nombre, String apellidos, String email, String nickname, String password, String fecha_nacimiento){
-        boolean isValid=true;
-        
-        return isValid;
     }
 }
