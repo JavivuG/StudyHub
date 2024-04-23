@@ -278,7 +278,7 @@ public class TemaDB {
             ResultSet rs = null;
             String query;
 
-            query = "SELECT T.idTema from tema T where T.idTema = MAX(SELECT T.idTema from tema T)";
+            query = "SELECT T.idTema FROM tema T where T.idTema = MAX(SELECT T.idTema FROM tema T)";
 
             try {
                 ps = connection.prepareStatement(query);

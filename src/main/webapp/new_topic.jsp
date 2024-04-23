@@ -156,9 +156,9 @@
             </div>
 
             <!-- Formulario -->
-            <div class="container">
+           <div class="container"> -->
                 <form action="./CreateTopic" method="post">
-                    <div class="form-group">
+                   <div class="form-group">
                         <label for="titulo">Título</label>
                         <input
                             type="text"
@@ -176,10 +176,10 @@
                             required
                         ></textarea>
                         <button type="submit" class="btn">Publicar</button>
-                    </div>
+                  </div>
                 </form>
-            </div>
-        </div>
+         </div>
+     </div>
 
         <!-- Pie de pagina -->
         <footer>
