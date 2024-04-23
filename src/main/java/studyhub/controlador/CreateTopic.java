@@ -20,7 +20,7 @@ import studyhub.data.TemaDB;
  *
  * @author daniel
  */
-@WebServlet(name = "/CreateTopic")
+@WebServlet(name = "/CreateTopic" , urlPatterns = {"/new_topic.jsp"}, asyncSupported = true)
 public class CreateTopic extends HttpServlet {
     
     @Override
@@ -37,7 +37,7 @@ public class CreateTopic extends HttpServlet {
         
         
         String nickname = request.getRemoteUser();
-        
+        System.out.println(nickname);
         
         
         
