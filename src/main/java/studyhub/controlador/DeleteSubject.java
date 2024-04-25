@@ -24,8 +24,6 @@ public class DeleteSubject extends HttpServlet {
         System.out.println("DeleteSubject");
         String id = request.getParameter("idSubject");
     
-        System.out.println("id: "+id);
-        
         if (request.isUserInRole("administrador") || request.isUserInRole("moderador")){
             ForoDB.deleteAsignatura(id);
         }

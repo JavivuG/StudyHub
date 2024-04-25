@@ -5,37 +5,38 @@
 package studyhub.controlador;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import studyhub.business.Tema;
-import studyhub.business.Asignatura;
 import studyhub.data.TemaDB;
 
 /**
  *
  * @author daniel
  */
-@WebServlet(name = "/CreateTopic" , urlPatterns = {"/new_topic.jsp"}, asyncSupported = true)
+@WebServlet(name = "/CreateTopic", urlPatterns = {"/CreateTopic"}, asyncSupported = true)
 public class CreateTopic extends HttpServlet {
     
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/plain; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
         
-        //int idTema = ((Tema) session.getAttribute("tema")).getId_tema();
-        
-        String titulo = request.getParameter("titulo");
-        String mensaje_descripcion = request.getParameter("mensaje");
+        String titulo = request.getParameter("title");
+        String mensaje_descripcion = request.getParameter("message");
         
         String nickname = request.getRemoteUser();
         
         int idForo;
         idForo = Integer.parseInt(request.getParameter("idForo"));
+
+        System.out.println("idForo: "+idForo);
+        System.out.println("titulo: "+titulo);
+        System.out.println("mensaje: "+mensaje_descripcion);
+        System.out.println("nickname: "+nickname);
+
 
         int idTema=TemaDB.crearTema(titulo, mensaje_descripcion, nickname, idForo);
        

@@ -153,8 +153,6 @@ public class ForoDB {
     }
 
     public static int deleteAsignatura(String id) {
-
-        System.out.println("DeleteAsignatura FORODB " + id);
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;

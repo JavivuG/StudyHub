@@ -26,7 +26,7 @@ function toggleDeleteModal(info,url) {
 
     var modal = document.createElement('div');
     modal.id = "modal-confirmation";
-    modal.innerHTML = '<div id="modal-header"><h3><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Confirmar borrado</h3><span data-confirm=0 class="modal-action-delete" id="modal-close"><i class="fa fa-times" aria-hidden="true"></i></span></div><div id="modal-content"><p>' + text + '</p></div><div id="modal-buttons"><button class="modal-action-delete" data-confirm=0 id="modal-button-no">No</button><button class="modal-action-delete" data-confirm=1 id="modal-button-yes">Sí</button></div>';
+    modal.innerHTML = '<div class="modal-header" id="modal-header"><h3><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Confirmar borrado</h3><span data-confirm=0 class="modal-action-delete" id="modal-close"><i class="fa fa-times" aria-hidden="true"></i></span></div><div id="modal-content"><p>' + text + '</p></div><div id="modal-buttons"><button class="modal-action-delete" data-confirm=0 id="modal-button-no">No</button><button class="modal-action-delete" data-confirm=1 id="modal-button-yes">Sí</button></div>';
     wrapper.appendChild(modal);
 
     setTimeout(function() {
