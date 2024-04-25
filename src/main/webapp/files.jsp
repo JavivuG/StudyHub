@@ -180,7 +180,7 @@
                             </div>
                                 <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){ %>         
                         <div class="borrar-tema">
-                                <button class="borrar-button" data-info="files" href="/DeleteFile?idForo=<%=ficheroActual.getId_foro()%>&idFichero=<%= ficheroActual.getId_fichero()%>&page=files"><img src="images/delete.svg" alt="borrar" class="borrar-icon"></button>
+                                <button class="borrar-button" id="delete-button" data-info="files" href="/DeleteFile?idForo=<%=ficheroActual.getId_foro()%>&idFichero=<%= ficheroActual.getId_fichero()%>&page=files"><img src="images/delete.svg" alt="borrar" class="borrar-icon"></button>
                         </div>
                         <% } %>
                         </div>

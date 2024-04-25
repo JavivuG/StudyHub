@@ -102,6 +102,21 @@
     flex: 7%;
 }
 
+.delete-subject {
+    cursor: pointer;
+    border: 0px;
+    margin-top: 5px;
+    padding: 12px 8px;
+    background-color: #f13e3e;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    color: #fff;
+    font-weight: bold;
+}
+
+.delete-subject:hover {
+    background-color: #ff0000;
+}
 
 .borrar-button {
     cursor: pointer;

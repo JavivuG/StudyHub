@@ -151,4 +151,25 @@ public class ForoDB {
             return 0;
         }
     }
+
+    public static int deleteAsignatura(String id) {
+
+        System.out.println("DeleteAsignatura FORODB " + id);
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        String query = "DELETE FROM foro WHERE id_foro = ?";
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, id);
+            int res = ps.executeUpdate();
+            ps.close();
+            pool.freeConnection(connection);
+            return res;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }

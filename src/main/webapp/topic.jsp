@@ -193,7 +193,7 @@
                                 <div class="comentario">
                                     <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){ %>
                                         <div class="borrar-wrapper">
-                                            <button class="borrar-button" data-info="comentario" data-url="/DeleteComentario?idTema=<%= comentarioActual.getId_tema() %>&idComentario=<%= comentarioActual.getId_comentario() %>"><img src="images/delete.svg" alt="borrar" class="borrar-icon"></button>
+                                            <button class="borrar-button" id="delete-button" data-info="comentario" data-url="/DeleteComentario?idTema=<%= comentarioActual.getId_tema() %>&idComentario=<%= comentarioActual.getId_comentario() %>"><img src="images/delete.svg" alt="borrar" class="borrar-icon"></button>
                                         </div>
                                     <% } %>
                                     <div class="datos-comentario">
