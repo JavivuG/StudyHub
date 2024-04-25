@@ -11,7 +11,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import studyhub.business.Tema;
 import studyhub.data.ComentarioDB;
+import studyhub.data.TemaDB;
 
 
 
@@ -26,9 +28,9 @@ public class DeleteComentario extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Obtener los parametros de la peticion
-        String id_foro=request.getParameter("idForo");
-        int id_tema=Integer.parseInt(request.getParameter("idTema"));
-        String url="topic.jsp?idForo="+id_foro+"&idTema="+id_tema;
+        String id_tema=request.getParameter("idTema");
+        Tema tema=TemaDB.getTema(id_tema);
+        String url="topic.jsp?idForo="+tema.getId_foro()+"&idTema="+id_tema;
 
         if (request.isUserInRole("administrador") || request.isUserInRole("moderador")){
             
