@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS usuario;
 
 
 CREATE TABLE usuario (
-    nickname VARCHAR(50) PRIMARY KEY,
+    nickname VARCHAR(15) PRIMARY KEY,
     password VARCHAR(50),
     nombre VARCHAR(50),
     apellidos VARCHAR(100),
