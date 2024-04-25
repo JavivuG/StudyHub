@@ -157,15 +157,9 @@
                         placeholder="Buscar..."
                     />
                     <i class="fas fa-search boton"></i>
-                    <button class="boton">
-                        <a href="new_topic.jsp?idForo=<%= asignatura.getID_asignatura() %>"
-                            ><span class="texto-btn">Crear nuevo tema</span></a
-                        >
-                    </button>
+                    <span class="new-topic">Crear nuevo tema</span>
                     <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")) {%>
-                        <%-- <div class="borrar-wrapper"> --%>
                         <button class="delete-subject" id="delete-button" data-info="subject" data-url="/DeleteSubject?idSubject=<%=asignatura.getID_asignatura()%>">Eliminar Asignatura</button>
-                        <%-- </div> --%>
                     <% } %>
                 </div>
             </div>
@@ -347,6 +341,7 @@
                 </ul>
             </div>
         </footer>
+        <script src="scripts/create_new_topic.js"></script>
         <script src="scripts/confirm_borrar.js"></script>
     </body>
 </html>

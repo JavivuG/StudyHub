@@ -206,7 +206,7 @@
     opacity: 1;
 }
 
-#modal-header {
+.modal-header {
     position: relative;
     background: #00c041;
     padding: 15px;

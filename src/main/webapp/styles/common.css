@@ -137,7 +137,7 @@ ul {
     opacity: 1;
 }
 
-#modal-header {
+.modal-header {
     position: relative;
     background: #ff0000;
     padding: 15px;
@@ -160,12 +160,34 @@ ul {
 }
 
 #modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 30px 15px;
     color: #000;
 }
 
+#modal-content input {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    border-radius: 5px;
+    background-color: #d9d9d9;
+    margin-top: 10px;
+    color: #000;
+    height: 50px;
+    padding-left: 10px;
+}
+
+#modal-content label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
+
 #modal-buttons {
-    padding: 0 15px 15px 15px;
+    margin-top: 20px;
+    padding: 15px;
     text-align: right;
 }
 
@@ -203,7 +225,32 @@ ul {
     background: #ff0000;
 }
 
+.modal-success-header {
+    position: relative;
+    background: #00c041;
+    padding: 15px;
+    color: #fff;
+    text-align: left;
+}
 
+
+.modal-success-button-yes {
+    border: 2px solid #00c041;
+    padding: 10px 50px;
+    background: #00c041;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.5s ease all;
+    margin-left: 10px;
+}
+
+.modal-success-button-yes:hover {
+    border: 2px solid #4CAF50;
+    color: #fff;
+    background: #4CAF50;
+}
 
 @media only screen and (max-width: 768px) {
     .page-title {
