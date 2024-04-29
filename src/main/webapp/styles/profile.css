@@ -138,6 +138,7 @@
 
 .estadisticas {
     margin-top: 28px;
+    margin-right: 48px;
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Dos columnas */
 }
@@ -145,6 +146,42 @@
 .asignaturas {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+}
+
+.ultimas-subidas-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+
+.ultimas-subidas-box.sin-elementos {
+    grid-template-columns: 1fr;
+    align-items: center;
+    text-align: center;
+}
+
+.mensaje-vacio-profile {
+    align-items: center;
+    padding: 16px;
+    text-align: center;
+    background-color: #d9d9d9;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #000;
+    margin: 12px 0;
+    font-weight: bold;
+    width: 95%;
+}
+
+.descarga a {
+    margin-top: 4px;
+    padding: 4px;
+    border-radius: 24px;
+    transition: background-color 0.3s ease;
+}
+
+.descarga a:hover {
+    background-color: #b5b5b5;
 }
 
 .asignaturas-contribuidas h2,

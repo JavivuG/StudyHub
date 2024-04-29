@@ -13,10 +13,10 @@
         <link rel="shortcut icon" href="images/logo.svg" />
         <title>StudyHub</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="styles/profile.css" />
         <link rel="stylesheet" href="styles/footer.css" />
         <link rel="stylesheet" href="styles/common.css" />
         <link rel="stylesheet" href="styles/header.css" />
+        <link rel="stylesheet" href="styles/profile.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -71,6 +71,11 @@
 
                         <ul class="nav-menu">
                             <li>
+                                <a href="dashboard.jsp" class="boton-inicio"
+                                    >Ir al Dashboard</a
+                                >
+                            </li>
+                            <li>
                                 <a href="/LogOut" class="boton-logout"
                                     >Cerrar Sesión</a
                                 >
@@ -80,6 +85,7 @@
                 </div>
             </header>
 
+            
             <div class="flex">
                 <div class="perfil">
                     <img src="images/profile.svg" alt="user" id="profile" />
@@ -93,6 +99,7 @@
                     </div>
                 </div>
 
+                
                 <div class="estadisticas">
                     <div class="asignaturas-contribuidas">
                         <h2>Asignaturas más contribuidas</h2>
@@ -149,26 +156,33 @@
                     </div>
                     <div class="ultimas-subidas">
                         <h2>Últimas subidas</h2>
-                        <div class="asignaturas">
-                            <%
-                                Fichero ficheroActual;
-                                ArrayList<Fichero> ficherosUsuario=(ArrayList<Fichero>) session.getAttribute("ficheros_usuario");
-                            for (int i=0; i<ficherosUsuario.size(); i++){ 
-                            ficheroActual=ficherosUsuario.get(i); %>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    <%= ficheroActual.getNombre() %>
-                                </div>
-                                <div class="descarga">
-                                    <a href="downloadServlet?file=<%= ficheroActual.getId_fichero()%>"
-                                        ><img
-                                            src="images/download.svg"
-                                            alt="download"
-                                    /></a>
-                                </div>
-                            </div>
-                            <% } 
-                            session.removeAttribute("ficheros_usuario"); %>
+                        <% Fichero ficheroActual;
+                                ArrayList<Fichero> ficherosUsuario=(ArrayList<Fichero>) session.getAttribute("ficheros_usuario"); %>
+
+                            <div class="ultimas-subidas-box<% if (ficherosUsuario == null || ficherosUsuario.isEmpty()) { %> sin-elementos<% } %>">
+                                <%
+                                if (ficherosUsuario.size()>0){
+                                for (int i=0; i<ficherosUsuario.size(); i++){ 
+                                    ficheroActual=ficherosUsuario.get(i); %>
+                                    <div class="asignatura-box">
+                                        <div class="contribuidas-titulo">
+                                            <%= ficheroActual.getNombre() %>
+                                        </div>
+                                        <div class="descarga">
+                                            <a href="downloadServlet?file=<%= ficheroActual.getId_fichero()%>"
+                                                ><img
+                                                    src="images/download.svg"
+                                                    alt="download"
+                                            /></a>
+                                        </div>
+                                    </div>
+                                <% }
+                                }
+                                else { %>
+                                    <p class="mensaje-vacio-profile">No has subido ningun fichero</p>
+                                <% }
+                                session.removeAttribute("ficheros_usuario"); %>
+                        
                         </div>
                     </div>
                     <div class="ultimos-mensajes">
