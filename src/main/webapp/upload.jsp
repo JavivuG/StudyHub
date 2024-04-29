@@ -34,6 +34,7 @@
     </head>
 
     <body>
+        <div class="main-content">
         <!-- Encabezado -->
         <header>
             <div class="container">
@@ -182,6 +183,7 @@
             <div class="preview" id="preview" hidden></div>
 
         </div>
+    </div>
 
         <!-- Pie de pagina -->
         <footer>

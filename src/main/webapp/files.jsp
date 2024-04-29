@@ -38,6 +38,7 @@
     </head>
 
     <body>
+        <div class="main-content">
         <!-- Encabezado -->
         <header>
             <div class="container">
@@ -181,7 +182,7 @@
                             </div>
                                 <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){ %>         
                         <div class="borrar-tema">
-                                <button class="borrar-button" id="delete-button" data-info="files" href="/DeleteFile?idForo=<%=ficheroActual.getId_foro()%>&idFichero=<%= ficheroActual.getId_fichero()%>&page=files"><i class="fa-solid fa-trash-can"></i></button>
+                                <button class="borrar-button" id="delete-button" data-info="files" data-url="/DeleteFile?idForo=<%=ficheroActual.getId_foro()%>&idFichero=<%= ficheroActual.getId_fichero()%>&page=files"><i class="fa-solid fa-trash-can"></i></button>
                         </div>
                         <% } %>
                         </div>
@@ -212,7 +213,8 @@
         <%
                 session.removeAttribute("subida");
             }%>
-
+        </div>
+            
         <!-- Pie de pagina -->
         <footer>
             <div class="info">

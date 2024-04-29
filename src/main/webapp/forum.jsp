@@ -190,7 +190,7 @@
                                         >
                                                 <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){ %>
                                                 <div class="borrar-wrapper">
-                                                    <button class="borrar-button" id="delete-button" data-info="topic" data-url="/DeleteTopic?idForo=<%=temaActualDestacado.getId_foro()%>&idTema=<%= temaActualDestacado.getId_tema() %>"><i class="fa-solid fa-trash-can"></i></button>
+                                                    <button class="borrar-button" id="delete-button" data-info="topic" data-url="/DeleteTopic?idForo=<%=temaActualDestacado.getId_foro()%>&idTema=<%= temaActualDestacado.getId_tema() %>&page=forum"><i class="fa-solid fa-trash-can"></i></button>
                                                 </div>
                                                 <% } %>
                                             </li>
@@ -223,7 +223,7 @@
                                             </a>
                                                   <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){ %>
                                                 <div class="borrar-wrapper">
-                                                    <button class="borrar-button" id="delete-button" data-info="topic" data-url="/DeleteTopic?idForo=<%=temaActualReciente.getId_foro()%>&idTema=<%= temaActualReciente.getId_tema() %>"><i class="fa-solid fa-trash-can"></i></button>
+                                                    <button class="borrar-button" id="delete-button" data-info="topic" data-url="/DeleteTopic?idForo=<%=temaActualReciente.getId_foro()%>&idTema=<%= temaActualReciente.getId_tema() %>&page=forum"><i class="fa-solid fa-trash-can"></i></button>
                                                 </div>
                                                 <% } %>
                                             </li>
