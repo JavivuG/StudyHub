@@ -49,6 +49,7 @@
             href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
             rel="stylesheet"
             />
+        <script src="https://kit.fontawesome.com/38c8e2034a.js" crossorigin="anonymous"></script>
         <script src="scripts/logo.js"></script>
     </head>
 
@@ -193,7 +194,7 @@
                         <div class="comentario">
                             <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")) {%>
                             <div class="borrar-wrapper">
-                                <button class="borrar-button" id="delete-button" data-info="comentario" data-url="/DeleteComentario?idTema=<%= comentarioActual.getId_tema()%>&idComentario=<%= comentarioActual.getId_comentario()%>"><img src="images/delete.svg" alt="borrar" class="borrar-icon"></button>
+                                <button class="borrar-button" id="delete-button" data-info="comentario" data-url="/DeleteComentario?idForo=<%= tema.getId_foro() %>&idTema=<%=comentarioActual.getId_tema()%>&idComentario=<%= comentarioActual.getId_comentario() %>&page=topic"><i class="fa-solid fa-trash-can"></i></button>
                             </div>
                             <% }%>
                             <div class="datos-comentario">

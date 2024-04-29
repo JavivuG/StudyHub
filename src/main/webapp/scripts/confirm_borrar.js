@@ -1,5 +1,5 @@
 var botones = document.querySelectorAll('#delete-button');
-console.log(botones);
+
 botones.forEach(function(boton) {
     boton.addEventListener('click', function(e) {
         e.preventDefault();
@@ -15,7 +15,7 @@ function toggleDeleteModal(info,url) {
         text = "¿Está seguro de que desea eliminar el tema?";
     } else if (info === 'comentario') {
         text = "¿Está seguro de que desea eliminar el comentario?";
-    } else if (info == 'subject') {
+    } else if (info === 'subject') {
         text = "¿Está seguro de que desea eliminar la asignatura?";
     }
 
