@@ -35,19 +35,18 @@ public class VoteCommentServlet extends HttpServlet {
         int res = VotoComentarioDB.addVote(voto);
 
         if (res > 0) {
-            Tema tema = (Tema) session.getAttribute("tema");
-            Asignatura asignatura = (Asignatura) session.getAttribute("asignatura");
-            ArrayList<Comentario> listaComentarios = (ArrayList<Comentario>) session.getAttribute("comentarios");
-            session.setAttribute("tema", tema);
-            session.setAttribute("asignatura", asignatura);
-            session.setAttribute("comentarios", listaComentarios);
-            url = "topic.jsp?idForo=" + tema.getId_foro() + "&idTema=" + tema.getId_tema();
+            int likes = VotoComentarioDB.getLikes(idComentario);
+            int dislikes = VotoComentarioDB.getDislikes(idComentario);
+            String data = "{\"id\":" + idComentario + ",\"likes\":" + likes + ",\"dislikes\":" + dislikes + "}";
+            PrintWriter out = response.getWriter();
+            response.setContentType("application/json; charset=UTF-8;");
+            out.println(data);
         } else {
             // Error al registrar usuario
-            url = "signup.jsp";
+          //  url = "signup.jsp";
         }
 
-        response.sendRedirect(url);
+        //response.sendRedirect(url);
 
     }
 
