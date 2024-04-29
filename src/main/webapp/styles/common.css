@@ -137,7 +137,7 @@ ul {
     opacity: 1;
 }
 
-.modal-header {
+.warning-header {
     position: relative;
     background: #ff0000;
     padding: 15px;
@@ -145,7 +145,7 @@ ul {
     text-align: left;
 }
 
-#modal-close {
+#warning-close {
     position: absolute;
     right: 15px;
     top: 12px;
@@ -155,11 +155,11 @@ ul {
     transition: 0.5s ease all;
 }
 
-#modal-close:hover {
+#warning-close:hover {
     color: #d9d9d9;
 }
 
-#modal-content {
+#warning-content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -167,7 +167,7 @@ ul {
     color: #000;
 }
 
-#modal-content input {
+#warning-content input {
     display: flex;
     flex-direction: column;
     border: none;
@@ -179,19 +179,19 @@ ul {
     padding-left: 10px;
 }
 
-#modal-content label {
+#warning-content label {
     display: flex;
     flex-direction: column;
     font-weight: bold;
 }
 
-#modal-buttons {
+#warning-buttons {
     margin-top: 20px;
     padding: 15px;
     text-align: right;
 }
 
-#modal-button-no {
+#warning-button-no {
     border: 2px solid #707070; /* Borde gris oscuro */
     padding: 10px 30px;
     background: #fff; /* Fondo blanco */
@@ -202,12 +202,12 @@ ul {
     transition: 0.5s ease all;
 }
 
-#modal-button-no:hover {
+#warning-button-no:hover {
     background: #707070; /* Fondo gris oscuro al pasar el ratón */
     color: #fff; /* Texto blanco al pasar el ratón */
 }
 
-#modal-button-yes {
+#warning-button-yes {
     border: 2px solid #ff6b6b;
     padding: 10px 50px;
     background: #ff6b6b;
@@ -219,7 +219,7 @@ ul {
     margin-left: 10px;
 }
 
-#modal-button-yes:hover {
+#warning-button-yes:hover {
     border: 2px solid #ff6b6b;
     color: #fff;
     background: #ff0000;

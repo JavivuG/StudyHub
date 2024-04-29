@@ -14,15 +14,16 @@
         <link rel="shortcut icon" href="images/logo.svg" />
         <title>StudyHub</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <link rel="stylesheet" href="styles/common.css" />
+        <link rel="stylesheet" href="styles/header.css" />
+        <link rel="stylesheet" href="styles/footer.css" />
         <link
             rel="stylesheet"
             type="text/css"
             media="screen"
             href="styles/forum.css"
         />
-        <link rel="stylesheet" href="styles/common.css" />
-        <link rel="stylesheet" href="styles/header.css" />
-        <link rel="stylesheet" href="styles/footer.css" />
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
