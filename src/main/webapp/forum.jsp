@@ -33,6 +33,7 @@
             href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
             rel="stylesheet"
         />
+        <script src="https://kit.fontawesome.com/38c8e2034a.js" crossorigin="anonymous"></script>
         <script src="scripts/logo.js"></script>
     </head>
 
@@ -189,7 +190,7 @@
                                         >
                                                 <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){ %>
                                                 <div class="borrar-wrapper">
-                                                    <button class="borrar-button" id="delete-button" data-info="topic" data-url="/DeleteTopic?idForo=<%=temaActualDestacado.getId_foro()%>&idTema=<%= temaActualDestacado.getId_tema() %>"><img src="images/delete.svg" alt="borrar" class="borrar-icon"></button>
+                                                    <button class="borrar-button" id="delete-button" data-info="topic" data-url="/DeleteTopic?idForo=<%=temaActualDestacado.getId_foro()%>&idTema=<%= temaActualDestacado.getId_tema() %>"><i class="fa-solid fa-trash-can"></i></button>
                                                 </div>
                                                 <% } %>
                                             </li>
@@ -222,7 +223,7 @@
                                             </a>
                                                   <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){ %>
                                                 <div class="borrar-wrapper">
-                                                    <button class="borrar-button" id="delete-button" data-info="topic" data-url="/DeleteTopic?idForo=<%=temaActualReciente.getId_foro()%>&idTema=<%= temaActualReciente.getId_tema() %>"><img src="images/delete.svg" alt="borrar" class="borrar-icon"></button>
+                                                    <button class="borrar-button" id="delete-button" data-info="topic" data-url="/DeleteTopic?idForo=<%=temaActualReciente.getId_foro()%>&idTema=<%= temaActualReciente.getId_tema() %>"><i class="fa-solid fa-trash-can"></i></button>
                                                 </div>
                                                 <% } %>
                                             </li>
@@ -272,7 +273,7 @@
                                             </div>
                                             <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){ %>         
                                             <div class="borrar-wrapper">
-                                                    <button class="borrar-button" id="delete-button" data-info="files" data-url="/DeleteFile?idForo=<%=fichero.getId_foro()%>&idFichero=<%= fichero.getId_fichero()%>&page=forum"><img src="images/delete.svg" alt="borrar" class="borrar-icon"></button>
+                                                    <button class="borrar-button" id="delete-button" data-info="files" data-url="/DeleteFile?idForo=<%=fichero.getId_foro()%>&idFichero=<%= fichero.getId_fichero()%>&page=forum"><i class="fa-solid fa-trash-can"></i></button>
                                             </div>
                                             <% } %>
                                             
