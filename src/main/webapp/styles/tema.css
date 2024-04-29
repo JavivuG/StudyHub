@@ -134,6 +134,11 @@ input[type=image]{
     font-size: 20px;
 }
 
+.like, .dislike{
+    cursor: pointer;
+}
+
+
 @media only screen and (max-width: 768px) {
     .nav-bar {
         font-size: 13px;
