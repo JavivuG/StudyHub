@@ -123,13 +123,20 @@
     border: 0px;
     margin-top: 5px;
     padding: 12px 8px;
-    background-color: #d9d9d9;
+    background-color: #f13e3e;
     border-radius: 10px;
     transition: background-color 0.3s ease;
+    align-items: center;
 }
 
 .borrar-button:hover {
-    background-color: #b5b5b5;
+    background-color: #ff0000;
+}
+
+.fa-trash-can {
+    margin: 5px;
+    color: #fff;
+    font-size: 20px;
 }
 
 .caja-fich {
@@ -212,6 +219,8 @@
     background-color: #00c041;
     color: #fff;
 }
+
+
 
 @media only screen and (max-width: 768px) {
     .caja-fich,
