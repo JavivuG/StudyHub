@@ -24,7 +24,7 @@ public class VotoComentarioDB {
         ResultSet rs = null;
         String query;
 
-        query = "SELECT * FROM voto_comentario WHERE id_comentario=?";
+        query = "SELECT * FROM votos_comentario WHERE id_comentario=?";
 
         try {
             ps = connection.prepareStatement(query);
@@ -56,7 +56,7 @@ public class VotoComentarioDB {
         ResultSet rs = null;
         String query;
 
-        query = "SELECT * FROM voto_comentario WHERE id_comentario=?";
+        query = "SELECT * FROM votos_comentario WHERE id_comentario=?";
 
         try {
             ps = connection.prepareStatement(query);
