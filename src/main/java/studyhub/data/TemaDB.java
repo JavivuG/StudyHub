@@ -13,6 +13,7 @@ import java.sql.Timestamp;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Date;
+import studyhub.business.Asignatura;
 
 /**
  *
@@ -26,7 +27,7 @@ public class TemaDB {
         ResultSet rs = null;
         String query;
 
-        query = "SELECT * FROM tema WHERE id_foro=?";
+        query = "SELECT * FROM tema WHERE id_foro=? ORDER BY fecha_publicacion DESC";
 
         try {
             ps = connection.prepareStatement(query);
@@ -306,5 +307,47 @@ public class TemaDB {
                 e.printStackTrace();
                 return -1;
             }
+    }
+    
+    public static ArrayList<Tema> buscarTema(String busqueda) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query;
+        
+        query = "SELECT * FROM tema WHERE titulo LIKE ? ORDER BY fecha_publicacion DESC";
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, "%"+busqueda+"%");
+            rs = ps.executeQuery();
+            Tema tema = null;
+            ArrayList<Tema> listaTemas=new ArrayList<>();
+            Timestamp timestamp;
+
+            while (rs.next()) {
+                tema = new Tema();
+                tema.setId_tema(rs.getInt("id_tema"));
+                tema.setTitulo(rs.getString("titulo"));
+                tema.setDescripcion(rs.getString("descripcion"));
+                timestamp=rs.getTimestamp("fecha_publicacion");
+                tema.setFecha_publicacion(timestamp.toLocalDateTime());
+                tema.setLikes(rs.getInt("likes"));
+                tema.setDislikes(rs.getInt("dislikes"));
+                tema.setNickname(rs.getString("nickname"));
+                tema.setId_foro(rs.getInt("id_foro"));
+                listaTemas.add(tema);
+            }
+
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return listaTemas;
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
