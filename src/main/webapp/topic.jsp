@@ -51,6 +51,7 @@
             />
         <script src="https://kit.fontawesome.com/38c8e2034a.js" crossorigin="anonymous"></script>
         <script src="scripts/logo.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     </head>
 
     <body>
@@ -210,47 +211,23 @@
                                 <p>
                                     <%= comentarioActual.getTexto()%>
                                 </p>
-                                <%-- <div class="reacciones">
-                                    <form action="./VoteComment" method="post" class="likes" name="addLike" id="addLike">
-                                        <input
-                                            type="image"
-                                            src="images/like.svg"
-                                            alt="Me gusta"
-                                            class="like"
-                                        />
-                                        <input type="hidden" name="like" value="1">
-                                        <input type="hidden" name="idComentario" value="<%= comentarioActual.getId_comentario() %>">
-                                        <p><%= comentarioActual.getLikes() %> likes</p>
-                                    </form>
-                                    <form action="./VoteComment" method="post" class="dislikes">
-                                        <input
-                                            type="image"
-                                            src="images/dislike.svg"
-                                            alt="No me gusta"
-                                            class="dislike"
-                                            id="dislike"
-                                        />
-                                        <input type="hidden" name="like" value="0">
-                                        <input type="hidden" name="idComentario" value="<%= comentarioActual.getId_comentario() %>">
-                                        <p><%= comentarioActual.getDislikes() %> dislikes</p>
-                                    </form>
-                                </div> --%>
+                                <%-- <% if (comentarioActual.gitNickname().equals(request.getUserPrincipal().getName())) {%>
+                                <div class="delete-comment">
+                                    <a href="/DeleteComentario?idForo=<%= tema.getId_foro() %>&idTema=<%=comentarioActual.getId_tema()%>&idComentario=<%= comentarioActual.getId_comentario() %>&page=topic">Borrar</a>
+                                </div>
+                                <% }%> --%>
                                 <div class="reacciones">
                                     <!-- Like Button -->
-                                    <%-- <form class="likes"> --%>
                                     <div class="likes">
-                                        <img src="images/like.svg" alt="Me gusta" class="like" onclick="voteComment(1, '<%= comentarioActual.getId_comentario()%>')" />
+                                        <img src="images/like.svg" alt="Me gusta" class="like vote" data-like="1" data-id="<%= comentarioActual.getId_comentario()%>" />
                                         <p id="likeCount-<%=comentarioActual.getId_comentario()%>"><%= comentarioActual.getLikes()%> likes</p>
                                     </div>
-                                    <%-- </form> --%>
 
                                     <!-- Dislike Button -->
-                                    <%-- <form class="dislikes"> --%>
                                     <div class="dislikes">
-                                        <img type="image" src="images/dislike.svg" alt="No me gusta" class="dislike" onclick="voteComment(0, '<%= comentarioActual.getId_comentario()%>')" />
+                                        <img type="image" src="images/dislike.svg" alt="No me gusta" class="dislike vote" data-like="0" data-id="<%= comentarioActual.getId_comentario()%>" />
                                         <p id="dislikeCount-<%=comentarioActual.getId_comentario()%>"><%= comentarioActual.getDislikes()%> dislikes</p>
                                     </div>
-                                    <%-- </form> --%>
                                 </div>
                             </div>
 
@@ -326,19 +303,21 @@
         </footer>
         <script src="scripts/confirm_borrar.js"></script>
         <script>
-            function voteComment(like, commentId) {
-                var xhr = new XMLHttpRequest();
-                xhr.open("POST", "./VoteComment", true);
-                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        var response = JSON.parse(xhr.responseText);
-                        document.getElementById("likeCount-" + response.id).innerHTML = response.likes + " likes";
-                        document.getElementById("dislikeCount-" + response.id).innerHTML = response.dislikes + " dislikes";
-                    }
-                };
-                xhr.send("like=" + like + "&idComentario=" + commentId);
-            }
+            $(document).ready(function () {
+                $(".vote").click(function () {
+                    var commentId = $(this).attr("data-id");
+                    var like = $(this).attr("data-like");
+                    $.ajax({
+                        type: "POST",
+                        url: "./VoteComment",
+                        data: { like: like, idComentario: commentId },
+                        success: function (response) {
+                            document.getElementById("likeCount-" + response.id).innerHTML = response.likes + " likes";
+                            document.getElementById("dislikeCount-" + response.id).innerHTML = response.dislikes + " dislikes";
+                        },
+                    });
+                });
+            });
         </script>
     </body>
 </html>
