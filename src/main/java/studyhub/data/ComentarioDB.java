@@ -125,4 +125,33 @@ public class ComentarioDB {
             e.printStackTrace();
         }
     }
+
+    public static boolean isOwner(int id_comentario, String nickname) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query;
+        boolean isOwner = false;
+
+        query = "SELECT * FROM comentario WHERE id_comentario=? AND nickname=?";
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, id_comentario);
+            ps.setString(2, nickname);
+            rs = ps.executeQuery();
+
+            if (rs.next()) isOwner = true;
+
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return isOwner;
+    }
 }
