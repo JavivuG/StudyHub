@@ -1,13 +1,9 @@
 package studyhub.controlador;
 
-import studyhub.business.Asignatura;
-import studyhub.business.Comentario;
-import studyhub.business.Tema;
 import studyhub.business.VotoComentario;
 import studyhub.data.VotoComentarioDB;
 
 import java.io.*;
-import java.util.ArrayList;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
@@ -19,13 +15,10 @@ public class VoteCommentServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
 
         String idComentario = request.getParameter("idComentario");
         String nickname = request.getRemoteUser();
         int like = Integer.parseInt(request.getParameter("like"));
-
-        String url = "";
 
         VotoComentario voto = new VotoComentario();
         voto.setNickname(nickname);
@@ -41,13 +34,7 @@ public class VoteCommentServlet extends HttpServlet {
             PrintWriter out = response.getWriter();
             response.setContentType("application/json; charset=UTF-8;");
             out.println(data);
-        } else {
-            // Error al registrar usuario
-          //  url = "signup.jsp";
         }
-
-        //response.sendRedirect(url);
-
     }
 
     @Override

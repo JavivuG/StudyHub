@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import studyhub.business.Tema;
 import studyhub.data.ComentarioDB;
 import studyhub.data.TemaDB;
@@ -32,11 +33,10 @@ public class DeleteComentario extends HttpServlet {
         Tema tema=TemaDB.getTema(id_tema);
         String url="topic.jsp?idForo="+tema.getId_foro()+"&idTema="+id_tema;
 
-        if (request.isUserInRole("administrador") || request.isUserInRole("moderador")){
-            
-            int id_comentario=Integer.parseInt(request.getParameter("idComentario"));
-            ComentarioDB.deleteComentario(id_comentario);
+        int id_comentario=Integer.parseInt(request.getParameter("idComentario"));
 
+        if (request.isUserInRole("administrador") || request.isUserInRole("moderador") || ComentarioDB.isOwner(id_comentario, request.getRemoteUser())){            
+            ComentarioDB.deleteComentario(id_comentario);
         }
         else {
             response.sendRedirect("not_found.jsp");

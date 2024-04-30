@@ -36,6 +36,7 @@
         />
         <script src="https://kit.fontawesome.com/38c8e2034a.js" crossorigin="anonymous"></script>
         <script src="scripts/logo.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
 
     <body>
@@ -160,7 +161,7 @@
                     />
                     <i class="fas fa-search boton"></i>
                     <span class="new-topic">Crear nuevo tema</span>
-                    <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")) {%>
+                    <% if (request.isUserInRole("administrador")) {%>
                         <button class="delete-subject" id="delete-button" data-info="subject" data-url="/DeleteSubject?idSubject=<%=asignatura.getID_asignatura()%>">Eliminar Asignatura</button>
                     <% } %>
                 </div>
@@ -178,7 +179,7 @@
                                     for (int i=0; i<listaTemasDestacados.size(); i++){
                                         Tema temaActualDestacado=listaTemasDestacados.get(i);
                                         %> 
-                                        <li class="lista-temas">
+                                        <li class="lista-temas-box">
                                             <a href="topic.jsp?idForo=<%=temaActualDestacado.getId_foro()%>&idTema=<%=temaActualDestacado.getId_tema()%>"
                                            class="enlace-tema" >
                                                 <div class="caja-tema">
@@ -204,13 +205,13 @@
                         </div>
                         <div class="cajas-container">
                             <h2 class="titulo-contenido">Temas</h2>
-                            <ul>
+                            <ul class="lista-temas">
                                 <% ArrayList<Tema> listaTemas=(ArrayList<Tema>) session.getAttribute("temas");
                                 if (listaTemas.size()>0){
                                     for (int i=0; i<listaTemas.size(); i++){
                                         Tema temaActual=listaTemas.get(i);
                                         %>
-                                        <li class="lista-temas">
+                                        <li class="lista-temas-box">
                                             <a href="topic.jsp?idForo=<%=temaActual.getId_foro()%>&idTema=<%=temaActual.getId_tema()%>"
                                             class="enlace-tema">
                                                 <div class="caja-tema">
@@ -231,7 +232,7 @@
                                     <%}
                                 }
                                 else {%>
-                                    <li><p class="mensaje-vacio">No hay temas recientes</p></li>
+                                    <li><p class="mensaje-vacio">No hay temas en este foro</p></li>
                                 <%}%>
                             </ul>
                         </div>
@@ -272,7 +273,7 @@
                                                     /></a>
                                                 </div>
                                             </div>
-                                            <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){ %>         
+                                            <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador") || fichero.getNickname().equals(request.getUserPrincipal().getName())){ %>         
                                             <div class="borrar-wrapper">
                                                     <button class="borrar-button" id="delete-button" data-info="files" data-url="/DeleteFile?idForo=<%=fichero.getId_foro()%>&idFichero=<%= fichero.getId_fichero()%>&page=forum"><i class="fa-solid fa-trash-can"></i></button>
                                             </div>
@@ -345,5 +346,37 @@
         </footer>
         <script src="scripts/create_new_topic.js"></script>
         <script src="scripts/confirm_borrar.js"></script>
+        <script>
+            $(document).ready(function() {
+            $('#search').on('input', function() {
+                var searchTerm = $(this).val();
+                console.log(searchTerm);
+                if (searchTerm.length > 0) {
+                    $.ajax({
+                        type: 'GET',
+                        url: 'BuscarTema',
+                        data: { q: searchTerm },
+                        success: function(response) {
+                            $('.lista-temas').html(response);
+                        }
+                    });
+                }
+                else {
+                    var urlParams = new URLSearchParams(window.location.search);
+                    var idForo = urlParams.get('idForo');
+                    
+                    $.ajax({
+                        type: 'GET',
+                        url: 'LoadForum',
+                        data: { actualizacion: "true", idForo: idForo },
+                        success: function(response) {
+                            console.log(response);
+                            $('.lista-temas').html(response);
+                        }
+                    });
+                }
+            });
+        });
+        </script>
     </body>
 </html>
