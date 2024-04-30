@@ -238,7 +238,7 @@
                         <% }%>
 
                     </div>    
-                    <form action="./InsertarComentario" method="post" class="chat-input">
+                        <div class="chat-input">
                         <input
                             type="text"
                             id="chat-input"
@@ -248,14 +248,14 @@
                         <button type="submit" class="chat-upload">
                             <img src="images/upload.svg" alt="Subir archivo" />
                         </button>
-                        <button type="submit" class="chat-submit">
+                        <button id="chat-submit" class="chat-submit">
                             <img
                                 src="images/send.svg"
                                 alt="Enviar mensaje"
                                 class=""
                                 />
                         </button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -319,5 +319,21 @@
                 });
             });
         </script>
+         <script>
+            $(document).ready(function() {
+            $('#chat-submit').on('click', function() {
+                var crearComent = $("chat-input").val();
+                     $.ajax({
+                        type: 'POST',
+                        url: 'InsertarComentario',
+                        data: { q: crearComent },
+                        success: function(response) {
+                            console.log(response);
+                            $('.comentario').html(response)
+                        }
+                    });
+                });
+            });
+</script>
     </body>
 </html>
