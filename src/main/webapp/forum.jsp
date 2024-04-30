@@ -272,7 +272,7 @@
                                                     /></a>
                                                 </div>
                                             </div>
-                                            <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){ %>         
+                                            <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador") || fichero.getNickname().equals(request.getUserPrincipal().getName())){ %>         
                                             <div class="borrar-wrapper">
                                                     <button class="borrar-button" id="delete-button" data-info="files" data-url="/DeleteFile?idForo=<%=fichero.getId_foro()%>&idFichero=<%= fichero.getId_fichero()%>&page=forum"><i class="fa-solid fa-trash-can"></i></button>
                                             </div>
