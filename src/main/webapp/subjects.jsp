@@ -32,6 +32,8 @@
             rel="stylesheet"
             />
         <script src="scripts/logo.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        
     </head>
 
     <body>
@@ -134,7 +136,8 @@
             <div class="ag-format-container">
                 <div class="ag-courses_box">
 
-                    <% ArrayList<Asignatura> listaAsignaturas = (ArrayList<Asignatura>) session.getAttribute("asignaturas");
+                    <% 
+                        ArrayList<Asignatura> listaAsignaturas = (ArrayList<Asignatura>) session.getAttribute("asignaturas");
                         for (int i = 0; i < listaAsignaturas.size(); i++) {
                             Asignatura asignatura = listaAsignaturas.get(i);
                     %>
@@ -154,10 +157,8 @@
 
                         </a>
                     </div>
-                            
-                    <%
-                        }
-                    %>
+                    <% } %>
+
 
                 </div>
             </div>
@@ -197,5 +198,32 @@
             </div>
         </footer>
         <script src="scripts/create_new_forum.js"></script>
+        <script>
+            $(document).ready(function() {
+            $('#search').on('input', function() {
+                var searchTerm = $(this).val();
+                if (searchTerm.length > 0) {
+                    $.ajax({
+                        type: 'GET',
+                        url: 'BuscarAsignatura',
+                        data: { q: searchTerm },
+                        success: function(response) {
+                            $('.ag-courses_box').html(response);
+                        }
+                    });
+                }
+                else {
+                    $.ajax({
+                        type: 'GET',
+                        url: 'LoadSubjects',
+                        data: { actualizacion: "true" },
+                        success: function(response) {
+                            $('.ag-courses_box').html(response);
+                        }
+                    });
+                }
+            });
+        });
+</script>
     </body>
 </html>

@@ -109,7 +109,7 @@ public class ForoDB {
         }
     }
     
-        public static boolean asignaturaExists(String nombre) {
+    public static boolean asignaturaExists(String nombre) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
@@ -168,6 +168,41 @@ public class ForoDB {
         } catch (SQLException e) {
             e.printStackTrace();
             return 0;
+        }
+    }
+    
+    public static ArrayList<Asignatura> buscarAsignatura(String busqueda) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query;
+        
+        query = "SELECT * FROM foro WHERE nombre LIKE ?";
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, "%"+busqueda+"%");
+            rs = ps.executeQuery();
+            Asignatura asignatura = null;
+            ArrayList<Asignatura> listaAsignaturas=new ArrayList<>();
+            
+            while (rs.next()) {
+                asignatura = new Asignatura();
+                asignatura.setID_asignatura(rs.getInt("id_foro"));
+                asignatura.setNombre(rs.getString("nombre"));
+                asignatura.setCurso(rs.getString("curso"));
+                listaAsignaturas.add(asignatura);
+            }
+            
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return listaAsignaturas;
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }

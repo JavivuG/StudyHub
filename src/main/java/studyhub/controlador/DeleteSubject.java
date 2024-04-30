@@ -21,7 +21,6 @@ public class DeleteSubject extends HttpServlet {
             throws ServletException, IOException {
         // Obtener los parametros de la peticion
 
-        System.out.println("DeleteSubject");
         String id = request.getParameter("idSubject");
     
         if (request.isUserInRole("administrador") || request.isUserInRole("moderador")){

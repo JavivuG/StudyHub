@@ -203,28 +203,28 @@
                             </ul>
                         </div>
                         <div class="cajas-container">
-                            <h2 class="titulo-contenido">Temas recientes</h2>
+                            <h2 class="titulo-contenido">Temas</h2>
                             <ul>
-                                <% ArrayList<Tema> listaTemasRecientes=(ArrayList<Tema>) session.getAttribute("temas_recientes");
-                                if (listaTemasRecientes.size()>0){
-                                    for (int i=0; i<listaTemasRecientes.size(); i++){
-                                        Tema temaActualReciente=listaTemasRecientes.get(i);
+                                <% ArrayList<Tema> listaTemas=(ArrayList<Tema>) session.getAttribute("temas");
+                                if (listaTemas.size()>0){
+                                    for (int i=0; i<listaTemas.size(); i++){
+                                        Tema temaActual=listaTemas.get(i);
                                         %>
                                         <li class="lista-temas">
-                                            <a href="topic.jsp?idForo=<%=temaActualReciente.getId_foro()%>&idTema=<%=temaActualReciente.getId_tema()%>"
+                                            <a href="topic.jsp?idForo=<%=temaActual.getId_foro()%>&idTema=<%=temaActual.getId_tema()%>"
                                             class="enlace-tema">
                                                 <div class="caja-tema">
                                                     <h3>
-                                                        <%= temaActualReciente.getTitulo() %>
+                                                        <%= temaActual.getTitulo() %>
                                                     </h3>
                                                     <p>
-                                                        por <span><%= temaActualReciente.getNickname() %></span> • <%= temaActualReciente.getTiempoPublicado() %>
+                                                        por <span><%= temaActual.getNickname() %></span> • <%= temaActual.getTiempoPublicado() %>
                                                     </p>
                                                 </div>
                                             </a>
                                                   <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){ %>
                                                 <div class="borrar-wrapper">
-                                                    <button class="borrar-button" id="delete-button" data-info="topic" data-url="/DeleteTopic?idForo=<%=temaActualReciente.getId_foro()%>&idTema=<%= temaActualReciente.getId_tema() %>&page=forum"><i class="fa-solid fa-trash-can"></i></button>
+                                                    <button class="borrar-button" id="delete-button" data-info="topic" data-url="/DeleteTopic?idForo=<%=temaActual.getId_foro()%>&idTema=<%= temaActual.getId_tema() %>&page=forum"><i class="fa-solid fa-trash-can"></i></button>
                                                 </div>
                                                 <% } %>
                                             </li>
