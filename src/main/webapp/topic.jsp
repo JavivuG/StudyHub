@@ -157,12 +157,11 @@
                         <img src="images/arrow.svg" alt="Arrow" id="arrow" />
                     </li>
                     <li>
-                        <%--   <span class="items-nav"
+                       <span class="items-nav"
                               <% Asignatura asignatura = (Asignatura) session.getAttribute("asignatura");%>
                               ><a href="forum.jsp?idForo=<%= request.getParameter("idForo")%>"
                             ><%= asignatura.getNombre()%></a
                             ></span
-                        >--%>
                     </li>
                     <li>
                         <img src="images/arrow.svg" alt="Arrow" id="arrow" />
@@ -325,7 +324,6 @@
                         url: './InsertarComentario',
                         data: { chat: crearComent},
                         success: function(response) {
-                            console.log(response);
                             $('.comentarios-container').html(response);
                             $("#chat-input").val("");
                             window.scrollTo(0, document.body.scrollHeight);

@@ -39,7 +39,7 @@ public class InsertaComentario extends HttpServlet {
         htmlBuilder.append(" <h2>Comentarios</h2>");
         for (int i=0; i<comentariosEncontrados.size(); i++) {
            Comentario comentario =comentariosEncontrados.get(i);
-            if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){
+            if (request.isUserInRole("moderador") || request.isUserInRole("administrador") || comentario.getNickname().equals(request.getUserPrincipal().getName())){
                 htmlBuilder.append("<button class=\"borrar-button\" id=\"delete-button\" data-info=\"comentario\" data-url=\"/DeleteComentario?idForo=").append(idForo).append("&idTema=").append(chat).append("&idComentario=").append(comentario.getId_comentario()).append("&page=topic\">");
                 htmlBuilder.append("<div class=\"borrar-wrapper\">");
                 htmlBuilder.append("<i class=\"fa-solid fa-trash-can\"></i>");
@@ -65,7 +65,7 @@ public class InsertaComentario extends HttpServlet {
             htmlBuilder.append("</div>");
             htmlBuilder.append("<div class=\"dislikes\">");
             htmlBuilder.append("<img type=\"image\" src=\"images/dislike.svg\" alt=\"No me gusta\" class=\"dislike vote\" data-like=\"0\" data-id=\"").append(comentario.getId_comentario()).append("\" />");
-            htmlBuilder.append("<p id=\"dislikeCount-").append(comentario.getId_comentario()).append("\">").append(comentario.getDislikes()).append("dislikes</p>");
+            htmlBuilder.append("<p id=\"dislikeCount-").append(comentario.getId_comentario()).append("\">").append(comentario.getDislikes()).append(" dislikes</p>");
             htmlBuilder.append("</div>");
             htmlBuilder.append("</div>");
             htmlBuilder.append(" </div>");
