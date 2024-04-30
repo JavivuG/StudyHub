@@ -31,7 +31,7 @@ public class DeleteFile extends HttpServlet {
         String pagina=request.getParameter("page");
 
         
-        if (request.isUserInRole("administrador") || request.isUserInRole("moderador")){
+        if (request.isUserInRole("administrador") || request.isUserInRole("moderador") || FicheroDB.isOwner(id_fichero, request.getRemoteUser())){
             FicheroDB.deleteFichero(id_fichero);
         }
         else {
