@@ -51,6 +51,7 @@
             />
         <script src="https://kit.fontawesome.com/38c8e2034a.js" crossorigin="anonymous"></script>
         <script src="scripts/logo.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
 
     <body>
@@ -261,7 +262,7 @@
                         <% }%>
 
                     </div>    
-                    <form action="./InsertarComentario" method="post" class="chat-input">
+                        <div class="chat-input">
                         <input
                             type="text"
                             id="chat-input"
@@ -271,14 +272,14 @@
                         <button type="submit" class="chat-upload">
                             <img src="images/upload.svg" alt="Subir archivo" />
                         </button>
-                        <button type="submit" class="chat-submit">
+                        <button id="chat-submit" class="chat-submit">
                             <img
                                 src="images/send.svg"
                                 alt="Enviar mensaje"
                                 class=""
                                 />
                         </button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -340,5 +341,21 @@
                 xhr.send("like=" + like + "&idComentario=" + commentId);
             }
         </script>
+         <script>
+            $(document).ready(function() {
+            $('#chat-submit').on('click', function() {
+                var crearComent = $("chat-input").val();
+                     $.ajax({
+                        type: 'POST',
+                        url: 'InsertarComentario',
+                        data: { q: crearComent },
+                        success: function(response) {
+                            console.log(response);
+                            $('.comentario').html(response)
+                        }
+                    });
+                });
+            });
+</script>
     </body>
 </html>
