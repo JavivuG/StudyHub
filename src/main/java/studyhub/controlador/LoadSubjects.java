@@ -29,9 +29,32 @@ public class LoadSubjects extends HttpServlet {
         HttpSession session = request.getSession();
         ArrayList<Asignatura> asignaturas=null;
         asignaturas=ForoDB.getAsignaturas();
-        // Almacena los datos en el alcance de la solicitud
-        session.setAttribute("asignaturas", asignaturas);
-        response.sendRedirect("subjects.jsp");
+
+        String actualizacion=(String) request.getParameter("actualizacion");
+        if (actualizacion!=null){
+            StringBuilder htmlBuilder = new StringBuilder();
+            for (int i=0; i<asignaturas.size(); i++) {
+                Asignatura asignatura=asignaturas.get(i);
+                htmlBuilder.append("<div class=\"ag-courses_item\">");
+                htmlBuilder.append("<a href=\"forum.jsp?idForo=").append(asignatura.getID_asignatura()).append("\" class=\"ag-courses-item_link\">");
+                htmlBuilder.append("<div class=\"ag-courses-item_bg\"></div>");
+                htmlBuilder.append("<div class=\"ag-courses-item_title\">").append(asignatura.getNombre()).append("</div>");
+                htmlBuilder.append("<div class=\"ag-courses-item_description-box\">");
+                htmlBuilder.append("<span class=\"ag-courses-item_description\">").append(asignatura.getCurso()).append("</span>");
+                htmlBuilder.append("</div>");
+                htmlBuilder.append("</a>");
+                htmlBuilder.append("</div>");
+            }
+
+            response.setContentType("text/html");
+            response.getWriter().print(htmlBuilder.toString());
+        }
+        else {
+            // Almacena los datos en el alcance de la solicitud
+            session.setAttribute("asignaturas", asignaturas);
+            response.sendRedirect("subjects.jsp");
+        }
+        
     }
 
    

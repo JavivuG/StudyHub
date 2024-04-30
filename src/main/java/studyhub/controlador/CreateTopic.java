@@ -32,12 +32,6 @@ public class CreateTopic extends HttpServlet {
         int idForo;
         idForo = Integer.parseInt(request.getParameter("idForo"));
 
-        System.out.println("idForo: "+idForo);
-        System.out.println("titulo: "+titulo);
-        System.out.println("mensaje: "+mensaje_descripcion);
-        System.out.println("nickname: "+nickname);
-
-
         int idTema=TemaDB.crearTema(titulo, mensaje_descripcion, nickname, idForo);
        
         String url = "topic.jsp?idForo=" +idForo+ "&idTema="+idTema;

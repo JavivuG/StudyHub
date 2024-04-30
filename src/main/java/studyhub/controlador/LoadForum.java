@@ -36,18 +36,18 @@ public class LoadForum extends HttpServlet {
         int MAX_ficheroS=4;
         int MAX_TEMAS=3;
         
-        ArrayList<Tema> listaTemasRecientes, listaTemasDestacados;
+        ArrayList<Tema> listaTemas, listaTemasDestacados;
         ArrayList<Fichero> listaFicheros;
         String id_foro=request.getParameter("idForo");
         String url="forum.jsp?idForo="+id_foro;
         
-        listaTemasRecientes=TemaDB.getTemasRecientes(id_foro,MAX_TEMAS);
+        listaTemas=TemaDB.getTemas(id_foro);
         listaTemasDestacados=TemaDB.getTemasDestacados(id_foro,MAX_TEMAS);
         listaFicheros=FicheroDB.getFicherosRecientes(id_foro,MAX_ficheroS);
         Asignatura asignatura=ForoDB.getAsignatura(id_foro);
         
         session.setAttribute("asignatura", asignatura);
-        session.setAttribute("temas_recientes", listaTemasRecientes);
+        session.setAttribute("temas", listaTemas);
         session.setAttribute("temas_destacados", listaTemasDestacados);
         session.setAttribute("ficheros", listaFicheros);
        
