@@ -306,4 +306,30 @@ public class FicheroDB {
             e.printStackTrace();
         }
     }
+
+    public static boolean isOwner(int id_fichero, String nickname) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs;
+        String query = "SELECT * FROM fichero WHERE id_fichero=? AND nickname=?";
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, id_fichero);
+            ps.setString(2, nickname);
+            rs = ps.executeQuery();
+            boolean res = rs.next();
+
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+
+            return res;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

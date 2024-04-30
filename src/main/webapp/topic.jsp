@@ -192,7 +192,7 @@
                                     Comentario comentarioActual = listaComentarios.get(i); %>
 
                         <div class="comentario">
-                            <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")) {%>
+                            <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador") || comentarioActual.getNickname().equals(request.getUserPrincipal().getName())) {%>
                             <div class="borrar-wrapper">
                                 <button class="borrar-button" id="delete-button" data-info="comentario" data-url="/DeleteComentario?idForo=<%= tema.getId_foro() %>&idTema=<%=comentarioActual.getId_tema()%>&idComentario=<%= comentarioActual.getId_comentario() %>&page=topic">
                                     <i class="fa-solid fa-trash-can"></i>
@@ -213,11 +213,6 @@
                                 <p>
                                     <%= comentarioActual.getTexto()%>
                                 </p>
-                                <%-- <% if (comentarioActual.gitNickname().equals(request.getUserPrincipal().getName())) {%>
-                                <div class="delete-comment">
-                                    <a href="/DeleteComentario?idForo=<%= tema.getId_foro() %>&idTema=<%=comentarioActual.getId_tema()%>&idComentario=<%= comentarioActual.getId_comentario() %>&page=topic">Borrar</a>
-                                </div>
-                                <% }%> --%>
                                 <div class="reacciones">
                                     <!-- Like Button -->
                                     <div class="likes">
