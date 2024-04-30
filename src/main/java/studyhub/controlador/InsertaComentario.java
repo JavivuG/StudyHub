@@ -9,10 +9,8 @@ import javax.servlet.http.*;
 import studyhub.business.Comentario;
 import studyhub.business.Tema;
 import studyhub.data.ComentarioDB;
-import studyhub.data.ForoDB;
 
-
-@WebServlet("/InsertarComentario")
+@WebServlet(name = "InsertarComentario", urlPatterns = {"/InsertarComentario"}, asyncSupported = true)
 public class InsertaComentario extends HttpServlet {
     
     @Override
@@ -34,25 +32,50 @@ public class InsertaComentario extends HttpServlet {
         response.setContentType("text/plain; charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         
-        ArrayList<Comentario> comentariosEncontrados=ComentarioDB.getComentarios(String.valueOf(idTema));
+        ArrayList<Comentario> comentariosEncontrados;
+        comentariosEncontrados=ComentarioDB.getComentarios(String.valueOf(idTema));
 
         StringBuilder htmlBuilder = new StringBuilder();
-        for (int i=0; i<asignaturasEncontradas.size(); i++) {
-            Comentario comentario =comentariosEncontrados.get(i);
-            htmlBuilder.append("<div class=\"ag-courses_item\">");
-            htmlBuilder.append("<a href=\"forum.jsp?idForo=").append(asignatura.getID_asignatura()).append("\" class=\"ag-courses-item_link\">");
-            htmlBuilder.append("<div class=\"ag-courses-item_bg\"></div>");
-            htmlBuilder.append("<div class=\"ag-courses-item_title\">").append(asignatura.getNombre()).append("</div>");
-            htmlBuilder.append("<div class=\"ag-courses-item_description-box\">");
-            htmlBuilder.append("<span class=\"ag-courses-item_description\">").append(asignatura.getCurso()).append("</span>");
+        htmlBuilder.append(" <h2>Comentarios</h2>");
+        for (int i=0; i<comentariosEncontrados.size(); i++) {
+           Comentario comentario =comentariosEncontrados.get(i);
+            if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){
+                htmlBuilder.append("<button class=\"borrar-button\" id=\"delete-button\" data-info=\"comentario\" data-url=\"/DeleteComentario?idForo=").append(idForo).append("&idTema=").append(chat).append("&idComentario=").append(comentario.getId_comentario()).append("&page=topic\">");
+                htmlBuilder.append("<div class=\"borrar-wrapper\">");
+                htmlBuilder.append("<i class=\"fa-solid fa-trash-can\"></i>");
+                htmlBuilder.append("</button>");
+                htmlBuilder.append("</div>");
+            }
+            htmlBuilder.append("<div class=\"datos-comentario\">");
+            htmlBuilder.append("<div class=\"autor-comentario\">");
+            htmlBuilder.append("<img\n" +
+"                                        src=\"images/profile.svg\"\n" +
+"                                        alt=\"Foto de perfil\"\n" +
+"                                        />");
+            htmlBuilder.append("<div class=\"user\">");
+            htmlBuilder.append("<p>").append(comentario.getNickname()).append("</p>");
+            htmlBuilder.append("<p class=\"fecha-comentario\">").append(comentario.getTiempoPublicado()).append("</p>");
             htmlBuilder.append("</div>");
-            htmlBuilder.append("</a>");
             htmlBuilder.append("</div>");
+            htmlBuilder.append("<p>").append(comentario.getTexto()).append("</p>");
+            htmlBuilder.append(" <div class=\"reacciones\">");
+            htmlBuilder.append("<div class=\"likes\">");
+            htmlBuilder.append(" <img src=\"images/like.svg\" alt=\"Me gusta\" class=\"like vote\" data-like=\"1\" data-id=\"").append(comentario.getId_comentario()).append("\" />");
+            htmlBuilder.append(" <p id=\"likeCount-").append(comentario.getId_comentario()).append("\">").append(comentario.getLikes()).append(" likes</p>");
+            htmlBuilder.append("</div>");
+            htmlBuilder.append("<div class=\"dislikes\">");
+            htmlBuilder.append("<img type=\"image\" src=\"images/dislike.svg\" alt=\"No me gusta\" class=\"dislike vote\" data-like=\"0\" data-id=\"").append(comentario.getId_comentario()).append("\" />");
+            htmlBuilder.append("<p id=\"dislikeCount-").append(comentario.getId_comentario()).append("\">").append(comentario.getDislikes()).append("dislikes</p>");
+            htmlBuilder.append("</div>");
+            htmlBuilder.append("</div>");
+            htmlBuilder.append(" </div>");
+            htmlBuilder.append("</div>");
+
         }
 
         response.setContentType("text/html");
         response.getWriter().print(htmlBuilder.toString());
-    }
+    
     }
     
     @Override

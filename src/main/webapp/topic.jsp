@@ -157,12 +157,12 @@
                         <img src="images/arrow.svg" alt="Arrow" id="arrow" />
                     </li>
                     <li>
-                        <span class="items-nav"
+                        <%--   <span class="items-nav"
                               <% Asignatura asignatura = (Asignatura) session.getAttribute("asignatura");%>
                               ><a href="forum.jsp?idForo=<%= request.getParameter("idForo")%>"
                             ><%= asignatura.getNombre()%></a
                             ></span
-                        >
+                        >--%>
                     </li>
                     <li>
                         <img src="images/arrow.svg" alt="Arrow" id="arrow" />
@@ -194,7 +194,9 @@
                         <div class="comentario">
                             <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")) {%>
                             <div class="borrar-wrapper">
-                                <button class="borrar-button" id="delete-button" data-info="comentario" data-url="/DeleteComentario?idForo=<%= tema.getId_foro() %>&idTema=<%=comentarioActual.getId_tema()%>&idComentario=<%= comentarioActual.getId_comentario() %>&page=topic"><i class="fa-solid fa-trash-can"></i></button>
+                                <button class="borrar-button" id="delete-button" data-info="comentario" data-url="/DeleteComentario?idForo=<%= tema.getId_foro() %>&idTema=<%=comentarioActual.getId_tema()%>&idComentario=<%= comentarioActual.getId_comentario() %>&page=topic">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
                             </div>
                             <% }%>
                             <div class="datos-comentario">
@@ -322,14 +324,16 @@
          <script>
             $(document).ready(function() {
             $('#chat-submit').on('click', function() {
-                var crearComent = $("chat-input").val();
+                var crearComent = $("#chat-input").val();
                      $.ajax({
                         type: 'POST',
-                        url: 'InsertarComentario',
-                        data: { q: crearComent },
+                        url: './InsertarComentario',
+                        data: { chat: crearComent},
                         success: function(response) {
                             console.log(response);
-                            $('.comentario').html(response)
+                            $('.comentarios-container').html(response);
+                            $("#chat-input").val("");
+                            window.scrollTo(0, document.body.scrollHeight);
                         }
                     });
                 });
