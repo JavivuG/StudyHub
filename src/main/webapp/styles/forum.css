@@ -60,7 +60,7 @@
     min-height: 120px;
 }
 
-.lista-temas {
+.lista-temas-box {
     display: flex;
     flex-direction: row;
     align-content: center;
