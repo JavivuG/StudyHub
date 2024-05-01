@@ -314,41 +314,39 @@
                         success: function (response) {
                             document.getElementById("likeCount-" + response.id).innerHTML = response.likes + " likes";
                             document.getElementById("dislikeCount-" + response.id).innerHTML = response.dislikes + " dislikes";
-                        },
+                        }
                     });
                 });
             });
         </script>
          <script>
             $(document).ready(function() {
-            $('#chat-submit').on('click', function() {
-                var crearComent = $("#chat-input").val();
-                     $.ajax({
-                        type: 'POST',
-                        url: './InsertarComentario',
-                        data: { chat: crearComent},
-                        success: function(response) {
-                            $('.comentarios-container').html(response);
-                            $("#chat-input").val("");
-                            window.scrollTo(0, document.body.scrollHeight);
-                        }
-                    });
+                $('#chat-submit').on('click', insertComentario);
+
+                $('#chat-input').keypress(function(event) {
+                    if (event.keyCode === 13) { // 13 is the key code for Enter key
+                        insertComentario();
+                    }
                 });
-                $('#chat-envia').submit( function(e) {
-                    e.preventDefault();
+
+                function insertComentario(event) {
+                    event.preventDefault(); // Evita que se envíe el formulario al hacer clic en el botón
                     var crearComent = $("#chat-input").val();
-                     $.ajax({
-                        type: 'POST',
-                        url: './InsertarComentario',
-                        data: { chat: crearComent},
-                        success: function(response) {
-                            $('.comentarios-container').html(response);
-                            $("#chat-input").val("");
-                            window.scrollTo(0, document.body.scrollHeight);
-                        }
-                    });
-                });
+                    if (crearComent.length > 0) {
+                        $.ajax({
+                            type: 'POST',
+                            url: './InsertarComentario',
+                            data: { chat: crearComent },
+                            success: function(response) {
+                                $('.comentarios-container').html(response);
+                                $("#chat-input").val("");
+                                window.scrollTo(0, document.body.scrollHeight);
+                            }
+                        });
+                    }
+                }
             });
+
 </script>
     </body>
 </html>
