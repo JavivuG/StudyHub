@@ -1,5 +1,5 @@
 CREATE DATABASE IF NOT EXISTS studyhub;
-USE studyhub;
+USE studyhub2;
 
 DROP TABLE IF EXISTS votos_comentario;
 DROP TABLE IF EXISTS comentario;
