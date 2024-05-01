@@ -159,7 +159,6 @@
                         name="search"
                         placeholder="Buscar..."
                     />
-                    <i class="fas fa-search boton"></i>
                     <span class="new-topic">Crear nuevo tema</span>
                     <% if (request.isUserInRole("administrador")) {%>
                         <button class="delete-subject" id="delete-button" data-info="subject" data-url="/DeleteSubject?idSubject=<%=asignatura.getID_asignatura()%>">Eliminar Asignatura</button>

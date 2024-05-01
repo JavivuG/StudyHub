@@ -81,6 +81,7 @@
 
         <!-- Conetenedor de Taquilla, Busqueda y Foros --->
         <div class="container">
+            <!-- 
             <div class="container_busqueda">
                 <div class="encabezado-busqueda">
                     <img
@@ -102,7 +103,8 @@
                         <p class="texto-btn">Buscar</p>
                     </button>
                 </div>
-            </div>
+            </div> 
+            -->
             <div class="container-principal">
                 <div class="left-container">
                     <div class="taquilla">

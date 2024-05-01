@@ -124,7 +124,6 @@
                         name="search"
                         placeholder="Buscar..."
                         />
-                    <i class="fas fa-search boton"></i>
                     <% if (request.isUserInRole("administrador")) { %>
                     <span class="new-forum">Añadir asignatura</span>
                     <% } %>

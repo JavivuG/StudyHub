@@ -241,9 +241,11 @@
                             name='chat'
                             placeholder="Envia un mensaje..."
                             />
+                        <!-- 
                         <button type="submit" class="chat-upload">
                             <img src="images/upload.svg" alt="Subir archivo" />
-                        </button>
+                        </button> 
+                        -->
                         <button id="chat-submit" class="chat-submit">
                             <img
                                 src="images/send.svg"
