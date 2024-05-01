@@ -19,26 +19,32 @@ public class BuscarTema extends HttpServlet {
         ArrayList<Tema> temasEncontrados=TemaDB.buscarTema(busqueda);
 
         StringBuilder htmlBuilder = new StringBuilder();
-        for (int i=0; i<temasEncontrados.size(); i++) {
-            Tema tema=temasEncontrados.get(i);
-            htmlBuilder.append("<li class=\"lista-temas-box\">");
-            htmlBuilder.append("<a href=\"topic.jsp?idForo=").append(tema.getId_foro()).append("&idTema=").append(tema.getId_tema()).append("\" class=\"enlace-tema\">");
-            htmlBuilder.append("<div class=\"caja-tema\">");
-            htmlBuilder.append("<h3>").append(tema.getTitulo()).append("</h3>");
-            htmlBuilder.append("<p>").append("por <span>").append(tema.getNickname()).append("</span>").append(" • ").append(tema.getTiempoPublicado()).append("</p>");
-            htmlBuilder.append("</div>");
-            htmlBuilder.append("</a>");
-            
-            if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){
-                htmlBuilder.append("<div class=\"borrar-wrapper\">");
-                htmlBuilder.append("<button class=\"borrar-button\" id=\"delete-button\" data-info=\"topic\" data-url=\"/DeleteTopic?idForo=").append(tema.getId_foro()).append("&idTema=").append(tema.getId_tema()).append("&page=forum\">");
-                htmlBuilder.append("<i class=\"fa-solid fa-trash-can\"></i>");
-                htmlBuilder.append("</button>");
+        if (temasEncontrados.size()>0){
+            for (int i=0; i<temasEncontrados.size(); i++) {
+                Tema tema=temasEncontrados.get(i);
+                htmlBuilder.append("<li class=\"lista-temas-box\">");
+                htmlBuilder.append("<a href=\"topic.jsp?idForo=").append(tema.getId_foro()).append("&idTema=").append(tema.getId_tema()).append("\" class=\"enlace-tema\">");
+                htmlBuilder.append("<div class=\"caja-tema\">");
+                htmlBuilder.append("<h3>").append(tema.getTitulo()).append("</h3>");
+                htmlBuilder.append("<p>").append("por <span>").append(tema.getNickname()).append("</span>").append(" • ").append(tema.getTiempoPublicado()).append("</p>");
                 htmlBuilder.append("</div>");
+                htmlBuilder.append("</a>");
+
+                if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){
+                    htmlBuilder.append("<div class=\"borrar-wrapper\">");
+                    htmlBuilder.append("<button class=\"borrar-button\" id=\"delete-button\" data-info=\"topic\" data-url=\"/DeleteTopic?idForo=").append(tema.getId_foro()).append("&idTema=").append(tema.getId_tema()).append("&page=forum\">");
+                    htmlBuilder.append("<i class=\"fa-solid fa-trash-can\"></i>");
+                    htmlBuilder.append("</button>");
+                    htmlBuilder.append("</div>");
+                }
+
+                htmlBuilder.append("</li>");
             }
-            
-            htmlBuilder.append("</li>");
         }
+        else {
+            htmlBuilder.append("<li><p class=\"mensaje-vacio\">No hay coincidencias con su búsqueda</p></li>");
+        }
+        
         
 
         response.setContentType("text/html");
