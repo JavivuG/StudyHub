@@ -132,7 +132,6 @@ public class ComentarioDB {
         PreparedStatement ps = null;
         ResultSet rs = null;
         String query;
-        boolean isOwner = false;
 
         query = "SELECT * FROM comentario WHERE id_comentario=? AND nickname=?";
 
@@ -142,16 +141,17 @@ public class ComentarioDB {
             ps.setString(2, nickname);
             rs = ps.executeQuery();
 
-            if (rs.next()) isOwner = true;
+            boolean res = rs.next();
 
             rs.close();
             ps.close();
             pool.freeConnection(connection);
+            return res;
 
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
 
-        return isOwner;
     }
 }

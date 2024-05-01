@@ -180,7 +180,7 @@
                                     <a href="/downloadServlet?file=<%= ficheroActual.getId_fichero()%>"><img src="images/download.svg" alt="Descargar" class="img-download"/></a>
                                 </div>
                             </div>
-                                <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador")){ %>         
+                                <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador") || ficheroActual.getNickname().equals(request.getUserPrincipal().getName())){ %>         
                         <div class="borrar-tema">
                                 <button class="borrar-button" id="delete-button" data-info="files" data-url="/DeleteFile?idForo=<%=ficheroActual.getId_foro()%>&idFichero=<%= ficheroActual.getId_fichero()%>&page=files"><i class="fa-solid fa-trash-can"></i></button>
                         </div>

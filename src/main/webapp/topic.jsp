@@ -157,12 +157,11 @@
                         <img src="images/arrow.svg" alt="Arrow" id="arrow" />
                     </li>
                     <li>
-                        <span class="items-nav"
+                       <span class="items-nav"
                               <% Asignatura asignatura = (Asignatura) session.getAttribute("asignatura");%>
                               ><a href="forum.jsp?idForo=<%= request.getParameter("idForo")%>"
                             ><%= asignatura.getNombre()%></a
                             ></span
-                        >
                     </li>
                     <li>
                         <img src="images/arrow.svg" alt="Arrow" id="arrow" />
@@ -174,7 +173,7 @@
             </div>
 
             <div class="container">
-                <div class="tema-container">
+                
                     <div class="tema">
                         <% Tema tema = (Tema) session.getAttribute("tema");%>
                         <h2><%= tema.getTitulo()%></h2>
@@ -194,7 +193,9 @@
                         <div class="comentario">
                             <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador") || comentarioActual.getNickname().equals(request.getUserPrincipal().getName())) {%>
                             <div class="borrar-wrapper">
-                                <button class="borrar-button" id="delete-button" data-info="comentario" data-url="/DeleteComentario?idForo=<%= tema.getId_foro() %>&idTema=<%=comentarioActual.getId_tema()%>&idComentario=<%= comentarioActual.getId_comentario() %>&page=topic"><i class="fa-solid fa-trash-can"></i></button>
+                                <button class="borrar-button" id="delete-button" data-info="comentario" data-url="/DeleteComentario?idForo=<%= tema.getId_foro() %>&idTema=<%=comentarioActual.getId_tema()%>&idComentario=<%= comentarioActual.getId_comentario() %>&page=topic">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
                             </div>
                             <% }%>
                             <div class="datos-comentario">
@@ -233,6 +234,7 @@
                         <% }%>
 
                     </div>    
+                        <form id="chat-envia">
                         <div class="chat-input">
                         <input
                             type="text"
@@ -240,9 +242,12 @@
                             name='chat'
                             placeholder="Envia un mensaje..."
                             />
+                        </form>
+                        <!--
                         <button type="submit" class="chat-upload">
                             <img src="images/upload.svg" alt="Subir archivo" />
-                        </button>
+                        </button> 
+                        -->
                         <button id="chat-submit" class="chat-submit">
                             <img
                                 src="images/send.svg"
@@ -251,7 +256,7 @@
                                 />
                         </button>
                     </div>
-                </div>
+                
             </div>
         </div>
 
@@ -299,7 +304,7 @@
         <script src="scripts/confirm_borrar.js"></script>
         <script>
             $(document).ready(function () {
-                $(".vote").click(function () {
+                $(document).on('click', '.vote', function () {
                     var commentId = $(this).attr("data-id");
                     var like = $(this).attr("data-like");
                     $.ajax({
@@ -309,26 +314,39 @@
                         success: function (response) {
                             document.getElementById("likeCount-" + response.id).innerHTML = response.likes + " likes";
                             document.getElementById("dislikeCount-" + response.id).innerHTML = response.dislikes + " dislikes";
-                        },
+                        }
                     });
                 });
             });
         </script>
          <script>
             $(document).ready(function() {
-            $('#chat-submit').on('click', function() {
-                var crearComent = $("chat-input").val();
-                     $.ajax({
-                        type: 'POST',
-                        url: 'InsertarComentario',
-                        data: { q: crearComent },
-                        success: function(response) {
-                            console.log(response);
-                            $('.comentario').html(response)
-                        }
-                    });
+                $('#chat-submit').on('click', insertComentario);
+
+                $('#chat-input').keypress(function(event) {
+                    if (event.keyCode === 13) { // 13 is the key code for Enter key
+                        insertComentario();
+                    }
                 });
+
+                function insertComentario(event) {
+                    event.preventDefault(); // Evita que se envíe el formulario al hacer clic en el botón
+                    var crearComent = $("#chat-input").val();
+                    if (crearComent.length > 0) {
+                        $.ajax({
+                            type: 'POST',
+                            url: './InsertarComentario',
+                            data: { chat: crearComent },
+                            success: function(response) {
+                                $('.comentarios-container').html(response);
+                                $("#chat-input").val("");
+                                window.scrollTo(0, document.body.scrollHeight);
+                            }
+                        });
+                    }
+                }
             });
+
 </script>
     </body>
 </html>
