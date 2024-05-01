@@ -53,7 +53,6 @@ public class InsertaComentario extends HttpServlet {
         response.setContentType("text/html");
         response.getWriter().print(htmlBuilder.toString());
     }
-    }
     
     @Override
     protected void doGet(HttpServletRequest request,
