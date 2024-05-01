@@ -119,14 +119,9 @@ public class Fichero implements Serializable{
         }
         else if (horas > 0){
             diferencia="Hace "+ horas + " horas";
-            
-            if (minutos > 0){
-                diferencia=diferencia+" y "+ minutos +" minutos";
-            }
         }
         else if (minutos > 0){
             diferencia="Hace "+ minutos + " minutos";
-
         }
         else if (segundos > 0) {
             diferencia="Hace "+ segundos +" segundos";
