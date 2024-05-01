@@ -39,6 +39,8 @@ public class BuscarTema extends HttpServlet {
                 }
 
                 htmlBuilder.append("</li>");
+                htmlBuilder.append(" <script src=\"scripts/confirm_borrar.js\"></script>");
+
             }
         }
         else {

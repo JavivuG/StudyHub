@@ -349,7 +349,6 @@
             $(document).ready(function() {
             $('#search').on('input', function() {
                 var searchTerm = $(this).val();
-                console.log(searchTerm);
                 if (searchTerm.length > 0) {
                     $.ajax({
                         type: 'GET',
@@ -369,7 +368,6 @@
                         url: 'LoadForum',
                         data: { actualizacion: "true", idForo: idForo },
                         success: function(response) {
-                            console.log(response);
                             $('.lista-temas').html(response);
                         }
                     });
