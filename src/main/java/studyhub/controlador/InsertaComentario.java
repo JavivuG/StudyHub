@@ -9,6 +9,7 @@ import javax.servlet.http.*;
 import studyhub.business.Comentario;
 import studyhub.business.Tema;
 import studyhub.data.ComentarioDB;
+import studyhub.data.UserDB;
 
 @WebServlet(name = "InsertarComentario", urlPatterns = {"/InsertarComentario"}, asyncSupported = true)
 public class InsertaComentario extends HttpServlet {
@@ -17,16 +18,15 @@ public class InsertaComentario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
                 HttpSession session = request.getSession();
+                
 
         String chat = request.getParameter("chat");
-        String nickname = request.getRemoteUser();
+        String nickname=UserDB.selectUser(request.getRemoteUser()).getNickname();
         int idTema = ((Tema) session.getAttribute("tema")).getId_tema();
         ComentarioDB.setComentario(chat, idTema, nickname);
         
         int idForo = ((Tema) session.getAttribute("tema")).getId_foro();
-      /*  String url = "topic.jsp?idForo=" +idForo+ "&idTema="+idTema;
-        response.sendRedirect(url);
-        */
+
         
         
         response.setContentType("text/plain; charset=UTF-8");

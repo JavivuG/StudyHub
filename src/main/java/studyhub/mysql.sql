@@ -15,7 +15,7 @@ CREATE TABLE usuario (
     password VARCHAR(50),
     nombre VARCHAR(50),
     apellidos VARCHAR(100),
-    email VARCHAR(50),
+    email VARCHAR(50) UNIQUE,
     fecha_nacimiento DATE,
     fecha_creacion DATE,
     ultimo_inicio TIMESTAMP NULL
@@ -30,10 +30,12 @@ CREATE TABLE foro (
 
 
 CREATE TABLE rol (
-    nickname VARCHAR(50) PRIMARY KEY,
+    nickname VARCHAR(15) PRIMARY KEY,
+    email VARCHAR(50),
     rol VARCHAR(20),
     CONSTRAINT check_rol CHECK (rol IN ('estudiante', 'profesor','moderador','administrador')),
-    FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE
+    FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE,
+    FOREIGN KEY (email) REFERENCES usuario(email) ON DELETE CASCADE
 );
 
 
@@ -110,13 +112,13 @@ INSERT INTO foro (nombre,curso) VALUES ('Fundamentos de Redes de Computadores', 
 INSERT INTO foro (nombre,curso) VALUES ('Ampliación de Matemáticas', '1º Curso de Ingeniería Informática');
 
 
-INSERT INTO rol (nickname, rol) VALUES ('javivu', 'estudiante');
-INSERT INTO rol (nickname, rol) VALUES ('joselito12' ,'profesor');
-INSERT INTO rol (nickname, rol) VALUES ('therealpepe', 'estudiante');
-INSERT INTO rol (nickname, rol) VALUES ('xXmanoloXx', 'estudiante');
-INSERT INTO rol (nickname, rol) VALUES ('TheMarias', 'estudiante');
-INSERT INTO rol (nickname, rol) VALUES ('admin', 'administrador');
-INSERT INTO rol (nickname, rol) VALUES ('mod', 'moderador');
+INSERT INTO rol (nickname, email, rol) VALUES ('javivu', 'javiergarciaglz16@gmail.com', 'estudiante');
+INSERT INTO rol (nickname, email, rol) VALUES ('joselito12', 'jose123@gmail.com', 'profesor');
+INSERT INTO rol (nickname, email, rol) VALUES ('therealpepe', 'randomuser123@outlook.com', 'estudiante');
+INSERT INTO rol (nickname, email, rol) VALUES ('xXmanoloXx', 'myemail@example.com', 'estudiante');
+INSERT INTO rol (nickname, email, rol) VALUES ('TheMarias', 'macielolivaresotero@hotmail.com', 'estudiante');
+INSERT INTO rol (nickname, email, rol) VALUES ('admin', 'admin@gmail.com', 'administrador');
+INSERT INTO rol (nickname, email, rol) VALUES ('mod', 'mod@gmail.com', 'moderador');
 
 
 

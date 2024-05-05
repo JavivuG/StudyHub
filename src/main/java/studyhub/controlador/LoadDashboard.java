@@ -31,8 +31,8 @@ public class LoadDashboard extends HttpServlet {
         HttpSession session = request.getSession();
         int MAX_ASIGNATURAS=9;
         
-        UserDB.inicioSesion(request.getRemoteUser());
         User usuario=UserDB.selectUser(request.getRemoteUser());
+        UserDB.inicioSesion(usuario.getNickname());
         ArrayList<Asignatura> asignaturas=null;
         asignaturas=ForoDB.getAsignaturas(MAX_ASIGNATURAS);
         

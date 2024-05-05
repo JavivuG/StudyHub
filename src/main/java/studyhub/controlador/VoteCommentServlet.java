@@ -8,6 +8,7 @@ import java.io.*;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
+import studyhub.data.UserDB;
 
 @WebServlet("/VoteComment")
 public class VoteCommentServlet extends HttpServlet {
@@ -17,7 +18,7 @@ public class VoteCommentServlet extends HttpServlet {
             throws ServletException, IOException {
 
         String idComentario = request.getParameter("idComentario");
-        String nickname = request.getRemoteUser();
+        String nickname = UserDB.selectUser(request.getRemoteUser()).getNickname();
         int like = Integer.parseInt(request.getParameter("like"));
 
         VotoComentario voto = new VotoComentario();

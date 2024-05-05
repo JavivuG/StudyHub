@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import studyhub.data.TemaDB;
+import studyhub.data.UserDB;
 
 /**
  *
@@ -27,7 +28,7 @@ public class CreateTopic extends HttpServlet {
         String titulo = request.getParameter("title");
         String mensaje_descripcion = request.getParameter("message");
         
-        String nickname = request.getRemoteUser();
+        String nickname = UserDB.selectUser(request.getRemoteUser()).getNickname();
         
         int idForo;
         idForo = Integer.parseInt(request.getParameter("idForo"));

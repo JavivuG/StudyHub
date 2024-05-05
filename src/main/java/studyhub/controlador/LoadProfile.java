@@ -32,7 +32,7 @@ public class LoadProfile extends HttpServlet {
         HttpSession session = request.getSession();
         
         ArrayList<Fichero> ficherosUsuario=null;
-        ficherosUsuario=FicheroDB.getFicherosUser(request.getRemoteUser());
+        ficherosUsuario=FicheroDB.getFicherosUser(UserDB.selectUser(request.getRemoteUser()).getNickname());
         
         
         // Almacena los datos en el alcance de la solicitud

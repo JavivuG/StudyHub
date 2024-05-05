@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import studyhub.business.Tema;
 import studyhub.data.ComentarioDB;
 import studyhub.data.TemaDB;
+import studyhub.data.UserDB;
 
 
 
@@ -35,7 +36,7 @@ public class DeleteComentario extends HttpServlet {
 
         int id_comentario=Integer.parseInt(request.getParameter("idComentario"));
 
-        if (request.isUserInRole("administrador") || request.isUserInRole("moderador") || ComentarioDB.isOwner(id_comentario, request.getRemoteUser())){            
+        if (request.isUserInRole("administrador") || request.isUserInRole("moderador") || ComentarioDB.isOwner(id_comentario, UserDB.selectUser(request.getRemoteUser()).getNickname())){            
             ComentarioDB.deleteComentario(id_comentario);
         }
         else {
