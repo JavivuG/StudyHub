@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import studyhub.data.UserDB;
 
 
 /**
@@ -31,7 +32,7 @@ public class DeleteFile extends HttpServlet {
         String pagina=request.getParameter("page");
 
         
-        if (request.isUserInRole("administrador") || request.isUserInRole("moderador") || FicheroDB.isOwner(id_fichero, request.getRemoteUser())){
+        if (request.isUserInRole("administrador") || request.isUserInRole("moderador") || FicheroDB.isOwner(id_fichero,UserDB.selectUser(request.getRemoteUser()).getNickname())){
             FicheroDB.deleteFichero(id_fichero);
         }
         else {

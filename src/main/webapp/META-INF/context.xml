@@ -15,8 +15,11 @@ org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"
           <ResourceLink name="jdbc/studyhub" global="jdbc/studyhub" type="javax.sql.DataSource"/>
 
           
-          <Realm className="org.apache.catalina.realm.DataSourceRealm" debug="99"
- dataSourceName="jdbc/studyhub" localDataSource="true"
- userTable="usuario" userNameCol="nickname" userCredCol="password"
- userRoleTable="rol" roleNameCol="rol" />
+        <Realm className="org.apache.catalina.realm.CombinedRealm">
+            <Realm className="org.apache.catalina.realm.DataSourceRealm" dataSourceName="jdbc/studyhub" localDataSource="true"
+           userTable="usuario" userNameCol="nickname" userCredCol="password" userRoleTable="rol" roleNameCol="rol" />
+
+            <Realm className="org.apache.catalina.realm.DataSourceRealm" dataSourceName="jdbc/studyhub" localDataSource="true"
+           userTable="usuario" userNameCol="email" userCredCol="password" userRoleTable="rol" roleNameCol="rol" />
+        </Realm>
 </Context>

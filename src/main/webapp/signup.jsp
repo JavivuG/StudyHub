@@ -71,8 +71,7 @@
                                 >
                             </li>
 
-                            <% String usuario= request.getRemoteUser();
-                            if (usuario==null) { %>
+                            <% if (request.getRemoteUser()==null) { %>
                             <li>
                                 <a href="dashboard.jsp" class="boton-inicio"
                                     >Iniciar Sesión</a

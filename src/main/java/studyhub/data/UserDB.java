@@ -114,7 +114,8 @@ public class UserDB {
                 user.setFecha_nacimiento(rs.getString("fecha_nacimiento"));
                 user.setFecha_creacion(rs.getString("fecha_creacion"));
                 ps=connection.prepareStatement(query_rol);
-                ps.setString(1, userOrEmail);
+
+                ps.setString(1, user.getNickname());
                 rs=ps.executeQuery();
 
                 if (rs.next()){
@@ -138,6 +139,7 @@ public class UserDB {
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         Timestamp timestamp = new Timestamp(new Date().getTime());
+        
         String query="UPDATE usuario SET ultimo_inicio = ? WHERE nickname = ?";
 
         try {
@@ -151,4 +153,5 @@ public class UserDB {
             e.printStackTrace();
         }   
     }
+    
 }

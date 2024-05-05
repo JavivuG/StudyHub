@@ -17,6 +17,7 @@ import javax.servlet.http.Part;
 import studyhub.business.Asignatura;
 import studyhub.business.Fichero;
 import studyhub.data.ForoDB;
+import studyhub.data.UserDB;
 
 @WebServlet("/uploadServlet")
 @MultipartConfig(maxFileSize = 16177215)    // upload file's size up to 16MB
@@ -37,7 +38,7 @@ public class FileUploadServlet extends HttpServlet {
         Fichero fichero = new Fichero();
         fichero.setNombre(filename);
         fichero.setTipo(filePart.getContentType());
-        fichero.setNickname(request.getRemoteUser());
+        fichero.setNickname(UserDB.selectUser(request.getRemoteUser()).getNickname());
         fichero.setId_foro(Integer.parseInt(id_foro));
                 
         int res = FicheroDB.uploadFile(fichero, inputStream);
