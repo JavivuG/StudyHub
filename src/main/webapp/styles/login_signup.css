@@ -111,6 +111,7 @@
     background: #00c041;
     border-radius: 10px;
     padding: 15px;
+    width: 542px;
     font-size: 22px;
     border: 0;
     color: white;
@@ -147,6 +148,16 @@
     animation: fondo linear infinite;
     animation-duration: 3s;
     left: -150%;
+}
+
+.field-icon {
+    float: right;
+    position: relative;
+    z-index: 2;
+    margin-top: 24px;
+    transform: translateX(-40px); /* Mueve el ícono horizontalmente */
+    color: #000;
+    cursor: pointer;
 }
 
 @keyframes fondo {

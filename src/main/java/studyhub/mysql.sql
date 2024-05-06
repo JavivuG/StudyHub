@@ -18,8 +18,7 @@ CREATE TABLE usuario (
     apellidos VARCHAR(100),
     email VARCHAR(50) UNIQUE,
     fecha_nacimiento DATE,
-    fecha_creacion DATE,
-    ultimo_inicio TIMESTAMP NULL
+    fecha_creacion DATE
 );
 
 CREATE TABLE reset_tokens (

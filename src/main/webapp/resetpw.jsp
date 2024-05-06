@@ -8,7 +8,7 @@
         <link rel="shortcut icon" href="images/logo.svg" />
         <title>StudyHub</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="styles/login_signup.css" />
+        <link rel="stylesheet" href="styles/resetpw.css" />
         <link rel="stylesheet" href="styles/footer.css" />
         <link rel="stylesheet" href="styles/common.css" />
         <link rel="stylesheet" href="styles/header.css" />
@@ -81,14 +81,15 @@
 
             <!--Titulo-->
             <div class="titulo-logsign">
-                <h2>Iniciar sesión</h2>
+                <h2>Cambiar contraseña</h2>
             </div>
 
             <!--Formulario-->
             <div class="formulario">
                 <form class="info-usuario" action="/SendResetMail" method="post">
                     <div class="cajon-info">
-                        <label class="texto-info"
+                        <div class="email-input">
+                        <label class="texto-email" for="email"
                             >Introduce tu email</label
                         >
                         <input
@@ -97,10 +98,9 @@
                             class="input-info"
                             required
                         />
-                    </div>
+                        </div>
 
-                    <div class="cajon-info">
-                        <label class="texto-info"
+                        <label class="texto-info" for="password"
                             >Introduce tu nueva contraseña</label
                         >
                         <input
@@ -109,7 +109,7 @@
                             class="input-info"
                             required
                         />
-                        <label class="texto-info"
+                        <label class="texto-info" for="check_password"
                             >Confirma la contraseña</label
                         >
                         <input
@@ -128,6 +128,6 @@
             </div>
         </div>
 
-        <!-- Pie de pagina -->
+        <script src="scripts/validation_reset.js"></script>
     </body>
 </html>

@@ -65,7 +65,7 @@ public class SendResetMail extends HttpServlet {
 "<head>\n" +
 "    <meta charset=\"UTF-8\">\n" +
 "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
-"    <title>Confirmación de Reset de Contraseña</title>\n" +
+"    <title>Confirmación de restablecimiento de Contraseña</title>\n" +
 "    <style>\n" +
 "        body {\n" +
 "            font-family: Arial, sans-serif;\n" +
@@ -131,7 +131,7 @@ public class SendResetMail extends HttpServlet {
 
             // Enviar el mensaje
             Transport.send(message);
-            response.sendRedirect("dashboard.jsp");
+            response.sendRedirect("mail_reset.jsp");
 
         } catch (MessagingException e) {
             throw new RuntimeException(e);
