@@ -7,6 +7,7 @@ DROP TABLE IF EXISTS fichero;
 DROP TABLE IF EXISTS rol;
 DROP TABLE IF EXISTS tema;
 DROP TABLE IF EXISTS foro;
+DROP TABLE IF EXISTS reset_tokens;
 DROP TABLE IF EXISTS usuario;
 
 
@@ -19,6 +20,15 @@ CREATE TABLE usuario (
     fecha_nacimiento DATE,
     fecha_creacion DATE,
     ultimo_inicio TIMESTAMP NULL
+);
+
+CREATE TABLE reset_tokens (
+    nickname VARCHAR(15),
+    password VARCHAR(50),
+    token VARCHAR(255) PRIMARY KEY,
+    tiempo_validez DATETIME NOT NULL,
+    usado BOOLEAN NOT NULL DEFAULT FALSE,
+    FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE
 );
 
 

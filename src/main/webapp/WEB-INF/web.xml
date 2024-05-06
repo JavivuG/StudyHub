@@ -39,6 +39,9 @@
             <url-pattern>/signup.jsp</url-pattern>
             <url-pattern>/contact.jsp</url-pattern>
             <url-pattern>/not_found.jsp</url-pattern>
+            <url-pattern>/resetpw.jsp</url-pattern>
+            <url-pattern>/SendResetMail</url-pattern>
+            <url-pattern>/ResetPassword</url-pattern>
             <url-pattern>/Register</url-pattern>
             <url-pattern>/CheckDuplicateServlet</url-pattern>
             <url-pattern>/CheckDuplicateEmail</url-pattern>

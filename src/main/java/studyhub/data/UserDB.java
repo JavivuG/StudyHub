@@ -154,4 +154,25 @@ public class UserDB {
         }   
     }
     
+    public static void updatePassword(String nickname, String password) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        String query;
+        
+        query = "UPDATE usuario SET password = ? WHERE nickname = ?";
+        
+         try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, password);
+            ps.setString(2, nickname);
+            ps.executeUpdate();
+            ps.close();
+            pool.freeConnection(connection);
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+    
 }
