@@ -40,16 +40,20 @@
             <url-pattern>/contact.jsp</url-pattern>
             <url-pattern>/not_found.jsp</url-pattern>
             <url-pattern>/resetpw.jsp</url-pattern>
+            <url-pattern>/reseted.jsp</url-pattern>
+            <url-pattern>/mail_reset.jsp</url-pattern>
             <url-pattern>/SendResetMail</url-pattern>
             <url-pattern>/ResetPassword</url-pattern>
             <url-pattern>/Register</url-pattern>
             <url-pattern>/CheckDuplicateServlet</url-pattern>
             <url-pattern>/CheckDuplicateEmail</url-pattern>
+            <url-pattern>/CheckRegisteredEmail</url-pattern>
             <url-pattern>/registered.jsp</url-pattern>
             <url-pattern>/styles/*</url-pattern>
             <url-pattern>/images/*</url-pattern>
             <url-pattern>/scripts/logo.js</url-pattern>
             <url-pattern>/scripts/validation.js</url-pattern>
+            <url-pattern>/scripts/validation_reset.js</url-pattern>
             <url-pattern>/error.jsp</url-pattern>
         </web-resource-collection>
         <!-- No auth-constraint means everybody has access! -->

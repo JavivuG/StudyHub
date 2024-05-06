@@ -1,5 +1,5 @@
-<%@ page language="java" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" %> <%@ page contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -8,22 +8,23 @@
         <link rel="shortcut icon" href="images/logo.svg" />
         <title>StudyHub</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="styles/resetpw.css" />
         <link rel="stylesheet" href="styles/footer.css" />
         <link rel="stylesheet" href="styles/common.css" />
         <link rel="stylesheet" href="styles/header.css" />
+        <link rel="stylesheet" href="styles/reseted.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap"
             rel="stylesheet"
         />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+        />
         <link rel="icon" type="image/png" href="images/icono.png" />
         <script src="scripts/logo.js"></script>
-
     </head>
-
-    <!--Cabecera-->
     <body>
         <div class="main-content">
             <header>
@@ -62,72 +63,63 @@
                                 </g>
                             </svg>
                         </a>
-                        <ul class="nav-menu">
-                            <li>
-                                <a href="contact.jsp" class="contacto"
-                                    >Contacto</a
-                                >
-                            </li>
 
-                            <li>
-                                <a href="signup.jsp" class="boton-registro"
-                                    >Registrarse</a
-                                >
-                            </li>
-                        </ul>
+                        
                     </nav>
                 </div>
             </header>
 
-            <!--Titulo-->
-            <div class="titulo-logsign">
-                <h2>Cambiar contraseña</h2>
+            <div class="container-msg">
+                <h1>Correo de restablecimiento enviado</h1>
+                <p>Compruebe su correo</p>
+                <p>¡Podria estar en spam!</p>
+                <a href="dashboard.jsp" class="btn">Iniciar sesión</a>
             </div>
-
-            <!--Formulario-->
-            <div class="formulario">
-                <form class="info-usuario" action="/SendResetMail" method="post">
-                    <div class="cajon-info">
-                        <div class="email-input">
-                        <label class="texto-email" for="email"
-                            >Introduce tu email</label
-                        >
-                        <input
-                            name="email"
-                            type="text"
-                            class="input-info"
-                            required
-                        />
-                        </div>
-
-                        <label class="texto-info" for="password"
-                            >Introduce tu nueva contraseña</label
-                        >
-                        <input
-                            name="password"
-                            type="password"
-                            class="input-info"
-                            required
-                        />
-                        <label class="texto-info" for="check_password"
-                            >Confirma la contraseña</label
-                        >
-                        <input
-                            name="check_password"
-                            type="password"
-                            class="input-info"
-                            required
-                        />
-                        
-                    </div>
-
-                    <button type="submit" class="boton-enviar">
-                        Cambiar contraseña
-                    </button>
-                </form>
-            </div>
+            
+            
+            
         </div>
 
-        <script src="scripts/validation_reset.js"></script>
+        <!-- Pie de pagina -->
+        <footer>
+            <div class="info">
+                <h1>StudyHub</h1>
+                <ul>
+                    <li><a href="#">Cookies</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                </ul>
+            </div>
+
+            <div class="otros">
+                <ul id="socials">
+                    <li><a href="contact.jsp">Contacto</a></li>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                </ul>
+                <p id="copyright">© StudyHub | 2024</p>
+                <ul id="socials">
+                    <li>
+                        <a href="#"
+                            ><img src="images/tiktok.svg" alt="tiktok"
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><img src="images/facebook.svg" alt="facebook"
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><img src="images/instagram.svg" alt="instagram"
+                        /></a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            ><img src="images/twitter.svg" alt="twitter"
+                        /></a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
     </body>
 </html>

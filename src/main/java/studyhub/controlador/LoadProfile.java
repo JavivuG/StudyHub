@@ -34,7 +34,6 @@ public class LoadProfile extends HttpServlet {
         
         ArrayList<Fichero> ficherosUsuario=null;
         User usuario=UserDB.selectUser(request.getRemoteUser());
-        //UserDB.inicioSesion(usuario.getNickname());
         ficherosUsuario=FicheroDB.getFicherosUser(UserDB.selectUser(request.getRemoteUser()).getNickname());
         
         

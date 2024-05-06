@@ -11,7 +11,7 @@ pageEncoding="UTF-8" %>
         <link rel="stylesheet" href="styles/footer.css" />
         <link rel="stylesheet" href="styles/common.css" />
         <link rel="stylesheet" href="styles/header.css" />
-        <link rel="stylesheet" href="styles/not_found.css" />
+        <link rel="stylesheet" href="styles/reseted.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -69,13 +69,11 @@ pageEncoding="UTF-8" %>
                 </div>
             </header>
 
-            <div class="not_found_container">
-                <!--<img src="images/error.svg" alt="Error del servidor" class="img-not_found">-->
-                <div class="texto-error"><h2>Correo de recuperación enviado</h2></div>
-                
-                <div class="contenedor-volver">
-                    <a href="dashboard.jsp" class="volver">Iniciar sesión</a>
-                </div>
+            <div class="container-msg">
+                <h1>Contraseña restablecida exitosamente</h1>
+                <p>¡Tu contraseña se ha restablecido correctamente!</p>
+                <p>¡Ahora puedes iniciar sesión con tu nueva contraseña!</p>
+                <a href="dashboard.jsp" class="btn">Iniciar sesión</a>
             </div>
             
             

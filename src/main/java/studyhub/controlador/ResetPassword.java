@@ -19,10 +19,10 @@ public class ResetPassword extends HttpServlet {
         String token = request.getParameter("token");
         String url;
         
-        if (TokenDB.isTokenValid(token)){
+        if (TokenDB.isTokenValid(token) && token!=null){
             UserDB.updatePassword(TokenDB.getUserToken(token), TokenDB.getPassword(token));
             TokenDB.marcarTokenUsado(token);
-            url="dashboard.jsp";
+            url="reseted.jsp?token="+token;
         }
         else { // Token no es valido
             url="error.jsp";

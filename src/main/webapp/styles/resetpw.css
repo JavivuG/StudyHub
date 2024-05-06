@@ -1,0 +1,129 @@
+.formulario {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.titulo-logsign {
+    margin-top: 6%;
+    margin-bottom: 3%;
+    font-size: 20px;
+    text-align: center;
+}
+
+.info-usuario {
+    display: flex;
+    flex-direction: column;
+}
+
+.cajon-info {
+    width: 100%;
+    min-height: 120px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-info {
+    box-sizing: border-box;
+    width: 542px;
+    height: 50px;
+    background: #d9d9d9;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    font-size: 18px;
+    padding: 30px;
+}
+
+.email-input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 2%;
+}
+
+.texto-info {
+    width: 100%;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 5px;
+    margin-top: 30px;
+    color: #ffffff;
+}
+
+.texto-email {
+    width: 100%;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+
+.texto-boton-enviar {
+    width: 50px;
+    height: 48px;
+    left: 590px;
+    top: 169px;
+
+    font-weight: 700;
+    line-height: 48px;
+
+    color: #ffffff;
+}
+
+.boton-enviar {
+    background: #00c041;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 22px;
+    border: 0;
+    color: white;
+    margin: 15px 0 40px 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.boton-enviar:hover {
+    background-color: #00a13d;
+}
+
+.contacto:hover {
+    border-bottom: 2px solid #fff;
+}
+
+.prevent-default {
+    background-color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.5;
+    transition: background-color 0.3s ease;
+}
+
+.error-message {
+    margin-top: 8px;
+    margin-left: 2px;
+    color: #ff3333;
+}
+
+@media only screen and (max-width: 768px) {
+    .formulario, .input-info, .input-rol, .boton-enviar {
+        width: 100%;
+    }
+
+    .titulo-logsign {
+        font-size: 18px;
+        margin-top: 20%;
+    }
+
+    .cajon-info input {
+        font-size: 16px;
+    }
+
+    .cajon-info label {
+        font-size: 16px;
+    }
+
+}

@@ -134,26 +134,6 @@ public class UserDB {
         }
     }
     
-    public static void inicioSesion(String user){
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps = null;
-        Timestamp timestamp = new Timestamp(new Date().getTime());
-        
-        String query="UPDATE usuario SET ultimo_inicio = ? WHERE nickname = ?";
-
-        try {
-            ps = connection.prepareStatement(query);
-            ps.setTimestamp(1, timestamp);
-            ps.setString(2, user);            
-            int res = ps.executeUpdate();
-            ps.close();
-            pool.freeConnection(connection);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }   
-    }
-    
     public static void updatePassword(String nickname, String password) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
