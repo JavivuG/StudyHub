@@ -81,6 +81,7 @@
     padding: 15px;
     font-size: 22px;
     border: 0;
+    width: 542px;
     color: white;
     margin: 15px 0 40px 0;
     cursor: pointer;
@@ -106,6 +107,16 @@
     margin-top: 8px;
     margin-left: 2px;
     color: #ff3333;
+}
+
+.field-icon {
+    float: right;
+    position: relative;
+    z-index: 2;
+    margin-top: 24px;
+    transform: translateX(-40px); /* Mueve el ícono horizontalmente */
+    color: #000;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 768px) {

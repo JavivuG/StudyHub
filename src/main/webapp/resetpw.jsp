@@ -18,8 +18,9 @@
             href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap"
             rel="stylesheet"
         />
-        <link rel="icon" type="image/png" href="images/icono.png" />
+        <script src="https://kit.fontawesome.com/38c8e2034a.js" crossorigin="anonymous"></script>
         <script src="scripts/logo.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     </head>
 
@@ -99,26 +100,35 @@
                             required
                         />
                         </div>
-
+                        
                         <label class="texto-info" for="password"
                             >Introduce tu nueva contraseña</label
                         >
+                        
+                        <div>
                         <input
                             name="password"
+                            id="password-field"
                             type="password"
                             class="input-info"
                             required
                         />
+                        <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                        </div>
                         <label class="texto-info" for="check_password"
                             >Confirma la contraseña</label
                         >
+                        
+                        <div>
                         <input
                             name="check_password"
+                            id="check-password-field"
                             type="password"
                             class="input-info"
                             required
                         />
-                        
+                        <span toggle="#check-password-field" class="fa fa-fw fa-eye field-icon toggle-check-password"></span>
+                        </div>
                     </div>
 
                     <button type="submit" class="boton-enviar">
@@ -129,5 +139,26 @@
         </div>
 
         <script src="scripts/validation_reset.js"></script>
+        <script>
+            $(".toggle-password").click(function() {
+                $(this).toggleClass("fa-eye fa-eye-slash");
+                var input = $($(this).attr("toggle"));
+                if (input.attr("type") === "password") {
+                  input.attr("type", "text");
+                } else {
+                  input.attr("type", "password");
+                }
+            });
+            
+            $(".toggle-check-password").click(function() {
+                $(this).toggleClass("fa-eye fa-eye-slash");
+                var input = $($(this).attr("toggle"));
+                if (input.attr("type") === "password") {
+                  input.attr("type", "text");
+                } else {
+                  input.attr("type", "password");
+                }
+            });
+        </script>
     </body>
 </html>

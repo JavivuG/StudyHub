@@ -30,8 +30,8 @@ public class DeleteFile extends HttpServlet {
         String id_foro=request.getParameter("idForo");
         int id_fichero=Integer.parseInt(request.getParameter("idFichero"));
         String pagina=request.getParameter("page");
+        String url;
 
-        
         if (request.isUserInRole("administrador") || request.isUserInRole("moderador") || FicheroDB.isOwner(id_fichero,UserDB.selectUser(request.getRemoteUser()).getNickname())){
             FicheroDB.deleteFichero(id_fichero);
         }
@@ -39,7 +39,13 @@ public class DeleteFile extends HttpServlet {
             response.sendRedirect("not_found.jsp");
         }
         
-        String url=pagina+".jsp?idForo="+id_foro;
+        
+        if (id_foro==null){
+            url=pagina+".jsp";
+        }
+        else {
+            url=pagina+".jsp?idForo="+id_foro;
+        }
         
         response.sendRedirect(url);
     }
