@@ -11,13 +11,32 @@
     margin-right: 10px;
 }
 
+.my_files {
+    background-color: #d9d9d9;
+    border-radius: 12px;
+    padding: 10px 5% 10px 10px;
+    color: #000;
+    margin-right: 10px;
+}
+
 .subject h2 {
     margin: 10px 0 15px 10px;
 }
 
+.my_files h2 {
+    margin: 10px 0 5px 10px;
+}
+
 .subject p {
     color: #555454;
+    font-size: 14px;
     margin: 10px 0 15px 10px;
+}
+
+ .my_files p {
+    color: #555454;
+    font-size: 14px;
+    margin: 5px 0 15px 10px;
 }
 
 .title-fich img {

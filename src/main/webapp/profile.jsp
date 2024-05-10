@@ -166,7 +166,12 @@
                                     ficheroActual=ficherosUsuario.get(i); %>
                                     <div class="asignatura-box">
                                         <div class="contribuidas-titulo">
-                                            <%= ficheroActual.getNombre() %>
+                                            <% if (ficheroActual.getNombre().length()>19){ %>
+                                                <%= ficheroActual.getNombre().substring(0, 19   ) %>...
+                                            <% }
+                                            else { %>
+                                                <%= ficheroActual.getNombre() %>
+                                            <% } %>
                                         </div>
                                         <div class="descarga">
                                             <a href="downloadServlet?file=<%= ficheroActual.getId_fichero()%>"
@@ -176,8 +181,20 @@
                                             /></a>
                                         </div>
                                     </div>
+                                <% } %>
+                                <div class="asignatura-box">
+                                        <div class="contribuidas-titulo">
+                                            Ver mis ficheros
+                                        </div>
+                                        <div class="descarga">
+                                            <a href="my_files.jsp"
+                                                ><img
+                                                        src="images/more.svg"
+                                                    alt="download"
+                                            /></a>
+                                        </div>
+                                    </div>
                                 <% }
-                                }
                                 else { %>
                                     <p class="mensaje-vacio-profile">No has subido ningun fichero</p>
                                 <% }
