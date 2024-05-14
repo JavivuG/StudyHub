@@ -12,20 +12,21 @@ public class UserDB {
         PreparedStatement ps = null;
         PreparedStatement ps1=null;
         String query="INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion)      VALUES (?, ?, ?, ?, ?, ?, ?)";
-        String queryRol="INSERT INTO rol VALUES (?, ?)";
+        String queryRol="INSERT INTO rol (nickname, email, rol) VALUES (?, ?, ?)";
 
         try {
             ps = connection.prepareStatement(query);
             ps1=connection.prepareStatement(queryRol);
             ps.setString(1, user.getNickname());
-            ps1.setString(1, user.getNickname());
             ps.setString(2, user.getPassword());
             ps.setString(3, user.getNombre());
             ps.setString(4, user.getApellidos());
             ps.setString(5, user.getEmail());
             ps.setString(6, user.getFecha_nacimiento().toString());
             ps.setString(7, user.getFecha_creacion().toString());
-            ps1.setString(2, user.getRol());
+            ps1.setString(1, user.getNickname());
+            ps1.setString(2, user.getEmail());
+            ps1.setString(3, user.getRol());
             int res = ps.executeUpdate();
             int res1 = ps1.executeUpdate();
             ps1.close();
