@@ -2,6 +2,9 @@ CREATE DATABASE IF NOT EXISTS studyhub;
 USE studyhub;
 
 DROP TABLE IF EXISTS votos_comentario;
+DROP TABLE IF EXISTS fichero_foro;
+DROP TABLE IF EXISTS fichero_comentario;
+DROP TABLE IF EXISTS comentario_fichero;
 DROP TABLE IF EXISTS comentario;
 DROP TABLE IF EXISTS fichero;
 DROP TABLE IF EXISTS rol;
@@ -63,6 +66,15 @@ CREATE TABLE tema (
     FOREIGN KEY (id_foro) REFERENCES foro(id_foro) ON DELETE CASCADE
 );
 
+CREATE TABLE fichero (
+    id_fichero INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50),
+    tipo VARCHAR(50),
+    file MEDIUMBLOB,
+    fecha_publicacion TIMESTAMP,
+    nickname VARCHAR(50),
+    FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE
+);
 
 CREATE TABLE comentario (
     id_comentario INT AUTO_INCREMENT PRIMARY KEY,
@@ -74,17 +86,28 @@ CREATE TABLE comentario (
     FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE
 );
 
+CREATE TABLE comentario_fichero (
+    id_comentario INT,
+    id_fichero INT,
+    PRIMARY KEY (id_comentario),
+    FOREIGN KEY (id_comentario) REFERENCES comentario(id_comentario) ON DELETE CASCADE,
+    FOREIGN KEY (id_fichero) REFERENCES fichero(id_fichero) ON DELETE CASCADE
+)
 
-CREATE TABLE fichero (
-    id_fichero INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(50),
-    tipo VARCHAR(50),
-    file mediumblob,
-    fecha_publicacion TIMESTAMP,
-    nickname VARCHAR(50),
+CREATE TABLE fichero_foro (
+    id_fichero INT,
     id_foro INT,
-    FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE,
-    FOREIGN KEY (id_foro) REFERENCES foro(id_foro) ON DELETE CASCADE
+    PRIMARY KEY (id_fichero),
+    FOREIGN KEY (id_foro) REFERENCES foro(id_foro) ON DELETE CASCADE,
+    FOREIGN KEY (id_fichero) REFERENCES fichero(id_fichero) ON DELETE CASCADE
+);
+
+CREATE TABLE fichero_comentario (
+    id_fichero INT,
+    id_comentario INT,
+    PRIMARY KEY (id_fichero),
+    FOREIGN KEY (id_comentario) REFERENCES comentario(id_comentario) ON DELETE CASCADE,
+    FOREIGN KEY (id_fichero) REFERENCES fichero(id_fichero) ON DELETE CASCADE
 );
 
 CREATE TABLE votos_comentario (
@@ -96,6 +119,20 @@ CREATE TABLE votos_comentario (
     FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE,
     FOREIGN KEY (id_comentario) REFERENCES comentario(id_comentario) ON DELETE CASCADE
 );
+
+CREATE TRIGGER eliminar_comentarios_after_delete_fichero
+BEFORE DELETE ON fichero
+FOR EACH ROW
+BEGIN
+    DECLARE comentario_id INT;
+
+    SELECT id_comentario INTO comentario_id FROM comentario_fichero WHERE id_fichero=OLD.id_fichero;
+    
+    IF comentario_id IS NOT NULL THEN
+        DELETE FROM comentario WHERE id_comentario = comentario_id;
+    END IF;
+END;
+
 
 INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('javivu', '12345', 'Javier', 'Garcia Gonzalez', 'javiergarciaglz16@gmail.com', '1998-12-16', '2020-12-16');
 INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('joselito12', 'pedro12', 'Jose', 'Calderón Esparza', 'jose123@gmail.com', '2000-03-01', '2022-12-16');

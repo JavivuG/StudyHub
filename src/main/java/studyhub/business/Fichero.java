@@ -7,6 +7,7 @@ package studyhub.business;
 import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import studyhub.data.FicheroDB;
 
 /**
  *
@@ -19,37 +20,31 @@ public class Fichero implements Serializable{
     private LocalDateTime fecha_publicacion;
     private String nickname;
     private int id_foro;
-
+    private int id_comentario;
+    
     public Fichero() {
         this.nombre = "";
         this.tipo = "";
         this.nickname = "";
     }
 
-    
-    public Fichero(int id_fichero, String nombre, String tipo, String nickname, int id_foro) {
-        this.id_fichero = id_fichero;
-        this.nombre = nombre;
-        this.tipo = tipo;
-        this.nickname = nickname;
-        this.id_foro = id_foro;
+    public Fichero(int id_fichero) {
+        this.id_fichero=id_fichero;
+        this.nombre = "";
+        this.tipo = "";
+        this.nickname = "";
+        this.id_foro=FicheroDB.getForoAsociado(id_fichero);
+        this.id_comentario=FicheroDB.getComentarioAsociado(id_fichero);
     }
 
-    public Fichero(int id_fichero, String nombre, String tipo, User user, Asignatura foro) {
-        this.id_fichero = id_fichero;
-        this.nombre = nombre;
-        this.tipo = tipo;
-        this.nickname = user.getNickname();
-        this.id_foro = foro.getID_asignatura();
-    }
-
-    
     public int getId_fichero() {
         return id_fichero;
     }
 
     public void setId_fichero(int id_fichero) {
         this.id_fichero = id_fichero;
+        this.id_foro=FicheroDB.getForoAsociado(id_fichero);
+        this.id_comentario=FicheroDB.getComentarioAsociado(id_fichero);
     }
 
     public String getNombre() {
@@ -99,8 +94,20 @@ public class Fichero implements Serializable{
     public void setId_foro(Asignatura foro) {
         this.id_foro = foro.getID_asignatura();
     }
+
+    public int getId_comentario() {
+        return id_comentario;
+    }
+
+    public void setId_comentario(int id_comentario) {
+        this.id_comentario = id_comentario;
+    }
     
-        public String getTiempoPublicado(){
+    public void setId_comentario(Comentario comentario) {
+        this.id_comentario = comentario.getId_comentario();
+    }
+    
+    public String getTiempoPublicado(){
         String diferencia;
         LocalDateTime ahora = LocalDateTime.now();
         

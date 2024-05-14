@@ -7,6 +7,7 @@ package studyhub.business;
 import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import studyhub.data.FicheroDB;
 
 /**
  *
@@ -20,10 +21,12 @@ public class Comentario implements Serializable{
     private int dislikes;
     private int id_tema;
     private String nickname;
+    private int id_fichero;
 
     public Comentario() {
         this.texto = "";
         this.nickname = "";
+        this.id_fichero=-1;
     }
 
     
@@ -35,6 +38,18 @@ public class Comentario implements Serializable{
         this.dislikes=dislikes;
         this.nickname = nickname;
         this.id_tema = id_tema;
+        this.id_fichero=-1;
+    }
+    
+    public Comentario(int id_comentario, String texto, LocalDateTime fecha_creacion, int likes, int dislikes, int id_tema, String nickname, int id_fichero) {
+        this.id_comentario = id_comentario;
+        this.texto = texto;
+        this.fecha_creacion=fecha_creacion;
+        this.likes=likes;
+        this.dislikes=dislikes;
+        this.nickname = nickname;
+        this.id_tema = id_tema;
+        this.id_fichero=id_fichero;
     }
 
     public Comentario(int id_comentario, String texto, LocalDateTime fecha_creacion, int likes, int dislikes, User user,Tema tema) {
@@ -45,6 +60,7 @@ public class Comentario implements Serializable{
         this.dislikes=dislikes;
         this.nickname = user.getNickname();
         this.id_tema = tema.getId_tema();
+        this.id_fichero=-1;
     }
 
     
@@ -113,8 +129,26 @@ public class Comentario implements Serializable{
     public void setId_tema(Tema tema) {
         this.id_tema = tema.getId_tema();
     }
+
+    public int getId_fichero() {
+        return id_fichero;
+    }
+
+    public void setId_fichero(int id_fichero) {
+        this.id_fichero = id_fichero;
+    }
     
-        public String getTiempoPublicado(){
+    public String getNombreFichero(){
+        int id_fichero=getId_fichero();
+        if (id_fichero!=-1){
+            return FicheroDB.getNombreFichero(id_fichero+"");
+        }
+        return "Error: No existe el fichero";
+    }
+    
+    
+    
+    public String getTiempoPublicado(){
         String diferencia;
         LocalDateTime ahora = LocalDateTime.now();
         

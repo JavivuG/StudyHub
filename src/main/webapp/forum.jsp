@@ -264,7 +264,7 @@
                                                             </p>
                                                         </div>
                                                     </div>
-                                                    <a href="/downloadServlet?file=<%= fichero.getId_fichero() %>"
+                                                    <a href="/downloadServlet?file=<%= fichero.getId_fichero() %>&page=forum"
                                                         ><img
                                                             src="images/download.svg"
                                                             alt="download"

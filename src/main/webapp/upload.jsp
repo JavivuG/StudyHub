@@ -138,7 +138,12 @@
                     <img src="images/arrow.svg" alt="Arrow" id="arrow" />
                 </li>
                 <li>
-                    <span class="items-nav"><a href="files.jsp?idForo=<%=asignatura.getID_asignatura()%>">Ficheros</a></span>
+                    <% if (request.getParameter("idTema")!=null){ %>
+                    <span class="items-nav"><a href="topic.jsp?idForo=<%=asignatura.getID_asignatura()%>&idTema=<%= request.getParameter("idTema")%>">Tema</a></span>
+                    <% } 
+                    else {%>
+                        <span class="items-nav"><a href="files.jsp?idForo=<%=asignatura.getID_asignatura()%>">Ficheros</a></span>
+                    <% } %>
                 </li>
                 <li>
                     <img src="images/arrow.svg" alt="Arrow" id="arrow" />

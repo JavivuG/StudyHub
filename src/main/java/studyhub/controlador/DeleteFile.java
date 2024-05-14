@@ -31,8 +31,9 @@ public class DeleteFile extends HttpServlet {
         int id_fichero=Integer.parseInt(request.getParameter("idFichero"));
         String pagina=request.getParameter("page");
         String url;
+        String nickname=UserDB.selectUser(request.getRemoteUser()).getNickname();
 
-        if (request.isUserInRole("administrador") || request.isUserInRole("moderador") || FicheroDB.isOwner(id_fichero,UserDB.selectUser(request.getRemoteUser()).getNickname())){
+        if (request.isUserInRole("administrador") || request.isUserInRole("moderador") || FicheroDB.isOwner(id_fichero,nickname)){
             FicheroDB.deleteFichero(id_fichero);
         }
         else {

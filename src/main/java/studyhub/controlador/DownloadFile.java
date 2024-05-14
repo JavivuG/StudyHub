@@ -21,6 +21,7 @@ public class DownloadFile extends HttpServlet {
         HttpSession session = request.getSession();
         
         try {
+
             String id_file = request.getParameter("file");
             byte[] fileData = FicheroDB.getFichero(id_file);
 

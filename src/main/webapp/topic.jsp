@@ -167,7 +167,7 @@
                         <img src="images/arrow.svg" alt="Arrow" id="arrow" />
                     </li>
                     <li>
-                        <span class="items-nav"><a href="#">Foro</a></span>
+                        <span class="items-nav"><a href="#">Tema</a></span>
                     </li>
                 </ul>
             </div>
@@ -190,6 +190,7 @@
                                 for (int i = 0; i < listaComentarios.size(); i++) {
                                     Comentario comentarioActual = listaComentarios.get(i); %>
 
+                        
                         <div class="comentario">
                             <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador") || comentarioActual.getNickname().equals(request.getUserPrincipal().getName())) {%>
                             <div class="borrar-wrapper">
@@ -212,6 +213,12 @@
                                 <p>
                                     <%= comentarioActual.getTexto()%>
                                 </p>
+                                
+                                <% if (comentarioActual.getId_fichero()!=-1) {%>
+                                    <div class="fichero-adjunto">
+                                        <a href="downloadServlet?file=<%= comentarioActual.getId_fichero()%>"><img src="images/download.svg" class="attachment-icon"/></a><p><%= comentarioActual.getNombreFichero()%></p>
+                                    </div>
+                                <%} %>
                                 <div class="reacciones">
                                     <!-- Like Button -->
                                     <div class="likes">
@@ -243,11 +250,11 @@
                             placeholder="Envia un mensaje..."
                             />
                         </form>
-                        <!--
-                        <button type="submit" class="chat-upload">
+                        
+                        <a href="upload.jsp?idForo=<%= request.getParameter("idForo")%>&idTema=<%= request.getParameter("idTema")%>" class="chat-upload">
                             <img src="images/upload.svg" alt="Subir archivo" />
-                        </button> 
-                        -->
+                        </a> 
+                        
                         <button id="chat-submit" class="chat-submit">
                             <img
                                 src="images/send.svg"
