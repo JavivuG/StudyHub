@@ -3,7 +3,8 @@
 <%@ page import="studyhub.business.Tema" %>
 <%@ page import="studyhub.business.Comentario" %>
 <%@ page import="studyhub.business.Asignatura" %>
-<%@page import="java.util.ArrayList"%>
+<%@ page import="studyhub.data.UserDB" %>
+<%@ page import="java.util.ArrayList"%>
 <jsp:include page="/LoadTopic" />
 
 <!DOCTYPE html>
@@ -192,7 +193,7 @@
 
                         
                         <div class="comentario">
-                            <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador") || comentarioActual.getNickname().equals(request.getUserPrincipal().getName())) {%>
+                            <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador") || comentarioActual.getNickname().equals(UserDB.selectUser(request.getRemoteUser()).getNickname())) {%>
                             <div class="borrar-wrapper">
                                 <button class="borrar-button" id="delete-button" data-info="comentario" data-url="/DeleteComentario?idForo=<%= tema.getId_foro() %>&idTema=<%=comentarioActual.getId_tema()%>&idComentario=<%= comentarioActual.getId_comentario() %>&page=topic">
                                     <i class="fa-solid fa-trash-can"></i>
