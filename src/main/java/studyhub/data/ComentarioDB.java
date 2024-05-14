@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -47,6 +48,7 @@ public class ComentarioDB {
                 comentario.setFecha_creacion(timestamp.toLocalDateTime());
                 comentario.setNickname(rs.getString("nickname"));
                 comentario.setId_tema(rs.getInt("id_tema"));
+                comentario.setId_fichero(getFicheroAsociado(idComentario));
 
                 ps2 = connection.prepareStatement(query2);
                 ps2.setInt(1, idComentario);
@@ -75,24 +77,65 @@ public class ComentarioDB {
             e.printStackTrace();
             return null;
         }
-}
-    public static void setComentario(String chat, int idTema, String nickname) {
+    }
+    
+    public static int setComentario(int idTema, String nickname) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps;
         String query = "INSERT INTO comentario (texto, fecha_creacion, id_tema, nickname)  VALUES (?,?,?,?)";
+        int idNuevaFila=-1;
+
+        try { 
+                Timestamp timestamp = new Timestamp(new Date().getTime());
+                ps = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+                ps.setString(1,"");
+                ps.setTimestamp(2, timestamp);
+                ps.setInt(3, idTema);
+                ps.setString(4, nickname);
+
+                ps.executeUpdate();
+                
+                ResultSet generatedKeys = ps.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    idNuevaFila = generatedKeys.getInt(1);
+                }
+                
+                ps.close();
+            
+            pool.freeConnection(connection);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            
+        }
+        return idNuevaFila;
+    }
+    
+    public static int setComentario(String chat, int idTema, String nickname) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        String query = "INSERT INTO comentario (texto, fecha_creacion, id_tema, nickname) VALUES (?,?,?,?)";
+        int idNuevaFila=-1;
         
 
         try { 
-            if(chat != null && chat != ""){
+            if(chat != null && !chat.equals("")){
                 Timestamp timestamp = new Timestamp(new Date().getTime());
-                ps = connection.prepareStatement(query);
+                ps = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
                 ps.setString(1, chat);
                 ps.setTimestamp(2, timestamp);
                 ps.setInt(3, idTema);
                 ps.setString(4, nickname);
 
                 ps.executeUpdate();
+                
+                ResultSet generatedKeys = ps.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    idNuevaFila = generatedKeys.getInt(1);
+                }
+                
                 ps.close();
              }
 
@@ -103,6 +146,28 @@ public class ComentarioDB {
             e.printStackTrace();
             
         }
+        return idNuevaFila;
+    }
+    
+    public static void addFichero(int id_comentario, int id_fichero) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        String query;
+        
+        query = "INSERT INTO comentario_fichero (id_comentario, id_fichero) VALUES (?,?)";
+        
+         try {
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, id_comentario);
+            ps.setInt(2, id_fichero);
+            ps.executeUpdate();
+            ps.close();
+            pool.freeConnection(connection);
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
     }
     
     public static void deleteComentario(int id_comentario) {
@@ -112,7 +177,7 @@ public class ComentarioDB {
         String query;
 
         query = "DELETE FROM comentario c WHERE c.id_comentario= ?";
-
+        
         try {
             ps = connection.prepareStatement(query);
             ps.setInt(1, id_comentario);
@@ -153,5 +218,41 @@ public class ComentarioDB {
             return false;
         }
 
+    }
+    
+    public static int getFicheroAsociado(int id_comentario) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            String query = "SELECT id_fichero FROM comentario_fichero WHERE id_comentario = ?";
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, id_comentario);
+            rs = ps.executeQuery();
+
+            // Si se encuentra el fichero en la tabla fichero_relacion, significa que está asociado a un comentario
+            if (rs.next()) {
+                return rs.getInt("id_fichero");
+            } else {
+                return -1; // Si no se encuentra asociado a un comentario, devuelve -1
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                pool.freeConnection(connection);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

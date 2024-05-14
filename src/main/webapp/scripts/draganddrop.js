@@ -8,6 +8,8 @@ let file;
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const id_foro = urlParams.get('idForo');
+const id_tema = urlParams.get('idTema');
+
 
 // Trigger file selection when browse button is clicked
 dropArea.querySelector(".button").onclick = () => {
@@ -98,16 +100,31 @@ function displayFile(file) {
 // Function to submit file to servlet
 function submitFile(file) {
     let formData = new FormData();
+    
     formData.append('file', file);
     formData.append('idForo', id_foro);
+    if (id_tema!== null){
+        formData.append('idTema', id_tema);
+    }
 
     let xhr = new XMLHttpRequest();
     xhr.open('POST', 'uploadServlet', true);
     xhr.onload = function () {
         if (xhr.status === 200)
-            window.location.href = "files.jsp?idForo=" + id_foro;
+            
+            if (id_tema!==null){
+                window.location.href = "topic.jsp?idForo="+id_foro+"&idTema=" + id_tema;
+            }
+            else {
+                window.location.href = "files.jsp?idForo=" + id_foro;
+            }
         else
-            window.location.href = "upload.jsp?idForo=" + id_foro;
+            if (id_tema!==null){
+                window.location.href = "upload.jsp?idForo=" + id_foro+"&idTema="+id_tema;
+            }
+            else {
+                window.location.href = "upload.jsp?idForo=" + id_foro;
+            }
     };
     xhr.send(formData);
 }
