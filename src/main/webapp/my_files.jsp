@@ -1,3 +1,4 @@
+<%@page import="studyhub.data.UserDB"%>
 <%@ page language="java" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="studyhub.business.Fichero" %>
@@ -176,7 +177,7 @@
                                     <a href="/downloadServlet?file=<%= ficheroActual.getId_fichero()%>"><img src="images/download.svg" alt="Descargar" class="img-download"/></a>
                                 </div>
                             </div>
-                                <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador") || ficheroActual.getNickname().equals(request.getUserPrincipal().getName())){ %>         
+                                <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador") || ficheroActual.getNickname().equals(UserDB.selectUser(request.getRemoteUser()).getNickname())){ %>         
                         <div class="borrar-tema">
                                 <button class="borrar-button" id="delete-button" data-info="files" data-url="/DeleteFile?idFichero=<%= ficheroActual.getId_fichero()%>&page=my_files"><i class="fa-solid fa-trash-can"></i></button>
                         </div>
