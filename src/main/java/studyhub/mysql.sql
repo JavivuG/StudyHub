@@ -92,9 +92,10 @@ CREATE TABLE comentario_fichero (
     PRIMARY KEY (id_comentario),
     FOREIGN KEY (id_comentario) REFERENCES comentario(id_comentario) ON DELETE CASCADE,
     FOREIGN KEY (id_fichero) REFERENCES fichero(id_fichero) ON DELETE CASCADE
-)
+);
 
 CREATE TABLE fichero_foro (
+    id_relacion INT PRIMARY KEY,
     id_fichero INT,
     id_foro INT,
     PRIMARY KEY (id_fichero),
@@ -119,19 +120,6 @@ CREATE TABLE votos_comentario (
     FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE,
     FOREIGN KEY (id_comentario) REFERENCES comentario(id_comentario) ON DELETE CASCADE
 );
-
-CREATE TRIGGER eliminar_comentarios_after_delete_fichero
-BEFORE DELETE ON fichero
-FOR EACH ROW
-BEGIN
-    DECLARE comentario_id INT;
-
-    SELECT id_comentario INTO comentario_id FROM comentario_fichero WHERE id_fichero=OLD.id_fichero;
-    
-    IF comentario_id IS NOT NULL THEN
-        DELETE FROM comentario WHERE id_comentario = comentario_id;
-    END IF;
-END;
 
 
 INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('javivu', '12345', 'Javier', 'Garcia Gonzalez', 'javiergarciaglz16@gmail.com', '1998-12-16', '2020-12-16');
