@@ -95,7 +95,6 @@ CREATE TABLE comentario_fichero (
 );
 
 CREATE TABLE fichero_foro (
-    id_relacion INT PRIMARY KEY,
     id_fichero INT,
     id_foro INT,
     PRIMARY KEY (id_fichero),
