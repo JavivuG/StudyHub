@@ -139,6 +139,45 @@ public class TemaDB {
         }
     }
     
+      public static ArrayList<Tema> getTodosTemas() {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String query;
+
+        query = "SELECT * FROM tema";
+
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            Tema tema = null;
+            ArrayList<Tema> listaTemas=new ArrayList<>();
+            Timestamp timestamp;
+
+            while (rs.next()) {
+                tema = new Tema();
+                tema.setId_tema(rs.getInt("id_tema"));
+                tema.setTitulo(rs.getString("titulo"));
+                tema.setDescripcion(rs.getString("descripcion"));
+                timestamp=rs.getTimestamp("fecha_publicacion");
+                tema.setFecha_publicacion(timestamp.toLocalDateTime());
+                tema.setNickname(rs.getString("nickname"));
+                tema.setId_foro(rs.getInt("id_foro"));
+                listaTemas.add(tema);
+            }
+
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return listaTemas;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
      public static ArrayList<Tema> getTemasDestacados(String id_foro, int max_temas) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();

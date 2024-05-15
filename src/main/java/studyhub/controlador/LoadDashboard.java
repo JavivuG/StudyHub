@@ -13,7 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import studyhub.business.Comentario;
+import studyhub.business.Tema;
+import studyhub.data.ComentarioDB;
 import studyhub.data.ForoDB;
+import studyhub.data.TemaDB;
 
 /**
  *
@@ -32,11 +36,20 @@ public class LoadDashboard extends HttpServlet {
         
         ArrayList<Asignatura> asignaturas=null;
         asignaturas=ForoDB.getAsignaturas(MAX_ASIGNATURAS);
-        
-        
-        // Almacena los datos en el alcance de la solicitud
         session.setAttribute("asignaturas", asignaturas);
+        
+        
+        ArrayList<Comentario> comentarios= null;
+        comentarios=ComentarioDB.getComents();
+        session.setAttribute("comentarios", comentarios);
+        
+        
+        ArrayList<Tema> temas= null;
+        temas=TemaDB.getTodosTemas();
+        session.setAttribute("temas", temas);
+        
         response.sendRedirect("dashboard.jsp");
+        
     }
 
    

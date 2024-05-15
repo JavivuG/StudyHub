@@ -15,7 +15,7 @@ DROP TABLE IF EXISTS usuario;
 
 CREATE TABLE usuario (
     nickname VARCHAR(15) PRIMARY KEY,
-    password VARCHAR(50),
+    password VARCHAR(65),
     nombre VARCHAR(50),
     apellidos VARCHAR(100),
     email VARCHAR(50) UNIQUE,
@@ -25,7 +25,7 @@ CREATE TABLE usuario (
 
 CREATE TABLE reset_tokens (
     nickname VARCHAR(15),
-    password VARCHAR(50),
+    password VARCHAR(65),
     token VARCHAR(255) PRIMARY KEY,
     tiempo_validez DATETIME NOT NULL,
     usado BOOLEAN NOT NULL DEFAULT FALSE,
@@ -106,9 +106,10 @@ CREATE TABLE votos_comentario (
     FOREIGN KEY (id_comentario) REFERENCES comentario(id_comentario) ON DELETE CASCADE
 );
 
+
 INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('javivu', '***', 'Usuario', 'Demo', 'demo@example.com', '2000-01-01', '2020-12-16');
 INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('joselito12', '***', 'Usuario', 'Demo', 'demo@example.com', '2000-01-01', '2022-12-16');
-INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('therealpepe', '12345', 'Pepe', 'Vergara Narváez', 'usuario@example.com' , '2001-12-16', '2020-12-16');
+INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('therealpepe', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'Pepe', 'Vergara Narváez', 'usuario@example.com' , '2001-12-16', '2020-12-16');
 INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('xXmanoloXx', '***', 'Usuario', 'Demo', 'demo@example.com', '2000-01-01', '2022-12-16');
 INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('TheMarias', '***', 'Usuario', 'Demo', 'demo@example.com', '2000-01-01', '2020-12-16');
 INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('admin', '***', 'Usuario', 'Demo', 'demo@example.com', '2000-01-01', '2020-12-16');
