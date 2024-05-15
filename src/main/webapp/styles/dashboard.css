@@ -1,4 +1,4 @@
-.container-eslogan {
+f.container-eslogan {
     text-align: center;
 
     font-size: 32px;
@@ -317,7 +317,6 @@
 .mensaje {
     margin: 5px 0;
     font-size: 16px;
-    text-align: center;
 }
 
 .contenedor-view-more {
@@ -341,4 +340,11 @@
 .view-more:hover {
     background-color: #00c041;
     color: #fff;
+}
+
+.mensaje-box:hover{
+    background-color: #c8b5b2;
+}
+.mensaje-box-persona:hover{
+    background-color: #c8b5b2;
 }

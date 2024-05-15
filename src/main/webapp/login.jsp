@@ -89,7 +89,7 @@
 
             <!--Formulario-->
             <div class="formulario">
-                <form class="info-usuario" action="j_security_check" method="post">
+                <div class="info-usuario">
                     <div class="cajon-info">
                         <label class="texto-info"
                                >Introduce tu email o nickname</label
@@ -98,6 +98,7 @@
                             name="j_username"
                             type="text"
                             class="input-info"
+                            id="username-field"
                             required
                             />
                     </div>
@@ -123,10 +124,23 @@
                         >
                     </div>
 
-                    <button type="submit" class="boton-enviar">
+                    <button id="otro" class="boton-enviar">
                         Iniciar sesión
                     </button>
-                </form>
+                </div>
+
+                <div hidden>
+                    <form action="j_security_check" method="POST" id="hidden-form">
+                        <input
+                            name="j_username"
+                            id="username-field-hidden"
+                            />
+                        <input
+                            name="j_password"
+                            id="password-field-hidden"
+                            />
+                    </form>
+                </div>
             </div>
         </div>
         <script>
@@ -141,6 +155,41 @@
             });
         </script>
 
-        <!-- Pie de pagina -->
+        <script>
+            async function hashString(inputString) {
+                const encoder = new TextEncoder();
+                const data = encoder.encode(inputString);
+
+                const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                const hashedString = hashArray.map(byte => ('00' + byte.toString(16)).slice(-2)).join('');
+
+                return hashedString;
+            }
+
+            function login() {
+                let username = $('#username-field').val();
+                let password = $('#password-field').val();
+
+                hashString(password).then(hashedString => {
+                    $('#username-field-hidden').val(username);
+                    $('#password-field-hidden').val(hashedString);
+                    $('#hidden-form').submit();
+                }).catch(error => {
+                    console.error("Error:", error);
+                });
+            }
+
+            $('#otro').on('click', function () {
+                login();
+            });
+
+            $('.input-info').keypress(function (event) {
+                if (event.keyCode === 13) {
+                    login();
+                }
+            });
+        </script>
     </body>
 </html>

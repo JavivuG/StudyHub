@@ -15,7 +15,7 @@ DROP TABLE IF EXISTS usuario;
 
 CREATE TABLE usuario (
     nickname VARCHAR(15) PRIMARY KEY,
-    password VARCHAR(50),
+    password VARCHAR(65),
     nombre VARCHAR(50),
     apellidos VARCHAR(100),
     email VARCHAR(50) UNIQUE,
@@ -25,7 +25,7 @@ CREATE TABLE usuario (
 
 CREATE TABLE reset_tokens (
     nickname VARCHAR(15),
-    password VARCHAR(50),
+    password VARCHAR(65),
     token VARCHAR(255) PRIMARY KEY,
     tiempo_validez DATETIME NOT NULL,
     usado BOOLEAN NOT NULL DEFAULT FALSE,
@@ -106,13 +106,14 @@ CREATE TABLE votos_comentario (
     FOREIGN KEY (id_comentario) REFERENCES comentario(id_comentario) ON DELETE CASCADE
 );
 
-INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('javivu', '12345', 'Javier', 'Garcia Gonzalez', 'javiergarciaglz16@gmail.com', '1998-12-16', '2020-12-16');
-INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('joselito12', 'pedro12', 'Jose', 'Calderón Esparza', 'jose123@gmail.com', '2000-03-01', '2022-12-16');
-INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('therealpepe', '12345', 'Pepe', 'Vergara Narváez', 'randomuser123@outlook.com' , '2001-12-16', '2020-12-16');
-INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('xXmanoloXx', 'pedro12', 'Manolo', 'Gamboa Verduzco', 'myemail@example.com', '2002-05-18', '2022-12-16');
-INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('TheMarias', '12345', 'Maria', 'Olivares Otero', 'macielolivaresotero@hotmail.com', '2000-12-16', '2020-12-16');
-INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('admin', 'admin', 'Administrador', 'Administrador', 'admin@gmail.com', '1998-12-16', '2020-12-16');
-INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('mod', 'mod', 'Moderador', 'Moderador', 'mod@gmail.com', '1998-12-16', '2020-12-16');
+
+INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('javivu', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'Javier', 'Garcia Gonzalez', 'javiergarciaglz16@gmail.com', '1998-12-16', '2020-12-16');
+INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('joselito12', '6599e8a69aed13d9412de32f604bb6fa50928df8bb68e3499e6c7222e40f47b0', 'Jose', 'Calderón Esparza', 'jose123@gmail.com', '2000-03-01', '2022-12-16');
+INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('therealpepe', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'Pepe', 'Vergara Narváez', 'randomuser123@outlook.com' , '2001-12-16', '2020-12-16');
+INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('xXmanoloXx', '6599e8a69aed13d9412de32f604bb6fa50928df8bb68e3499e6c7222e40f47b0', 'Manolo', 'Gamboa Verduzco', 'myemail@example.com', '2002-05-18', '2022-12-16');
+INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('TheMarias', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'Maria', 'Olivares Otero', 'macielolivaresotero@hotmail.com', '2000-12-16', '2020-12-16');
+INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'Administrador', 'Administrador', 'admin@gmail.com', '1998-12-16', '2020-12-16');
+INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('mod', 'e55cffc81a5ad8cfe85239d944a3ae9513645a9eed79bc884f51b80b2760fc46', 'Moderador', 'Moderador', 'mod@gmail.com', '1998-12-16', '2020-12-16');
 
 
 

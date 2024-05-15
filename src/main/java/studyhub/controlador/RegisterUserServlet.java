@@ -3,6 +3,8 @@ package studyhub.controlador;
 import studyhub.business.User;
 import studyhub.data.UserDB;
 import java.io.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
@@ -25,7 +27,22 @@ public class RegisterUserServlet extends HttpServlet {
         String fecha_nacimiento = request.getParameter("fnacimiento");
         String rol = request.getParameter("rol");
         String url;
-
+        String hashedPassword = null;
+        
+         try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            
+            byte[] hashedBytes = digest.digest(password.getBytes());
+            
+            StringBuilder stringBuilder = new StringBuilder();
+            for (byte b : hashedBytes) {
+                stringBuilder.append(String.format("%02x", b));
+            }
+            
+            hashedPassword = stringBuilder.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
         
         if(nombre.length()<=50 && apellidos.length()<=100 && password.length()<=50 && email.length()<=50){
             // Crear objeto usuario
@@ -34,7 +51,7 @@ public class RegisterUserServlet extends HttpServlet {
             user.setApellidos(apellidos);
             user.setNickname(nickname);
             user.setEmail(email);
-            user.setPassword(password);
+            user.setPassword(hashedPassword);
             user.setFecha_nacimiento(fecha_nacimiento);
             user.setRol(rol);
 

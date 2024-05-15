@@ -1,3 +1,8 @@
+<%@page import="studyhub.business.Asignatura"%>
+<%@page import="studyhub.data.UserDB"%>
+<%@page import="studyhub.business.Tema"%>
+<%@page import="studyhub.business.Comentario"%>
+<%@page import="studyhub.business.Comentario"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="studyhub.business.Fichero"%>
 <%@ page language="java" %> 
@@ -203,39 +208,34 @@
                         </div>
                     </div>
                     <div class="ultimos-mensajes">
-                        <h2>Últimos mensajes</h2>
-                        <div class="mensaje-box">
+                        <h2>Mis últimos mensajes</h2>
+                        
+                          <%
+                        int suma = 0;
+                        ArrayList<Comentario> listaComentarios = (ArrayList<Comentario>) session.getAttribute("comentarios");
+                        ArrayList<Tema> listaTemas = (ArrayList<Tema>) session.getAttribute("temas");
+                        ArrayList<Asignatura> listaAsignaturas = (ArrayList<Asignatura>) session.getAttribute("asignaturas");
+                        
+                        for(int i = listaComentarios.size() -1 ; i > listaComentarios.size() - 5; i--){
+                        while(!listaComentarios.get(i+suma).getNickname().equals(UserDB.selectUser(request.getRemoteUser()).getNickname())){
+                            suma--;
+                            if((suma+i) == -1) break;
+                         }
+                        if((suma+i)== -1) break; 
+                        int idTemaActual = listaComentarios.get(i+suma).getId_tema();
+                        %>
+                        <a href="topic.jsp?idForo=<%=listaTemas.get(idTemaActual-1).getId_foro()%>&idTema=<%= idTemaActual %>">
+                        <div class="mensaje-box"> 
                             <div class="contribuidas-titulo">
-                                Foro Matemáticas
+                                 Foro <%= listaAsignaturas.get(listaTemas.get(idTemaActual-1).getId_foro()-1).getNombre() %>
                             </div>
                             <div class="mensaje">
-                                Has comentado: "No entiendo el ejercicio 3"
+                                Has comentado:  <%= listaComentarios.get(i+suma).getTexto()%>
                             </div>
                         </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">Foro Física</div>
-                            <div class="mensaje">
-                                Has comentado: "¿Alguien tiene los apuntes de la
-                                última clase?"
-                            </div>
-                        </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">
-                                Foro Sistemas Empotrados
-                            </div>
-                            <div class="mensaje">
-                                Has respondido: "El ejercicio 2 es incorrecto,
-                                la respuesta correcta es 3"
-                            </div>
-                        </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">
-                                Foro Servicios y Sistemas Web
-                            </div>
-                            <div class="mensaje">
-                                Has comentado: "No entiendo los ficheros XML."
-                            </div>
-                        </div>
+                            
+                        </a>
+                        <%}%>
                     </div>
                     <div class="podio">
                         <h2>Posición en el podio</h2>

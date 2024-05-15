@@ -13,10 +13,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import studyhub.business.Comentario;
 import studyhub.business.Fichero;
+import studyhub.business.Tema;
 import studyhub.business.User;
+import studyhub.data.ComentarioDB;
 import studyhub.data.FicheroDB;
 import studyhub.data.ForoDB;
+import studyhub.data.TemaDB;
 import studyhub.data.UserDB;
 
 /**
@@ -31,6 +35,7 @@ public class LoadProfile extends HttpServlet {
             throws ServletException, IOException {
         // Obtener los parametros de la peticion
         HttpSession session = request.getSession();
+        int MAX_ASIGNATURAS=200;
         
         ArrayList<Fichero> ficherosUsuario=null;
         User usuario=UserDB.selectUser(request.getRemoteUser());
@@ -40,6 +45,21 @@ public class LoadProfile extends HttpServlet {
         // Almacena los datos en el alcance de la solicitud
         session.setAttribute("user", usuario);
         session.setAttribute("ficheros_usuario", ficherosUsuario);
+        
+          ArrayList<Asignatura> asignaturas=null;
+        asignaturas=ForoDB.getAsignaturas(MAX_ASIGNATURAS);
+        session.setAttribute("asignaturas", asignaturas);
+        
+        
+        ArrayList<Comentario> comentarios= null;
+        comentarios=ComentarioDB.getComents();
+        session.setAttribute("comentarios", comentarios);
+        
+        
+        ArrayList<Tema> temas= null;
+        temas=TemaDB.getTodosTemas();
+        session.setAttribute("temas", temas);
+        
         response.sendRedirect("profile.jsp");
     }
 
