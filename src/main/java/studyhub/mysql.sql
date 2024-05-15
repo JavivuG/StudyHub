@@ -26,7 +26,7 @@ CREATE TABLE usuario (
 
 CREATE TABLE reset_tokens (
     nickname VARCHAR(15),
-    password VARCHAR(50),
+    password VARCHAR(65),
     token VARCHAR(255) PRIMARY KEY,
     tiempo_validez DATETIME NOT NULL,
     usado BOOLEAN NOT NULL DEFAULT FALSE,
