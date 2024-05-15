@@ -190,6 +190,7 @@
                         ArrayList<Asignatura> listaAsignaturas = (ArrayList<Asignatura>) session.getAttribute("asignaturas");
                         
                         for(int i = listaComentarios.size() -1 ; i > listaComentarios.size() - 5; i--){
+                        if((suma+i) == -1) break;
                         while(!listaComentarios.get(i+suma).getNickname().equals(UserInfo.getUserNickname(request))){
                             suma--;
                             if((suma+i) == -1) break;
