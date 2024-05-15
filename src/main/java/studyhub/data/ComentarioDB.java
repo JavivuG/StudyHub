@@ -12,12 +12,15 @@ import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
+import studyhub.business.Asignatura;
 import studyhub.business.Comentario;
 
 /**
  *
  * @author javi
  */
+
+
 public class ComentarioDB {
     public static ArrayList<Comentario> getComentarios(String id_tema) {
         ConnectionPool pool = ConnectionPool.getInstance();
@@ -79,6 +82,45 @@ public class ComentarioDB {
         }
     }
     
+    public static ArrayList<Comentario> getComents(){
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null, ps2 = null;
+        ResultSet rs = null, rs2 = null;
+        String query;
+        int idComentario = 0;
+
+        query = "SELECT * FROM comentario";
+
+        try {
+            ps = connection.prepareStatement(query);
+            rs = ps.executeQuery();
+            Comentario comentario = null;
+            ArrayList<Comentario> listaComentarios=new ArrayList<>();
+            Timestamp timestamp;
+
+            while (rs.next()) {
+                comentario = new Comentario();
+
+                idComentario = rs.getInt("id_comentario");
+                comentario.setId_comentario(idComentario);
+                comentario.setTexto(rs.getString("texto"));
+                comentario.setNickname(rs.getString("nickname"));
+                comentario.setId_tema(rs.getInt("id_tema"));
+
+                listaComentarios.add(comentario);
+            }
+
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+            return listaComentarios;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     public static int setComentario(int idTema, String nickname) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
