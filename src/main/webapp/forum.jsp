@@ -265,7 +265,7 @@
                                                             </p>
                                                         </div>
                                                     </div>
-                                                    <a href="/downloadServlet?file=<%= fichero.getId_fichero() %>&page=forum"
+                                                    <a href="/downloadServlet?idFichero=<%= fichero.getId_fichero() %>&page=forum"
                                                         ><img
                                                             src="images/download.svg"
                                                             alt="download"
@@ -275,7 +275,7 @@
                                             </div>
                                             <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador") || fichero.getNickname().equals(UserDB.selectUser(request.getRemoteUser()).getNickname())){ %>         
                                             <div class="borrar-wrapper">
-                                                    <button class="borrar-button" id="delete-button" data-info="files" data-url="/DeleteFile?idForo=<%=fichero.getId_foro()%>&idFichero=<%= fichero.getId_fichero()%>&page=forum"><i class="fa-solid fa-trash-can"></i></button>
+                                                    <button class="borrar-button" id="delete-button" data-info="files" data-url="/DeleteFile?idFichero=<%= fichero.getId_fichero()%>&idForo=<%= fichero.getId_foro()%>&idComentario=<%= fichero.getId_comentario()%>&page=forum"><i class="fa-solid fa-trash-can"></i></button>
                                             </div>
                                             <% } %>
                                             

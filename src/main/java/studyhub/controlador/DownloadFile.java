@@ -22,12 +22,36 @@ public class DownloadFile extends HttpServlet {
         
         try {
 
-            String id_file = request.getParameter("file");
-            byte[] fileData = FicheroDB.getFichero(id_file);
+            String id_file = request.getParameter("idFichero");
+            String id_comentario = request.getParameter("idComentario");
+            String id_foro = request.getParameter("idForo");
+
+            byte[] fileData = null;
+            String fileName="";
+            
+            // Se desea descargar un fichero adjuntado a un comentario
+            if (id_comentario!=null ){
+                if(Integer.parseInt(id_comentario)!=-1){
+                    fileData = FicheroDB.getFichero(id_file, Integer.parseInt(id_comentario));
+                    fileName=FicheroDB.getNombreFichero(id_file,Integer.parseInt(id_comentario));
+                }
+                else {
+                    if (Integer.parseInt(id_foro)!=-1){
+                        fileData = FicheroDB.getFichero(id_file,-1);
+                        fileName = FicheroDB.getNombreFichero(id_file,-1);                        
+                    }
+                    else {
+                        response.sendRedirect("error.jsp");
+                    }
+                }
+            }
+            else {
+                fileData = FicheroDB.getFichero(id_file,-1);
+                fileName = FicheroDB.getNombreFichero(id_file,-1);
+            }
 
             // Set response headers
             response.setContentType("application/octet-stream");
-            String fileName = FicheroDB.getNombreFichero(id_file);
             
             response.setHeader("Content-Disposition", "attachment; filename="+ fileName);
 

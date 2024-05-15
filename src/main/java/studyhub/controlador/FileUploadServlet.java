@@ -45,20 +45,20 @@ public class FileUploadServlet extends HttpServlet {
         fichero.setNickname(nickname);
         String url;
 
+        // Subir fichero a un tema como adjuntado
         if (request.getParameter("idTema") != null && !request.getParameter("idTema").isEmpty()){
             int id_comentario=ComentarioDB.setComentario(Integer.parseInt(id_tema), nickname);
             fichero.setId_comentario(id_comentario);
             int resultado[]=FicheroDB.uploadFile(fichero, inputStream);
-
         
             if (resultado[0] > 0) {
-                ComentarioDB.addFichero(id_comentario, resultado[1]);
                 url="topic.jsp?idForo="+id_foro+"&idTema="+id_tema;
             } else {
                 ComentarioDB.deleteComentario(id_comentario);
                 url = "upload.jsp?idForo="+id_foro+"&idTema="+id_tema;
             }
         }
+        // Subir fichero a un foro
         else {
             fichero.setId_foro(Integer.parseInt(id_foro));
             

@@ -48,7 +48,6 @@ public class ComentarioDB {
                 comentario.setFecha_creacion(timestamp.toLocalDateTime());
                 comentario.setNickname(rs.getString("nickname"));
                 comentario.setId_tema(rs.getInt("id_tema"));
-                comentario.setId_fichero(getFicheroAsociado(idComentario));
 
                 ps2 = connection.prepareStatement(query2);
                 ps2.setInt(1, idComentario);
@@ -149,27 +148,6 @@ public class ComentarioDB {
         return idNuevaFila;
     }
     
-    public static void addFichero(int id_comentario, int id_fichero) {
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps;
-        String query;
-        
-        query = "INSERT INTO comentario_fichero (id_comentario, id_fichero) VALUES (?,?)";
-        
-         try {
-            ps = connection.prepareStatement(query);
-            ps.setInt(1, id_comentario);
-            ps.setInt(2, id_fichero);
-            ps.executeUpdate();
-            ps.close();
-            pool.freeConnection(connection);
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
-    }
-    
     public static void deleteComentario(int id_comentario) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
@@ -227,12 +205,11 @@ public class ComentarioDB {
         ResultSet rs = null;
 
         try {
-            String query = "SELECT id_fichero FROM comentario_fichero WHERE id_comentario = ?";
+            String query = "SELECT id_fichero FROM fichero_comentario WHERE id_comentario = ?";
             ps = connection.prepareStatement(query);
             ps.setInt(1, id_comentario);
             rs = ps.executeQuery();
 
-            // Si se encuentra el fichero en la tabla fichero_relacion, significa que está asociado a un comentario
             if (rs.next()) {
                 return rs.getInt("id_fichero");
             } else {

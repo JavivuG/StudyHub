@@ -174,7 +174,7 @@
                                             <% } %>
                                         </div>
                                         <div class="descarga">
-                                            <a href="downloadServlet?file=<%= ficheroActual.getId_fichero()%>"
+                                            <a href="/downloadServlet?idFichero=<%= ficheroActual.getId_fichero()%>&idComentario=<%=ficheroActual.getId_comentario()%>&idForo=<%=ficheroActual.getId_foro()%>"
                                                 ><img
                                                     src="images/download.svg"
                                                     alt="download"

@@ -18,38 +18,30 @@ public class Tema implements Serializable {
     private String titulo;
     private String descripcion;
     private LocalDateTime fecha_publicacion;
-    private int likes;
-    private int dislikes;
     private String nickname;
     private int id_foro;
 
     public Tema() {
         this.titulo="";
         this.descripcion="";
-        this.likes=0;
-        this.dislikes=0;
         this.nickname="";
     }
 
     
-    public Tema(int id_tema, String titulo, String descripcion, LocalDateTime fecha_publicacion, int likes, int dislikes,String nickname, int id_foro) {
+    public Tema(int id_tema, String titulo, String descripcion, LocalDateTime fecha_publicacion,String nickname, int id_foro) {
         this.id_tema=id_tema;
         this.titulo=titulo;
         this.descripcion=descripcion;
         this.fecha_publicacion=fecha_publicacion;
-        this.likes=likes;
-        this.dislikes=dislikes;
         this.nickname = nickname;
         this.id_foro = id_foro;
     }
 
-    public Tema(int id_tema, String titulo, String descripcion, LocalDateTime fecha_publicacion, int likes, int dislikes, User user, Asignatura foro) {
+    public Tema(int id_tema, String titulo, String descripcion, LocalDateTime fecha_publicacion, User user, Asignatura foro) {
         this.id_tema=id_tema;
         this.titulo=titulo;
         this.descripcion=descripcion;
         this.fecha_publicacion=fecha_publicacion;
-        this.likes=likes;
-        this.dislikes=dislikes;
         this.nickname = user.getNickname();
         this.id_foro = foro.getID_asignatura();
     }
@@ -84,22 +76,6 @@ public class Tema implements Serializable {
 
     public void setFecha_publicacion(LocalDateTime fecha_publicacion) {
         this.fecha_publicacion = fecha_publicacion;
-    }
-
-    public int getLikes() {
-        return likes;
-    }
-
-    public void setLikes(int likes) {
-        this.likes = likes;
-    }
-
-    public int getDislikes() {
-        return dislikes;
-    }
-
-    public void setDislikes(int dislikes) {
-        this.dislikes = dislikes;
     }
 
     public String getNickname() {

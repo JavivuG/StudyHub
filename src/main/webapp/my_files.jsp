@@ -174,12 +174,14 @@
                                             </p>
                                         </div>
                                     </div>
-                                    <a href="/downloadServlet?file=<%= ficheroActual.getId_fichero()%>"><img src="images/download.svg" alt="Descargar" class="img-download"/></a>
+                                    <a href="/downloadServlet?idFichero=<%= ficheroActual.getId_fichero()%>&idComentario=<%=ficheroActual.getId_comentario()%>&idForo=<%=ficheroActual.getId_foro()%>"><img src="images/download.svg" alt="Descargar" class="img-download"/></a>
                                 </div>
                             </div>
                                 <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador") || ficheroActual.getNickname().equals(UserDB.selectUser(request.getRemoteUser()).getNickname())){ %>         
                         <div class="borrar-tema">
-                                <button class="borrar-button" id="delete-button" data-info="files" data-url="/DeleteFile?idFichero=<%= ficheroActual.getId_fichero()%>&page=my_files"><i class="fa-solid fa-trash-can"></i></button>
+                                <button class="borrar-button" id="delete-button" data-info="files" data-url="/DeleteFile?idFichero=<%= ficheroActual.getId_fichero()%>&idForo=<%= ficheroActual.getId_foro()%>&idComentario=<%= ficheroActual.getId_comentario()%>&page=my_files">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
                         </div>
                         <% } %>
                         </div>
