@@ -1,5 +1,5 @@
+<%@page import="studyhub.controlador.UserInfo"%>
 <%@page import="studyhub.business.Tema"%>
-<%@page import="studyhub.data.UserDB"%>
 <%@page import="studyhub.business.Comentario"%>
 <%@ page language="java" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -167,7 +167,7 @@
                         ArrayList<Tema> listaTemas = (ArrayList<Tema>) session.getAttribute("temas");
                         
                         for(int i = listaComentarios.size() -1 ; i > listaComentarios.size() - 5; i--){
-                        while(!listaComentarios.get(i+suma).getNickname().equals(UserDB.selectUser(request.getRemoteUser()).getNickname())){
+                        while(!listaComentarios.get(i+suma).getNickname().equals(UserInfo.getUserNickname(request))){
                             suma--;
                             if((suma+i) == -1) break;
                          }
@@ -189,7 +189,7 @@
                          }
                          suma = 0;
                          for(int i = listaComentarios.size() -1; i > listaComentarios.size() - 6 ; i--){
-                            while(listaComentarios.get(i+suma).getNickname().equals(UserDB.selectUser(request.getRemoteUser()).getNickname())){
+                            while(listaComentarios.get(i+suma).getNickname().equals(UserInfo.getUserNickname(request))){
                                 suma--;
                                 if((suma+i) == -1) break;
                              }

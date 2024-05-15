@@ -1,4 +1,4 @@
-<%@page import="studyhub.data.UserDB"%>
+<%@page import="studyhub.controlador.UserInfo"%>
 <%@ page language="java" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="studyhub.business.Tema" %>
@@ -273,7 +273,7 @@
                                                     /></a>
                                                 </div>
                                             </div>
-                                            <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador") || fichero.getNickname().equals(UserDB.selectUser(request.getRemoteUser()).getNickname())){ %>         
+                                                    <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador") || fichero.getNickname().equals(UserInfo.getUserNickname(request))){ %>         
                                             <div class="borrar-wrapper">
                                                     <button class="borrar-button" id="delete-button" data-info="files" data-url="/DeleteFile?idFichero=<%= fichero.getId_fichero()%>&idForo=<%= fichero.getId_foro()%>&idComentario=<%= fichero.getId_comentario()%>&page=forum"><i class="fa-solid fa-trash-can"></i></button>
                                             </div>
