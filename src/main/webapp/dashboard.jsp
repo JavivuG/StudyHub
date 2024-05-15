@@ -197,7 +197,6 @@
                              }
                             if((suma+i)== -1) break;  
                             int idTemaActual = listaComentarios.get(i+suma).getId_tema();
-                        System.out.println(idTemaActual-1 +"\n\n");
                             %>
                             <a href="topic.jsp?idForo=<%=listaTemas.get(idTemaActual-1).getId_foro()%>&idTema=<%= idTemaActual %>">
                                <div class="mensaje-box-persona">
