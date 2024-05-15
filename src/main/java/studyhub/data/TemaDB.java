@@ -44,8 +44,6 @@ public class TemaDB {
                 tema.setDescripcion(rs.getString("descripcion"));
                 timestamp=rs.getTimestamp("fecha_publicacion");
                 tema.setFecha_publicacion(timestamp.toLocalDateTime());
-                tema.setLikes(rs.getInt("likes"));
-                tema.setDislikes(rs.getInt("dislikes"));
                 tema.setNickname(rs.getString("nickname"));
                 tema.setId_foro(rs.getInt("id_foro"));
                 listaTemas.add(tema);
@@ -85,8 +83,6 @@ public class TemaDB {
                 tema.setDescripcion(rs.getString("descripcion"));
                 timestamp=rs.getTimestamp("fecha_publicacion");
                 tema.setFecha_publicacion(timestamp.toLocalDateTime());
-                tema.setLikes(rs.getInt("likes"));
-                tema.setDislikes(rs.getInt("dislikes"));
                 tema.setNickname(rs.getString("nickname"));
                 tema.setId_foro(rs.getInt("id_foro"));
             }
@@ -127,8 +123,6 @@ public class TemaDB {
                 tema.setDescripcion(rs.getString("descripcion"));
                 timestamp=rs.getTimestamp("fecha_publicacion");
                 tema.setFecha_publicacion(timestamp.toLocalDateTime());
-                tema.setLikes(rs.getInt("likes"));
-                tema.setDislikes(rs.getInt("dislikes"));
                 tema.setNickname(rs.getString("nickname"));
                 tema.setId_foro(rs.getInt("id_foro"));
                 listaTemas.add(tema);
@@ -170,8 +164,6 @@ public class TemaDB {
                 tema.setDescripcion(rs.getString("descripcion"));
                 timestamp=rs.getTimestamp("fecha_publicacion");
                 tema.setFecha_publicacion(timestamp.toLocalDateTime());
-                tema.setLikes(rs.getInt("likes"));
-                tema.setDislikes(rs.getInt("dislikes"));
                 tema.setNickname(rs.getString("nickname"));
                 tema.setId_foro(rs.getInt("id_foro"));
                 listaTemas.add(tema);
@@ -223,7 +215,7 @@ public class TemaDB {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps;
-        String query = "INSERT INTO tema (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro)  VALUES (?,?,?,?,?,?,?)";
+        String query = "INSERT INTO tema (titulo, descripcion, fecha_publicacion, nickname, id_foro)  VALUES (?,?,?,?,?)";
         int idNuevaFila=-1;
         int filasCreadas;
         
@@ -237,10 +229,8 @@ public class TemaDB {
                 ps.setString(1, titulo);
                 ps.setString(2, descripcion);
                 ps.setTimestamp(3, timestamp);
-                ps.setInt(4, numLikes); //likes
-                ps.setInt(5, numLikes); //dislikes
-                ps.setString(6, nicknameUsuario);
-                ps.setInt(7, idForo);
+                ps.setString(4, nicknameUsuario);
+                ps.setInt(5, idForo);
                 
                 filasCreadas=ps.executeUpdate();
                 
@@ -333,8 +323,6 @@ public class TemaDB {
                 tema.setDescripcion(rs.getString("descripcion"));
                 timestamp=rs.getTimestamp("fecha_publicacion");
                 tema.setFecha_publicacion(timestamp.toLocalDateTime());
-                tema.setLikes(rs.getInt("likes"));
-                tema.setDislikes(rs.getInt("dislikes"));
                 tema.setNickname(rs.getString("nickname"));
                 tema.setId_foro(rs.getInt("id_foro"));
                 listaTemas.add(tema);

@@ -32,7 +32,7 @@ public class FicheroDB {
         ResultSet rs = null;
         String query;
 
-        query = "SELECT f.* FROM fichero f INNER JOIN fichero_foro fr ON f.id_fichero = fr.id_fichero WHERE fr.id_foro = ? ORDER BY f.fecha_publicacion DESC";
+        query = "SELECT f.* FROM fichero_foro f WHERE f.id_foro = ? ORDER BY f.fecha_publicacion DESC";
 
         try {
             ps = connection.prepareStatement(query);
@@ -48,7 +48,8 @@ public class FicheroDB {
                 timestamp = rs.getTimestamp("fecha_publicacion");
                 fichero.setFecha_publicacion(timestamp.toLocalDateTime());
                 fichero.setNickname(rs.getString("nickname"));
-
+                fichero.setId_foro(rs.getInt("id_foro"));
+                
                 listaFicheros.add(fichero);
             }
 
@@ -80,7 +81,7 @@ public class FicheroDB {
         ResultSet rs = null;
         String query;
 
-        query = "SELECT f.* FROM fichero f INNER JOIN fichero_foro fr ON f.id_fichero = fr.id_fichero WHERE fr.id_foro = ? ORDER BY f.fecha_publicacion DESC LIMIT ?";
+        query = "SELECT f.* FROM fichero_foro f WHERE f.id_foro = ? ORDER BY f.fecha_publicacion DESC LIMIT ?";
 
         try {
             ps = connection.prepareStatement(query);
@@ -97,6 +98,7 @@ public class FicheroDB {
                 timestamp = rs.getTimestamp("fecha_publicacion");
                 fichero.setFecha_publicacion(timestamp.toLocalDateTime());
                 fichero.setNickname(rs.getString("nickname"));
+                fichero.setId_foro(rs.getInt("id_foro"));
 
                 listaFicheros.add(fichero);
             }
@@ -129,11 +131,20 @@ public class FicheroDB {
         ResultSet rs;
         String query;
 
-        query = "SELECT * FROM fichero WHERE nickname=? ORDER BY fecha_publicacion DESC LIMIT 3";
+        query = "SELECT 'fichero_foro' AS tabla_fuente, id_fichero, id_foro, nombre, tipo, file, fecha_publicacion, nickname\n" +
+                "FROM fichero_foro\n" +
+                "WHERE nickname = ?\n" +
+                "UNION ALL\n" +
+                "SELECT 'fichero_comentario' AS tabla_fuente, id_fichero, id_comentario, nombre, tipo, file, fecha_publicacion, nickname\n" +
+                "FROM fichero_comentario\n" +
+                "WHERE nickname = ?\n" +
+                "ORDER BY fecha_publicacion DESC\n" +
+                "LIMIT 3";
 
         try {
             ps = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, nickname);
+            ps.setString(2, nickname);
             rs = ps.executeQuery();
             Fichero fichero;
             ArrayList<Fichero> listaFicheros = new ArrayList<>();
@@ -146,7 +157,15 @@ public class FicheroDB {
                 timestamp = rs.getTimestamp("fecha_publicacion");
                 fichero.setFecha_publicacion(timestamp.toLocalDateTime());
                 fichero.setNickname(rs.getString("nickname"));
+                
+                if (rs.getString("tabla_fuente").equals("fichero_foro")){
+                    fichero.setId_foro(rs.getInt("id_foro"));
+                }
+                else {
+                    fichero.setId_comentario(rs.getInt("id_foro"));
+                }
 
+                
                 listaFicheros.add(fichero);
             }
 
@@ -168,11 +187,19 @@ public class FicheroDB {
         ResultSet rs;
         String query;
 
-        query = "SELECT * FROM fichero WHERE nickname=? ORDER BY fecha_publicacion";
+        query = "SELECT 'fichero_foro' AS tabla_fuente, id_fichero, id_foro, nombre, tipo, file, fecha_publicacion, nickname\n" +
+                "FROM fichero_foro\n" +
+                "WHERE nickname = ?\n" +
+                "UNION ALL\n" +
+                "SELECT 'fichero_comentario' AS tabla_fuente, id_fichero, id_comentario, nombre, tipo, file, fecha_publicacion, nickname\n" +
+                "FROM fichero_comentario\n" +
+                "WHERE nickname = ?\n" +
+                "ORDER BY fecha_publicacion DESC";
 
         try {
             ps = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, nickname);
+            ps.setString(2, nickname);
             rs = ps.executeQuery();
             Fichero fichero;
             ArrayList<Fichero> listaFicheros = new ArrayList<>();
@@ -186,6 +213,13 @@ public class FicheroDB {
                 timestamp = rs.getTimestamp("fecha_publicacion");
                 fichero.setFecha_publicacion(timestamp.toLocalDateTime());
                 fichero.setNickname(rs.getString("nickname"));
+                
+                if (rs.getString("tabla_fuente").equals("fichero_foro")){
+                    fichero.setId_foro(rs.getInt("id_foro"));
+                }
+                else {
+                    fichero.setId_comentario(rs.getInt("id_foro"));
+                }
 
                 listaFicheros.add(fichero);
             }
@@ -207,14 +241,19 @@ public class FicheroDB {
      * @return
      * @throws SQLException 
      */
-    public static byte[] getFichero(String id_fichero) throws SQLException {
+    public static byte[] getFichero(String id_fichero, int id_comentario) throws SQLException {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         ResultSet rs = null;
         String query;
         
-        query = "SELECT * FROM fichero WHERE id_fichero=?";
+        if (id_comentario!=-1){
+            query = "SELECT * FROM fichero_comentario WHERE id_fichero=?";
+        }
+        else {
+            query = "SELECT * FROM fichero_foro WHERE id_fichero=?";
+        }
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
         try {
@@ -252,19 +291,25 @@ public class FicheroDB {
 
         return outputStream.toByteArray();
     }
-
-
-    public static String getNombreFichero(String id) {
+    
+    public static String getNombreFichero(String id_fichero, int id_comentario) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps;
         ResultSet rs;
-        String query = "SELECT nombre FROM fichero  WHERE id_fichero=?";
+        String query;
         String nombre = null;
+        
+        if (id_comentario!=-1){
+            query = "SELECT nombre FROM fichero_comentario WHERE id_fichero=?";
+        }
+        else {
+            query = "SELECT nombre FROM fichero_foro WHERE id_fichero=?";
+        }
 
         try {
             ps = connection.prepareStatement(query);
-            ps.setString(1, id);
+            ps.setString(1, id_fichero);
             rs = ps.executeQuery();
             if (rs.next()) nombre = rs.getString("nombre");
             rs.close();
@@ -279,50 +324,22 @@ public class FicheroDB {
         }
     }
     
-     public static String getExtension(String id) {
-        ConnectionPool pool = ConnectionPool.getInstance();
-        Connection connection = pool.getConnection();
-        PreparedStatement ps;
-        ResultSet rs;
-        String query = "SELECT tipo FROM fichero  WHERE id_fichero=?";
-        String extension = null;
-        
-        try {
-            ps = connection.prepareStatement(query);
-            ps.setString(1, id);
-            rs = ps.executeQuery();
-            if (rs.next()) extension = rs.getString("tipo");
-            rs.close();
-            ps.close();
-            pool.freeConnection(connection);
-
-            Pattern p = Pattern.compile("/([a-z]+)");
-            Matcher m = p.matcher(extension);
-            
-            if(m.find()) {
-                return m.group(1);
-            } else {
-                return "";
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
     public static int[] uploadFile(Fichero file, InputStream inputStream) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps;
-        String query, query1;
+        String query;
         Timestamp timestamp = new Timestamp(new Date().getTime());
         int[] resultado={-1,-1};
         
-        query = "INSERT INTO fichero (nombre, tipo, fecha_publicacion, nickname, file) VALUES (?, ?, ?, ?, ?)";
+        if (file.getId_foro() != -1) {
+            query = "INSERT INTO fichero_foro (id_foro, nombre, tipo, fecha_publicacion, nickname, file) VALUES ("+file.getId_foro()+",?, ?, ?, ?, ?)";
+        } else {
+            query = "INSERT INTO fichero_comentario (id_comentario, nombre, tipo, fecha_publicacion, nickname, file) VALUES ("+file.getId_comentario()+",?, ?, ?, ?, ?)";
+        }
 
         try {
-            ps = connection.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+            ps = connection.prepareStatement(query);
             ps.setString(1, file.getNombre());
             ps.setString(2, file.getTipo());
             ps.setTimestamp(3, timestamp);
@@ -334,21 +351,8 @@ public class FicheroDB {
 
             resultado[0] = ps.executeUpdate();
 
-            ResultSet generatedKeys = ps.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                resultado[1] = generatedKeys.getInt(1);
-
-                if (file.getId_foro() != 0) {
-                    insertFicheroForo(resultado[1], file.getId_foro(), connection);
-                } else {
-                    insertFicheroComentario(resultado[1], file.getId_comentario(), connection);
-                }
-            }
-                
             ps.close();
             pool.freeConnection(connection);
-
-            
 
             return resultado;
         } catch (SQLException e) {
@@ -357,14 +361,20 @@ public class FicheroDB {
         }
     }
     
-    public static void deleteFichero(int id_fichero) {
+    public static void deleteFichero(int id_fichero,int id_comentario) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps = null;
         String query;
 
-        query = "DELETE FROM fichero f WHERE f.id_fichero= ?";
+        if (id_comentario!=-1){
+            query = "DELETE FROM fichero_comentario f WHERE f.id_fichero= ?";
+        }
+        else {
+            query = "DELETE FROM fichero_foro f WHERE f.id_fichero= ?";
+        }
         
+            
         try {
             ps = connection.prepareStatement(query);
             ps.setInt(1, id_fichero);
@@ -378,13 +388,21 @@ public class FicheroDB {
         }
     }
 
-    public static boolean isOwner(int id_fichero, String nickname) {
+    public static boolean isOwner(int id_fichero, String nickname, int id_comentario) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
         PreparedStatement ps;
         ResultSet rs;
+        String query;
         
-        String query = "SELECT * FROM fichero WHERE id_fichero=? AND nickname=?";
+        if (id_comentario!=-1){
+            query = "SELECT * FROM fichero_comentario WHERE id_fichero=? AND nickname=?";
+        }
+        else {
+            query = "SELECT * FROM fichero_foro WHERE id_fichero=? AND nickname=?";
+        }
+        
+        
         
         try {
             ps = connection.prepareStatement(query);
@@ -402,36 +420,6 @@ public class FicheroDB {
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
-        }
-    }
-    
-    private static void insertFicheroComentario(int idFichero, int idComentario, Connection connection) throws SQLException {
-        String query = "INSERT INTO fichero_comentario (id_fichero, id_comentario) VALUES (?, ?)";
-        PreparedStatement ps = connection.prepareStatement(query);
-        
-        try {
-            ps.setInt(1, idFichero);
-            ps.setInt(2, idComentario);
-            ps.executeUpdate();
-            ps.close();
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }
-    }
-    
-    private static void insertFicheroForo(int idFichero, int idForo, Connection connection) throws SQLException {
-        String query = "INSERT INTO fichero_foro (id_fichero, id_foro) VALUES (?, ?)";
-        PreparedStatement ps = connection.prepareStatement(query);
-        
-        try {
-            ps.setInt(1, idFichero);
-            ps.setInt(2, idForo);
-            ps.executeUpdate();
-            ps.close();
-        }
-        catch (SQLException e){
-            e.printStackTrace();
         }
     }
     
@@ -505,5 +493,51 @@ public class FicheroDB {
                 e.printStackTrace();
             }
         }
+    }
+    
+    public static int getFicheroAsociado(int idComentario) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            String query = "SELECT id_fichero FROM fichero_comentario WHERE id_comentario = ?";
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, idComentario);
+            rs = ps.executeQuery();
+
+            // Si se encuentra el fichero en la tabla fichero_relacion, significa que está asociado a un comentario
+            if (rs.next()) {
+                return rs.getInt("id_fichero");
+            } else {
+                return -1; // Si no se encuentra asociado a un comentario, devuelve -1
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                pool.freeConnection(connection);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    
+    private static Fichero setId_relacion(Fichero fichero, ResultSet rs) throws SQLException{
+        try {
+            fichero.setId_foro(rs.getInt("id_foro"));
+        }
+        catch (SQLException e){
+            fichero.setId_comentario(rs.getInt("id_comentario"));
+        }
+        return fichero;
     }
 }

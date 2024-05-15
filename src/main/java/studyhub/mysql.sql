@@ -4,7 +4,6 @@ USE studyhub;
 DROP TABLE IF EXISTS votos_comentario;
 DROP TABLE IF EXISTS fichero_foro;
 DROP TABLE IF EXISTS fichero_comentario;
-DROP TABLE IF EXISTS comentario_fichero;
 DROP TABLE IF EXISTS comentario;
 DROP TABLE IF EXISTS fichero;
 DROP TABLE IF EXISTS rol;
@@ -56,24 +55,10 @@ CREATE TABLE tema (
     titulo VARCHAR(50),
     descripcion VARCHAR(1000),
     fecha_publicacion TIMESTAMP,
-    likes INT,
-    dislikes INT,
     nickname VARCHAR(50),
     id_foro INT,
-    CHECK (likes >= 0),
-    CHECK (dislikes >= 0),
     FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE,
     FOREIGN KEY (id_foro) REFERENCES foro(id_foro) ON DELETE CASCADE
-);
-
-CREATE TABLE fichero (
-    id_fichero INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(50),
-    tipo VARCHAR(50),
-    file MEDIUMBLOB,
-    fecha_publicacion TIMESTAMP,
-    nickname VARCHAR(50),
-    FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE
 );
 
 CREATE TABLE comentario (
@@ -86,29 +71,30 @@ CREATE TABLE comentario (
     FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE
 );
 
-CREATE TABLE comentario_fichero (
-    id_comentario INT,
-    id_fichero INT,
-    PRIMARY KEY (id_comentario),
-    FOREIGN KEY (id_comentario) REFERENCES comentario(id_comentario) ON DELETE CASCADE,
-    FOREIGN KEY (id_fichero) REFERENCES fichero(id_fichero) ON DELETE CASCADE
-);
-
 CREATE TABLE fichero_foro (
-    id_fichero INT,
+    id_fichero INT AUTO_INCREMENT PRIMARY KEY,
     id_foro INT,
-    PRIMARY KEY (id_fichero),
+    nombre VARCHAR(50),
+    tipo VARCHAR(50),
+    file MEDIUMBLOB,
+    fecha_publicacion TIMESTAMP,
+    nickname VARCHAR(50),
     FOREIGN KEY (id_foro) REFERENCES foro(id_foro) ON DELETE CASCADE,
-    FOREIGN KEY (id_fichero) REFERENCES fichero(id_fichero) ON DELETE CASCADE
+    FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE
 );
 
 CREATE TABLE fichero_comentario (
-    id_fichero INT,
+    id_fichero INT AUTO_INCREMENT PRIMARY KEY,
     id_comentario INT,
-    PRIMARY KEY (id_fichero),
+    nombre VARCHAR(50),
+    tipo VARCHAR(50),
+    file MEDIUMBLOB,
+    fecha_publicacion TIMESTAMP,
+    nickname VARCHAR(50),
     FOREIGN KEY (id_comentario) REFERENCES comentario(id_comentario) ON DELETE CASCADE,
-    FOREIGN KEY (id_fichero) REFERENCES fichero(id_fichero) ON DELETE CASCADE
+    FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE
 );
+
 
 CREATE TABLE votos_comentario (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -119,7 +105,6 @@ CREATE TABLE votos_comentario (
     FOREIGN KEY (nickname) REFERENCES usuario(nickname) ON DELETE CASCADE,
     FOREIGN KEY (id_comentario) REFERENCES comentario(id_comentario) ON DELETE CASCADE
 );
-
 
 INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('javivu', '12345', 'Javier', 'Garcia Gonzalez', 'javiergarciaglz16@gmail.com', '1998-12-16', '2020-12-16');
 INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('joselito12', 'pedro12', 'Jose', 'Calderón Esparza', 'jose123@gmail.com', '2000-03-01', '2022-12-16');
@@ -155,10 +140,10 @@ INSERT INTO rol (nickname, email, rol) VALUES ('mod', 'mod@gmail.com', 'moderado
 
 
 
-INSERT INTO tema (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es un algoritmo?', 'Explicación de lo que es un algoritmo y su importancia en la programación.', '2024-03-12 12:13:21', 0, 0, 'javivu', 1);
-INSERT INTO tema (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es un bucle?', 'Explicación de lo que es un bucle y su importancia en la programación.', '2024-02-14 23:40:21', 0, 0, 'joselito12', 1);
-INSERT INTO tema (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es una variable?', 'Explicación de lo que es una variable y su importancia en la programación.', '2024-03-26 10:30:00', 0, 0, 'therealpepe', 1);
-INSERT INTO tema (titulo, descripcion, fecha_publicacion, likes, dislikes, nickname, id_foro) VALUES ('¿Qué es una función?', 'Explicación de lo que es una función y su importancia en la programación.', '2024-03-26 19:30:01', 0, 0, 'TheMarias', 1);
+INSERT INTO tema (titulo, descripcion, fecha_publicacion, nickname, id_foro) VALUES ('¿Qué es un algoritmo?', 'Explicación de lo que es un algoritmo y su importancia en la programación.', '2024-03-12 12:13:21', 'javivu', 1);
+INSERT INTO tema (titulo, descripcion, fecha_publicacion, nickname, id_foro) VALUES ('¿Qué es un bucle?', 'Explicación de lo que es un bucle y su importancia en la programación.', '2024-02-14 23:40:21', 'joselito12', 1);
+INSERT INTO tema (titulo, descripcion, fecha_publicacion, nickname, id_foro) VALUES ('¿Qué es una variable?', 'Explicación de lo que es una variable y su importancia en la programación.', '2024-03-26 10:30:00', 'therealpepe', 1);
+INSERT INTO tema (titulo, descripcion, fecha_publicacion, nickname, id_foro) VALUES ('¿Qué es una función?', 'Explicación de lo que es una función y su importancia en la programación.', '2024-03-26 19:30:01', 'TheMarias', 1);
 
 INSERT INTO comentario (texto, fecha_creacion, id_tema, nickname) VALUES ('Muy buena explicación, gracias!', '2022-01-01 21:37:09', 1, 'javivu');
 INSERT INTO comentario (texto, fecha_creacion, id_tema, nickname) VALUES ('No entiendo muy bien el concepto, ¿podrías explicarlo de otra forma?', '2022-01-01 00:01:46', 1, 'joselito12');

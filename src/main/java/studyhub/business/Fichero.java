@@ -19,8 +19,8 @@ public class Fichero implements Serializable{
     private String tipo;
     private LocalDateTime fecha_publicacion;
     private String nickname;
-    private int id_foro;
-    private int id_comentario;
+    private int id_foro=-1;
+    private int id_comentario=-1;
     
     public Fichero() {
         this.nombre = "";
@@ -33,8 +33,6 @@ public class Fichero implements Serializable{
         this.nombre = "";
         this.tipo = "";
         this.nickname = "";
-        this.id_foro=FicheroDB.getForoAsociado(id_fichero);
-        this.id_comentario=FicheroDB.getComentarioAsociado(id_fichero);
     }
 
     public int getId_fichero() {
@@ -43,8 +41,6 @@ public class Fichero implements Serializable{
 
     public void setId_fichero(int id_fichero) {
         this.id_fichero = id_fichero;
-        this.id_foro=FicheroDB.getForoAsociado(id_fichero);
-        this.id_comentario=FicheroDB.getComentarioAsociado(id_fichero);
     }
 
     public String getNombre() {

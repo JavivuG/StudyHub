@@ -64,7 +64,7 @@ public class InsertaComentario extends HttpServlet {
             // Añadir fichero adjunto si existe
             if (comentario.getId_fichero()!=-1){
                 htmlBuilder.append("<div class=\"fichero-adjunto\">");
-                htmlBuilder.append("<a href=\"downloadServlet?file=").append(comentario.getId_fichero()).append("\"><img src=\"images/download.svg\" class=\"attachment-icon\"/></a>");
+                htmlBuilder.append("<a href=\"downloadServlet?idFichero=").append(comentario.getId_fichero()).append("&idComentario=").append(comentario.getId_comentario()).append("\"><img src=\"images/download.svg\" class=\"attachment-icon\"/></a>");
                 htmlBuilder.append("<p>").append(comentario.getNombreFichero()).append("</p>");
                 htmlBuilder.append("</div>");
             }

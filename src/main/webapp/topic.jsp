@@ -217,7 +217,7 @@
                                 
                                 <% if (comentarioActual.getId_fichero()!=-1) {%>
                                     <div class="fichero-adjunto">
-                                        <a href="downloadServlet?file=<%= comentarioActual.getId_fichero()%>"><img src="images/download.svg" class="attachment-icon"/></a><p><%= comentarioActual.getNombreFichero()%></p>
+                                        <a href="downloadServlet?idFichero=<%= comentarioActual.getId_fichero()%>&idComentario=<%=comentarioActual.getId_comentario()%>"><img src="images/download.svg" class="attachment-icon"/></a><p><%= comentarioActual.getNombreFichero()%></p>
                                     </div>
                                 <%} %>
                                 <div class="reacciones">
