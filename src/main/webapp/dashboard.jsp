@@ -147,8 +147,6 @@
                             
                         </div>
 
-                           
-
                         <div class="contenedor-view-more">
                             <a href="subjects.jsp" class="view-more"
                                 >Ver más</a
@@ -190,7 +188,7 @@
                         <% 
                          }
                          suma = 0;
-                         for(int i = listaComentarios.size() -1; i > listaComentarios.size() - 5 ; i--){
+                         for(int i = listaComentarios.size() -1; i > listaComentarios.size() - 6 ; i--){
                             while(listaComentarios.get(i+suma).getNickname().equals(UserDB.selectUser(request.getRemoteUser()).getNickname())){
                                 suma--;
                                 if((suma+i) == -1) break;
@@ -214,13 +212,6 @@
                             </div>
                             </a>
                          <%}%>
-                        
-                    
-                    <div class="contenedor-view-more">
-                            <a href="forum.jsp" class="view-more"
-                                >Ver más</a
-                            >
-                        </div>
                 </div>
             </div>
         </div>
