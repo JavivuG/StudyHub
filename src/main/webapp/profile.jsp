@@ -208,7 +208,7 @@
                         </div>
                     </div>
                     <div class="ultimos-mensajes">
-                        <h2>Últimos mensajes</h2>
+                        <h2>Mis últimos mensajes</h2>
                         
                           <%
                         int suma = 0;
@@ -225,7 +225,7 @@
                         int idTemaActual = listaComentarios.get(i+suma).getId_tema();
                         %>
                         <a href="topic.jsp?idForo=<%=listaTemas.get(idTemaActual-1).getId_foro()%>&idTema=<%= idTemaActual %>">
-                        <div class="mensaje-box">
+                        <div class="mensaje-box"> 
                             <div class="contribuidas-titulo">
                                  Foro <%= listaAsignaturas.get(listaTemas.get(idTemaActual-1).getId_foro()-1).getNombre() %>
                             </div>
