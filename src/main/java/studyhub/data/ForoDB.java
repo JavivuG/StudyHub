@@ -3,6 +3,8 @@ package studyhub.data;
 import studyhub.business.Asignatura;
 import java.util.ArrayList;
 import java.sql.*;
+import java.util.Comparator;
+import studyhub.business.ContribucionAsignatura;
 
 public class ForoDB {
 
@@ -204,5 +206,60 @@ public class ForoDB {
             e.printStackTrace();
             return null;
         }
+    }
+    
+    public static ArrayList<ContribucionAsignatura> getContribucionAsignaturas(String nickname) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ArrayList<ContribucionAsignatura> lista_contribucion=new ArrayList<>();
+        
+        String query = "SELECT\n" +
+            "f.id_foro,\n" +
+            "f.nombre,\n" +
+            "f.curso,\n" +
+            "(SELECT COUNT(id_fichero) FROM fichero_foro ff WHERE ff.id_foro = f.id_foro AND nickname=?) +\n" +
+            "(SELECT COUNT(id_tema) FROM tema t WHERE t.id_foro = f.id_foro AND nickname=?) +\n" +
+            "(SELECT COUNT(id_comentario) FROM comentario c JOIN tema t ON c.id_tema = t.id_tema WHERE t.id_foro = f.id_foro AND c.nickname = ?) AS contribuciones_usuario,\n" +
+            "(SELECT COUNT(id_fichero) FROM fichero_foro ff WHERE ff.id_foro = f.id_foro) +\n" +
+            "(SELECT COUNT(id_tema) FROM tema t WHERE t.id_foro = f.id_foro) +\n" +
+            "(SELECT COUNT(id_comentario) FROM comentario c JOIN tema t ON c.id_tema = t.id_tema WHERE t.id_foro = f.id_foro) AS total_contribuciones\n" +
+            "FROM foro f\n" +
+            "GROUP BY f.id_foro\n" +
+            "LIMIT 4";
+
+        try {
+            ps = connection.prepareStatement(query);
+                    
+            ps.setString(1, nickname);
+            ps.setString(2, nickname);
+            ps.setString(3, nickname);
+            
+            rs = ps.executeQuery();
+            while(rs.next()){
+                Asignatura asignatura=new Asignatura();
+                ContribucionAsignatura contr=new ContribucionAsignatura();
+
+                asignatura.setID_asignatura(rs.getInt("id_foro"));
+                asignatura.setNombre(rs.getString("nombre"));
+                asignatura.setCurso(rs.getString("curso"));
+                
+                contr.setForo(asignatura);
+                contr.setContr_usuario(rs.getInt("contribuciones_usuario"));
+                contr.setContr_total(rs.getInt("total_contribuciones"));
+                lista_contribucion.add(contr);
+            }
+            
+            rs.close();
+            ps.close();
+            pool.freeConnection(connection);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        
+        return lista_contribucion;
+
     }
 }

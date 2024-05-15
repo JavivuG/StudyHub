@@ -1,5 +1,6 @@
+<%@page import="studyhub.business.ContribucionAsignatura"%>
+<%@page import="studyhub.controlador.UserInfo"%>
 <%@page import="studyhub.business.Asignatura"%>
-<%@page import="studyhub.data.UserDB"%>
 <%@page import="studyhub.business.Tema"%>
 <%@page import="studyhub.business.Comentario"%>
 <%@page import="studyhub.business.Comentario"%>
@@ -109,54 +110,26 @@
                     <div class="asignaturas-contribuidas">
                         <h2>Asignaturas más contribuidas</h2>
                         <div class="asignaturas">
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Matemática Discreta
-                                </div>
-                                <div class="opiniones-bar">
-                                    <div class="progress progress-moved">
-                                        <div class="progress-bar">
-                                            <div class="porcentaje">50%</div>
+                            <% ArrayList<ContribucionAsignatura> contribuciones = (ArrayList <ContribucionAsignatura>) session.getAttribute("contribuciones");
+                            if (contribuciones!=null || contribuciones.isEmpty()){
+                                if (contribuciones.size()>0){ 
+                                    for (int i=0; i<contribuciones.size(); i++){
+                                        ContribucionAsignatura contribucionActual=contribuciones.get(i);%>
+                                        <div class="asignatura-box">
+                                            <div class="contribuidas-titulo">
+                                                <%= contribucionActual.getNombreForo() %>
+                                            </div>
+                                            <div class="opiniones-bar">
+                                                <div class="progress progress-moved">
+                                                    <div class="progress-bar">
+                                                        <div class="porcentaje"><%= contribucionActual.getPorcentajeContribucion() %> %</div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Sistemas Digitales
-                                </div>
-                                <div class="opiniones-bar">
-                                    <div class="progress progress-moved">
-                                        <div class="progress-bar2">
-                                            <div class="porcentaje">30%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Computación Paralela
-                                </div>
-                                <div class="opiniones-bar">
-                                    <div class="progress progress-moved">
-                                        <div class="progress-bar3">
-                                            <div class="porcentaje">10%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="asignatura-box">
-                                <div class="contribuidas-titulo">
-                                    Sistemas Empotrados
-                                </div>
-                                <div class="opiniones-bar">
-                                    <div class="progress progress-moved">
-                                        <div class="progress-bar3">
-                                            <div class="porcentaje">10%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <%      }
+                                }
+                            } %>
                         </div>
                     </div>
                     <div class="ultimas-subidas">
@@ -217,7 +190,7 @@
                         ArrayList<Asignatura> listaAsignaturas = (ArrayList<Asignatura>) session.getAttribute("asignaturas");
                         
                         for(int i = listaComentarios.size() -1 ; i > listaComentarios.size() - 5; i--){
-                        while(!listaComentarios.get(i+suma).getNickname().equals(UserDB.selectUser(request.getRemoteUser()).getNickname())){
+                        while(!listaComentarios.get(i+suma).getNickname().equals(UserInfo.getUserNickname(request))){
                             suma--;
                             if((suma+i) == -1) break;
                          }

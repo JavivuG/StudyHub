@@ -1,4 +1,4 @@
-<%@page import="studyhub.data.UserDB"%>
+<%@page import="studyhub.controlador.UserInfo"%>
 <%@ page language="java" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="studyhub.business.Fichero" %>
@@ -177,7 +177,7 @@
                                     <a href="/downloadServlet?idFichero=<%= ficheroActual.getId_fichero()%>&idComentario=<%=ficheroActual.getId_comentario()%>&idForo=<%=ficheroActual.getId_foro()%>"><img src="images/download.svg" alt="Descargar" class="img-download"/></a>
                                 </div>
                             </div>
-                                <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador") || ficheroActual.getNickname().equals(UserDB.selectUser(request.getRemoteUser()).getNickname())){ %>         
+                                    <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador") || ficheroActual.getNickname().equals(UserInfo.getUserNickname(request))){ %>         
                         <div class="borrar-tema">
                                 <button class="borrar-button" id="delete-button" data-info="files" data-url="/DeleteFile?idFichero=<%= ficheroActual.getId_fichero()%>&idForo=<%= ficheroActual.getId_foro()%>&idComentario=<%= ficheroActual.getId_comentario()%>&page=my_files">
                                     <i class="fa-solid fa-trash-can"></i>
