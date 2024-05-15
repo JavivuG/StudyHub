@@ -1,3 +1,6 @@
+<%@page import="studyhub.business.Tema"%>
+<%@page import="studyhub.data.UserDB"%>
+<%@page import="studyhub.business.Comentario"%>
 <%@ page language="java" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="studyhub.business.Asignatura" %>
@@ -155,109 +158,63 @@
                 </div>
 
                 <!-- foro  -->
-
-                <div class="container-foro">
+                  <div class="container-foro">
                     <div class="encabezado-foro">
                         <i class="fa-solid fa-comments"></i>
-                        <h3>Foro</h3>
+                        <h3>Notificaciones</h3>
                     </div>
-
-                    <div class="mensajes-foro">
+                        <%
+                        int suma = 0;
+                        ArrayList<Comentario> listaComentarios = (ArrayList<Comentario>) session.getAttribute("comentarios");
+                        ArrayList<Tema> listaTemas = (ArrayList<Tema>) session.getAttribute("temas");
+                        
+                        for(int i = listaComentarios.size() -1 ; i > listaComentarios.size() - 5; i--){
+                        while(!listaComentarios.get(i+suma).getNickname().equals(UserDB.selectUser(request.getRemoteUser()).getNickname())){
+                            suma--;
+                            if((suma+i) == -1) break;
+                         }
+                        if((suma+i)== -1) break; 
+                        int idTemaActual = listaComentarios.get(i+suma).getId_tema();
+                        %>
+                        <a href="topic.jsp?idForo=<%=listaTemas.get(idTemaActual-1).getId_foro()%>&idTema=<%= idTemaActual %>">
                         <div class="mensaje-box">
                             <div class="contribuidas-titulo">
-                                Foro Matemáticas
+                                Foro <%= listaAsignaturas.get(listaTemas.get(idTemaActual-1).getId_foro()-1).getNombre() %>
                             </div>
                             <div class="mensaje">
-                                Has comentado: "No entiendo el ejercicio 3"
+                                Has comentado: <%= listaComentarios.get(i+suma).getTexto()%>
                             </div>
                         </div>
+                        </a>
+                        
+                        <% 
+                         }
+                         suma = 0;
+                         for(int i = listaComentarios.size() -1; i > listaComentarios.size() - 5 ; i--){
+                            while(listaComentarios.get(i+suma).getNickname().equals(UserDB.selectUser(request.getRemoteUser()).getNickname())){
+                                suma--;
+                                if((suma+i) == -1) break;
+                             }
+                            if((suma+i)== -1) break;  
+                            int idTemaActual = listaComentarios.get(i+suma).getId_tema();
+                            %>
+                            <a href="topic.jsp?idForo=<%=listaTemas.get(idTemaActual-1).getId_foro()%>&idTema=<%= idTemaActual %>">
+                               <div class="mensaje-box-persona">
+                                <div class="foto-perfil">
+                                    <img src="images/perfil_mensajes.svg"
+                                    alt=Busqueda" title="Busqueda"/>
+                                </div>
+                                <div class="persona-contribuidas-titulo">
+                                    <span><%=listaComentarios.get(i+suma).getNickname() %></span>
 
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">Foro Física</div>
-                            <div class="mensaje">
-                                Has comentado: "¿Alguien tiene los apuntes de la
-                                última clase?"
-                            </div>
-                        </div>
-
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">
-                                Foro Sistemas Empotrados
-                            </div>
-                            <div class="mensaje">
-                                Has respondido: "La respuesta correcta del
-                                ejercicio 2 es 3"
-                            </div>
-                        </div>
-
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">
-                                Foro Servicios y Sistemas Web
-                            </div>
-                            <div class="mensaje">
-                                Has comentado: "No entiendo los ficheros XML."
-                            </div>
-                        </div>
-
-                        <div class="mensaje-box-persona">
-                            <div class="foto-perfil">
-                                <img src="images/perfil_mensajes.svg"
-                                alt=Busqueda" title="Busqueda"/>
-                            </div>
-                            <div class="persona-contribuidas-titulo">
-                                <span>Roberro</span>
-
-                                <div class="mensaje">
-                                    "¿No tendrás más apuntes no?"
+                                    <div class="mensaje">
+                                        <%=listaComentarios.get(i+suma).getTexto()%>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="mensaje-box-persona">
-                            <div class="foto-perfil">
-                                <img src="images/perfil_mensajes.svg"
-                                alt=Busqueda" title="Busqueda"/>
-                            </div>
-                            <div class="persona-contribuidas-titulo">
-                                <span>El bicho de los apuntes</span>
-
-                                <div class="mensaje">
-                                    "Esto te ayudará con tu examens de mañana
-                                    ..."
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mensaje-box-persona">
-                            <div class="foto-perfil">
-                                <img src="images/perfil_mensajes.svg"
-                                alt=Busqueda" title="Busqueda"/>
-                            </div>
-                            <div class="persona-contribuidas-titulo">
-                                <span>El bicho de los apuntes</span>
-
-                                <div class="mensaje">
-                                    "Una pequeña guía para tu código ... [~]
-                                    Imagen"
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="mensaje-box-persona">
-                            <div class="foto-perfil">
-                                <img src="images/perfil_mensajes.svg"
-                                alt=Busqueda" title="Busqueda"/>
-                            </div>
-                            <div class="persona-contribuidas-titulo">
-                                <span>Ratones</span>
-
-                                <div class="mensaje">
-                                    "Toma presentaciones sobre firmware de
-                                    mouses inalámbricos"
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            </a>
+                         <%}%>
+                        
                     
                     <div class="contenedor-view-more">
                             <a href="forum.jsp" class="view-more"
