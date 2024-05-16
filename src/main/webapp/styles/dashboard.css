@@ -1,7 +1,6 @@
-f.container-eslogan {
+.container-eslogan {
     text-align: center;
-
-    font-size: 32px;
+    font-size: 20px;
     font-weight: bolder;
     align-items: center;
 }
