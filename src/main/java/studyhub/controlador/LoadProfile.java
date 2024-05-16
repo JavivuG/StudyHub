@@ -60,7 +60,7 @@ public class LoadProfile extends HttpServlet {
         ArrayList<ContribucionAsignatura> contribuciones_usuario=ForoDB.getContribucionAsignaturas(usuario.getNickname());
 
         contribuciones_usuario.sort(comparadorPorcentajeContribucion);
-
+        
         Iterator<ContribucionAsignatura> iterador = contribuciones_usuario.iterator();
         while (iterador.hasNext()) {
             ContribucionAsignatura contribucionActual = iterador.next();
@@ -68,8 +68,15 @@ public class LoadProfile extends HttpServlet {
                 iterador.remove();
             }
         }
+        
+        ArrayList<ContribucionAsignatura> contr_usuario_def=new ArrayList<>();
+        int iteracion=(contribuciones_usuario.size()<4) ? contribuciones_usuario.size() : 4;
+        for(int i=0; i<iteracion; i++){
+            contr_usuario_def.add(contribuciones_usuario.get(i));
+        }
+        
 
-        session.setAttribute("contribuciones", contribuciones_usuario);
+        session.setAttribute("contribuciones", contr_usuario_def);
         
           ArrayList<Asignatura> asignaturas=null;
         asignaturas=ForoDB.getAsignaturas(MAX_ASIGNATURAS);

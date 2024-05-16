@@ -226,8 +226,7 @@ public class ForoDB {
             "(SELECT COUNT(id_tema) FROM tema t WHERE t.id_foro = f.id_foro) +\n" +
             "(SELECT COUNT(id_comentario) FROM comentario c JOIN tema t ON c.id_tema = t.id_tema WHERE t.id_foro = f.id_foro) AS total_contribuciones\n" +
             "FROM foro f\n" +
-            "GROUP BY f.id_foro\n" +
-            "LIMIT 4";
+            "GROUP BY f.id_foro";
 
         try {
             ps = connection.prepareStatement(query);

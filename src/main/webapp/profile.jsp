@@ -110,12 +110,12 @@
                     <div class="asignaturas-contribuidas">
                         <h2>Asignaturas más contribuidas</h2>
                         <% ArrayList<ContribucionAsignatura> contribuciones = (ArrayList <ContribucionAsignatura>) session.getAttribute("contribuciones"); %>
-                        <div class="asignaturas<%if (contribuciones!=null || contribuciones.isEmpty()) {%> sin-elementos<% } %>">
+                        <div class="asignaturas<%if (contribuciones==null || contribuciones.isEmpty()) {%> sin-elementos<% } %>">
                             <% 
                                 if (contribuciones.size()>0){ 
                                     for (int i=0; i<contribuciones.size(); i++){
                                         ContribucionAsignatura contribucionActual=contribuciones.get(i);%>
-                                        <div class="asignatura-box">
+                                        <a class="asignatura-box" href="forum.jsp?idForo=<%=contribucionActual.getForo().getID_asignatura()%>">
                                             <div class="contribuidas-titulo">
                                                 <%= contribucionActual.getNombreForo() %>
                                             </div>
@@ -127,7 +127,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                          
+                                        </a>
                             <%      }
                                 } 
                                 else { %>
@@ -145,7 +146,7 @@
                                 if (ficherosUsuario.size()>0){
                                 for (int i=0; i<ficherosUsuario.size(); i++){ 
                                     ficheroActual=ficherosUsuario.get(i); %>
-                                    <div class="asignatura-box">
+                                    <div class="ultimas-subidas-container">
                                         <div class="contribuidas-titulo">
                                             <% if (ficheroActual.getNombre().length()>19){ %>
                                                 <%= ficheroActual.getNombre().substring(0, 19   ) %>...
@@ -163,7 +164,7 @@
                                         </div>
                                     </div>
                                 <% } %>
-                                <div class="asignatura-box">
+                                <div class="ultimas-subidas-container">
                                         <div class="contribuidas-titulo">
                                             Ver mis ficheros
                                         </div>
@@ -206,7 +207,13 @@
                                  Foro <%= listaAsignaturas.get(listaTemas.get(idTemaActual-1).getId_foro()-1).getNombre() %>
                             </div>
                             <div class="mensaje">
-                                Has comentado:  <%= listaComentarios.get(i+suma).getTexto()%>
+                                <% String texto=listaComentarios.get(i+suma).getTexto();
+                                if (texto.equals("")){ %>
+                                    Has compartido un fichero
+                                <% }
+                                else { %>
+                                    Has comentado: <%= texto %>
+                                <% } %>
                             </div>
                         </div>
                             

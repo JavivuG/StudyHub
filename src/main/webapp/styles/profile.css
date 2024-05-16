@@ -21,17 +21,18 @@
 }
 
 .asignatura-box,
-.mensaje-box {
+.mensaje-box, .ultimas-subidas-container {
     border-radius: 16px;
     overflow: hidden;
     margin: 10px;
     background-color: #d9d9d9;
     color: black;
     width: 93%;
+    transition: background-color 0.3s ease;
 }
 
 .contribuidas-titulo {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     margin-top: 10px;
     text-align: center;
@@ -200,6 +201,6 @@
     margin-bottom: 20px;
     font-weight: bold;
 }
-.mensaje-box:hover{
+.asignatura-box:hover, .mensaje-box:hover{
     background-color: #c8b5b2;
 }

@@ -182,7 +182,13 @@
                                 Foro <%= listaAsignaturas.get(listaTemas.get(idTemaActual-1).getId_foro()-1).getNombre() %>
                             </div>
                             <div class="mensaje">
-                                Has comentado: <%= listaComentarios.get(i+suma).getTexto()%>
+                                <% String texto=listaComentarios.get(i+suma).getTexto();
+                                if (texto.equals("")){ %>
+                                    Has compartido un fichero
+                                <% }
+                                else { %>
+                                    Has comentado: <%= texto %>
+                                <% } %>
                             </div>
                         </div>
                         </a>
