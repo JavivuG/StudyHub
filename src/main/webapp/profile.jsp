@@ -1,3 +1,4 @@
+<%@page import="studyhub.business.AportacionUsuario"%>
 <%@page import="studyhub.business.ContribucionAsignatura"%>
 <%@page import="studyhub.controlador.UserInfo"%>
 <%@page import="studyhub.business.Asignatura"%>
@@ -110,13 +111,13 @@
                     <div class="asignaturas-contribuidas">
                         <h2>Asignaturas más contribuidas</h2>
                         <% ArrayList<ContribucionAsignatura> contribuciones = (ArrayList <ContribucionAsignatura>) session.getAttribute("contribuciones"); %>
-                        <div class="asignaturas<%if (contribuciones==null || contribuciones.isEmpty()) {%> sin-elementos<% } %>">
+                        <div class="asignaturas<%if (contribuciones==null || contribuciones.isEmpty() || contribuciones.size()==1) {%> sin-elementos<% } %>">
                             <% 
                                 if (contribuciones.size()>0){ 
                                     for (int i=0; i<contribuciones.size(); i++){
                                         ContribucionAsignatura contribucionActual=contribuciones.get(i);%>
                                         <a class="asignatura-box" href="forum.jsp?idForo=<%=contribucionActual.getForo().getID_asignatura()%>">
-                                            <div class="contribuidas-titulo">
+                                            <div class="contribuidas">
                                                 <%= contribucionActual.getNombreForo() %>
                                             </div>
                                             <div class="opiniones-bar">
@@ -192,6 +193,7 @@
                         ArrayList<Tema> listaTemas = (ArrayList<Tema>) session.getAttribute("temas");
                         ArrayList<Asignatura> listaAsignaturas = (ArrayList<Asignatura>) session.getAttribute("asignaturas");
                         
+                        if (listaComentarios.size()>4){
                         for(int i = listaComentarios.size() -1 ; i > listaComentarios.size() - 5; i--){
                         if((suma+i) == -1) break;
                         while(!listaComentarios.get(i+suma).getNickname().equals(UserInfo.getUserNickname(request))){
@@ -218,34 +220,28 @@
                         </div>
                             
                         </a>
-                        <%}%>
+                        <%}
+                        } else { %>
+                            <p class="mensaje-vacio-profile">No has hecho ningun comentario<p> 
+                        <% } %>
                     </div>
                     <div class="podio">
                         <h2>Posición en el podio</h2>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">1 - user123</div>
-                            <div class="mensaje">
-                                Ha subido 10 archivos y ha comentado 5 veces
-                            </div>
-                        </div>
-                        <div class="mensaje-box top-personal">
-                            <div class="contribuidas-titulo">2 - albepe</div>
-                            <div class="mensaje">
-                                Has subido 8 archivos y has comentado 3 veces
-                            </div>
-                        </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">3 - user456</div>
-                            <div class="mensaje">
-                                Ha subido 5 archivos y ha comentado 2 veces
-                            </div>
-                        </div>
-                        <div class="mensaje-box">
-                            <div class="contribuidas-titulo">4 - user789</div>
-                            <div class="mensaje">
-                                Ha subido 3 archivos y ha comentado 1 vez
-                            </div>
-                        </div>
+                        <% ArrayList<AportacionUsuario> top_usuario=(ArrayList<AportacionUsuario>) session.getAttribute("top_usuarios");                        
+                        if (top_usuario.size()>0){ 
+                            for (int i=0; i<top_usuario.size(); i++){ %>
+                                <% AportacionUsuario top_usuario_actual=top_usuario.get(i); %>
+                                <div class="mensaje-box <% if (top_usuario_actual.getNickname().equals(UserInfo.getUserNickname(request))) { %>top-personal<% } %>">
+                                    <div class="contribuidas-titulo"><%= i+1 %> - <%= top_usuario_actual.getNickname()%></div>
+                                    <div class="mensaje">
+                                        <%= top_usuario_actual.getMensaje(UserInfo.getUserNickname(request)) %>
+                                    </div>
+                                </div>
+                        <%  }
+                        } 
+                        else { %>
+                            <p class="mensaje-vacio-profile">No hay usuarios en el top<p>
+                        <% } %>
                     </div>
                 </div>
             </div>
