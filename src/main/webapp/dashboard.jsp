@@ -85,30 +85,7 @@
             </div>
         </div>
         <div class="container">
-            <!-- 
-            <div class="container_busqueda">
-                <div class="encabezado-busqueda">
-                    <img
-                        src="images/lupa.svg"
-                        alt="Busqueda"
-                        title="Busqueda"
-                    />
-                    <h3>Búsqueda</h3>
-                </div>
-
-                <div class="search-bar">
-                    <input
-                        type="text"
-                        id="search"
-                        name="search"
-                        placeholder="Buscar..."
-                    />
-                    <button class="boton">
-                        <p class="texto-btn">Buscar</p>
-                    </button>
-                </div>
-            </div> 
-            -->
+            
             <div class="container-principal">
                 <div class="left-container">
                     <div class="taquilla">

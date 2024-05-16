@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import studyhub.business.AportacionUsuario;
 import studyhub.business.Comentario;
 import studyhub.business.ContribucionAsignatura;
 import studyhub.business.Fichero;
@@ -87,6 +88,32 @@ public class LoadProfile extends HttpServlet {
         comentarios=ComentarioDB.getComents();
         session.setAttribute("comentarios", comentarios);
         
+        ArrayList<AportacionUsuario> top_usuarios=UserDB.getTopUsers();
+        Comparator<AportacionUsuario> comparadorTop = new Comparator<AportacionUsuario>() {
+            @Override
+            public int compare(AportacionUsuario user_top1, AportacionUsuario user_top2) {
+                // Compara los porcentajes de contribución de forma descendente
+                return Integer.compare(user_top2.getArchivos_subidos()+user_top2.getComentarios(), user_top1.getArchivos_subidos()+user_top1.getComentarios());
+            }
+        };
+        
+        top_usuarios.sort(comparadorTop);
+        
+        Iterator<AportacionUsuario> iterador_top = top_usuarios.iterator();
+        while (iterador_top.hasNext()) {
+            AportacionUsuario user_top_actual = iterador_top.next();
+            if ((user_top_actual.getComentarios()+user_top_actual.getArchivos_subidos())== 0) {
+                iterador_top.remove();
+            }
+        }
+        
+        ArrayList<AportacionUsuario> top_usuarios_def=new ArrayList<>();
+        iteracion=(top_usuarios.size()<4) ? top_usuarios.size() : 4;
+        for(int i=0; i<iteracion; i++){
+            top_usuarios_def.add(top_usuarios.get(i));
+        }
+        
+        session.setAttribute("top_usuarios", top_usuarios_def);
         
         ArrayList<Tema> temas= null;
         temas=TemaDB.getTodosTemas();
