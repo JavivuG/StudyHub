@@ -109,9 +109,9 @@
                 <div class="estadisticas">
                     <div class="asignaturas-contribuidas">
                         <h2>Asignaturas más contribuidas</h2>
-                        <div class="asignaturas">
-                            <% ArrayList<ContribucionAsignatura> contribuciones = (ArrayList <ContribucionAsignatura>) session.getAttribute("contribuciones");
-                            if (contribuciones!=null || contribuciones.isEmpty()){
+                        <% ArrayList<ContribucionAsignatura> contribuciones = (ArrayList <ContribucionAsignatura>) session.getAttribute("contribuciones"); %>
+                        <div class="asignaturas<%if (contribuciones!=null || contribuciones.isEmpty()) {%> sin-elementos<% } %>">
+                            <% 
                                 if (contribuciones.size()>0){ 
                                     for (int i=0; i<contribuciones.size(); i++){
                                         ContribucionAsignatura contribucionActual=contribuciones.get(i);%>
@@ -121,15 +121,18 @@
                                             </div>
                                             <div class="opiniones-bar">
                                                 <div class="progress progress-moved">
-                                                    <div class="progress-bar">
-                                                        <div class="porcentaje"><%= contribucionActual.getPorcentajeContribucion() %> %</div>
+                                                    <% int porcentaje=contribucionActual.getPorcentajeContribucion(); %>
+                                                    <div class="progress-bar" style="--progress-width: <%= porcentaje %>%;">
+                                                        <div class="porcentaje"><%= porcentaje %> %</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                             <%      }
-                                }
-                            } %>
+                                } 
+                                else { %>
+                                    <p class="mensaje-vacio-profile">No has aportado contenido en StudyHub</p>
+                                <% } %>
                         </div>
                     </div>
                     <div class="ultimas-subidas">
@@ -175,8 +178,7 @@
                                 <% }
                                 else { %>
                                     <p class="mensaje-vacio-profile">No has subido ningun fichero</p>
-                                <% }
-                                session.removeAttribute("ficheros_usuario"); %>
+                                <% } %>
                         
                         </div>
                     </div>

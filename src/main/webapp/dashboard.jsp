@@ -60,11 +60,7 @@
                         </svg>
                     </a>
 
-                    <div class="container-eslogan">
-                        <div class="eslogan">
-                            <p>Tu sitio, tus apuntes</p>
-                        </div>
-                    </div>
+
 
                     <div class="perfil-menu">
                         <a href="profile.jsp">
@@ -83,6 +79,11 @@
         </header>
 
         <!-- Conetenedor de Taquilla, Busqueda y Foros --->
+        <div class="container-eslogan">
+            <div class="eslogan">
+                <h2>Tu sitio, tus apuntes</h2>
+            </div>
+        </div>
         <div class="container">
             <!-- 
             <div class="container_busqueda">

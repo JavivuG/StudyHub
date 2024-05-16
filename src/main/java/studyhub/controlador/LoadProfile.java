@@ -8,6 +8,7 @@ import studyhub.business.Asignatura;
 import java.util.ArrayList;
 import java.io.IOException;
 import java.util.Comparator;
+import java.util.Iterator;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -57,12 +58,17 @@ public class LoadProfile extends HttpServlet {
         };
         
         ArrayList<ContribucionAsignatura> contribuciones_usuario=ForoDB.getContribucionAsignaturas(usuario.getNickname());
+
         contribuciones_usuario.sort(comparadorPorcentajeContribucion);
-        for (int i=0; i<contribuciones_usuario.size(); i++) {
-            if (contribuciones_usuario.get(i).getPorcentajeContribucion()==0){
-                contribuciones_usuario.remove(i);
+
+        Iterator<ContribucionAsignatura> iterador = contribuciones_usuario.iterator();
+        while (iterador.hasNext()) {
+            ContribucionAsignatura contribucionActual = iterador.next();
+            if (contribucionActual.getContr_total() == 0 || contribucionActual.getContr_usuario() == 0) {
+                iterador.remove();
             }
         }
+
         session.setAttribute("contribuciones", contribuciones_usuario);
         
           ArrayList<Asignatura> asignaturas=null;

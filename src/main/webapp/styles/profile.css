@@ -46,10 +46,7 @@
         0 1px rgba(255, 255, 255, 0.08);
 }
 
-.progress-bar,
-.progress-bar2,
-.progress-bar3,
-.progress-bar4 {
+.progress-bar {
     height: 18px;
     border-radius: 30px;
     background-image: linear-gradient(
@@ -57,66 +54,44 @@
         rgba(255, 255, 255, 0.3),
         rgba(255, 255, 255, 0.05)
     );
+    overflow: hidden;
+    position: relative;
 }
 
-.progress-moved .progress-bar {
-    width: 50%;
+.progress-bar:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: var(--progress-width);
+    height: 100%;
     background-color: #2a0316;
-    animation: progressanimation50 6s;
+        background-image: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0.05)
+    );
+    border-radius: 30px;
+    animation: fillProgress 2s forwards;
 }
 
-.progress-moved .progress-bar2 {
-    width: 30%;
-    background-color: #2a0316;
-    animation: progressanimation30 6s;
-}
-
-.progress-moved .progress-bar3 {
-    width: 10%;
-    background-color: #2a0316;
-    animation: progressanimation10 6s;
-}
-
-@keyframes progressanimation30 {
-    0% {
-        width: 0%;
-        background-color: #323232;
+@keyframes fillProgress {
+    from {
+        left: -100%;
     }
-
-    30% {
-        width: 30%;
-        background-color: #2a0316;
+    to {
+        left: 0;
     }
 }
 
-@keyframes progressanimation50 {
-    0% {
-        width: 0%;
-        background-color: #323232;
-    }
-
-    50% {
-        width: 50%;
-        background-color: #2a0316;
-    }
-}
-
-@keyframes progressanimation10 {
-    0% {
-        width: 0%;
-        background-color: #323232;
-    }
-
-    10% {
-        width: 10%;
-        background-color: #2a0316;
-    }
-}
 
 .porcentaje {
-    text-align: center;
-    color: #d9d9d9;
+    position: absolute;
     font-size: 12px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* Ajusta el color del texto según tu diseño */
 }
 
 .flex {
@@ -150,7 +125,7 @@
 }
 
 
-.ultimas-subidas-box.sin-elementos {
+.sin-elementos {
     grid-template-columns: 1fr;
     align-items: center;
     text-align: center;
