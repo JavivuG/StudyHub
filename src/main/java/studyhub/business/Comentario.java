@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import studyhub.data.FicheroDB;
+import studyhub.data.VotoComentarioDB;
 
 /**
  *
@@ -117,6 +118,10 @@ public class Comentario implements Serializable{
 
     public int getId_fichero() {
         return FicheroDB.getFicheroAsociado(id_comentario);
+    }
+    
+    public int loggedUserHasLiked(String user, int commentId) {
+        return VotoComentarioDB.loggedUserHasLiked(user, commentId);
     }
     
     public String getNombreFichero(){
