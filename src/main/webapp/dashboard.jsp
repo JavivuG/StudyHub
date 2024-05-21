@@ -70,7 +70,6 @@
                                     alt="Perfil"
                                     title="Perfil"
                                 />
-                                <label class="texto-perfilD"> Perfil </label>
                             </div>
                         </a>
                     </div>
