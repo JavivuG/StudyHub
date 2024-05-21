@@ -31,7 +31,8 @@ public class VoteCommentServlet extends HttpServlet {
         if (res > 0) {
             int likes = VotoComentarioDB.getLikes(idComentario);
             int dislikes = VotoComentarioDB.getDislikes(idComentario);
-            String data = "{\"id\":" + idComentario + ",\"likes\":" + likes + ",\"dislikes\":" + dislikes + "}";
+            int userVote = VotoComentarioDB.loggedUserHasLiked(nickname, Integer.parseInt(idComentario));
+            String data = "{\"id\":" + idComentario + ",\"likes\":" + likes + ",\"dislikes\":" + dislikes + ",\"userVote\":" + userVote + "}";
             PrintWriter out = response.getWriter();
             response.setContentType("application/json; charset=UTF-8;");
             out.println(data);

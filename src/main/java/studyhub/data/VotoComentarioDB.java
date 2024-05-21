@@ -141,4 +141,29 @@ public class VotoComentarioDB {
             return -1;
         }
     }
+    
+     public static int loggedUserHasLiked(String user, int comentarioId) {
+        ConnectionPool pool = ConnectionPool.getInstance();
+        Connection connection = pool.getConnection();
+        PreparedStatement ps;
+        ResultSet rs = null;
+
+        String query = "SELECT * FROM votos_comentario WHERE nickname=? AND id_comentario=?";
+
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, user);
+            ps.setInt(2, comentarioId);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("vote");
+            } else {
+                return 0;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
 }

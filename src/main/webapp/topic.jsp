@@ -223,13 +223,21 @@
                                 <div class="reacciones">
                                     <!-- Like Button -->
                                     <div class="likes">
-                                        <img src="images/like.svg" alt="Me gusta" class="like vote" data-like="1" data-id="<%= comentarioActual.getId_comentario()%>" />
+                                        <% if (comentarioActual.loggedUserHasLiked(UserInfo.getUserNickname(request), comentarioActual.getId_comentario() ) == 1 ) { %>
+                                            <img src="images/like.svg" alt="Me gusta" id="like-<%=comentarioActual.getId_comentario()%>" class="like vote" data-like="1" data-id="<%= comentarioActual.getId_comentario()%>" />
+                                        <% } else { %>
+                                            <img src="images/like-blanco.svg" alt="Me gusta" id="like-<%=comentarioActual.getId_comentario()%>" class="like vote" data-like="1" data-id="<%= comentarioActual.getId_comentario()%>" />
+                                        <% } %>
                                         <p id="likeCount-<%=comentarioActual.getId_comentario()%>"><%= comentarioActual.getLikes()%> likes</p>
                                     </div>
 
                                     <!-- Dislike Button -->
                                     <div class="dislikes">
-                                        <img type="image" src="images/dislike.svg" alt="No me gusta" class="dislike vote" data-like="0" data-id="<%= comentarioActual.getId_comentario()%>" />
+                                        <% if (comentarioActual.loggedUserHasLiked(UserInfo.getUserNickname(request), comentarioActual.getId_comentario() ) == -1 ) { %>
+                                            <img type="image" src="images/dislike.svg" alt="No me gusta" id="dislike-<%=comentarioActual.getId_comentario()%>" class="dislike vote" data-like="0" data-id="<%= comentarioActual.getId_comentario()%>" />
+                                        <% } else { %>
+                                            <img src="images/dislike-blanco.svg" alt="No me gusta" id="dislike-<%=comentarioActual.getId_comentario()%>" class="dislike vote" data-like="0"  data-id="<%= comentarioActual.getId_comentario()%>" />
+                                        <% } %>
                                         <p id="dislikeCount-<%=comentarioActual.getId_comentario()%>"><%= comentarioActual.getDislikes()%> dislikes</p>
                                     </div>
                                 </div>
@@ -320,8 +328,22 @@
                         url: "./VoteComment",
                         data: { like: like, idComentario: commentId },
                         success: function (response) {
+                            console.log(response)
                             document.getElementById("likeCount-" + response.id).innerHTML = response.likes + " likes";
                             document.getElementById("dislikeCount-" + response.id).innerHTML = response.dislikes + " dislikes";
+                            if (response.userVote == 1) {
+                                console.log("Like con color, dislike blanco");
+                                document.getElementById("like-" + response.id).src = "images/like.svg";
+                                document.getElementById("dislike-" + response.id).src = "images/dislike-blanco.svg";
+                            } else if (response.userVote == -1) {
+                                console.log("Like blanco, dislike con color");
+                                document.getElementById("like-" + response.id).src = "images/like-blanco.svg";
+                                document.getElementById("dislike-" + response.id).src = "images/dislike.svg";
+                            } else {
+                                console.log("Like blanco, dislike blanco");
+                                document.getElementById("like-" + response.id).src = "images/like-blanco.svg";
+                                document.getElementById("dislike-" + response.id).src = "images/dislike-blanco.svg";
+                            }
                         }
                     });
                 });
