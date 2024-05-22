@@ -32,6 +32,7 @@
     font-weight: 500;
     color: #1683ff;
     cursor: pointer;
+    text-decoration: underline;
 }
 .drag-area.active {
     border: 2px solid #1683ff;

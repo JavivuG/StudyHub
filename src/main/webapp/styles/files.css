@@ -183,11 +183,10 @@ fich2 h3 {
 }
 
 .sendBtnDisabled {
-    cursor: not-allowed;
-    background-color: #cccccc;
-    color: #666666;
+    display: none;
 }
 .sendBtn {
+    display: inline;
     cursor: pointer;
     background-color: #44ad2f;
     color: white;
