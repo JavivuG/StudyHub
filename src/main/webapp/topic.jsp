@@ -158,7 +158,7 @@
                         <img src="images/arrow.svg" alt="Arrow" id="arrow" />
                     </li>
                     <li>
-                       <span class="items-nav"
+                        <span class="items-nav"
                               <% Asignatura asignatura = (Asignatura) session.getAttribute("asignatura");%>
                               ><a href="forum.jsp?idForo=<%= request.getParameter("idForo")%>"
                             ><%= asignatura.getNombre()%></a
@@ -174,209 +174,267 @@
             </div>
 
             <div class="container">
-                
-                    <div class="tema">
-                        <% Tema tema = (Tema) session.getAttribute("tema");%>
-                        <h2><%= tema.getTitulo()%></h2>
-                        <p>Tema empezado creado por: <span><%= tema.getNickname()%></span></p>
-                        <p class="tema-descripcion">
-                            <%= tema.getDescripcion()%>
-                        </p>
-                    </div>
-                    <div class="comentarios-container">
-                        <h2>Comentarios</h2>
 
-                        <% ArrayList<Comentario> listaComentarios = (ArrayList<Comentario>) session.getAttribute("comentarios");
-                            if (listaComentarios != null && listaComentarios.size() > 0) {
-                                for (int i = 0; i < listaComentarios.size(); i++) {
-                                    Comentario comentarioActual = listaComentarios.get(i); %>
+                <div class="tema">
+                    <% Tema tema = (Tema) session.getAttribute("tema");%>
+                    <h2><%= tema.getTitulo()%></h2>
+                    <p>Tema empezado creado por: <span><%= tema.getNickname()%></span></p>
+                    <p class="tema-descripcion">
+                        <%= tema.getDescripcion()%>
+                    </p>
+                </div>
+                <div class="comentarios-container">
+                    <h2>Comentarios</h2>
 
-                        
-                        <div class="comentario">
-                            <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador") || comentarioActual.getNickname().equals(UserInfo.getUserNickname(request))) {%>
-                            <div class="borrar-wrapper">
-                                <button class="borrar-button" id="delete-button" data-info="comentario" data-url="/DeleteComentario?idForo=<%= tema.getId_foro() %>&idTema=<%=comentarioActual.getId_tema()%>&idComentario=<%= comentarioActual.getId_comentario() %>&page=topic">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </button>
-                            </div>
-                            <% }%>
-                            <div class="datos-comentario">
-                                <div class="autor-comentario">
-                                    <img
-                                        src="images/profile.svg"
-                                        alt="Foto de perfil"
-                                        />
-                                    <div class="user">
-                                        <p><%= comentarioActual.getNickname()%></p>
-                                        <p class="fecha-comentario"><%= comentarioActual.getTiempoPublicado()%></p>
-                                    </div>
-                                </div>
-                                <p>
-                                    <%= comentarioActual.getTexto()%>
-                                </p>
-                                
-                                <% if (comentarioActual.getId_fichero()!=-1) {%>
-                                    <div class="fichero-adjunto">
-                                        <a href="downloadServlet?idFichero=<%= comentarioActual.getId_fichero()%>&idComentario=<%=comentarioActual.getId_comentario()%>"><img src="images/download.svg" class="attachment-icon"/></a><p><%= comentarioActual.getNombreFichero()%></p>
-                                    </div>
-                                <%} %>
-                                <div class="reacciones">
-                                    <!-- Like Button -->
-                                    <div class="likes">
-                                        <% if (comentarioActual.loggedUserHasLiked(UserInfo.getUserNickname(request), comentarioActual.getId_comentario() ) == 1 ) { %>
-                                            <img src="images/like.svg" alt="Me gusta" id="like-<%=comentarioActual.getId_comentario()%>" class="like vote" data-like="1" data-id="<%= comentarioActual.getId_comentario()%>" />
-                                        <% } else { %>
-                                            <img src="images/like-blanco.svg" alt="Me gusta" id="like-<%=comentarioActual.getId_comentario()%>" class="like vote" data-like="1" data-id="<%= comentarioActual.getId_comentario()%>" />
-                                        <% } %>
-                                        <p id="likeCount-<%=comentarioActual.getId_comentario()%>"><%= comentarioActual.getLikes()%> likes</p>
-                                    </div>
+                    <% ArrayList<Comentario> listaComentarios = (ArrayList<Comentario>) session.getAttribute("comentarios");
+                        if (listaComentarios != null && listaComentarios.size() > 0) {
+                            for (int i = 0; i < listaComentarios.size(); i++) {
+                                Comentario comentarioActual = listaComentarios.get(i); %>
 
-                                    <!-- Dislike Button -->
-                                    <div class="dislikes">
-                                        <% if (comentarioActual.loggedUserHasLiked(UserInfo.getUserNickname(request), comentarioActual.getId_comentario() ) == -1 ) { %>
-                                            <img type="image" src="images/dislike.svg" alt="No me gusta" id="dislike-<%=comentarioActual.getId_comentario()%>" class="dislike vote" data-like="0" data-id="<%= comentarioActual.getId_comentario()%>" />
-                                        <% } else { %>
-                                            <img src="images/dislike-blanco.svg" alt="No me gusta" id="dislike-<%=comentarioActual.getId_comentario()%>" class="dislike vote" data-like="0"  data-id="<%= comentarioActual.getId_comentario()%>" />
-                                        <% } %>
-                                        <p id="dislikeCount-<%=comentarioActual.getId_comentario()%>"><%= comentarioActual.getDislikes()%> dislikes</p>
-                                    </div>
-                                </div>
-                            </div>
 
+                    <div class="comentario">
+                        <% if (request.isUserInRole("moderador") || request.isUserInRole("administrador") || comentarioActual.getNickname().equals(UserInfo.getUserNickname(request))) {%>
+                        <div class="borrar-wrapper">
+                            <button class="borrar-button" id="delete-button" data-info="comentario" data-url="/DeleteComentario?idForo=<%= tema.getId_foro()%>&idTema=<%=comentarioActual.getId_tema()%>&idComentario=<%= comentarioActual.getId_comentario()%>&page=topic">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
                         </div>
-                        <% }
-                        } else {%>
-                        <p class="mensaje-vacio">No hay comentarios en este tema</p>
                         <% }%>
+                        <div class="datos-comentario">
+                            <div class="autor-comentario">
+                                <img
+                                    src="images/profile.svg"
+                                    alt="Foto de perfil"
+                                    />
+                                <div class="user">
+                                    <p><%= comentarioActual.getNickname()%></p>
+                                    <p class="fecha-comentario"><%= comentarioActual.getTiempoPublicado()%></p>
+                                </div>
+                            </div>
+                            <p>
+                                <%= comentarioActual.getTexto()%>
+                            </p>
 
-                    </div>    
-                        <form id="chat-envia">
-                        <div class="chat-input">
-                        <input
-                            type="text"
-                            id="chat-input"
-                            name='chat'
-                            placeholder="Envia un mensaje..."
-                            />
-                        </form>
-                        
-                        <a href="upload.jsp?idForo=<%= request.getParameter("idForo")%>&idTema=<%= request.getParameter("idTema")%>" class="chat-upload">
-                            <img src="images/upload.svg" alt="Subir archivo" />
-                        </a> 
-                        
-                        <button id="chat-submit" class="chat-submit">
-                            <img
-                                src="images/send.svg"
-                                alt="Enviar mensaje"
-                                class=""
-                                />
-                        </button>
+                            <% if (comentarioActual.getId_fichero() != -1) {%>
+                            <div class="fichero-adjunto">
+                                <a href="downloadServlet?idFichero=<%= comentarioActual.getId_fichero()%>&idComentario=<%=comentarioActual.getId_comentario()%>"><img src="images/download.svg" class="attachment-icon"/></a><p><%= comentarioActual.getNombreFichero()%></p>
+                            </div>
+                            <%} %>
+                            <div class="reacciones">
+                                <!-- Like Button -->
+                                <div class="likes">
+                                    <% if (comentarioActual.loggedUserHasLiked(UserInfo.getUserNickname(request), comentarioActual.getId_comentario()) == 1) {%>
+                                    <img src="images/like.svg" alt="Me gusta" id="like-<%=comentarioActual.getId_comentario()%>" class="like vote" data-like="1" data-id="<%= comentarioActual.getId_comentario()%>" />
+                                    <% } else {%>
+                                    <img src="images/like-blanco.svg" alt="Me gusta" id="like-<%=comentarioActual.getId_comentario()%>" class="like vote" data-like="1" data-id="<%= comentarioActual.getId_comentario()%>" />
+                                    <% }%>
+                                    <p id="likeCount-<%=comentarioActual.getId_comentario()%>"><%= comentarioActual.getLikes()%> likes</p>
+                                </div>
+
+                                <!-- Dislike Button -->
+                                <div class="dislikes">
+                                    <% if (comentarioActual.loggedUserHasLiked(UserInfo.getUserNickname(request), comentarioActual.getId_comentario()) == -1) {%>
+                                    <img type="image" src="images/dislike.svg" alt="No me gusta" id="dislike-<%=comentarioActual.getId_comentario()%>" class="dislike vote" data-like="0" data-id="<%= comentarioActual.getId_comentario()%>" />
+                                    <% } else {%>
+                                    <img src="images/dislike-blanco.svg" alt="No me gusta" id="dislike-<%=comentarioActual.getId_comentario()%>" class="dislike vote" data-like="0"  data-id="<%= comentarioActual.getId_comentario()%>" />
+                                    <% }%>
+                                    <p id="dislikeCount-<%=comentarioActual.getId_comentario()%>"><%= comentarioActual.getDislikes()%> dislikes</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                
+                    <% }
+                    } else {%>
+                    <p class="mensaje-vacio">No hay comentarios en este tema</p>
+                    <% }%>
+
+                </div>    
+                <div class="caja-mensaje-foro">
+                    <form id="chat-envia">
+                        <div class="chat-input">
+                            <input
+                                type="text"
+                                id="chat-input"
+                                name='chat'
+                                placeholder="Envia un mensaje..."
+                                />
+                    </form>
+
+                    <a href="upload.jsp?idForo=<%= request.getParameter("idForo")%>&idTema=<%= request.getParameter("idTema")%>" class="chat-upload">
+                        <img src="images/upload.svg" alt="Subir archivo" />
+                    </a> 
+
+                    <button id="chat-submit" class="chat-submit">
+                        <img
+                            src="images/send.svg"
+                            alt="Enviar mensaje"
+                            class=""
+                            />
+                    </button>
+                </div>
             </div>
+
+        </div>
+    </div>
+
+    <!-- Pie de pagina -->
+    <footer>
+        <div class="info">
+            <h1>StudyHub</h1>
+            <ul>
+                <li><a href="#">Cookies</a></li>
+                <li><a href="#">Términos y Condiciones</a></li>
+                <li><a href="#">Privacidad</a></li>
+            </ul>
         </div>
 
-        <!-- Pie de pagina -->
-        <footer>
-            <div class="info">
-                <h1>StudyHub</h1>
-                <ul>
-                    <li><a href="#">Cookies</a></li>
-                    <li><a href="#">Términos y Condiciones</a></li>
-                    <li><a href="#">Privacidad</a></li>
-                </ul>
-            </div>
-
-            <div class="otros">
-                <ul id="socials">
-                    <li><a href="contact.jsp">Contacto</a></li>
-                    <li><a href="#">Preguntas frecuentes</a></li>
-                </ul>
-                <p id="copyright">© StudyHub | 2024</p>
-                <ul id="socials">
-                    <li>
-                        <a href="#"
-                           ><img src="images/tiktok.svg" alt="tiktok"
-                              /></a>
-                    </li>
-                    <li>
-                        <a href="#"
-                           ><img src="images/facebook.svg" alt="facebook"
-                              /></a>
-                    </li>
-                    <li>
-                        <a href="#"
-                           ><img src="images/instagram.svg" alt="instagram"
-                              /></a>
-                    </li>
-                    <li>
-                        <a href="#"
-                           ><img src="images/twitter.svg" alt="twitter"
-                              /></a>
-                    </li>
-                </ul>
-            </div>
-        </footer>
-        <script src="scripts/confirm_borrar.js"></script>
-        <script>
-            $(document).ready(function () {
-                $(document).on('click', '.vote', function () {
-                    var commentId = $(this).attr("data-id");
-                    var like = $(this).attr("data-like");
-                    $.ajax({
-                        type: "POST",
-                        url: "./VoteComment",
-                        data: { like: like, idComentario: commentId },
-                        success: function (response) {
-                            console.log(response)
-                            document.getElementById("likeCount-" + response.id).innerHTML = response.likes + " likes";
-                            document.getElementById("dislikeCount-" + response.id).innerHTML = response.dislikes + " dislikes";
-                            if (response.userVote == 1) {
-                                console.log("Like con color, dislike blanco");
-                                document.getElementById("like-" + response.id).src = "images/like.svg";
-                                document.getElementById("dislike-" + response.id).src = "images/dislike-blanco.svg";
-                            } else if (response.userVote == -1) {
-                                console.log("Like blanco, dislike con color");
-                                document.getElementById("like-" + response.id).src = "images/like-blanco.svg";
-                                document.getElementById("dislike-" + response.id).src = "images/dislike.svg";
-                            } else {
-                                console.log("Like blanco, dislike blanco");
-                                document.getElementById("like-" + response.id).src = "images/like-blanco.svg";
-                                document.getElementById("dislike-" + response.id).src = "images/dislike-blanco.svg";
-                            }
+        <div class="otros">
+            <ul id="socials">
+                <li><a href="contact.jsp">Contacto</a></li>
+                <li><a href="#">Preguntas frecuentes</a></li>
+            </ul>
+            <p id="copyright">© StudyHub | 2024</p>
+            <ul id="socials">
+                <li>
+                    <a href="#"
+                       ><img src="images/tiktok.svg" alt="tiktok"
+                          /></a>
+                </li>
+                <li>
+                    <a href="#"
+                       ><img src="images/facebook.svg" alt="facebook"
+                          /></a>
+                </li>
+                <li>
+                    <a href="#"
+                       ><img src="images/instagram.svg" alt="instagram"
+                          /></a>
+                </li>
+                <li>
+                    <a href="#"
+                       ><img src="images/twitter.svg" alt="twitter"
+                          /></a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <script src="scripts/confirm_borrar.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(document).on('click', '.vote', function () {
+                var commentId = $(this).attr("data-id");
+                var like = $(this).attr("data-like");
+                $.ajax({
+                    type: "POST",
+                    url: "./VoteComment",
+                    data: {like: like, idComentario: commentId},
+                    success: function (response) {
+                        console.log(response)
+                        document.getElementById("likeCount-" + response.id).innerHTML = response.likes + " likes";
+                        document.getElementById("dislikeCount-" + response.id).innerHTML = response.dislikes + " dislikes";
+                        if (response.userVote == 1) {
+                            console.log("Like con color, dislike blanco");
+                            document.getElementById("like-" + response.id).src = "images/like.svg";
+                            document.getElementById("dislike-" + response.id).src = "images/dislike-blanco.svg";
+                        } else if (response.userVote == -1) {
+                            console.log("Like blanco, dislike con color");
+                            document.getElementById("like-" + response.id).src = "images/like-blanco.svg";
+                            document.getElementById("dislike-" + response.id).src = "images/dislike.svg";
+                        } else {
+                            console.log("Like blanco, dislike blanco");
+                            document.getElementById("like-" + response.id).src = "images/like-blanco.svg";
+                            document.getElementById("dislike-" + response.id).src = "images/dislike-blanco.svg";
                         }
-                    });
+                    }
                 });
             });
-        </script>
-         <script>
-            $(document).ready(function() {
-                $('#chat-submit').on('click', insertComentario);
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#chat-submit').on('click', insertComentario);
 
-                $('#chat-input').keypress(function(event) {
-                    if (event.keyCode === 13) { // 13 is the key code for Enter key
-                        insertComentario();
-                    }
-                });
-
-                function insertComentario(event) {
-                    event.preventDefault(); // Evita que se envíe el formulario al hacer clic en el botón
-                    var crearComent = $("#chat-input").val();
-                    if (crearComent.length > 0) {
-                        $.ajax({
-                            type: 'POST',
-                            url: './InsertarComentario',
-                            data: { chat: crearComent },
-                            success: function(response) {
-                                $('.comentarios-container').html(response);
-                                $("#chat-input").val("");
-                                window.scrollTo(0, document.body.scrollHeight);
-                            }
-                        });
-                    }
+            $('#chat-input').keypress(function (event) {
+                if (event.keyCode === 13) { // 13 is the key code for Enter key
+                    insertComentario();
                 }
             });
 
-</script>
-    </body>
+            function insertComentario(event) {
+                event.preventDefault(); // Evita que se envíe el formulario al hacer clic en el botón
+                var crearComent = $("#chat-input").val();
+                if (crearComent.length > 0) {
+                    $.ajax({
+                        type: 'POST',
+                        url: './InsertarComentario',
+                        data: {chat: crearComent},
+                        success: function (response) {
+                            $('.comentarios-container').html(response);
+                            $("#chat-input").val("");
+                            window.scrollTo(0, document.body.scrollHeight);
+                        }
+                    });
+                }
+            }
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            const $cajaMensajeForo = $('.caja-mensaje-foro');
+            const $footer = $('footer');
+            const $content = $cajaMensajeForo.contents();
+
+            function adjustChatPosition() {
+                const footerTop = $footer.offset().top;
+                const windowHeight = $(window).height();
+                const scrollTop = $(window).scrollTop();
+
+                if (scrollTop + windowHeight >= footerTop) {
+                    if ($cajaMensajeForo.parent().length) {
+                        $content.unwrap();
+                    }
+                } else {
+                    if (!$cajaMensajeForo.parent().length) {
+                        $content.wrap('<div class="caja-mensaje-foro"></div>');
+                    }
+                }
+            }
+
+            $(window).on('scroll resize', adjustChatPosition);
+            adjustChatPosition(); // Initial check
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cajaMensajeForo = document.querySelector('.caja-mensaje-foro');
+            const footer = document.querySelector('footer');
+
+            function adjustChatPosition() {
+                const footerTop = footer.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (footerTop <= windowHeight) {
+                    // cajaMensajeForo.style.position = 'absolute';
+                    //cajaMensajeForo.style.bottom = `${windowHeight - footerTop}px`;
+                    $('.caja-mensaje-foro').contents().unwrap();
+                } else {
+                    // cajaMensajeForo.style.position = 'fixed';
+                    //cajaMensajeForo.style.bottom = '0';
+                    $('.caja-mensaje-foro').contents().wrap();
+                }
+            }
+
+            window.addEventListener('scroll', adjustChatPosition);
+            window.addEventListener('resize', adjustChatPosition);
+
+            // Initial check
+            adjustChatPosition();
+        });
+    </script>
+</body>
 </html>
