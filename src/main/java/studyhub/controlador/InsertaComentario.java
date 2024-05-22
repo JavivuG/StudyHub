@@ -70,13 +70,25 @@ public class InsertaComentario extends HttpServlet {
             }
             
             htmlBuilder.append(" <div class=\"reacciones\">");
+            
+            // Likes
                 htmlBuilder.append("<div class=\"likes\">");
+                   if (comentario.loggedUserHasLiked(UserInfo.getUserNickname(request), comentario.getId_comentario()) == 1) {
                     htmlBuilder.append(" <img src=\"images/like.svg\" alt=\"Me gusta\" class=\"like vote\" data-like=\"1\" data-id=\"").append(comentario.getId_comentario()).append("\" />");
+                   }else{
+                       htmlBuilder.append(" <img src=\"images/like-blanco.svg\" alt=\"Me gusta\" class=\"like vote\" data-like=\"1\" data-id=\"").append(comentario.getId_comentario()).append("\" />");
+                   }
                     htmlBuilder.append(" <p id=\"likeCount-").append(comentario.getId_comentario()).append("\">").append(comentario.getLikes()).append(" likes</p>");
                 htmlBuilder.append("</div>");
+                
+            //Dislikes
                 htmlBuilder.append("<div class=\"dislikes\">");
+                if (comentario.loggedUserHasLiked(UserInfo.getUserNickname(request), comentario.getId_comentario()) == -1) {
                     htmlBuilder.append("<img type=\"image\" src=\"images/dislike.svg\" alt=\"No me gusta\" class=\"dislike vote\" data-like=\"0\" data-id=\"").append(comentario.getId_comentario()).append("\" />");
-                    htmlBuilder.append("<p id=\"dislikeCount-").append(comentario.getId_comentario()).append("\">").append(comentario.getDislikes()).append(" dislikes</p>");
+                }else{
+                    htmlBuilder.append("<img type=\"image\" src=\"images/dislike-blanco.svg\" alt=\"No me gusta\" class=\"dislike vote\" data-like=\"0\" data-id=\"").append(comentario.getId_comentario()).append("\" />");
+                }
+                htmlBuilder.append("<p id=\"dislikeCount-").append(comentario.getId_comentario()).append("\">").append(comentario.getDislikes()).append(" dislikes</p>");
                 htmlBuilder.append("</div>");
             htmlBuilder.append("</div>");
             htmlBuilder.append(" </div>");
@@ -84,8 +96,7 @@ public class InsertaComentario extends HttpServlet {
             
             
             htmlBuilder.append(" <script src=\"scripts/confirm_borrar.js\"></script>");
-
-
+            htmlBuilder.append(" <script src=\"scripts/interaccionlikes.js\"></script>");
         }
 
         response.setContentType("text/html");
