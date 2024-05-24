@@ -320,37 +320,7 @@
         </div>
     </footer>
     <script src="scripts/confirm_borrar.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(document).on('click', '.vote', function () {
-                var commentId = $(this).attr("data-id");
-                var like = $(this).attr("data-like");
-                $.ajax({
-                    type: "POST",
-                    url: "./VoteComment",
-                    data: {like: like, idComentario: commentId},
-                    success: function (response) {
-                        console.log(response)
-                        document.getElementById("likeCount-" + response.id).innerHTML = response.likes + " likes";
-                        document.getElementById("dislikeCount-" + response.id).innerHTML = response.dislikes + " dislikes";
-                        if (response.userVote == 1) {
-                            console.log("Like con color, dislike blanco");
-                            document.getElementById("like-" + response.id).src = "images/like.svg";
-                            document.getElementById("dislike-" + response.id).src = "images/dislike-blanco.svg";
-                        } else if (response.userVote == -1) {
-                            console.log("Like blanco, dislike con color");
-                            document.getElementById("like-" + response.id).src = "images/like-blanco.svg";
-                            document.getElementById("dislike-" + response.id).src = "images/dislike.svg";
-                        } else {
-                            console.log("Like blanco, dislike blanco");
-                            document.getElementById("like-" + response.id).src = "images/like-blanco.svg";
-                            document.getElementById("dislike-" + response.id).src = "images/dislike-blanco.svg";
-                        }
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="scripts/interaccionlikes.js"></script>
     <script>
         $(document).ready(function () {
             $('#chat-submit').on('click', insertComentario);
