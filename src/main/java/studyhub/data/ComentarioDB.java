@@ -78,6 +78,18 @@ public class ComentarioDB {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
+        }finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                pool.freeConnection(connection);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
     
@@ -118,12 +130,24 @@ public class ComentarioDB {
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
+        }finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                pool.freeConnection(connection);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
     public static int setComentario(int idTema, String nickname) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
-        PreparedStatement ps;
+        PreparedStatement ps = null;
         String query = "INSERT INTO comentario (texto, fecha_creacion, id_tema, nickname)  VALUES (?,?,?,?)";
         int idNuevaFila=-1;
 
@@ -149,6 +173,15 @@ public class ComentarioDB {
         } catch (SQLException e) {
             e.printStackTrace();
             
+        }finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                pool.freeConnection(connection);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return idNuevaFila;
     }
@@ -156,7 +189,7 @@ public class ComentarioDB {
     public static int setComentario(String chat, int idTema, String nickname) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
-        PreparedStatement ps;
+        PreparedStatement ps = null;
         String query = "INSERT INTO comentario (texto, fecha_creacion, id_tema, nickname) VALUES (?,?,?,?)";
         int idNuevaFila=-1;
         
@@ -186,6 +219,15 @@ public class ComentarioDB {
         } catch (SQLException e) {
             e.printStackTrace();
             
+        }finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                pool.freeConnection(connection);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
         return idNuevaFila;
     }
@@ -208,6 +250,15 @@ public class ComentarioDB {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                pool.freeConnection(connection);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -236,6 +287,18 @@ public class ComentarioDB {
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                pool.freeConnection(connection);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
     }

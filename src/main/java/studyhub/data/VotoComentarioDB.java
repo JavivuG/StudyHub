@@ -145,7 +145,7 @@ public class VotoComentarioDB {
      public static int loggedUserHasLiked(String user, int comentarioId) {
         ConnectionPool pool = ConnectionPool.getInstance();
         Connection connection = pool.getConnection();
-        PreparedStatement ps;
+        PreparedStatement ps = null;
         ResultSet rs = null;
 
         String query = "SELECT * FROM votos_comentario WHERE nickname=? AND id_comentario=?";
@@ -155,7 +155,7 @@ public class VotoComentarioDB {
             ps.setString(1, user);
             ps.setInt(2, comentarioId);
             rs = ps.executeQuery();
-
+            
             if (rs.next()) {
                 return rs.getInt("vote");
             } else {
@@ -164,6 +164,18 @@ public class VotoComentarioDB {
         } catch (SQLException e) {
             e.printStackTrace();
             return 0;
+        }finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (ps != null) {
+                    ps.close();
+                }
+                pool.freeConnection(connection);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
