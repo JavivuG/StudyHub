@@ -27,12 +27,12 @@ function toggleModal() {
         action.addEventListener('click', function() {
             var result = parseInt(this.dataset.confirm);
             if (result === 1) {
-                var title = document.getElementById('title').value;
-                var message = document.getElementById('message').value;
+                var title = encodeURIComponent(document.getElementById('title').value);
+                var message = encodeURIComponent(document.getElementById('message').value);
                 let queryString = window.location.search; 
                 let urlParams = new URLSearchParams(queryString);
                 var idForo = urlParams.get('idForo');
-                window.location.href = '/CreateTopic?idForo=' + idForo + '&title='+title+'&message='+message;
+                window.location.href = '/CreateTopic?idForo=' + idForo + '&title=' + title + '&message=' + message;
             } else {
                 wrapper.classList.remove('active');
                 setTimeout(function() {
