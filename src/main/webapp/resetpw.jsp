@@ -18,9 +18,9 @@
             href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap"
             rel="stylesheet"
         />
-        <script src="https://kit.fontawesome.com/38c8e2034a.js" crossorigin="anonymous"></script>
         <script src="scripts/logo.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://kit.fontawesome.com/38c8e2034a.js" integrity="sha384-bcRZfG0w5gek61hMNs85gDIjodMgMib0la33IFxfr/f24xqvqKiH7qDUTUyvSC9X" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-vtXRMe3mGCbOeY7l30aIg8H9p3GdeSe4IFlP6G8JMa7o7lXvnz3GFKzPxzJdPfGK" crossorigin="anonymous"></script>
 
     </head>
 
