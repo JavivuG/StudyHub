@@ -1,46 +1,73 @@
-# StudyHub: plataforma de aprendizaje
+<div align="center">
 
-Plataforma web colaborativa donde los estudiantes comparten apuntes, plantean dudas y las resuelven entre ellos en foros organizados por asignatura.
+# StudyHub
 
-> Proyecto final de Servicios y Sistemas Web (SSW) · 3.º curso, 2.º cuatrimestre · Curso 2023-2024 · Grado en Ingeniería Informática, Universidad de Valladolid
+**Plataforma web colaborativa donde los estudiantes comparten apuntes y resuelven dudas en foros por asignatura, con roles, votos sin recargar la página y seguridad gestionada por el servidor.**
 
-## Qué hace
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![Jakarta EE](https://img.shields.io/badge/Jakarta_EE_8-Servlets_%26_JSP-F7901E?style=for-the-badge)
+![Apache Tomcat](https://img.shields.io/badge/Tomcat_9-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
+![jQuery](https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white)
+![Maven](https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)
+
+<sub>Servicios y Sistemas Web (SSW) · Grado en Ingeniería Informática · Universidad de Valladolid · Curso 2023-2024</sub>
+
+</div>
+
+```mermaid
+flowchart LR
+    B["Navegador<br/>JSP · CSS · jQuery/AJAX"] -->|"login FORM"| T["Tomcat 9<br/>CombinedRealm<br/>(DataSourceRealm)"]
+    B -->|"peticiones"| C["Servlets<br/>studyhub.controlador"]
+    T -->|"roles: estudiante, profesor,<br/>moderador, administrador"| C
+    C --> M["Modelos<br/>studyhub.business"]
+    C --> D["Acceso a datos JDBC<br/>studyhub.data"]
+    D --> P["Pool JNDI<br/>jdbc/studyhub"]
+    T --> P
+    P --> DB[("MySQL")]
+    C -.->|"reset de contraseña"| S["JavaMail · SMTP"]
+```
+
+## En pocas palabras
+
+- **Reto:** dar a los estudiantes un sitio común para compartir apuntes y resolver dudas por asignatura, con usuarios, permisos y moderación.
+- **Solución:** una aplicación web Java EE con arquitectura MVC sin framework: 25 servlets controladores, 20 vistas JSP, una capa de acceso a datos JDBC por entidad y autenticación delegada en Tomcat contra MySQL.
+- **Demuestra:** desarrollo web backend en Java, diseño por capas, seguridad declarativa con roles, modelado de bases de datos relacionales y AJAX en el frontend, en un proyecto de equipo.
+
+## Lo más destacado
+
+- **Seguridad gestionada por el contenedor:** `web.xml` define recursos públicos y privados, autenticación `FORM` y cuatro roles; Tomcat valida las credenciales contra MySQL con un `CombinedRealm` que acepta tanto el nickname como el correo.
+- **Permisos por rol en los controladores:** borrar asignaturas o temas está reservado a moderadores y administradores; un comentario o un fichero lo pueden borrar ellos o su propietario (`request.isUserInRole(...)`).
+- **Votos sin recargar la página:** los comentarios se votan con *like*/*dislike* y el recuento se actualiza por AJAX.
+- **Recuperación de contraseña por correo:** contraseñas almacenadas con hash SHA-256 y tokens de restablecimiento con caducidad (tabla `reset_tokens`), enviados con JavaMail.
+- **Gestión de apuntes:** subida por arrastrar y soltar de PDF, JPEG o PNG (hasta 16 MB), guardados en MySQL como `MEDIUMBLOB` y asociados a un foro o a un comentario.
+- **Registro con validación asíncrona:** comprobación de nickname y correo duplicados antes de enviar el formulario.
+
+## Competencias
+
+| Área | Qué se aplicó |
+| --- | --- |
+| Backend Java | Servlets y JSP (Jakarta EE 8), patrón MVC por capas, JDBC |
+| Seguridad | Autenticación `FORM`, `DataSourceRealm`, roles, hash SHA-256, tokens con caducidad |
+| Bases de datos | Esquema MySQL, pool de conexiones JNDI, almacenamiento de ficheros en BLOB |
+| Frontend | HTML5, CSS3 adaptable con *media queries*, JavaScript, jQuery/AJAX, *drag & drop* |
+| Herramientas | Maven (WAR), Apache Tomcat, NetBeans, Git en equipo |
+
+## Funcionalidades
 
 - **Registro y autenticación de usuarios.** Alta con comprobación asíncrona de nickname y correo duplicados, inicio de sesión con formulario y restablecimiento de contraseña por correo electrónico.
 - **Foros por asignatura.** Cada asignatura (con su curso) tiene su foro, y en cada foro se abren temas para plantear dudas.
-- **Preguntas y respuestas.** Los usuarios comentan en los temas y votan los comentarios con *like*/*dislike*, que se actualiza por AJAX sin recargar la página.
-- **Gestión de apuntes.** Los ficheros (PDF, JPEG o PNG, hasta 16 MB) se suben arrastrándolos o seleccionándolos. Luego se pueden consultar, descargar, ver en «Mis ficheros» y eliminar.
+- **Preguntas y respuestas.** Los usuarios comentan en los temas y votan los comentarios con *like*/*dislike*.
+- **Gestión de apuntes.** Los ficheros se suben arrastrándolos o seleccionándolos. Luego se pueden consultar, descargar, ver en «Mis ficheros» y eliminar.
 - **Búsqueda** de asignaturas y de temas.
 - **Perfil de usuario** con la actividad reciente y una «posición en el podio» que clasifica a los usuarios por sus aportaciones.
 
-## Tecnologías
-
-- **Backend:** Java 8, Jakarta EE 8 (Servlets, JSP), JDBC
-- **Frontend:** HTML5, CSS3 (diseño adaptable con *media queries*), JavaScript, jQuery, AJAX
-- **Base de datos:** MySQL
-- **Servidor:** Apache Tomcat (JDBC Connection Pool, `DataSourceRealm`)
-- **Otros:** JavaMail (envío de correos por SMTP), Maven (empaquetado WAR), NetBeans
-
-## Lo que aprendí / Aspectos técnicos destacados
-
-- **Arquitectura por capas MVC sin framework.** Los modelos están en `business`, el acceso a datos en `data` (una clase `*DB` por entidad), los servlets controladores en `controlador` y las vistas son JSP.
-- **Seguridad gestionada por el contenedor.** `web.xml` define recursos públicos y privados, autenticación `FORM` y cuatro roles: `estudiante`, `profesor`, `moderador` y `administrador`. Tomcat valida las credenciales contra MySQL con un `CombinedRealm` que acepta tanto el nickname como el correo.
-- **Permisos por rol en los controladores.** Borrar asignaturas o temas está reservado a moderadores y administradores. Un comentario o un fichero lo pueden borrar ellos o su propietario (`request.isUserInRole(...)`).
-- **Pool de conexiones JNDI.** El `DataSource` `jdbc/studyhub` se declara en `META-INF/context.xml` y se obtiene mediante un `ConnectionPool` singleton.
-- **Contraseñas con hash SHA-256** y tokens de restablecimiento con caducidad (tabla `reset_tokens`).
-- **Ficheros guardados en la base de datos** como `MEDIUMBLOB`, asociados a un foro o a un comentario.
-
 ## Arquitectura
 
-```
-Navegador (JSP + CSS + jQuery/AJAX)
-        │
-        ▼
-Servlets (studyhub.controlador) ──► Modelos (studyhub.business)
-        │
-        ▼
-Acceso a datos (studyhub.data, JDBC) ──► Pool JNDI de Tomcat ──► MySQL (studyhub)
-```
+- **Modelos** en `studyhub.business` (`User`, `Asignatura`, `Tema`, `Comentario`, `Fichero`, `VotoComentario`...).
+- **Acceso a datos** en `studyhub.data`: una clase `*DB` por entidad y un `ConnectionPool` singleton que obtiene el `DataSource` `jdbc/studyhub` declarado en `META-INF/context.xml`.
+- **Controladores** en `studyhub.controlador`: servlets para registro, foros, temas, ficheros, votos, búsqueda y perfil.
+- **Vistas** JSP con CSS y scripts propios (validación, *drag & drop*, votos).
 
 ## Estructura del repositorio
 
@@ -72,7 +99,8 @@ StudyHub/
 
 ## Cómo compilar y ejecutar
 
-Estos pasos se han deducido de los archivos de configuración y no se han ejecutado.
+<details>
+<summary>Pasos de despliegue en Tomcat 9</summary>
 
 1. Crear la base de datos con el esquema y los datos de ejemplo:
    ```bash
@@ -86,10 +114,18 @@ Estos pasos se han deducido de los archivos de configuración y no se han ejecut
    ```
 5. Desplegar `target/studyhub-1.0.war` en Tomcat 9 (o ejecutarlo desde NetBeans) y abrir la página de inicio (`index.jsp`).
 
+</details>
+
+## Estado y limitaciones
+
+- Los pasos de despliegue se han deducido de los archivos de configuración y no se han ejecutado en la revisión de este README.
+- La configuración de base de datos y de correo está en ficheros del código (`context.xml`, `SendResetMail.java`); hay que adaptarla a cada entorno antes de desplegar.
+- Requiere Tomcat 9 (espacio de nombres `javax.*`); no funciona en Tomcat 10 o posterior sin migración.
+
 ## Autoría
 
 Proyecto en grupo. Commits de Javier García ([JavivuG](https://github.com/JavivuG)), [huglope](https://github.com/huglope), Sergio Herrero ([sergihejo](https://github.com/sergihejo)), dajimen y subse.
 
 ---
 
-Parte de [UVa-Projects](https://github.com/JavivuG/UVa-Projects).
+<div align="center"><sub>Parte de <a href="https://github.com/JavivuG/UVa-Projects">UVa-Projects</a> · Javier García González</sub></div>
