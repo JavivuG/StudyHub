@@ -1,59 +1,95 @@
-# StudyHub - Plataforma de Aprendizaje
+# StudyHub: plataforma de aprendizaje
 
-Este proyecto es una plataforma de aprendizaje colaborativa desarrollada como parte de la asignatura **Servicios y Sistemas Web (SSW)**. La plataforma permite a los estudiantes compartir apuntes, responder dudas y colaborar entre ellos de manera interactiva.
+Plataforma web colaborativa donde los estudiantes comparten apuntes, plantean dudas y las resuelven entre ellos en foros organizados por asignatura.
 
-## Descripción
+> Proyecto final de Servicios y Sistemas Web (SSW) · 3.º curso, 2.º cuatrimestre · Curso 2023-2024 · Grado en Ingeniería Informática, Universidad de Valladolid
 
-La plataforma está diseñada para que los estudiantes puedan:
+## Qué hace
 
-- **Subir apuntes**: Compartir materiales de estudio con otros estudiantes.
-- **Hacer preguntas**: Formular dudas sobre temas específicos.
-- **Responder preguntas**: Colaborar respondiendo a las preguntas de otros usuarios.
-- **Interactuar en tiempo real**: A través de notificaciones y actualizaciones automáticas de las preguntas y respuestas.
+- **Registro y autenticación de usuarios.** Alta con comprobación asíncrona de nickname y correo duplicados, inicio de sesión con formulario y restablecimiento de contraseña por correo electrónico.
+- **Foros por asignatura.** Cada asignatura (con su curso) tiene su foro, y en cada foro se abren temas para plantear dudas.
+- **Preguntas y respuestas.** Los usuarios comentan en los temas y votan los comentarios con *like*/*dislike*, que se actualiza por AJAX sin recargar la página.
+- **Gestión de apuntes.** Los ficheros (PDF, JPEG o PNG, hasta 16 MB) se suben arrastrándolos o seleccionándolos. Luego se pueden consultar, descargar, ver en «Mis ficheros» y eliminar.
+- **Búsqueda** de asignaturas y de temas.
+- **Perfil de usuario** con la actividad reciente y una «posición en el podio» que clasifica a los usuarios por sus aportaciones.
 
-El proyecto utiliza una arquitectura basada en **Java** para el backend y tecnologías web como **HTML**, **CSS** y **jQuery** para el frontend, con **Apache Tomcat** como servidor.
+## Tecnologías
 
-## Tecnologías Utilizadas
+- **Backend:** Java 8, Jakarta EE 8 (Servlets, JSP), JDBC
+- **Frontend:** HTML5, CSS3 (diseño adaptable con *media queries*), JavaScript, jQuery, AJAX
+- **Base de datos:** MySQL
+- **Servidor:** Apache Tomcat (JDBC Connection Pool, `DataSourceRealm`)
+- **Otros:** JavaMail (envío de correos por SMTP), Maven (empaquetado WAR), NetBeans
 
-- **Backend**: Java (Spring MVC, Servlets)
-- **Frontend**: HTML5, CSS3, jQuery
-- **Base de datos**: MySQL
-- **Servidor**: Apache Tomcat
-- **Otros**: JDBC para la conexión a la base de datos, AJAX para interacción asíncrona
+## Lo que aprendí / Aspectos técnicos destacados
 
-## Características principales
+- **Arquitectura por capas MVC sin framework.** Los modelos están en `business`, el acceso a datos en `data` (una clase `*DB` por entidad), los servlets controladores en `controlador` y las vistas son JSP.
+- **Seguridad gestionada por el contenedor.** `web.xml` define recursos públicos y privados, autenticación `FORM` y cuatro roles: `estudiante`, `profesor`, `moderador` y `administrador`. Tomcat valida las credenciales contra MySQL con un `CombinedRealm` que acepta tanto el nickname como el correo.
+- **Permisos por rol en los controladores.** Borrar asignaturas o temas está reservado a moderadores y administradores. Un comentario o un fichero lo pueden borrar ellos o su propietario (`request.isUserInRole(...)`).
+- **Pool de conexiones JNDI.** El `DataSource` `jdbc/studyhub` se declara en `META-INF/context.xml` y se obtiene mediante un `ConnectionPool` singleton.
+- **Contraseñas con hash SHA-256** y tokens de restablecimiento con caducidad (tabla `reset_tokens`).
+- **Ficheros guardados en la base de datos** como `MEDIUMBLOB`, asociados a un foro o a un comentario.
 
-1. **Registro y autenticación de usuarios**: Los estudiantes pueden crear una cuenta e iniciar sesión.
-2. **Gestión de apuntes**: Subir, descargar y gestionar apuntes.
-3. **Sistema de preguntas y respuestas**: Plantear preguntas y recibir respuestas por parte de otros usuarios.
-4. **Búsqueda avanzada**: Filtros de búsqueda para encontrar apuntes y preguntas fácilmente.
-5. **Diseño responsivo**: La interfaz está optimizada para ser utilizada en dispositivos móviles y escritorio.
+## Arquitectura
 
-## Instalación y Configuración
+```
+Navegador (JSP + CSS + jQuery/AJAX)
+        │
+        ▼
+Servlets (studyhub.controlador) ──► Modelos (studyhub.business)
+        │
+        ▼
+Acceso a datos (studyhub.data, JDBC) ──► Pool JNDI de Tomcat ──► MySQL (studyhub)
+```
 
-### Requisitos previos
+## Estructura del repositorio
 
-1. **Java JDK 11+**
-2. **Apache Tomcat 9+**
-3. **MySQL** (o cualquier otro sistema de gestión de bases de datos compatible)
+```
+StudyHub/
+├── pom.xml
+└── src/main/
+    ├── java/studyhub/
+    │   ├── business/      # Modelos: User, Asignatura, Tema, Comentario, Fichero...
+    │   ├── controlador/   # Servlets (registro, foros, temas, ficheros, votos...)
+    │   ├── data/          # Acceso a datos y ConnectionPool
+    │   └── mysql.sql      # Esquema y datos de ejemplo
+    ├── resources/META-INF/persistence.xml
+    └── webapp/
+        ├── *.jsp          # Vistas
+        ├── scripts/       # JavaScript (validación, drag & drop, votos)
+        ├── styles/        # CSS
+        ├── images/
+        ├── META-INF/context.xml   # DataSource y Realm de Tomcat
+        └── WEB-INF/web.xml        # Seguridad, roles y páginas de error
+```
 
-### Pasos de instalación
+## Requisitos
 
+1. **Java JDK 8 o superior** (el `pom.xml` compila con nivel 1.8)
+2. **Apache Tomcat 9**: la aplicación usa el espacio de nombres `javax.*` de Jakarta EE 8, así que no funciona en Tomcat 10 o posterior sin migrarla.
+3. **MySQL** y su conector JDBC (`com.mysql.jdbc.Driver`) en el `lib/` de Tomcat, porque no viene en el `pom.xml`
+4. **Maven**
 
-## Uso de la Plataforma
+## Cómo compilar y ejecutar
 
-1. **Registro**: Crea una cuenta para acceder a todas las funcionalidades de la plataforma.
-2. **Subir Apuntes**: Una vez registrado, puedes subir apuntes en formato PDF, Word, etc.
-3. **Plantear Preguntas**: Haz clic en la sección de "Preguntas" y formula una duda.
-4. **Responder Preguntas**: Explora las preguntas de otros estudiantes y colabora respondiendo.
+Estos pasos se han deducido de los archivos de configuración y no se han ejecutado.
 
-## Contribuciones
+1. Crear la base de datos con el esquema y los datos de ejemplo:
+   ```bash
+   mysql -u root -p < src/main/java/studyhub/mysql.sql
+   ```
+2. Crear en MySQL el usuario `studyhub` con permisos sobre la base de datos `studyhub`, o cambiar `username`, `password` y `url` en `src/main/webapp/META-INF/context.xml`.
+3. Para restablecer contraseñas por correo, poner una cuenta SMTP propia (remitente y clave) en `SendResetMail.java`. Está configurado para `smtp.gmail.com:587`.
+4. Empaquetar el WAR:
+   ```bash
+   mvn package
+   ```
+5. Desplegar `target/studyhub-1.0.war` en Tomcat 9 (o ejecutarlo desde NetBeans) y abrir la página de inicio (`index.jsp`).
 
+## Autoría
 
-## Autores
+Proyecto en grupo. Commits de Javier García ([JavivuG](https://github.com/JavivuG)), [huglope](https://github.com/huglope), Sergio Herrero ([sergihejo](https://github.com/sergihejo)), dajimen y subse.
 
-Este proyecto fue desarrollado por el equipo de la asignatura SSW:
+---
 
-- [JavivuG](https://github.com/JavivuG)
-- [Huglope](https://github.com/huglope)
-- [Sergihejo](https://github.com/sergihejo)
+Parte de [UVa-Projects](https://github.com/JavivuG/UVa-Projects).
