@@ -15,18 +15,9 @@
 
 </div>
 
-```mermaid
-flowchart LR
-    B["Navegador<br/>JSP · CSS · jQuery/AJAX"] -->|"login FORM"| T["Tomcat 9<br/>CombinedRealm<br/>(DataSourceRealm)"]
-    B -->|"peticiones"| C["Servlets<br/>studyhub.controlador"]
-    T -->|"roles: estudiante, profesor,<br/>moderador, administrador"| C
-    C --> M["Modelos<br/>studyhub.business"]
-    C --> D["Acceso a datos JDBC<br/>studyhub.data"]
-    D --> P["Pool JNDI<br/>jdbc/studyhub"]
-    T --> P
-    P --> DB[("MySQL")]
-    C -.->|"reset de contraseña"| S["JavaMail · SMTP"]
-```
+<p align="center">
+  <img src="docs/screenshots/panel-asignaturas.png" alt="Panel principal de StudyHub con las asignaturas del usuario y las últimas respuestas de los foros" width="900">
+</p>
 
 ## En pocas palabras
 
@@ -53,6 +44,14 @@ flowchart LR
 | Frontend | HTML5, CSS3 adaptable con *media queries*, JavaScript, jQuery/AJAX, *drag & drop* |
 | Herramientas | Maven (WAR), Apache Tomcat, NetBeans, Git en equipo |
 
+## Capturas
+
+| Portada pública | Foro de una asignatura | Tema con respuestas y votos |
+| --- | --- | --- |
+| ![Portada pública de StudyHub con buscador de asignaturas y accesos de registro e inicio de sesión](docs/screenshots/portada.png) | ![Foro de Sistemas Operativos con temas destacados, lista de temas y ficheros subidos](docs/screenshots/foro-asignatura.png) | ![Tema sobre fork() y exec() con comentarios y recuento de likes y dislikes](docs/screenshots/tema-respuestas-votos.png) |
+
+<sub>Capturas reales de la aplicación ejecutándose en local (Tomcat 9 y MySQL 8 en Docker) con datos de demostración ficticios.</sub>
+
 ## Funcionalidades
 
 - **Registro y autenticación de usuarios.** Alta con comprobación asíncrona de nickname y correo duplicados, inicio de sesión con formulario y restablecimiento de contraseña por correo electrónico.
@@ -63,6 +62,19 @@ flowchart LR
 - **Perfil de usuario** con la actividad reciente y una «posición en el podio» que clasifica a los usuarios por sus aportaciones.
 
 ## Arquitectura
+
+```mermaid
+flowchart LR
+    B["Navegador<br/>JSP · CSS · jQuery/AJAX"] -->|"login FORM"| T["Tomcat 9<br/>CombinedRealm<br/>(DataSourceRealm)"]
+    B -->|"peticiones"| C["Servlets<br/>studyhub.controlador"]
+    T -->|"roles: estudiante, profesor,<br/>moderador, administrador"| C
+    C --> M["Modelos<br/>studyhub.business"]
+    C --> D["Acceso a datos JDBC<br/>studyhub.data"]
+    D --> P["Pool JNDI<br/>jdbc/studyhub"]
+    T --> P
+    P --> DB[("MySQL")]
+    C -.->|"reset de contraseña"| S["JavaMail · SMTP"]
+```
 
 - **Modelos** en `studyhub.business` (`User`, `Asignatura`, `Tema`, `Comentario`, `Fichero`, `VotoComentario`...).
 - **Acceso a datos** en `studyhub.data`: una clase `*DB` por entidad y un `ConnectionPool` singleton que obtiene el `DataSource` `jdbc/studyhub` declarado en `META-INF/context.xml`.
@@ -92,7 +104,7 @@ StudyHub/
 
 ## Requisitos
 
-1. **Java JDK 8 o superior** (el `pom.xml` compila con nivel 1.8)
+1. **Java JDK 9 o superior** para compilar (probado con JDK 11): el `pom.xml` fija nivel 1.8, pero el código usa `Duration.toSeconds()`, que no existe en Java 8
 2. **Apache Tomcat 9**: la aplicación usa el espacio de nombres `javax.*` de Jakarta EE 8, así que no funciona en Tomcat 10 o posterior sin migrarla.
 3. **MySQL** y su conector JDBC (`com.mysql.jdbc.Driver`) en el `lib/` de Tomcat, porque no viene en el `pom.xml`
 4. **Maven**
@@ -118,7 +130,7 @@ StudyHub/
 
 ## Estado y limitaciones
 
-- Los pasos de despliegue se han deducido de los archivos de configuración y no se han ejecutado en la revisión de este README.
+- El despliegue se ha comprobado en local con Tomcat 9 (JDK 11), MySQL 8 y Connector/J 8.0.33, ajustando `context.xml` al entorno. No compila con JDK 8.
 - La configuración de base de datos y de correo está en ficheros del código (`context.xml`, `SendResetMail.java`); hay que adaptarla a cada entorno antes de desplegar.
 - Requiere Tomcat 9 (espacio de nombres `javax.*`); no funciona en Tomcat 10 o posterior sin migración.
 
