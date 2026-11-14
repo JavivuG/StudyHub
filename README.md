@@ -118,8 +118,8 @@ StudyHub/
    ```bash
    mysql -u root -p < src/main/java/studyhub/mysql.sql
    ```
-2. Crear en MySQL el usuario `studyhub` con permisos sobre la base de datos `studyhub`, o cambiar `username`, `password` y `url` en `src/main/webapp/META-INF/context.xml`.
-3. Para restablecer contraseñas por correo, poner una cuenta SMTP propia (remitente y clave) en `SendResetMail.java`. Está configurado para `smtp.gmail.com:587`.
+2. Crear en MySQL el usuario `studyhub` con permisos sobre la base de datos `studyhub` y poner su contraseña en `password` (por defecto `CHANGE_ME`) de `src/main/webapp/META-INF/context.xml`; cambiar también `url` si la base de datos no está en `localhost`.
+3. Para restablecer contraseñas por correo, definir las variables de entorno `STUDYHUB_SMTP_USER` y `STUDYHUB_SMTP_PASSWORD` con una cuenta SMTP propia antes de arrancar Tomcat. Está configurado para `smtp.gmail.com:587`.
 4. Empaquetar el WAR:
    ```bash
    mvn package
@@ -131,7 +131,7 @@ StudyHub/
 ## Estado y limitaciones
 
 - El despliegue se ha comprobado en local con Tomcat 9 (JDK 11), MySQL 8 y Connector/J 8.0.33, ajustando `context.xml` al entorno. No compila con JDK 8.
-- La configuración de base de datos y de correo está en ficheros del código (`context.xml`, `SendResetMail.java`); hay que adaptarla a cada entorno antes de desplegar.
+- El repositorio no incluye credenciales: la contraseña de la base de datos es un marcador (`CHANGE_ME`) y la cuenta de correo se lee de variables de entorno. Los usuarios de `mysql.sql` son ficticios (contraseña `demo1234`).
 - Requiere Tomcat 9 (espacio de nombres `javax.*`); no funciona en Tomcat 10 o posterior sin migración.
 
 ## Autoría

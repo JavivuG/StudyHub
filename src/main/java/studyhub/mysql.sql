@@ -109,7 +109,7 @@ CREATE TABLE votos_comentario (
 
 INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('javivu', '***', 'Usuario', 'Demo', 'demo@example.com', '2000-01-01', '2020-12-16');
 INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('joselito12', '***', 'Usuario', 'Demo', 'demo@example.com', '2000-01-01', '2022-12-16');
-INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('therealpepe', '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5', 'Pepe', 'Vergara Narváez', 'usuario@example.com' , '2001-12-16', '2020-12-16');
+INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('therealpepe', '***', 'Usuario', 'Demo', 'demo@example.com', '2000-01-01', '2020-12-16');
 INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('xXmanoloXx', '***', 'Usuario', 'Demo', 'demo@example.com', '2000-01-01', '2022-12-16');
 INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('TheMarias', '***', 'Usuario', 'Demo', 'demo@example.com', '2000-01-01', '2020-12-16');
 INSERT INTO usuario (nickname, password, nombre, apellidos, email, fecha_nacimiento, fecha_creacion) VALUES ('admin', '***', 'Usuario', 'Demo', 'demo@example.com', '2000-01-01', '2020-12-16');

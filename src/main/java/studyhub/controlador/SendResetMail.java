@@ -29,8 +29,8 @@ public class SendResetMail extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Datos del remitente
-        String remitente = "***REMOVED***";
-        String clave = "***REMOVED***";
+        String remitente = System.getenv("STUDYHUB_SMTP_USER");
+        String clave = System.getenv("STUDYHUB_SMTP_PASSWORD");
 
         // Datos del destinatario
         String destinatario = request.getParameter("email");
